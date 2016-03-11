@@ -21,13 +21,12 @@ typedef enum {
 
 @property (nonatomic, assign) CustomCheckViewStyle checkViewStyle;
 
-@property (nonatomic, assign) BOOL animationWhenShowing;
-
-@property (nonatomic, assign) CGFloat  innerSizeScale;
+@property (nonatomic, assign) CGFloat  innerSizeScale; // 默认 1/4.5
 @property (nonatomic, strong) UIColor* lineColor;
 @property (nonatomic, assign) CGFloat  lineWidth;
 
-- (void) showDuration:(CGFloat)duration delay:(CGFloat)delay completion:(void (^) (void))completion;
-- (void) hiddenOnCompletion:(void (^) (void))completion;
+- (void) showAnimation;
+- (void) hiddenAnimation;
+
 
 @end

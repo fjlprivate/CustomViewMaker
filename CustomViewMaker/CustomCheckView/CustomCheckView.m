@@ -9,93 +9,85 @@
 #import "CustomCheckView.h"
 
 @interface CustomCheckView()
-{
-    CGFloat animationDuration;
-    CGFloat animationDelay;
-    
-    // '勾'的起点、中点、终点坐标
-    CGPoint rightStartPoint;
-    CGPoint rightMidPoint;
-    CGPoint rightEndPoint;
-    
-    // '叉'的起点、终点坐标
-    CGPoint wrongUpStartPoint;
-    CGPoint wrongUpEndPoint;
-    CGPoint wrongDownStartPoint;
-    CGPoint wrongDownEndPoint;
-}
-//@property (nonatomic, copy) void (^completionBlock) (void);
+@property (nonatomic, strong) CAShapeLayer* rightLayer;
+@property (nonatomic, strong) CAShapeLayer* wrongLayer;
 @end
 
 @implementation CustomCheckView
+
+- (void)showAnimation {
+    [self initialRightPointsInRect:self.bounds];
+    [self initialWrongPointsInRect:self.bounds];
+    [self initialLinesProperties];
+
+    if ([self rightOrWrong] == CustomCheckViewStyleRight) {
+        self.rightLayer.strokeEnd = 1;
+        self.wrongLayer.strokeEnd = 0;
+    } else {
+        self.wrongLayer.strokeEnd = 1;
+        self.rightLayer.strokeEnd = 0;
+    }
+}
+- (void)hiddenAnimation {
+    self.rightLayer.strokeEnd = 0;
+    self.wrongLayer.strokeEnd = 0;
+}
+
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.alpha = 0;
+        [self.layer addSublayer:self.rightLayer];
+        [self.layer addSublayer:self.wrongLayer];
     }
     return self;
 }
 
-- (void)showDuration:(CGFloat)duration delay:(CGFloat)delay completion:(void (^)(void))completion
-{
-//    self.completionBlock = completion;
-    self.alpha = 1;
-    animationDelay = delay;
-    animationDuration = duration;
-    [self setNeedsDisplay];
-    completion();
-}
-- (void) hiddenOnCompletion:(void (^) (void))completion {
-    __weak typeof(self)wself = self;
-    [UIView animateWithDuration:animationDuration delay:animationDelay options:UIViewAnimationOptionCurveEaseIn animations:^{
-        wself.alpha = 0;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            completion();
-        }
-    }];
-}
 
-#pragma mask 2 绘制图形: 主要的功能都在这了
-- (void)drawRect:(CGRect)rect {
-    UIBezierPath* path = [UIBezierPath bezierPath];
+#pragma mask 3 坐标,线条初始化
+// -- 初始化'勾'坐标系
+- (void) initialRightPointsInRect:(CGRect)rect {
+    CGFloat insetHorizontal = rect.size.width * self.innerSizeScale;
+    CGFloat unitLength = (rect.size.width - insetHorizontal*2)/3.f;
+    CGFloat insetVertical = (rect.size.height - unitLength*2)/2.f;
+    CGPoint rightStartPoint = CGPointMake(insetHorizontal, insetVertical + unitLength);
+    CGPoint rightMidPoint = CGPointMake(insetHorizontal + unitLength, insetVertical + unitLength*2);
+    CGPoint rightEndPoint = CGPointMake(insetHorizontal + unitLength*3, insetVertical);
     
-    path.lineWidth = self.lineWidth;
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:rightStartPoint];
+    [path addLineToPoint:rightMidPoint];
+    [path addLineToPoint:rightEndPoint];
+    self.rightLayer.path = path.CGPath;
+}
+// -- 初始化'叉'坐标系
+- (void) initialWrongPointsInRect:(CGRect)rect {
+    CGFloat inset = rect.size.width * self.innerSizeScale * (9.f/7.f);
+    CGPoint wrongUpStartPoint = CGPointMake(inset, inset);
+    CGPoint wrongUpEndPoint = CGPointMake(rect.size.width - inset, rect.size.height - inset);
+    CGPoint wrongDownStartPoint = CGPointMake(inset, rect.size.height - inset);
+    CGPoint wrongDownEndPoint = CGPointMake(rect.size.width - inset, inset);
+    
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:wrongUpStartPoint];
+    [path addLineToPoint:wrongUpEndPoint];
+    [path moveToPoint:wrongDownStartPoint];
+    [path addLineToPoint:wrongDownEndPoint];
+    self.wrongLayer.path = path.CGPath;
+}
+// -- 线条属性初始化
+- (void) initialLinesProperties {
+    self.rightLayer.lineWidth = self.lineWidth;
+    self.wrongLayer.lineWidth = self.lineWidth;
+    self.rightLayer.strokeColor = self.lineColor.CGColor;
+    self.wrongLayer.strokeColor = self.lineColor.CGColor;
     if ([self lineRoundOrRect] == CustomCheckViewStyleLineRound) {
-        path.lineCapStyle = kCGLineCapRound;
+        self.rightLayer.lineCap = kCALineCapRound;
+        self.wrongLayer.lineCap = kCALineCapRound;
     } else {
-        path.lineCapStyle = kCGLineCapButt;
-    }
-    [self.lineColor setStroke];
-
-    if ([self rightOrWrong] == CustomCheckViewStyleRight) {
-        [self initialRightPointsInRect:rect];
-        [UIView animateWithDuration:animationDuration
-                              delay:animationDelay
-                            options:UIViewAnimationOptionCurveEaseIn
-                         animations:^{
-                             [path moveToPoint:rightStartPoint];
-                             [path addLineToPoint:rightMidPoint];
-                             [path stroke];
-                         } completion:^(BOOL finished) {
-                             if (finished) {
-                                 [UIView animateWithDuration:animationDuration delay:animationDelay options:UIViewAnimationOptionCurveEaseIn animations:^{
-                                     [path addLineToPoint:rightEndPoint];
-                                     [path stroke];
-                                 } completion:^(BOOL finished) {
-//                                     [path closePath];
-                                 }];
-                             }
-        }];
-    }
-    else if ([self rightOrWrong] == CustomCheckViewStyleWrong) {
-        [self initialWrongPointsInRect:rect];
-        [path moveToPoint:wrongUpStartPoint];
-        [path addLineToPoint:wrongUpEndPoint];
-        [path moveToPoint:wrongDownStartPoint];
-        [path addLineToPoint:wrongDownEndPoint];
+        self.rightLayer.lineCap = kCALineCapButt;
+        self.wrongLayer.lineCap = kCALineCapButt;
     }
 }
 
@@ -107,25 +99,6 @@
 // -- '圆角'或'直角'
 - (CustomCheckViewStyle) lineRoundOrRect {
     return (self.checkViewStyle & (CustomCheckViewStyleLineRound|CustomCheckViewStyleLineButt));
-}
-
-#pragma mask 3 坐标初始化
-// -- 初始化'勾'坐标系
-- (void) initialRightPointsInRect:(CGRect)rect {
-    CGFloat insetHorizontal = rect.size.width * self.innerSizeScale;
-    CGFloat unitLength = (rect.size.width - insetHorizontal*2)/3.f;
-    CGFloat insetVertical = (rect.size.height - unitLength*2)/2.f;
-    rightStartPoint = CGPointMake(insetHorizontal, insetVertical + unitLength);
-    rightMidPoint = CGPointMake(insetHorizontal + unitLength, insetVertical + unitLength*2);
-    rightEndPoint = CGPointMake(insetHorizontal + unitLength*3, insetVertical);
-}
-// -- 初始化'叉'坐标系
-- (void) initialWrongPointsInRect:(CGRect)rect {
-    CGFloat inset = rect.size.width * self.innerSizeScale * (9.f/7.f);
-    wrongUpStartPoint = CGPointMake(inset, inset);
-    wrongUpEndPoint = CGPointMake(rect.size.width - inset, rect.size.height - inset);
-    wrongDownStartPoint = CGPointMake(inset, rect.size.height - inset);
-    wrongDownEndPoint = CGPointMake(rect.size.width - inset, inset);
 }
 
 
@@ -148,5 +121,22 @@
     }
     return _innerSizeScale;
 }
-
+- (CAShapeLayer *)rightLayer {
+    if (!_rightLayer) {
+        _rightLayer = [CAShapeLayer layer];
+        _rightLayer.fillColor = [UIColor clearColor].CGColor;
+        _rightLayer.strokeStart = 0;
+        _rightLayer.strokeEnd = 0;
+    }
+    return _rightLayer;
+}
+- (CAShapeLayer *)wrongLayer {
+    if (!_wrongLayer) {
+        _wrongLayer = [CAShapeLayer layer];
+        _wrongLayer.fillColor = [UIColor clearColor].CGColor;
+        _wrongLayer.strokeStart = 0;
+        _wrongLayer.strokeEnd = 0;
+    }
+    return _wrongLayer;
+}
 @end
