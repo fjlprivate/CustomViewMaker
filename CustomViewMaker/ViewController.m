@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "CheckViewController.h"
 #import "TestCAShapeLayerViewController.h"
+#import "TestCheckViewController.h"
 #import <MBProgressHUD.h>
 
 @interface ViewController ()
@@ -46,6 +47,15 @@
         make.top.equalTo(checkViewButton.mas_top);
     }];
     
+    UIButton* circleCheckViewButton = [self buttonWithTitle:@"ConcentricCirclesCheckView"];
+    [circleCheckViewButton addTarget:self action:@selector(clickToPushToCircleCheckViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:circleCheckViewButton];
+    [circleCheckViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(shapeLayerButton);
+        make.left.equalTo(shapeLayerButton.mas_right);
+        make.top.equalTo(shapeLayerButton.mas_top);
+    }];
+    
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
     [showHud addTarget:self action:@selector(clickToShowMBProgress:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showHud];
@@ -80,6 +90,10 @@
 }
 - (IBAction) clickToPushToShapeLayerViewC:(UIButton*)sender {
     TestCAShapeLayerViewController* viewController = [[TestCAShapeLayerViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (IBAction) clickToPushToCircleCheckViewC:(UIButton*)sender {
+    TestCheckViewController* viewController = [[TestCheckViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

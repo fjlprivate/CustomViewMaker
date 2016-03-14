@@ -85,30 +85,36 @@
     [self.checkView hiddenAnimation];
 }
 - (IBAction) clickToChangeRight:(UIButton*)sender {
-//    self.checkView.checkViewStyle = CustomCheckViewStyleRight|CustomCheckViewStyleLineRound;
-    
-    CustomCheckView* check = [[CustomCheckView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    check.checkViewStyle = CustomCheckViewStyleRight|CustomCheckViewStyleLineRound;
-    check.lineColor = [UIColor whiteColor];
-    check.lineWidth = 3.f;
-    [check showAnimation];
-    check.backgroundColor = [UIColor redColor];
-    
-//    UIView* check = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-//    check.backgroundColor = [UIColor whiteColor];
-    self.hud.customView = check;
-    self.hud.mode = MBProgressHUDModeCustomView;
-    self.hud.animationType = MBProgressHUDAnimationZoomOut;
-    self.hud.labelText = @"测试自定义checkView";
+    WeakSelf(wself);
+    self.hud.labelText = @"加载中...";
     [self.hud show:YES];
-//    [self.hud showAnimated:YES whileExecutingBlock:^{
-//        
-//    } completionBlock:^{
-//        
-//    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CustomCheckView* check = [[CustomCheckView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+        check.layer.borderColor = [UIColor whiteColor].CGColor;
+        check.layer.borderWidth = 3.f;
+        check.layer.cornerRadius = 30;
+        check.checkViewStyle = CustomCheckViewStyleRight|CustomCheckViewStyleLineRound;
+        check.lineColor = [UIColor whiteColor];
+        check.lineWidth = 3.f;
+        
+        wself.hud.customView = check;
+        wself.hud.mode = MBProgressHUDModeCustomView;
+        wself.hud.animationType = MBProgressHUDAnimationZoomIn;
+        wself.hud.labelText = @"测试自定义checkView";
+        [wself.hud show:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [check showAnimation];
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            wself.hud.animationType = MBProgressHUDAnimationZoomOut;
+            [wself.hud hide:YES];
+        });
+    });
+    
+    
 }
 - (IBAction) clickToChangeWrong:(UIButton*)sender {
-//    self.checkView.checkViewStyle = CustomCheckViewStyleWrong|CustomCheckViewStyleLineRound;
     [self.hud hide:YES];
 }
 
@@ -120,7 +126,7 @@
         _checkView = [[CustomCheckView alloc] init];
 //        _checkView.layer.borderColor = [UIColor whiteColor].CGColor;
 //        _checkView.layer.borderWidth = 4.f;
-        _checkView.backgroundColor = [UIColor orangeColor];
+//        _checkView.backgroundColor = [UIColor orangeColor];
         _checkView.lineColor = [UIColor whiteColor];
         _checkView.lineWidth = 5.f;
         _checkView.checkViewStyle = CustomCheckViewStyleWrong|CustomCheckViewStyleLineRound;

@@ -43,6 +43,15 @@
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        [self.layer addSublayer:self.rightLayer];
+        [self.layer addSublayer:self.wrongLayer];
+    }
+    return self;
+}
 
 
 #pragma mask 3 坐标,线条初始化

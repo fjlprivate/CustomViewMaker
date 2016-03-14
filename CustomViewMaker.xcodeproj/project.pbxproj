@@ -28,6 +28,8 @@
 		5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF481C9115F900770353 /* ViewController+MASAdditions.m */; };
 		5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF541C91188C00770353 /* CheckViewController.m */; };
 		5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF5B1C929E1B00770353 /* TestCAShapeLayerViewController.m */; };
+		5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF5F1C96A5C000770353 /* ConcentricCirclesCheckView.m */; };
+		5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF621C96AB5200770353 /* TestCheckViewController.m */; };
 		68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,10 @@
 		5EA2DF541C91188C00770353 /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
 		5EA2DF5A1C929E1B00770353 /* TestCAShapeLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCAShapeLayerViewController.h; sourceTree = "<group>"; };
 		5EA2DF5B1C929E1B00770353 /* TestCAShapeLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCAShapeLayerViewController.m; sourceTree = "<group>"; };
+		5EA2DF5E1C96A5C000770353 /* ConcentricCirclesCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcentricCirclesCheckView.h; sourceTree = "<group>"; };
+		5EA2DF5F1C96A5C000770353 /* ConcentricCirclesCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcentricCirclesCheckView.m; sourceTree = "<group>"; };
+		5EA2DF611C96AB5200770353 /* TestCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCheckViewController.h; sourceTree = "<group>"; };
+		5EA2DF621C96AB5200770353 /* TestCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCheckViewController.m; sourceTree = "<group>"; };
 		B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +161,7 @@
 				5EA2DF2F1C9115F900770353 /* Masonry */,
 				5EA2DF2B1C91116200770353 /* CustomCheckView */,
 				5EA2DF591C929DF600770353 /* CAShapeLayer */,
+				5EA2DF5D1C96A5A600770353 /* ConcentricCirclesCheckView */,
 				5EA2DEFB1C91110D00770353 /* AppDelegate.h */,
 				5EA2DEFC1C91110D00770353 /* AppDelegate.m */,
 				5EA2DEFE1C91110D00770353 /* ViewController.h */,
@@ -244,6 +251,17 @@
 				5EA2DF5B1C929E1B00770353 /* TestCAShapeLayerViewController.m */,
 			);
 			path = CAShapeLayer;
+			sourceTree = "<group>";
+		};
+		5EA2DF5D1C96A5A600770353 /* ConcentricCirclesCheckView */ = {
+			isa = PBXGroup;
+			children = (
+				5EA2DF611C96AB5200770353 /* TestCheckViewController.h */,
+				5EA2DF621C96AB5200770353 /* TestCheckViewController.m */,
+				5EA2DF5E1C96A5C000770353 /* ConcentricCirclesCheckView.h */,
+				5EA2DF5F1C96A5C000770353 /* ConcentricCirclesCheckView.m */,
+			);
+			path = ConcentricCirclesCheckView;
 			sourceTree = "<group>";
 		};
 		76FA161F2071B9F904A0E6B9 /* Pods */ = {
@@ -441,6 +459,8 @@
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
+				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
+				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
