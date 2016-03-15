@@ -11,6 +11,8 @@
 #import "CheckViewController.h"
 #import "TestCAShapeLayerViewController.h"
 #import "TestCheckViewController.h"
+#import "TestRACCommand.h"
+#import "TextPullListViewController.h"
 #import <MBProgressHUD.h>
 
 @interface ViewController ()
@@ -23,7 +25,8 @@
     [super viewDidLoad];
     self.title = @"主界面";
     [self.view addSubview:self.hud];
-    
+    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil]];
+
     __weak typeof(self)wself = self;
     CGRect frame = self.view.frame;
     CGFloat width = frame.size.width/3.f;
@@ -47,7 +50,7 @@
         make.top.equalTo(checkViewButton.mas_top);
     }];
     
-    UIButton* circleCheckViewButton = [self buttonWithTitle:@"ConcentricCirclesCheckView"];
+    UIButton* circleCheckViewButton = [self buttonWithTitle:@"环形标记"];
     [circleCheckViewButton addTarget:self action:@selector(clickToPushToCircleCheckViewC:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:circleCheckViewButton];
     [circleCheckViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,6 +59,26 @@
         make.top.equalTo(shapeLayerButton.mas_top);
     }];
     
+    UIButton* pullListViewButton = [self buttonWithTitle:@"下拉显示列表"];
+    [pullListViewButton addTarget:self action:@selector(clickToPushToPullListViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pullListViewButton];
+    [pullListViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(checkViewButton);
+        make.left.equalTo(checkViewButton.mas_left);
+        make.top.equalTo(checkViewButton.mas_bottom);
+    }];
+    
+    UIButton* commandViewBotton = [self buttonWithTitle:@"RACCommand"];
+    [commandViewBotton addTarget:self action:@selector(clickToPushToRACCommandViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:commandViewBotton];
+    [commandViewBotton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(pullListViewButton);
+        make.left.equalTo(pullListViewButton.mas_right);
+        make.top.equalTo(pullListViewButton);
+    }];
+
+    
+    // ---
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
     [showHud addTarget:self action:@selector(clickToShowMBProgress:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showHud];
@@ -96,6 +119,15 @@
     TestCheckViewController* viewController = [[TestCheckViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
+- (IBAction) clickToPushToPullListViewC:(UIButton*)sender {
+    TextPullListViewController* viewController = [[TextPullListViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (IBAction) clickToPushToRACCommandViewC:(UIButton*)sender {
+    TestRACCommand* viewController = [[TestRACCommand alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 - (IBAction) clickToShowMBProgress:(UIButton*)sender {
     [self.hud showAnimated:YES whileExecutingBlock:^{

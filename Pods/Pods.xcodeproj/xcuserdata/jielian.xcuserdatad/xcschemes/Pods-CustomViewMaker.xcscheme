@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D108D2474BFF79E921A73F04"
+               BlueprintIdentifier = "174AA9DC9E7B8B1D89C36C78"
                BuildableName = "libPods-CustomViewMaker.a"
                BlueprintName = "Pods-CustomViewMaker"
                ReferencedContainer = "container:Pods.xcodeproj">

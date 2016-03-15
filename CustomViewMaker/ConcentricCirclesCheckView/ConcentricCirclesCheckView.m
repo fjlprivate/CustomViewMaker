@@ -22,7 +22,6 @@ static NSString* const kKVOCircleCheckViewChecked = @"checked";
 
 #pragma mask 2 KVO
 - (void) addKVOs {
-    NSLog(@"添加kvo");
     [self addObserver:self forKeyPath:kKVOCircleCheckViewChecked options:NSKeyValueObservingOptionNew context:nil];
 }
 - (void) removeKVOs {
