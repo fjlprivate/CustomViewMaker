@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import "Masonry.h"
+#import <MBProgressHUD.h>
 #import "CheckViewController.h"
 #import "TestCAShapeLayerViewController.h"
 #import "TestCheckViewController.h"
 #import "TestRACCommand.h"
 #import "TextPullListViewController.h"
-#import <MBProgressHUD.h>
+#import "TestJLAlertView.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) MBProgressHUD* hud;
@@ -59,7 +60,7 @@
         make.top.equalTo(shapeLayerButton.mas_top);
     }];
     
-    UIButton* pullListViewButton = [self buttonWithTitle:@"下拉显示列表"];
+    UIButton* pullListViewButton = [self buttonWithTitle:@"下拉列表"];
     [pullListViewButton addTarget:self action:@selector(clickToPushToPullListViewC:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pullListViewButton];
     [pullListViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,6 +78,14 @@
         make.top.equalTo(pullListViewButton);
     }];
 
+    UIButton* jlalertView = [self buttonWithTitle:@"JCAlert"];
+    [jlalertView addTarget:self action:@selector(clickToPushToJCAlertViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:jlalertView];
+    [jlalertView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(commandViewBotton);
+        make.left.equalTo(commandViewBotton.mas_right);
+        make.top.equalTo(commandViewBotton);
+    }];
     
     // ---
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
@@ -127,7 +136,10 @@
     TestRACCommand* viewController = [[TestRACCommand alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
-
+- (IBAction) clickToPushToJCAlertViewC:(UIButton*)sender {
+    TestJLAlertView* jcalertViewC = [[TestJLAlertView alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:jcalertViewC animated:YES];
+}
 
 - (IBAction) clickToShowMBProgress:(UIButton*)sender {
     [self.hud showAnimated:YES whileExecutingBlock:^{

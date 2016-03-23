@@ -3,9 +3,10 @@
 
 target 'CustomViewMaker' do
 
-   pod 'MBProgressHUD', '~> 0.9.1'
+pod 'MBProgressHUD', '~> 0.9.1'
 pod 'ReactiveCocoa', '~> 2.5'
 pod 'AFNetworking', '~> 2.6.3'
+pod 'JCAlertView', '~> 1.1.4'
 
 end
 

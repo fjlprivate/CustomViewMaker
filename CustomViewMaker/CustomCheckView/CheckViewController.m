@@ -90,14 +90,17 @@
     [self.hud show:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CustomCheckView* check = [[CustomCheckView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+        // 创建 自定义'勾','叉' 子视图
+        CGFloat width = 37;
+        CustomCheckView* check = [[CustomCheckView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
         check.layer.borderColor = [UIColor whiteColor].CGColor;
         check.layer.borderWidth = 3.f;
-        check.layer.cornerRadius = 30;
-        check.checkViewStyle = CustomCheckViewStyleRight|CustomCheckViewStyleLineRound;
+        check.layer.cornerRadius = width/2.f;
+        check.checkViewStyle = CustomCheckViewStyleWrong|CustomCheckViewStyleLineRound;
         check.lineColor = [UIColor whiteColor];
         check.lineWidth = 3.f;
         
+        // 修改 hud 的属性然后显示
         wself.hud.customView = check;
         wself.hud.mode = MBProgressHUDModeCustomView;
         wself.hud.animationType = MBProgressHUDAnimationZoomIn;

@@ -36,6 +36,7 @@
 		5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF7F1C97DA5200770353 /* DirectionView.m */; };
 		5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF881C97E47E00770353 /* TestRACCommand.m */; };
 		5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */; };
+		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,8 @@
 		5EA2DF881C97E47E00770353 /* TestRACCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRACCommand.m; sourceTree = "<group>"; };
 		5EA2DF8A1C97E52B00770353 /* VMDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMDataRequester.h; sourceTree = "<group>"; };
 		5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMDataRequester.m; sourceTree = "<group>"; };
+		5EA2DF981C9FA31A00770353 /* TestJLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestJLAlertView.h; sourceTree = "<group>"; };
+		5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestJLAlertView.m; sourceTree = "<group>"; };
 		B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +179,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5EA2DF971C9FA30200770353 /* TestJLAlertView */,
 				5EA2DF861C97E47E00770353 /* TestRACCommand */,
 				5EA2DF2F1C9115F900770353 /* Masonry */,
 				5EA2DF7B1C97DA4900770353 /* ChooseButton */,
@@ -316,6 +320,15 @@
 				5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */,
 			);
 			path = TestRACCommand;
+			sourceTree = "<group>";
+		};
+		5EA2DF971C9FA30200770353 /* TestJLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				5EA2DF981C9FA31A00770353 /* TestJLAlertView.h */,
+				5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */,
+			);
+			path = TestJLAlertView;
 			sourceTree = "<group>";
 		};
 		76FA161F2071B9F904A0E6B9 /* Pods */ = {
@@ -512,6 +525,7 @@
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
+				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
