@@ -28,66 +28,79 @@ static CGFloat const fMBProgressHUDFailDuration = 2.5;  // 失败时的显示持
 
 - (void) showSuccessWithText:(NSString*)text andDetailText:(NSString*)detailText onCompletion:(void (^) (void))completion {
     CustomCheckView* customStateView = [self stateViewOnStyle:CustomCheckViewStyleRight];
-    self.mode = MBProgressHUDModeCustomView;
-    self.customView = customStateView;
-    
-    self.labelText = text;
-    self.detailsLabelText = detailText;
-    
-    [self show:YES];
-    [self hide:YES afterDelay:fMBProgressHUDSucDuration];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [customStateView showAnimation];
-    });
     __weak typeof(self)wself = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        wself.completionBlock = completion;
-    });
+
+    [self hideOnCompletion:^{
+        wself.mode = MBProgressHUDModeCustomView;
+        wself.customView = customStateView;
+        
+        wself.labelText = text;
+        wself.detailsLabelText = detailText;
+        [wself show:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [customStateView showAnimation];
+        });
+        [wself hide:YES afterDelay:fMBProgressHUDSucDuration];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            wself.completionBlock = completion;
+        });
+    }];
+    
 }
 - (void) showFailWithText:(NSString*)text andDetailText:(NSString*)detailText onCompletion:(void (^) (void))completion {
     CustomCheckView* customStateView = [self stateViewOnStyle:CustomCheckViewStyleWrong];
-    self.mode = MBProgressHUDModeCustomView;
-    self.customView = customStateView;
-    
-    self.labelText = text;
-    self.detailsLabelText = detailText;
-    
-    [self show:YES];
-    [self hide:YES afterDelay:fMBProgressHUDFailDuration];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [customStateView showAnimation];
-    });
     __weak typeof(self)wself = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        wself.completionBlock = completion;
-    });
+
+    [self hideOnCompletion:^{
+        wself.mode = MBProgressHUDModeCustomView;
+        wself.customView = customStateView;
+        
+        wself.labelText = text;
+        wself.detailsLabelText = detailText;
+        [wself show:YES];
+        [wself hide:YES afterDelay:fMBProgressHUDFailDuration];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [customStateView showAnimation];
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            wself.completionBlock = completion;
+        });
+    }];
 }
 - (void) showWarnWithText:(NSString*)text andDetailText:(NSString*)detailText onCompletion:(void (^) (void))completion {
     CustomCheckView* customStateView = [self stateViewOnStyle:CustomCheckViewStyleWarn];
-    self.mode = MBProgressHUDModeCustomView;
-    self.customView = customStateView;
-    
-    self.labelText = text;
-    self.detailsLabelText = detailText;
-    
-    [self show:YES];
-    [self hide:YES afterDelay:fMBProgressHUDFailDuration];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [customStateView showAnimation];
-    });
     __weak typeof(self)wself = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        wself.completionBlock = completion;
-    });
+    
+    [self hideOnCompletion:^{
+        wself.mode = MBProgressHUDModeCustomView;
+        wself.customView = customStateView;
+        
+        wself.labelText = text;
+        wself.detailsLabelText = detailText;
+        [wself show:YES];
+        [wself hide:YES afterDelay:fMBProgressHUDFailDuration];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [customStateView showAnimation];
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            wself.completionBlock = completion;
+        });
+    }];
 }
 
 - (void) hideOnCompletion:(void (^) (void))completion {
-    self.completionBlock = completion;
-    [self hide:YES];
+    __weak typeof(self)wself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        wself.completionBlock = completion;
+        [wself hide:YES];
+    });
 }
 - (void) hideDelay:(NSTimeInterval)delay onCompletion:(void (^) (void))completion {
-    self.completionBlock = completion;
-    [self hide:YES afterDelay:delay];
+    __weak typeof(self)wself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        wself.completionBlock = completion;
+        [wself hide:YES afterDelay:delay];
+    });
 }
 
 

@@ -73,12 +73,15 @@
     
     [self.progressHUD showNormalWithText:@"数据加载中..." andDetailText:nil];
     
-    [self.progressHUD hideDelay:2.5 onCompletion:^{
+//    [self.progressHUD hideDelay:2.5 onCompletion:^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         [wself.progressHUD showSuccessWithText:@"交易成功!" andDetailText:nil onCompletion:^{
             NSLog(@"navigation = [%@]",wself.navigationController);
             [wself.navigationController popViewControllerAnimated:YES];
         }];
-    }];
+    });
+//    }];
 }
 
 
