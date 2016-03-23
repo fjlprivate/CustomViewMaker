@@ -15,6 +15,7 @@
 #import "TestRACCommand.h"
 #import "TextPullListViewController.h"
 #import "TestJLAlertView.h"
+#import "TestMBProgressHUD.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) MBProgressHUD* hud;
@@ -86,6 +87,14 @@
         make.left.equalTo(commandViewBotton.mas_right);
         make.top.equalTo(commandViewBotton);
     }];
+    UIButton* mbprogressHud = [self buttonWithTitle:@"MBHUD"];
+    [mbprogressHud addTarget:self action:@selector(clickToPushToMBHUdViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:mbprogressHud];
+    [mbprogressHud mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(pullListViewButton);
+        make.left.equalTo(pullListViewButton.mas_left);
+        make.top.equalTo(pullListViewButton.mas_bottom);
+    }];
     
     // ---
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
@@ -140,6 +149,11 @@
     TestJLAlertView* jcalertViewC = [[TestJLAlertView alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:jcalertViewC animated:YES];
 }
+- (IBAction) clickToPushToMBHUdViewC:(UIButton*)sender {
+    TestMBProgressHUD* viewController = [[TestMBProgressHUD alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 - (IBAction) clickToShowMBProgress:(UIButton*)sender {
     [self.hud showAnimated:YES whileExecutingBlock:^{

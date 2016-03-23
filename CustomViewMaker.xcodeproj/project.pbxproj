@@ -37,6 +37,8 @@
 		5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF881C97E47E00770353 /* TestRACCommand.m */; };
 		5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */; };
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
+		5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */; };
+		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
 		68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,10 @@
 		5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMDataRequester.m; sourceTree = "<group>"; };
 		5EA2DF981C9FA31A00770353 /* TestJLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestJLAlertView.h; sourceTree = "<group>"; };
 		5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestJLAlertView.m; sourceTree = "<group>"; };
+		5EDC46951CA2477F00B2F872 /* MBProgressHUD+CustomSate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CustomSate.h"; sourceTree = "<group>"; };
+		5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CustomSate.m"; sourceTree = "<group>"; };
+		5EDC46981CA2520500B2F872 /* TestMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMBProgressHUD.h; sourceTree = "<group>"; };
+		5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMBProgressHUD.m; sourceTree = "<group>"; };
 		B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -179,6 +185,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5EDC46941CA2470E00B2F872 /* TestMBProgressHUD */,
 				5EA2DF971C9FA30200770353 /* TestJLAlertView */,
 				5EA2DF861C97E47E00770353 /* TestRACCommand */,
 				5EA2DF2F1C9115F900770353 /* Masonry */,
@@ -329,6 +336,17 @@
 				5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */,
 			);
 			path = TestJLAlertView;
+			sourceTree = "<group>";
+		};
+		5EDC46941CA2470E00B2F872 /* TestMBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5EDC46981CA2520500B2F872 /* TestMBProgressHUD.h */,
+				5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */,
+				5EDC46951CA2477F00B2F872 /* MBProgressHUD+CustomSate.h */,
+				5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */,
+			);
+			path = TestMBProgressHUD;
 			sourceTree = "<group>";
 		};
 		76FA161F2071B9F904A0E6B9 /* Pods */ = {
@@ -514,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
+				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
@@ -524,6 +543,7 @@
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
+				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
