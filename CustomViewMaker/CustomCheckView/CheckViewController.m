@@ -94,11 +94,11 @@
         CGFloat width = 37;
         CustomCheckView* check = [[CustomCheckView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
         check.layer.borderColor = [UIColor whiteColor].CGColor;
-        check.layer.borderWidth = 3.f;
+        check.layer.borderWidth = 2.f;
         check.layer.cornerRadius = width/2.f;
-        check.checkViewStyle = CustomCheckViewStyleWrong|CustomCheckViewStyleLineRound;
+        check.checkViewStyle = CustomCheckViewStyleWarn|CustomCheckViewStyleLineRound;
         check.lineColor = [UIColor whiteColor];
-        check.lineWidth = 3.f;
+        check.lineWidth = 2.f;
         
         // 修改 hud 的属性然后显示
         wself.hud.customView = check;
@@ -127,12 +127,12 @@
 - (CustomCheckView *)checkView {
     if (!_checkView) {
         _checkView = [[CustomCheckView alloc] init];
-//        _checkView.layer.borderColor = [UIColor whiteColor].CGColor;
-//        _checkView.layer.borderWidth = 4.f;
+        _checkView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _checkView.layer.borderWidth = 4.f;
 //        _checkView.backgroundColor = [UIColor orangeColor];
         _checkView.lineColor = [UIColor whiteColor];
         _checkView.lineWidth = 5.f;
-        _checkView.checkViewStyle = CustomCheckViewStyleWrong|CustomCheckViewStyleLineRound;
+        _checkView.checkViewStyle = CustomCheckViewStyleWarn|CustomCheckViewStyleLineRound;
     }
     return _checkView;
 }

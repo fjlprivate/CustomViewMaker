@@ -12,9 +12,12 @@
 typedef enum {
     CustomCheckViewStyleRight       = 1 << 0, // 勾
     CustomCheckViewStyleWrong       = 1 << 1, // 叉
+    CustomCheckViewStyleWarn        = 1 << 2, // 感叹号
+
     
-    CustomCheckViewStyleLineRound   = 1 << 2, // 圆角
-    CustomCheckViewStyleLineButt    = 1 << 3  // 直角
+    
+    CustomCheckViewStyleLineRound   = 1 << 8, // 圆角
+    CustomCheckViewStyleLineButt    = 1 << 9  // 直角
 } CustomCheckViewStyle;
 
 @interface CustomCheckView : UIView

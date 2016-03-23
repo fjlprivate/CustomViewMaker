@@ -9,48 +9,42 @@
 #import "CustomCheckView.h"
 
 @interface CustomCheckView()
-@property (nonatomic, strong) CAShapeLayer* rightLayer;
-@property (nonatomic, strong) CAShapeLayer* wrongLayer;
+
+@property (nonatomic, strong) CAShapeLayer* shapeLayer;
+
 @end
 
 @implementation CustomCheckView
 
 - (void)showAnimation {
-    [self initialRightPointsInRect:self.bounds];
-    [self initialWrongPointsInRect:self.bounds];
     [self initialLinesProperties];
-
-    if ([self rightOrWrong] == CustomCheckViewStyleRight) {
-        self.rightLayer.strokeEnd = 1;
-        self.wrongLayer.strokeEnd = 0;
-    } else {
-        self.wrongLayer.strokeEnd = 1;
-        self.rightLayer.strokeEnd = 0;
-    }
+    [self setShapeOnShapeLayer];
+    self.shapeLayer.strokeEnd = 1;
+    
 }
 - (void)hiddenAnimation {
-    self.rightLayer.strokeEnd = 0;
-    self.wrongLayer.strokeEnd = 0;
+    self.shapeLayer.strokeEnd = 0;
 }
+
 
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
-        [self.layer addSublayer:self.rightLayer];
-        [self.layer addSublayer:self.wrongLayer];
+        [self initial];
     }
     return self;
 }
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
-        [self.layer addSublayer:self.rightLayer];
-        [self.layer addSublayer:self.wrongLayer];
+        [self initial];
     }
     return self;
+}
+- (void) initial {
+    self.backgroundColor = [UIColor clearColor];
+    [self.layer addSublayer:self.shapeLayer];
 }
 
 
@@ -68,7 +62,7 @@
     [path moveToPoint:rightStartPoint];
     [path addLineToPoint:rightMidPoint];
     [path addLineToPoint:rightEndPoint];
-    self.rightLayer.path = path.CGPath;
+    self.shapeLayer.path = path.CGPath;
 }
 // -- 初始化'叉'坐标系
 - (void) initialWrongPointsInRect:(CGRect)rect {
@@ -83,31 +77,73 @@
     [path addLineToPoint:wrongUpEndPoint];
     [path moveToPoint:wrongDownStartPoint];
     [path addLineToPoint:wrongDownEndPoint];
-    self.wrongLayer.path = path.CGPath;
+    self.shapeLayer.path = path.CGPath;
 }
+// -- 初始化'感叹号'坐标系
+- (void) initialWarnPointsInRect:(CGRect)rect {
+    CGFloat insetVertical = rect.size.width * self.innerSizeScale;
+    CGFloat insetDotAndLine = rect.size.height * 0.15;
+    CGFloat radius = self.lineWidth/2.f;
+    
+    CGPoint dotPoint = CGPointMake(rect.size.width/2.f, rect.size.height - insetVertical);
+    CGPoint lineStartPoint = CGPointMake(rect.size.width/2.f, insetVertical);
+    CGPoint lineEndPoint = CGPointMake(rect.size.width/2.f, dotPoint.y - radius - insetDotAndLine);
+    
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:lineStartPoint];
+    [path addLineToPoint:lineEndPoint];
+    UIBezierPath* arcPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(dotPoint.x - radius, dotPoint.y - radius, radius*2, radius*2) cornerRadius:radius];
+    [path appendPath:arcPath];
+    self.shapeLayer.path = path.CGPath;
+}
+
+
 // -- 线条属性初始化
 - (void) initialLinesProperties {
-    self.rightLayer.lineWidth = self.lineWidth;
-    self.wrongLayer.lineWidth = self.lineWidth;
-    self.rightLayer.strokeColor = self.lineColor.CGColor;
-    self.wrongLayer.strokeColor = self.lineColor.CGColor;
-    if ([self lineRoundOrRect] == CustomCheckViewStyleLineRound) {
-        self.rightLayer.lineCap = kCALineCapRound;
-        self.wrongLayer.lineCap = kCALineCapRound;
-    } else {
-        self.rightLayer.lineCap = kCALineCapButt;
-        self.wrongLayer.lineCap = kCALineCapButt;
+    self.shapeLayer.lineWidth = self.lineWidth;
+    self.shapeLayer.strokeColor = self.lineColor.CGColor;
+    
+    switch ([self lineStyle]) {
+        case CustomCheckViewStyleLineRound:
+            self.shapeLayer.lineCap = kCALineCapRound;
+            break;
+        case CustomCheckViewStyleLineButt:
+            self.shapeLayer.lineCap = kCALineCapButt;
+            break;
+        default:
+            self.shapeLayer.lineCap = kCALineCapRound;
+            break;
+    }
+}
+
+// -- 设置 shapeLayer 的形状
+- (void) setShapeOnShapeLayer {
+    switch ([self shapeStyle]) {
+        case CustomCheckViewStyleRight:
+            [self initialRightPointsInRect:self.bounds];
+            break;
+        case CustomCheckViewStyleWrong:
+            [self initialWrongPointsInRect:self.bounds];
+            break;
+        case CustomCheckViewStyleWarn:
+            [self initialWarnPointsInRect:self.bounds];
+            break;
+        default:
+            [self initialRightPointsInRect:self.bounds];
+            break;
     }
 }
 
 #pragma mask 3 private interface
-// -- '勾'或'叉'
-- (CustomCheckViewStyle) rightOrWrong {
-    return (self.checkViewStyle & (CustomCheckViewStyleRight|CustomCheckViewStyleWrong));
+// -- 当前形状
+- (CustomCheckViewStyle) shapeStyle {
+    int allShapes = CustomCheckViewStyleRight | CustomCheckViewStyleWrong | CustomCheckViewStyleWarn;
+    return (self.checkViewStyle & allShapes);
 }
-// -- '圆角'或'直角'
-- (CustomCheckViewStyle) lineRoundOrRect {
-    return (self.checkViewStyle & (CustomCheckViewStyleLineRound|CustomCheckViewStyleLineButt));
+// -- 当前线条类型
+- (CustomCheckViewStyle) lineStyle {
+    int allLines = CustomCheckViewStyleLineButt | CustomCheckViewStyleLineRound;
+    return (self.checkViewStyle & allLines);
 }
 
 
@@ -130,22 +166,13 @@
     }
     return _innerSizeScale;
 }
-- (CAShapeLayer *)rightLayer {
-    if (!_rightLayer) {
-        _rightLayer = [CAShapeLayer layer];
-        _rightLayer.fillColor = [UIColor clearColor].CGColor;
-        _rightLayer.strokeStart = 0;
-        _rightLayer.strokeEnd = 0;
+- (CAShapeLayer *)shapeLayer {
+    if (!_shapeLayer) {
+        _shapeLayer = [CAShapeLayer layer];
+        _shapeLayer.fillColor = [UIColor clearColor].CGColor;
+        _shapeLayer.strokeStart = 0;
+        _shapeLayer.strokeEnd = 0;
     }
-    return _rightLayer;
-}
-- (CAShapeLayer *)wrongLayer {
-    if (!_wrongLayer) {
-        _wrongLayer = [CAShapeLayer layer];
-        _wrongLayer.fillColor = [UIColor clearColor].CGColor;
-        _wrongLayer.strokeStart = 0;
-        _wrongLayer.strokeEnd = 0;
-    }
-    return _wrongLayer;
+    return _shapeLayer;
 }
 @end
