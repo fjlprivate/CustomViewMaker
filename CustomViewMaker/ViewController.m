@@ -16,6 +16,7 @@
 #import "TextPullListViewController.h"
 #import "TestJLAlertView.h"
 #import "TestMBProgressHUD.h"
+#import "TestCollectionView/TestCollectionView.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) MBProgressHUD* hud;
@@ -95,6 +96,21 @@
         make.left.equalTo(pullListViewButton.mas_left);
         make.top.equalTo(pullListViewButton.mas_bottom);
     }];
+    UIButton* collectionVC = [self buttonWithTitle:@"Collection"];
+    [collectionVC addTarget:self action:@selector(clickToPushToTestCollectionViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:collectionVC];
+    [collectionVC mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(mbprogressHud);
+        make.left.equalTo(mbprogressHud.mas_right);
+        make.top.equalTo(mbprogressHud.mas_top);
+    }];
+
+    self.view.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 300, 27, 27)];
+    imageView.image = [UIImage imageNamed:@"头像"];
+//    imageView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    [self.view addSubview:imageView];
+    
     
     // ---
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
@@ -151,6 +167,10 @@
 }
 - (IBAction) clickToPushToMBHUdViewC:(UIButton*)sender {
     TestMBProgressHUD* viewController = [[TestMBProgressHUD alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (IBAction) clickToPushToTestCollectionViewC:(UIButton*)sender {
+    TestCollectionView* viewController = [[TestCollectionView alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

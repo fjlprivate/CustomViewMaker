@@ -15,7 +15,6 @@
 @property (nonatomic, strong) UIButton* normalShow;
 @property (nonatomic, strong) UIButton* customShow;
 
-
 @property (nonatomic, strong) JCAlertView* alertView;
 
 @end

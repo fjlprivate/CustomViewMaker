@@ -40,6 +40,13 @@
 		5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */; };
 		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
 		68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */; };
+		9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAC1CA2D3E700244876 /* SignInInputView.m */; };
+		9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAE1CA2D3E700244876 /* SignInViewController.m */; };
+		9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB41CA2D3F300244876 /* NSString+Custom.m */; };
+		9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB71CA2D3F300244876 /* UIColor+ColorWithHex.m */; };
+		9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570331CAC0CEE00244876 /* TestCollectionView.m */; };
+		9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570361CAC0D0800244876 /* CustomFlowLayout.m */; };
+		9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +137,20 @@
 		5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CustomSate.m"; sourceTree = "<group>"; };
 		5EDC46981CA2520500B2F872 /* TestMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMBProgressHUD.h; sourceTree = "<group>"; };
 		5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMBProgressHUD.m; sourceTree = "<group>"; };
+		9E156FAB1CA2D3E700244876 /* SignInInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInInputView.h; sourceTree = "<group>"; };
+		9E156FAC1CA2D3E700244876 /* SignInInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInInputView.m; sourceTree = "<group>"; };
+		9E156FAD1CA2D3E700244876 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		9E156FAE1CA2D3E700244876 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		9E156FB31CA2D3F300244876 /* NSString+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Custom.h"; sourceTree = "<group>"; };
+		9E156FB41CA2D3F300244876 /* NSString+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Custom.m"; sourceTree = "<group>"; };
+		9E156FB61CA2D3F300244876 /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
+		9E156FB71CA2D3F300244876 /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
+		9E1570321CAC0CEE00244876 /* TestCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionView.h; sourceTree = "<group>"; };
+		9E1570331CAC0CEE00244876 /* TestCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionView.m; sourceTree = "<group>"; };
+		9E1570351CAC0D0800244876 /* CustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFlowLayout.h; sourceTree = "<group>"; };
+		9E1570361CAC0D0800244876 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
+		9E1570381CAC0E6900244876 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
+		9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +206,9 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				9E156FB11CA2D3F300244876 /* Category */,
+				9E156FA81CA2D3E700244876 /* 登陆界面 */,
+				9E1570311CAC0CD500244876 /* TestCollectionView */,
 				5EDC46941CA2470E00B2F872 /* TestMBProgressHUD */,
 				5EA2DF971C9FA30200770353 /* TestJLAlertView */,
 				5EA2DF861C97E47E00770353 /* TestRACCommand */,
@@ -356,6 +380,73 @@
 				3F96BD6CA1E6FC79AF54068A /* Pods-CustomViewMaker.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9E156FA81CA2D3E700244876 /* 登陆界面 */ = {
+			isa = PBXGroup;
+			children = (
+				9E156FA91CA2D3E700244876 /* Model */,
+				9E156FAA1CA2D3E700244876 /* View */,
+			);
+			path = "登陆界面";
+			sourceTree = "<group>";
+		};
+		9E156FA91CA2D3E700244876 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9E156FAA1CA2D3E700244876 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E156FAB1CA2D3E700244876 /* SignInInputView.h */,
+				9E156FAC1CA2D3E700244876 /* SignInInputView.m */,
+				9E156FAD1CA2D3E700244876 /* SignInViewController.h */,
+				9E156FAE1CA2D3E700244876 /* SignInViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9E156FB11CA2D3F300244876 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9E156FB21CA2D3F300244876 /* NSString */,
+				9E156FB51CA2D3F300244876 /* UIColor */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		9E156FB21CA2D3F300244876 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				9E156FB31CA2D3F300244876 /* NSString+Custom.h */,
+				9E156FB41CA2D3F300244876 /* NSString+Custom.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		9E156FB51CA2D3F300244876 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				9E156FB61CA2D3F300244876 /* UIColor+ColorWithHex.h */,
+				9E156FB71CA2D3F300244876 /* UIColor+ColorWithHex.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		9E1570311CAC0CD500244876 /* TestCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9E1570321CAC0CEE00244876 /* TestCollectionView.h */,
+				9E1570331CAC0CEE00244876 /* TestCollectionView.m */,
+				9E1570351CAC0D0800244876 /* CustomFlowLayout.h */,
+				9E1570361CAC0D0800244876 /* CustomFlowLayout.m */,
+				9E1570381CAC0E6900244876 /* CustomCollectionViewCell.h */,
+				9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */,
+			);
+			path = TestCollectionView;
 			sourceTree = "<group>";
 		};
 		B6DAA24810632541B549DF72 /* Frameworks */ = {
@@ -534,14 +625,17 @@
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
+				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
+				9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
+				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
@@ -550,12 +644,16 @@
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
+				9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */,
+				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
+				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
+				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);

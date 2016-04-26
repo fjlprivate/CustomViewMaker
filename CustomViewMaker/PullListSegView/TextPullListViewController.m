@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "PullListSegView.h"
 #import "ChooseButton.h"
+#import "UIColor+ColorWithHex.h"
 
 @interface TextPullListViewController()
 <UITableViewDataSource,UITableViewDelegate>
@@ -105,7 +106,7 @@
 - (PullListSegView *)pullListView {
     if (!_pullListView) {
         _pullListView = [[PullListSegView alloc] init];
-        _pullListView.tintColor = [UIColor darkGrayColor];
+        _pullListView.tintColor = [UIColor colorWithHex:HexColorTypeDarkSlateBlue];
         _pullListView.tableView.dataSource = self;
         _pullListView.tableView.delegate = self;
     }
