@@ -21,6 +21,7 @@
     [self.view addSubview:self.blueToothBackView];
     [self.view addSubview:self.startButton];
     [self.view addSubview:self.stopButton];
+    [self.view addSubview:self.wifiView];
 }
 - (void) layoutSubviews {
     __weak typeof(self) wself = self;
@@ -29,7 +30,14 @@
         make.centerX.equalTo(wself.view.mas_centerX);
         make.centerY.equalTo(wself.view.mas_centerY);
         make.size.mas_equalTo(CGSizeMake(200, 200));
-        wself.blueToothBackView.layer.cornerRadius = 100;
+//        wself.blueToothBackView.layer.cornerRadius = 100;
+    }];
+    
+    [self.wifiView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(200 * 0.8);
+        make.height.mas_equalTo(200 * 0.8);
+        make.centerX.equalTo(wself.blueToothBackView.mas_centerX);
+        make.centerY.equalTo(wself.blueToothBackView.mas_centerY).offset(- 200 * 0.8 * 0.5 * 0.25);
     }];
     
     [self.startButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,7 +59,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.blueToothBackView.layer addSublayer:[self makeBlueToothPathShapeLayerInFrame:self.blueToothBackView.bounds]];
+    [self.blueToothBackView.layer addSublayer:[self makeBlueToothPathShapeLayerInFrame:CGRectMake(0, 0, 200, 200)]];
 }
 
 
@@ -62,20 +70,23 @@
 
 - (CAShapeLayer*) makeBlueToothPathShapeLayerInFrame:(CGRect)frame {
     UIBezierPath* path = [UIBezierPath bezierPath];
-    CGFloat unitWidth = frame.size.height / 4;
+    CGFloat unitWidth = frame.size.height * 0.8 * 0.25;
+
     if (unitWidth == 0) {
         return nil;
     }
     
     CGFloat centerX = frame.size.width * 0.5;
-    CGPoint leftTopP = CGPointMake(centerX - unitWidth, unitWidth);
-    CGPoint leftBottomP = CGPointMake(centerX - unitWidth, frame.size.height - unitWidth);
+    CGFloat centerY = frame.size.height * 0.5;
     
-    CGPoint midTopP = CGPointMake(centerX, 0);
-    CGPoint midBottomP = CGPointMake(centerX, frame.size.height);
+    CGPoint leftTopP = CGPointMake(centerX - unitWidth, centerY - unitWidth);
+    CGPoint leftBottomP = CGPointMake(centerX - unitWidth, centerY + unitWidth);
     
-    CGPoint rightTopP = CGPointMake(centerX + unitWidth, unitWidth);
-    CGPoint rightBottomP = CGPointMake(centerX + unitWidth, frame.size.height - unitWidth);
+    CGPoint midTopP = CGPointMake(centerX, centerY - unitWidth * 2);
+    CGPoint midBottomP = CGPointMake(centerX, centerY + unitWidth * 2);
+    
+    CGPoint rightTopP = CGPointMake(centerX + unitWidth, centerY - unitWidth);
+    CGPoint rightBottomP = CGPointMake(centerX + unitWidth, centerY + unitWidth);
     
     [path moveToPoint:leftTopP];
     [path addLineToPoint:rightBottomP];
@@ -83,15 +94,14 @@
     [path addLineToPoint:midTopP];
     [path addLineToPoint:rightTopP];
     [path addLineToPoint:leftBottomP];
-    [path closePath];
     
     CAShapeLayer* blueTShapeLayer = [CAShapeLayer layer];
     blueTShapeLayer.path = path.CGPath;
     
-    blueTShapeLayer.strokeColor = [UIColor whiteColor].CGColor;
-    blueTShapeLayer.lineWidth = 2.f;
+    blueTShapeLayer.fillColor = [UIColor clearColor].CGColor;
+    blueTShapeLayer.strokeColor = [UIColor colorWithWhite:0.6 alpha:0.6].CGColor;
+    blueTShapeLayer.lineWidth = 5.f;
     blueTShapeLayer.lineCap = kCALineCapButt;
-    
     
     return blueTShapeLayer;
 }
@@ -124,6 +134,18 @@
         [_stopButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     }
     return _stopButton;
+}
+- (WifiView *)wifiView {
+    if (!_wifiView) {
+        _wifiView = [[WifiView alloc] init];
+        _wifiView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
+        _wifiView.animationCount = 3;
+        _wifiView.shapeLayer.lineWidth = 8.f;
+        _wifiView.shapeLayer.lineCap = kCALineCapButt;
+        _wifiView.shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+        _wifiView.shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    }
+    return _wifiView;
 }
 
 @end

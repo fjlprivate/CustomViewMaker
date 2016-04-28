@@ -16,7 +16,7 @@
 
 @property (nonatomic, assign) BOOL hiddenWhenAnimationEnd;      // default YES;
 
-@property (nonatomic, assign) NSInteger animationCount;         // 动画线条计数
+@property (nonatomic, assign) NSInteger animationCount;         // 动画线条计数:0-3
 
 - (void) startAnimationOnFinished:(void (^) (void))finishedBlock;
 - (void) stopAnimationOnFinished:(void (^) (void))finishedBlock;
