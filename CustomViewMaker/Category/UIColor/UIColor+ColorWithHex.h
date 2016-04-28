@@ -28,6 +28,8 @@ typedef enum {
 
 @interface UIColor (ColorWithHex)
 
++ (UIColor*) colorWithHex:(NSInteger)hexInt alpha:(CGFloat)alpha;
+
 + (UIColor*) colorWithHex:(NSInteger)hexInt;
 
 @end

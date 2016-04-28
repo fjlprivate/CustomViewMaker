@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
+		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
 		5EA2DEFA1C91110D00770353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEF91C91110D00770353 /* main.m */; };
 		5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFC1C91110D00770353 /* AppDelegate.m */; };
 		5EA2DF001C91110D00770353 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFF1C91110D00770353 /* ViewController.m */; };
@@ -68,6 +70,10 @@
 
 /* Begin PBXFileReference section */
 		3F96BD6CA1E6FC79AF54068A /* Pods-CustomViewMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.release.xcconfig"; sourceTree = "<group>"; };
+		5E66B19B1CD2057B00728547 /* WifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiView.h; sourceTree = "<group>"; };
+		5E66B19C1CD2057B00728547 /* WifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiView.m; sourceTree = "<group>"; };
+		5E66B19E1CD207C200728547 /* TestWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWifiViewController.h; sourceTree = "<group>"; };
+		5E66B19F1CD207C200728547 /* TestWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWifiViewController.m; sourceTree = "<group>"; };
 		5EA2DEF51C91110D00770353 /* CustomViewMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomViewMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA2DEF91C91110D00770353 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5EA2DEFB1C91110D00770353 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +187,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E66B19A1CD2057000728547 /* WifiView */ = {
+			isa = PBXGroup;
+			children = (
+				5E66B19B1CD2057B00728547 /* WifiView.h */,
+				5E66B19C1CD2057B00728547 /* WifiView.m */,
+				5E66B19E1CD207C200728547 /* TestWifiViewController.h */,
+				5E66B19F1CD207C200728547 /* TestWifiViewController.m */,
+			);
+			path = WifiView;
+			sourceTree = "<group>";
+		};
 		5EA2DEEC1C91110D00770353 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +225,7 @@
 			children = (
 				9E156FB11CA2D3F300244876 /* Category */,
 				9E156FA81CA2D3E700244876 /* 登陆界面 */,
+				5E66B19A1CD2057000728547 /* WifiView */,
 				9E1570311CAC0CD500244876 /* TestCollectionView */,
 				5EDC46941CA2470E00B2F872 /* TestMBProgressHUD */,
 				5EA2DF971C9FA30200770353 /* TestJLAlertView */,
@@ -627,7 +645,9 @@
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
+				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
+				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
 				9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */,

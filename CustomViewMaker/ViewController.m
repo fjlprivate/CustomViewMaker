@@ -18,6 +18,7 @@
 #import "TestMBProgressHUD.h"
 #import "TestCollectionView/TestCollectionView.h"
 #import "SignInViewController.h"
+#import "TestWifiViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) MBProgressHUD* hud;
@@ -115,6 +116,16 @@
         make.left.equalTo(collectionVC.mas_right);
         make.top.equalTo(collectionVC.mas_top);
     }];
+    
+    /* L:4, C:1 */
+    UIButton* wifiVC = [self buttonWithTitle:@"Wifi"];
+    [wifiVC addTarget:self action:@selector(clickToPushToWifiViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:wifiVC];
+    [wifiVC mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(mbprogressHud);
+        make.left.equalTo(mbprogressHud.mas_left);
+        make.top.equalTo(mbprogressHud.mas_bottom);
+    }];
 
     
     // ---
@@ -180,6 +191,10 @@
 }
 - (IBAction) clickToPushToSigninViewC:(UIButton*)sender {
     SignInViewController* viewController = [[SignInViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (IBAction) clickToPushToWifiViewC:(UIButton*)sender {
+    TestWifiViewController* viewController = [[TestWifiViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
