@@ -51,20 +51,21 @@
     // left
     self.leftLayer.frame = CGRectMake(0, 0, widthLeftLayer, heightView);
     self.leftLayer.path = [self rectPathInRect:CGRectMake(0, 0, widthLeftLayer, heightView) leftOrRight:YES].CGPath;
-//    self.leftLayer.fillColor = self.leftTintColor.CGColor;
+    self.leftLayer.fillColor = self.leftTintColor.CGColor;
     // right
     self.rightLayer.frame = CGRectMake(widthLeftLayer, 0, widthRightLayer, heightView);
     self.rightLayer.path = [self rectPathInRect:CGRectMake(0, 0, widthRightLayer, heightView) leftOrRight:NO].CGPath;
-//    self.rightLayer.fillColor = self.rightTintColor.CGColor;
+    self.rightLayer.fillColor = self.rightTintColor.CGColor;
     // textField
-//    self.textField.frame = CGRectMake(widthLeftLayer, 0, widthTextField, heightView);
-//    self.textField.placeholder = self.placeHold;
+    self.textField.frame = CGRectMake(widthLeftLayer, 0, widthTextField, heightView);
+    self.textField.placeholder = self.placeHold;
     @weakify(self);
     [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.centerY.equalTo(self.mas_centerY);
-        make.left.equalTo(self.mas_left).offset(0);
-        make.right.equalTo(self.mas_left).offset(widthLeftLayer);
+        make.centerX.equalTo(self.mas_left).offset(widthLeftLayer * 0.5);
+        make.width.mas_equalTo(widthLeftLayer * 0.45);
+        make.height.mas_equalTo(widthLeftLayer * 0.45);
     }];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);

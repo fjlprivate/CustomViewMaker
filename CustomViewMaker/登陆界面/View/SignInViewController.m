@@ -119,8 +119,8 @@
         make.size.mas_equalTo(CGSizeMake(widthLogoImage, widthLogoImage));
         make.centerX.equalTo(wself.logoNameLabel);
         make.bottom.equalTo(wself.logoNameLabel.mas_top).offset(-heightMin * 0.4);
+        wself.logoImage.layer.cornerRadius = widthLogoImage/2.f;
     }];
-    self.logoImage.layer.cornerRadius = widthLogoImage/2.f;
 }
 
 
@@ -129,7 +129,7 @@
 - (UIImageView *)backImage {
     if (!_backImage) {
         _backImage = [[UIImageView alloc] init];
-        _backImage.image = [UIImage imageNamed:@"backView0"];
+        _backImage.image = [UIImage imageNamed:@"backScreen05"];
     }
     return _backImage;
 }
@@ -143,6 +143,7 @@
     if (!_logoImage) {
         _logoImage = [[UIImageView alloc] init];
         _logoImage.image = [UIImage imageNamed:@"JLPayLogo"];
+        _logoImage.clipsToBounds = YES;
     }
     return _logoImage;
 }
@@ -170,7 +171,7 @@
         _userTextField.placeHold = @"请输入登陆用户名";
         _userTextField.cornerRadius = 6.f;
         _userTextField.direction = SignInInputViewDirecitionUp;
-        _userTextField.leftImageView.image = [UIImage imageNamed:@"头像"];
+        _userTextField.leftImageView.image = [UIImage imageNamed:@"user_stroke_white_32"];
     }
     return _userTextField;
 }
@@ -180,13 +181,14 @@
         _pwdTextField.placeHold = @"请输入登陆密码";
         _pwdTextField.cornerRadius = 6.f;
         _pwdTextField.direction = SignInInputViewDirecitionDown;
+        _pwdTextField.leftImageView.image = [UIImage imageNamed:@"lock_stroke_white_32"];
     }
     return _pwdTextField;
 }
 - (UIButton *)signinButton {
     if (!_signinButton) {
         _signinButton = [[UIButton alloc] init];
-        _signinButton.backgroundColor = [UIColor redColor];
+        _signinButton.backgroundColor = [UIColor colorWithRed:235/255.f green:69/255.f blue:75/255.f alpha:1];
         [_signinButton setTitle:@"登录" forState:UIControlStateNormal];
         [_signinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_signinButton setTitleColor:[UIColor colorWithWhite:0.8 alpha:0.7] forState:UIControlStateHighlighted];

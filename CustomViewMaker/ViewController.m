@@ -17,6 +17,7 @@
 #import "TestJLAlertView.h"
 #import "TestMBProgressHUD.h"
 #import "TestCollectionView/TestCollectionView.h"
+#import "SignInViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) MBProgressHUD* hud;
@@ -105,12 +106,16 @@
         make.top.equalTo(mbprogressHud.mas_top);
     }];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 300, 27, 27)];
-    imageView.image = [UIImage imageNamed:@"头像"];
-//    imageView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.8];
-    [self.view addSubview:imageView];
-    
+    /* L:3, C:3 */
+    UIButton* signinVC = [self buttonWithTitle:@"登陆界面"];
+    [signinVC addTarget:self action:@selector(clickToPushToSigninViewC:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:signinVC];
+    [signinVC mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(collectionVC);
+        make.left.equalTo(collectionVC.mas_right);
+        make.top.equalTo(collectionVC.mas_top);
+    }];
+
     
     // ---
     UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
@@ -171,6 +176,10 @@
 }
 - (IBAction) clickToPushToTestCollectionViewC:(UIButton*)sender {
     TestCollectionView* viewController = [[TestCollectionView alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (IBAction) clickToPushToSigninViewC:(UIButton*)sender {
+    SignInViewController* viewController = [[SignInViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
