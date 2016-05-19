@@ -31,8 +31,8 @@
 - (void) addSubviews {
     [self.layer addSublayer:self.leftLayer];
     [self.layer addSublayer:self.rightLayer];
+    [self addSubview:self.leftIconLabel];
     [self addSubview:self.textField];
-    [self addSubview:self.leftImageView];
 }
 
 - (void) viewOnProperties {
@@ -60,12 +60,12 @@
     self.textField.frame = CGRectMake(widthLeftLayer, 0, widthTextField, heightView);
     self.textField.placeholder = self.placeHold;
     @weakify(self);
-    [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.leftIconLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.centerY.equalTo(self.mas_centerY);
-        make.centerX.equalTo(self.mas_left).offset(widthLeftLayer * 0.5);
-        make.width.mas_equalTo(widthLeftLayer * 0.45);
-        make.height.mas_equalTo(widthLeftLayer * 0.45);
+        make.top.equalTo(self.mas_top);
+        make.left.equalTo(self.mas_left).offset(0);
+        make.bottom.equalTo(self.mas_bottom);
+        make.width.mas_equalTo(widthLeftLayer);
     }];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
@@ -120,6 +120,14 @@
     }
     return _rightLayer;
 }
+- (UILabel *)leftIconLabel {
+    if (!_leftIconLabel) {
+        _leftIconLabel = [UILabel new];
+        _leftIconLabel.textAlignment = NSTextAlignmentCenter;
+        _leftIconLabel.textColor = [UIColor whiteColor];
+    }
+    return _leftIconLabel;
+}
 - (UITextField *)textField {
     if (!_textField) {
         _textField = [[UITextField alloc] init];
@@ -129,12 +137,6 @@
         _textField.textColor = [UIColor whiteColor];
     }
     return _textField;
-}
-- (UIImageView *)leftImageView {
-    if (!_leftImageView) {
-        _leftImageView = [UIImageView new];
-    }
-    return _leftImageView;
 }
 
 @end

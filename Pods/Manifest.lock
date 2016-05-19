@@ -20,8 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - JCAlertView (1.1.4)
-  - MBProgressHUD (0.9.1)
+  - FontAwesome (4.3.0)
+  - JCAlertView (1.1.5)
+  - MBProgressHUD (0.9.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -32,14 +33,18 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
+  - FontAwesome (~> 4.3.0)
   - JCAlertView (~> 1.1.4)
   - MBProgressHUD (~> 0.9.1)
   - ReactiveCocoa (~> 2.5)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  JCAlertView: c028aa5bfe803aebd073476805eda3cfe9b47b20
-  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  FontAwesome: 341b52261cad8254017da3ddfc01d67c87c0ca88
+  JCAlertView: c65a7b298b8b497b3db783d82f719b88f4914869
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 3941e53451bd54effe9c4ebe1d53aecf6f561a2e
+
+COCOAPODS: 1.0.0

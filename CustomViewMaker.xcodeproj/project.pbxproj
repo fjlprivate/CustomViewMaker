@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
+		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
 		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
 		5EA2DEFA1C91110D00770353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEF91C91110D00770353 /* main.m */; };
@@ -41,7 +43,6 @@
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */; };
 		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
-		68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */; };
 		9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAC1CA2D3E700244876 /* SignInInputView.m */; };
 		9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAE1CA2D3E700244876 /* SignInViewController.m */; };
 		9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB41CA2D3F300244876 /* NSString+Custom.m */; };
@@ -49,6 +50,7 @@
 		9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570331CAC0CEE00244876 /* TestCollectionView.m */; };
 		9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570361CAC0D0800244876 /* CustomFlowLayout.m */; };
 		9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */; };
+		A7DB41782C7B5C73CF3E691D /* libPods-CustomViewMakerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F96BD6CA1E6FC79AF54068A /* Pods-CustomViewMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.release.xcconfig"; sourceTree = "<group>"; };
+		1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E66B19B1CD2057B00728547 /* WifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiView.h; sourceTree = "<group>"; };
 		5E66B19C1CD2057B00728547 /* WifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiView.m; sourceTree = "<group>"; };
 		5E66B19E1CD207C200728547 /* TestWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWifiViewController.h; sourceTree = "<group>"; };
@@ -143,6 +146,9 @@
 		5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CustomSate.m"; sourceTree = "<group>"; };
 		5EDC46981CA2520500B2F872 /* TestMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMBProgressHUD.h; sourceTree = "<group>"; };
 		5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMBProgressHUD.m; sourceTree = "<group>"; };
+		69A7357F4B4C84D8E38114DF /* Pods-CustomViewMakerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.release.xcconfig"; sourceTree = "<group>"; };
+		98B33814A8F0DAD8CBA5DEA2 /* Pods-CustomViewMakerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMakerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E156FAB1CA2D3E700244876 /* SignInInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInInputView.h; sourceTree = "<group>"; };
 		9E156FAC1CA2D3E700244876 /* SignInInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInInputView.m; sourceTree = "<group>"; };
 		9E156FAD1CA2D3E700244876 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
@@ -157,8 +163,10 @@
 		9E1570361CAC0D0800244876 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
 		9E1570381CAC0E6900244876 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
-		B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
-		D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E98C60853F00A2FA062C27 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		D63E0E5312D334309E6DD980 /* Pods-CustomViewMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.release.xcconfig"; sourceTree = "<group>"; };
+		DE5CABB2BEDEE09A4C75924C /* Pods-CustomViewMakerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMakerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68FB775E8494D4513239FBBA /* libPods-CustomViewMaker.a in Frameworks */,
+				390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,12 +190,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7DB41782C7B5C73CF3E691D /* libPods-CustomViewMakerUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13D0C894E5E1CD44CFD522EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */,
+				ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */,
+				9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E66B19A1CD2057000728547 /* WifiView */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +225,8 @@
 				5EA2DF111C91110D00770353 /* CustomViewMakerTests */,
 				5EA2DF1C1C91110D00770353 /* CustomViewMakerUITests */,
 				5EA2DEF61C91110D00770353 /* Products */,
-				76FA161F2071B9F904A0E6B9 /* Pods */,
-				B6DAA24810632541B549DF72 /* Frameworks */,
+				EFF69C323D2529BDE79A841B /* Pods */,
+				13D0C894E5E1CD44CFD522EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -391,15 +411,6 @@
 			path = TestMBProgressHUD;
 			sourceTree = "<group>";
 		};
-		76FA161F2071B9F904A0E6B9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */,
-				3F96BD6CA1E6FC79AF54068A /* Pods-CustomViewMaker.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		9E156FA81CA2D3E700244876 /* 登陆界面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,12 +478,17 @@
 			path = TestCollectionView;
 			sourceTree = "<group>";
 		};
-		B6DAA24810632541B549DF72 /* Frameworks */ = {
+		EFF69C323D2529BDE79A841B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D6197B45DA25D735F2A99103 /* libPods-CustomViewMaker.a */,
+				D3E98C60853F00A2FA062C27 /* Pods-CustomViewMaker.debug.xcconfig */,
+				D63E0E5312D334309E6DD980 /* Pods-CustomViewMaker.release.xcconfig */,
+				98B33814A8F0DAD8CBA5DEA2 /* Pods-CustomViewMakerTests.debug.xcconfig */,
+				69A7357F4B4C84D8E38114DF /* Pods-CustomViewMakerTests.release.xcconfig */,
+				DE5CABB2BEDEE09A4C75924C /* Pods-CustomViewMakerUITests.debug.xcconfig */,
+				1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,11 +498,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EA2DF221C91110D00770353 /* Build configuration list for PBXNativeTarget "CustomViewMaker" */;
 			buildPhases = (
-				9B61B49D8D4C2B9B2959BCE6 /* Check Pods Manifest.lock */,
+				056D3DC518E6134F27C92BD9 /* 📦 Check Pods Manifest.lock */,
 				5EA2DEF11C91110D00770353 /* Sources */,
 				5EA2DEF21C91110D00770353 /* Frameworks */,
 				5EA2DEF31C91110D00770353 /* Resources */,
-				4C711C5373786BCD13875071 /* Copy Pods Resources */,
+				17C1A421B1A9169298E6F741 /* 📦 Embed Pods Frameworks */,
+				89CFE5ACB4E6A4389246EE08 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -501,9 +518,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EA2DF251C91110D00770353 /* Build configuration list for PBXNativeTarget "CustomViewMakerTests" */;
 			buildPhases = (
+				6D02FE9EC0B26849AC256197 /* 📦 Check Pods Manifest.lock */,
 				5EA2DF0A1C91110D00770353 /* Sources */,
 				5EA2DF0B1C91110D00770353 /* Frameworks */,
 				5EA2DF0C1C91110D00770353 /* Resources */,
+				F8A933CD0447E302A2C941A6 /* 📦 Embed Pods Frameworks */,
+				50FB7F9EF8D156381A0F526F /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -519,9 +539,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EA2DF281C91110D00770353 /* Build configuration list for PBXNativeTarget "CustomViewMakerUITests" */;
 			buildPhases = (
+				BDB4F09C56DA4CA9EEB222B1 /* 📦 Check Pods Manifest.lock */,
 				5EA2DF151C91110D00770353 /* Sources */,
 				5EA2DF161C91110D00770353 /* Frameworks */,
 				5EA2DF171C91110D00770353 /* Resources */,
+				18E5D1C3A8136ADB8AB9624D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -603,14 +625,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C711C5373786BCD13875071 /* Copy Pods Resources */ = {
+		056D3DC518E6134F27C92BD9 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		17C1A421B1A9169298E6F741 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18E5D1C3A8136ADB8AB9624D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50FB7F9EF8D156381A0F526F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D02FE9EC0B26849AC256197 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		89CFE5ACB4E6A4389246EE08 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,19 +715,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B61B49D8D4C2B9B2959BCE6 /* Check Pods Manifest.lock */ = {
+		BDB4F09C56DA4CA9EEB222B1 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8A933CD0447E302A2C941A6 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -812,7 +924,7 @@
 		};
 		5EA2DF231C91110D00770353 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B60A5619F126F525E2A07553 /* Pods-CustomViewMaker.debug.xcconfig */;
+			baseConfigurationReference = D3E98C60853F00A2FA062C27 /* Pods-CustomViewMaker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
@@ -824,7 +936,7 @@
 		};
 		5EA2DF241C91110D00770353 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F96BD6CA1E6FC79AF54068A /* Pods-CustomViewMaker.release.xcconfig */;
+			baseConfigurationReference = D63E0E5312D334309E6DD980 /* Pods-CustomViewMaker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
@@ -836,6 +948,7 @@
 		};
 		5EA2DF261C91110D00770353 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B33814A8F0DAD8CBA5DEA2 /* Pods-CustomViewMakerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CustomViewMakerTests/Info.plist;
@@ -848,6 +961,7 @@
 		};
 		5EA2DF271C91110D00770353 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69A7357F4B4C84D8E38114DF /* Pods-CustomViewMakerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CustomViewMakerTests/Info.plist;
@@ -860,6 +974,7 @@
 		};
 		5EA2DF291C91110D00770353 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE5CABB2BEDEE09A4C75924C /* Pods-CustomViewMakerUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CustomViewMakerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -872,6 +987,7 @@
 		};
 		5EA2DF2A1C91110D00770353 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CustomViewMakerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

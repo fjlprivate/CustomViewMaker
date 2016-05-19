@@ -15,9 +15,9 @@ typedef enum {
 
 @interface SignInInputView : UIView
 
-@property (nonatomic, strong) UIImageView* leftImageView;
 @property (nonatomic, strong) UIColor* leftTintColor;
 @property (nonatomic, strong) UIColor* rightTintColor;
+@property (nonatomic, strong) UILabel* leftIconLabel;
 @property (nonatomic, assign) CGFloat cornerRadius;
 @property (nonatomic, copy) NSString* placeHold;
 

@@ -10,6 +10,8 @@
 #import "Masonry.h"
 #import "NSString+Custom.h"
 #import "SignInInputView.h"
+#import <NSString+FontAwesome.h>
+#import <UIFont+FontAwesome.h>
 
 @interface SignInViewController()
 
@@ -37,6 +39,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self loadSubviews];
     [self relayoutSubviews];
+    
 }
 - (void) loadSubviews {
     [self.view addSubview:self.backImage];
@@ -65,17 +68,21 @@
     [self.effectView setFrame:frame];
     [self.backImage setFrame:frame];
     
+
     // 用户名
     [self.userTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(widthTextField, heightBig));
         make.top.equalTo(wself.view.mas_centerY);
         make.left.equalTo(wself.view.mas_left).offset((frame.size.width - widthTextField)/2.f);
+
+        wself.userTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.45]];
     }];
     // 密码
     [self.pwdTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(wself.userTextField);
         make.left.equalTo(wself.userTextField.mas_left);
         make.top.equalTo(wself.userTextField.mas_bottom).offset(1.5);
+        wself.pwdTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.49]];
     }];
     // 登陆
     [self.signinButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -171,7 +178,9 @@
         _userTextField.placeHold = @"请输入登陆用户名";
         _userTextField.cornerRadius = 6.f;
         _userTextField.direction = SignInInputViewDirecitionUp;
-        _userTextField.leftImageView.image = [UIImage imageNamed:@"user_stroke_white_32"];
+        _userTextField.leftIconLabel.textColor = [UIColor colorWithWhite:0.9 alpha:0.86];
+        _userTextField.leftIconLabel.text = [NSString fontAwesomeIconStringForEnum:FAUser];
+
     }
     return _userTextField;
 }
@@ -181,7 +190,8 @@
         _pwdTextField.placeHold = @"请输入登陆密码";
         _pwdTextField.cornerRadius = 6.f;
         _pwdTextField.direction = SignInInputViewDirecitionDown;
-        _pwdTextField.leftImageView.image = [UIImage imageNamed:@"lock_stroke_white_32"];
+        _pwdTextField.leftIconLabel.textColor = [UIColor colorWithWhite:0.9 alpha:0.86];
+        _pwdTextField.leftIconLabel.text = [NSString fontAwesomeIconStringForEnum:FAUnlock];
     }
     return _pwdTextField;
 }
