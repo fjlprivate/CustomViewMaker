@@ -140,10 +140,13 @@
         _wifiView = [[WifiView alloc] init];
         _wifiView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
         _wifiView.animationCount = 3;
-        _wifiView.shapeLayer.lineWidth = 8.f;
-        _wifiView.shapeLayer.lineCap = kCALineCapButt;
-        _wifiView.shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
-        _wifiView.shapeLayer.fillColor = [UIColor clearColor].CGColor;
+        _wifiView.ringCircleLayer.lineWidth = 8.f;
+        _wifiView.ringCircleLayer.lineCap = kCALineCapButt;
+        _wifiView.ringCircleLayer.strokeColor = [UIColor whiteColor].CGColor;
+        _wifiView.ringCircleLayer.fillColor = [UIColor clearColor].CGColor;
+        
+        _wifiView.centerCircleLayer.fillColor = [UIColor whiteColor].CGColor;
+        _wifiView.centerCircleLayer.strokeColor = [UIColor clearColor].CGColor;
     }
     return _wifiView;
 }

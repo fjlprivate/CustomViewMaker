@@ -12,7 +12,8 @@
 
 
 // 颜色、粗细、端口圆润、等属性需要自定义
-@property (nonatomic, strong) CAShapeLayer* shapeLayer;         // 加载自画的 wifi path
+@property (nonatomic, strong) CAShapeLayer* centerCircleLayer;
+@property (nonatomic, strong) CAShapeLayer* ringCircleLayer;         // 加载自画的 wifi path
 
 @property (nonatomic, assign) BOOL hiddenWhenAnimationEnd;      // default YES;
 
