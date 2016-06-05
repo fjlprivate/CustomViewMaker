@@ -68,6 +68,8 @@
     [self.effectView setFrame:frame];
     [self.backImage setFrame:frame];
     
+    self.userTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.45]];
+    self.pwdTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.49]];
 
     // 用户名
     [self.userTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,14 +77,12 @@
         make.top.equalTo(wself.view.mas_centerY);
         make.left.equalTo(wself.view.mas_left).offset((frame.size.width - widthTextField)/2.f);
 
-        wself.userTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.45]];
     }];
     // 密码
     [self.pwdTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(wself.userTextField);
         make.left.equalTo(wself.userTextField.mas_left);
         make.top.equalTo(wself.userTextField.mas_bottom).offset(1.5);
-        wself.pwdTextField.leftIconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:[@"test" resizeFontAtHeight:heightBig scale:0.49]];
     }];
     // 登陆
     [self.signinButton mas_makeConstraints:^(MASConstraintMaker *make) {

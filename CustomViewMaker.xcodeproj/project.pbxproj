@@ -50,6 +50,7 @@
 		9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570331CAC0CEE00244876 /* TestCollectionView.m */; };
 		9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570361CAC0D0800244876 /* CustomFlowLayout.m */; };
 		9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */; };
+		9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E39A29B1CFDD6210035B89C /* JLSignInViewController.m */; };
 		A7DB41782C7B5C73CF3E691D /* libPods-CustomViewMakerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +164,8 @@
 		9E1570361CAC0D0800244876 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
 		9E1570381CAC0E6900244876 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
+		9E39A29A1CFDD6210035B89C /* JLSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLSignInViewController.h; sourceTree = "<group>"; };
+		9E39A29B1CFDD6210035B89C /* JLSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLSignInViewController.m; sourceTree = "<group>"; };
 		D3E98C60853F00A2FA062C27 /* Pods-CustomViewMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		D63E0E5312D334309E6DD980 /* Pods-CustomViewMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker.release.xcconfig"; sourceTree = "<group>"; };
 		DE5CABB2BEDEE09A4C75924C /* Pods-CustomViewMakerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				9E156FB11CA2D3F300244876 /* Category */,
+				9E39A2931CFDC9260035B89C /* JLPay_SignIn */,
 				9E156FA81CA2D3E700244876 /* 登陆界面 */,
 				5E66B19A1CD2057000728547 /* WifiView */,
 				9E1570311CAC0CD500244876 /* TestCollectionView */,
@@ -476,6 +480,39 @@
 				9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */,
 			);
 			path = TestCollectionView;
+			sourceTree = "<group>";
+		};
+		9E39A2931CFDC9260035B89C /* JLPay_SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9E39A2941CFDC9260035B89C /* Model */,
+				9E39A2951CFDC9260035B89C /* View */,
+				9E39A2961CFDC9260035B89C /* ViewModel */,
+			);
+			path = JLPay_SignIn;
+			sourceTree = "<group>";
+		};
+		9E39A2941CFDC9260035B89C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9E39A2951CFDC9260035B89C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E39A29A1CFDD6210035B89C /* JLSignInViewController.h */,
+				9E39A29B1CFDD6210035B89C /* JLSignInViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9E39A2961CFDC9260035B89C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EFF69C323D2529BDE79A841B /* Pods */ = {
@@ -785,6 +822,7 @@
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
+				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

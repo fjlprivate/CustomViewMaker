@@ -7,21 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "Masonry.h"
-#import <MBProgressHUD.h>
-#import "CheckViewController.h"
-#import "TestCAShapeLayerViewController.h"
-#import "TestCheckViewController.h"
-#import "TestRACCommand.h"
-#import "TextPullListViewController.h"
-#import "TestJLAlertView.h"
-#import "TestMBProgressHUD.h"
-#import "TestCollectionView/TestCollectionView.h"
-#import "SignInViewController.h"
-#import "TestWifiViewController.h"
 
 @interface ViewController ()
-@property (nonatomic, strong) MBProgressHUD* hud;
 @end
 
 @implementation ViewController
@@ -37,178 +24,21 @@
     CGFloat width = frame.size.width/3.f;
     CGFloat height = 50;
     
-    UIButton* checkViewButton = [self buttonWithTitle:@"标记勾叉"];
-    [checkViewButton addTarget:self action:@selector(clickToPushToCheckViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:checkViewButton];
-    [checkViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(width, height));
-        make.left.equalTo(wself.view.mas_left);
-        make.top.mas_equalTo(64);
-    }];
-    
-    UIButton* shapeLayerButton = [self buttonWithTitle:@"shapeLayer"];
-    [shapeLayerButton addTarget:self action:@selector(clickToPushToShapeLayerViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:shapeLayerButton];
-    [shapeLayerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(checkViewButton);
-        make.left.equalTo(checkViewButton.mas_right);
-        make.top.equalTo(checkViewButton.mas_top);
-    }];
-    
-    UIButton* circleCheckViewButton = [self buttonWithTitle:@"环形标记"];
-    [circleCheckViewButton addTarget:self action:@selector(clickToPushToCircleCheckViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:circleCheckViewButton];
-    [circleCheckViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(shapeLayerButton);
-        make.left.equalTo(shapeLayerButton.mas_right);
-        make.top.equalTo(shapeLayerButton.mas_top);
-    }];
-    
-    UIButton* pullListViewButton = [self buttonWithTitle:@"下拉列表"];
-    [pullListViewButton addTarget:self action:@selector(clickToPushToPullListViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:pullListViewButton];
-    [pullListViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(checkViewButton);
-        make.left.equalTo(checkViewButton.mas_left);
-        make.top.equalTo(checkViewButton.mas_bottom);
-    }];
-    
-    UIButton* commandViewBotton = [self buttonWithTitle:@"RACCommand"];
-    [commandViewBotton addTarget:self action:@selector(clickToPushToRACCommandViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:commandViewBotton];
-    [commandViewBotton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(pullListViewButton);
-        make.left.equalTo(pullListViewButton.mas_right);
-        make.top.equalTo(pullListViewButton);
-    }];
-
-    UIButton* jlalertView = [self buttonWithTitle:@"JCAlert"];
-    [jlalertView addTarget:self action:@selector(clickToPushToJCAlertViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:jlalertView];
-    [jlalertView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(commandViewBotton);
-        make.left.equalTo(commandViewBotton.mas_right);
-        make.top.equalTo(commandViewBotton);
-    }];
-    UIButton* mbprogressHud = [self buttonWithTitle:@"MBHUD"];
-    [mbprogressHud addTarget:self action:@selector(clickToPushToMBHUdViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:mbprogressHud];
-    [mbprogressHud mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(pullListViewButton);
-        make.left.equalTo(pullListViewButton.mas_left);
-        make.top.equalTo(pullListViewButton.mas_bottom);
-    }];
-    UIButton* collectionVC = [self buttonWithTitle:@"Collection"];
-    [collectionVC addTarget:self action:@selector(clickToPushToTestCollectionViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:collectionVC];
-    [collectionVC mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(mbprogressHud);
-        make.left.equalTo(mbprogressHud.mas_right);
-        make.top.equalTo(mbprogressHud.mas_top);
-    }];
-
-    /* L:3, C:3 */
-    UIButton* signinVC = [self buttonWithTitle:@"登陆界面"];
-    [signinVC addTarget:self action:@selector(clickToPushToSigninViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:signinVC];
-    [signinVC mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(collectionVC);
-        make.left.equalTo(collectionVC.mas_right);
-        make.top.equalTo(collectionVC.mas_top);
-    }];
-    
-    /* L:4, C:1 */
-    UIButton* wifiVC = [self buttonWithTitle:@"Wifi"];
-    [wifiVC addTarget:self action:@selector(clickToPushToWifiViewC:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:wifiVC];
-    [wifiVC mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(mbprogressHud);
-        make.left.equalTo(mbprogressHud.mas_left);
-        make.top.equalTo(mbprogressHud.mas_bottom);
-    }];
-
-    
-    // ---
-    UIButton* showHud = [self buttonWithTitle:@"显示HUD"];
-    [showHud addTarget:self action:@selector(clickToShowMBProgress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:showHud];
-    [showHud mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(checkViewButton);
-        make.left.equalTo(wself.view.mas_left).offset((frame.size.width - width*2)/2.f);
-        make.bottom.equalTo(wself.view.mas_bottom);
-    }];
-    
-    UIButton* hiddenHud = [self buttonWithTitle:@"隐藏HUD"];
-    [hiddenHud addTarget:self action:@selector(clickToHiddenMBProgress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:hiddenHud];
-    [hiddenHud mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(showHud);
-        make.left.equalTo(showHud.mas_right);
-        make.bottom.equalTo(showHud.mas_bottom);
-    }];
-}
-
-
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mask 3 IBActions
-- (IBAction) clickToPushToCheckViewC:(UIButton*)sender {
-    CheckViewController* viewController = [[CheckViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToShapeLayerViewC:(UIButton*)sender {
-    TestCAShapeLayerViewController* viewController = [[TestCAShapeLayerViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToCircleCheckViewC:(UIButton*)sender {
-    TestCheckViewController* viewController = [[TestCheckViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToPullListViewC:(UIButton*)sender {
-    TextPullListViewController* viewController = [[TextPullListViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToRACCommandViewC:(UIButton*)sender {
-    TestRACCommand* viewController = [[TestRACCommand alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToJCAlertViewC:(UIButton*)sender {
-    TestJLAlertView* jcalertViewC = [[TestJLAlertView alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:jcalertViewC animated:YES];
-}
-- (IBAction) clickToPushToMBHUdViewC:(UIButton*)sender {
-    TestMBProgressHUD* viewController = [[TestMBProgressHUD alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToTestCollectionViewC:(UIButton*)sender {
-    TestCollectionView* viewController = [[TestCollectionView alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToSigninViewC:(UIButton*)sender {
-    SignInViewController* viewController = [[SignInViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction) clickToPushToWifiViewC:(UIButton*)sender {
-    TestWifiViewController* viewController = [[TestWifiViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
-
-- (IBAction) clickToShowMBProgress:(UIButton*)sender {
-    [self.hud showAnimated:YES whileExecutingBlock:^{
+    for (int i = 0; i < self.btnTitles.count; i++) {
+        NSString* btnTitle = [self.btnTitles objectAtIndex:i];
+        UIButton* button = [self buttonWithTitle:btnTitle];
+        [self.view addSubview:button];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wself.view.mas_left).offset(i%3 * width);
+            make.top.equalTo(wself.view.mas_top).offset(64 + i/3 * height);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(height);
+        }];
         
-    } completionBlock:^{
-        
-    }];
+    }
+    
 }
-- (IBAction) clickToHiddenMBProgress:(UIButton*)sender {
-    [self.hud hide:YES];
-}
+
 
 #pragma mask 2 添加子按钮
 - (UIButton*) buttonWithTitle:(NSString*)title {
@@ -216,7 +46,14 @@
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [button addTarget:self action:@selector(pushToVCName:) forControlEvents:UIControlEventTouchUpInside];
     return button;
+}
+- (IBAction) pushToVCName:(UIButton*)button {
+    NSString* vcName = [self.dicVCNameAndTitles objectForKey:[button titleForState:UIControlStateNormal]];
+    Class vcClass = NSClassFromString(vcName);
+    UIViewController* viewC = (UIViewController*)[[vcClass alloc] init];
+    [self.navigationController pushViewController:viewC animated:YES];
 }
 
 #pragma mask 4 getter 
@@ -225,6 +62,42 @@
         _hud = [[MBProgressHUD alloc] initWithView:self.view];
     }
     return _hud;
+}
+
+- (NSMutableArray *)btnTitles {
+    if (!_btnTitles) {
+        _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject: @"标记勾叉"];
+        [_btnTitles addObject: @"shapeLayer"];
+        [_btnTitles addObject: @"环形标记"];
+        [_btnTitles addObject: @"下拉列表"];
+        [_btnTitles addObject: @"RACCommand"];
+        [_btnTitles addObject: @"JCAlert"];
+        [_btnTitles addObject: @"MBHUD"];
+        [_btnTitles addObject: @"Collection"];
+        [_btnTitles addObject: @"登陆界面"];
+        [_btnTitles addObject: @"Wifi"];
+        [_btnTitles addObject: @"SignIn"];
+    }
+    return _btnTitles;
+}
+
+- (NSMutableDictionary *)dicVCNameAndTitles {
+    if (!_dicVCNameAndTitles) {
+        _dicVCNameAndTitles = [NSMutableDictionary dictionary];
+        [_dicVCNameAndTitles setObject:@"CheckViewController" forKey: @"标记勾叉"];
+        [_dicVCNameAndTitles setObject:@"TestCAShapeLayerViewController" forKey: @"shapeLayer"];
+        [_dicVCNameAndTitles setObject:@"TestCheckViewController" forKey: @"环形标记"];
+        [_dicVCNameAndTitles setObject:@"TextPullListViewController" forKey: @"下拉列表"];
+        [_dicVCNameAndTitles setObject:@"TestRACCommand" forKey: @"RACCommand"];
+        [_dicVCNameAndTitles setObject:@"TestJLAlertView" forKey: @"JCAlert"];
+        [_dicVCNameAndTitles setObject:@"TestMBProgressHUD" forKey: @"MBHUD"];
+        [_dicVCNameAndTitles setObject:@"TestCollectionView" forKey: @"Collection"];
+        [_dicVCNameAndTitles setObject:@"SignInViewController" forKey: @"登陆界面"];
+        [_dicVCNameAndTitles setObject:@"TestWifiViewController" forKey: @"Wifi"];
+        [_dicVCNameAndTitles setObject:@"JLSignInViewController" forKey: @"SignIn"];
+    }
+    return _dicVCNameAndTitles;
 }
 
 @end
