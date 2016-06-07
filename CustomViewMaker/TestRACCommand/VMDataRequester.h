@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa.h>
 
-@class RACCommand;
 @interface VMDataRequester : NSObject
 
 @property (nonatomic, strong) RACCommand* commandDataRequesting;

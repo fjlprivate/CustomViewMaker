@@ -7,7 +7,6 @@
 //
 
 #import "VMDataRequester.h"
-#import <ReactiveCocoa.h>
 #import <AFNetworking.h>
 
 @interface VMDataRequester()

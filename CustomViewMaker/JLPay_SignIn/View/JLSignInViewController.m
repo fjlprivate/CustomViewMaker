@@ -13,8 +13,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.view.backgroundColor = [UIColor colorWithHex:0xff8000 alpha:1];
-    
     [self.navigationController setNavigationBarHidden:YES];
     [self loadSubviews];
     [self layoutSubviews];
@@ -37,10 +35,9 @@
     [self.view addSubview:self.pwdSavingLabel];
     [self.view addSubview:self.pwdForgottenBtn];
     
-    [self.view addSubview:self.signUpBtn];
+//    [self.view addSubview:self.signUpBtn];
     [self.view addSubview:self.signInBtn];
     
-    [self.view addSubview:self.backVCBarBtn];
 }
 
 - (void) layoutSubviews {
@@ -51,27 +48,14 @@
     CGFloat widthLogoImg = self.view.frame.size.width * 0.5;
     CGFloat heightLogoImg = widthLogoImg * self.logoImgView.image.size.height/self.logoImgView.image.size.width;
     
-    CGFloat heightTxtField = self.view.frame.size.height * 1/15;
-    CGFloat heightBtn = self.view.frame.size.height * 1/14.5;
+    CGFloat heightTxtField = self.view.frame.size.height * 1/13.5;
+    CGFloat heightBtn = self.view.frame.size.height * 1/13;
     
     CGFloat widthPwdForgotBtn = 100;
     
     self.userTextField.layer.cornerRadius = heightTxtField * 0.5;
     self.pwdTextField.layer.cornerRadius = heightTxtField * 0.5;
     self.signInBtn.layer.cornerRadius = heightBtn * 0.5;
-    
-    
-    /****************/
-    self.backVCBarBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"xx" resizeFontAtHeight:heightTxtField * 0.68 scale:1.2]];
-    self.backVCBarBtn.layer.cornerRadius = heightTxtField * 0.34;
-    [self.backVCBarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(wself.view.mas_left).offset(20);
-        make.top.equalTo(wself.view.mas_top).offset(25);
-        make.size.mas_equalTo(CGSizeMake(heightTxtField * 0.68, heightTxtField * 0.68));
-    }];
-    /****************/
-
-    
     
     self.userTextField.font = [UIFont systemFontOfSize:[@"xx" resizeFontAtHeight:heightTxtField scale:0.4]];
     self.pwdTextField.font = [UIFont systemFontOfSize:[@"xx" resizeFontAtHeight:heightTxtField scale:0.4]];
@@ -153,14 +137,14 @@
         make.height.mas_equalTo(heightTxtField);
     }];
     
-    [self.signUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(wself.view.mas_bottom).offset(- 10);
-        make.left.equalTo(wself.view.mas_left).offset(inset);
-        make.right.equalTo(wself.view.mas_right).offset(-inset);
-        make.height.mas_equalTo(heightBtn);
-    }];
+//    [self.signUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(wself.view.mas_bottom).offset(- 10);
+//        make.left.equalTo(wself.view.mas_left).offset(inset);
+//        make.right.equalTo(wself.view.mas_right).offset(-inset);
+//        make.height.mas_equalTo(heightBtn);
+//    }];
     [self.signInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(wself.signUpBtn.mas_top);
+        make.bottom.equalTo(wself.view.mas_bottom).offset(- heightBtn);
         make.left.equalTo(wself.view.mas_left).offset(inset);
         make.right.equalTo(wself.view.mas_right).offset(-inset);
         make.height.mas_equalTo(heightBtn);
@@ -299,18 +283,6 @@
 
     }
     return _visiblePwdSeenBtn;
-}
-
-- (UIButton *)backVCBarBtn {
-    if (!_backVCBarBtn) {
-        _backVCBarBtn = [UIButton new];
-        [_backVCBarBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAAngleLeft] forState:UIControlStateNormal];
-        _backVCBarBtn.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
-        
-        [_backVCBarBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateNormal];
-        [_backVCBarBtn setTitleColor:[UIColor colorWithWhite:0.5 alpha:0.5] forState:UIControlStateHighlighted];
-    }
-    return _backVCBarBtn;
 }
 
 @end

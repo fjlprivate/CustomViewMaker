@@ -16,8 +16,6 @@
 
 @interface JLSignInViewController : UIViewController
 
-@property (nonatomic, strong) UIButton* backVCBarBtn;           // 仅用于测试
-
 @property (nonatomic, strong) UIImageView* backgroundImgView;   // 背景
 
 @property (nonatomic, strong) UIImageView* logoImgView;         // logo
