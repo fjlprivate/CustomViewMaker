@@ -13,11 +13,115 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.seenVisible = NO;
+    self.savedEnable = YES;
+    
+    
     [self.navigationController setNavigationBarHidden:YES];
     [self loadSubviews];
     [self layoutSubviews];
+    [self manageOnKVOs];
+}
+
+
+
+- (void) manageOnKVOs {
+    
+    @weakify(self);
+    [[RACObserve(self, savedEnable) deliverOnMainThread] subscribeNext:^(NSNumber* enable) {
+        @strongify(self);
+        if (enable.boolValue) {
+            [self.pwdSavingBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else {
+            [self.pwdSavingBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        }
+    }];
+    
+    [[RACObserve(self, seenVisible) deliverOnMainThread] subscribeNext:^(NSNumber* visible) {
+        @strongify(self);
+        if (visible.boolValue) {
+            [self.visiblePwdSeenBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self.visiblePwdSeenBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAEye] forState:UIControlStateNormal];
+        } else {
+            [self.visiblePwdSeenBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [self.visiblePwdSeenBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAEyeSlash] forState:UIControlStateNormal];
+        }
+    }];
+    
+    RAC(self.pwdTextField, secureTextEntry) = [[RACObserve(self, seenVisible) deliverOnMainThread] map:^NSNumber*(NSNumber* visible) {
+        return @(!visible.boolValue);
+    }];
     
 }
+
+
+# pragma mask 2 IBAction
+
+- (IBAction) clickedSavingPwdBtn:(id)sender {
+    self.savedEnable = !self.savedEnable;
+}
+- (IBAction) clickedPwdSeenBtn:(id)sender {
+    self.seenVisible = !self.seenVisible;
+}
+
+# pragma mask 3 UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // 处理遮挡
+    CGFloat textFieldBottom = textField.frame.origin.y + textField.frame.size.height;
+    CGFloat offset = ((self.view.frame.size.height - textFieldBottom) < (216 + 35 + 20))?(216 + 35 + 20 - self.view.frame.size.height + textFieldBottom):(0);
+    
+    [self pullViewUpFrontKeyBordByOffset:offset];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // 处理取消键盘和回档
+    [self pullViewUpFrontKeyBordByOffset:0];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self pullViewUpFrontKeyBordByOffset:0];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"---原有的text[%@],新输入的[%@]",textField.text, string);
+    if (textField.tag == 18) { // 密码限制输入8位
+        if (textField.text.length < 8) {
+            return YES;
+        }
+        else {
+            if (string.length == 0) { /* 退格键 */
+                return YES;
+            } else {
+                return NO;
+            }
+        }
+    }
+    else {
+        return YES;
+    }
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self pullViewUpFrontKeyBordByOffset:0];
+    for (UIView* subView in self.view.subviews) {
+        if ([subView class] == [UITextField class]) {
+            [subView resignFirstResponder];
+        }
+    }
+}
+
+- (void) pullViewUpFrontKeyBordByOffset:(CGFloat)offset {
+    __weak typeof(self) wself = self;
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.view.transform = CGAffineTransformMakeTranslation(0, - offset);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+}
+
+# pragma mask 4 布局
 
 - (void) loadSubviews {
     
@@ -35,7 +139,7 @@
     [self.view addSubview:self.pwdSavingLabel];
     [self.view addSubview:self.pwdForgottenBtn];
     
-//    [self.view addSubview:self.signUpBtn];
+    [self.view addSubview:self.signUpBtn];
     [self.view addSubview:self.signInBtn];
     
 }
@@ -48,7 +152,7 @@
     CGFloat widthLogoImg = self.view.frame.size.width * 0.5;
     CGFloat heightLogoImg = widthLogoImg * self.logoImgView.image.size.height/self.logoImgView.image.size.width;
     
-    CGFloat heightTxtField = self.view.frame.size.height * 1/13.5;
+    CGFloat heightTxtField = self.view.frame.size.height * 1/13;
     CGFloat heightBtn = self.view.frame.size.height * 1/13;
     
     CGFloat widthPwdForgotBtn = 100;
@@ -137,12 +241,12 @@
         make.height.mas_equalTo(heightTxtField);
     }];
     
-//    [self.signUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(wself.view.mas_bottom).offset(- 10);
-//        make.left.equalTo(wself.view.mas_left).offset(inset);
-//        make.right.equalTo(wself.view.mas_right).offset(-inset);
-//        make.height.mas_equalTo(heightBtn);
-//    }];
+    [self.signUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(wself.view.mas_bottom).offset(0);
+        make.left.equalTo(wself.view.mas_left).offset(inset);
+        make.right.equalTo(wself.view.mas_right).offset(-inset);
+        make.height.mas_equalTo(heightBtn);
+    }];
     [self.signInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(wself.view.mas_bottom).offset(- heightBtn);
         make.left.equalTo(wself.view.mas_left).offset(inset);
@@ -153,13 +257,12 @@
 }
 
 
-# pragma mask 3 IBAction
 
-- (IBAction) clickedSavingPwdBtn:(id)sender {
-    
-}
 
-# pragma mask 4 getter
+
+
+# pragma mask 5 getter
+
 - (UIImageView *)backgroundImgView {
     if (!_backgroundImgView) {
         _backgroundImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backGroundImg"]];
@@ -201,18 +304,22 @@
         _userTextField.layer.borderWidth = 1.f;
         _userTextField.textAlignment = NSTextAlignmentCenter;
         _userTextField.textColor = [UIColor whiteColor];
+        _userTextField.delegate = self;
     }
     return _userTextField;
 }
 - (UITextField *)pwdTextField {
     if (!_pwdTextField) {
         _pwdTextField = [UITextField new];
-        _pwdTextField.placeholder = @"请输入6-20位密码";
+        _pwdTextField.placeholder = @"请输入8位密码";
         _pwdTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _pwdTextField.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:0.7].CGColor;
         _pwdTextField.layer.borderWidth = 1.f;
         _pwdTextField.textAlignment = NSTextAlignmentCenter;
         _pwdTextField.textColor = [UIColor whiteColor];
+        _pwdTextField.keyboardType = UIKeyboardTypeAlphabet;
+        _pwdTextField.delegate = self;
+        _pwdTextField.tag = 18;
     }
     return _pwdTextField;
 }
@@ -232,7 +339,7 @@
     if (!_signUpBtn) {
         _signUpBtn = [UIButton new];
         [_signUpBtn setTitle:@"注册" forState:UIControlStateNormal];
-        [_signUpBtn setTitleColor:[UIColor colorWithHex:HexColorTypeDarkSlateBlue] forState:UIControlStateNormal];
+        [_signUpBtn setTitleColor:[UIColor colorWithHex:HexColorTypeLightSlateGray] forState:UIControlStateNormal];
         [_signUpBtn setTitleColor:[UIColor colorWithWhite:0.5 alpha:0.5] forState:UIControlStateHighlighted];
         [_signUpBtn setTitleColor:[UIColor colorWithWhite:0.5 alpha:0.5] forState:UIControlStateDisabled];
     }
@@ -253,12 +360,10 @@
 - (UIButton *)pwdSavingBtn {
     if (!_pwdSavingBtn) {
         _pwdSavingBtn = [UIButton new];
-        
         [_pwdSavingBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACheckCircle] forState:UIControlStateNormal];
-
         [_pwdSavingBtn setTitleColor:[UIColor colorWithWhite:0.9 alpha:1] forState:UIControlStateNormal];
         [_pwdSavingBtn setTitleColor:[UIColor colorWithWhite:0.5 alpha:0.5] forState:UIControlStateHighlighted];
-
+        [_pwdSavingBtn addTarget:self action:@selector(clickedSavingPwdBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _pwdSavingBtn;
 }
@@ -277,9 +382,9 @@
     if (!_visiblePwdSeenBtn) {
         _visiblePwdSeenBtn = [UIButton new];
         [_visiblePwdSeenBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAEye] forState:UIControlStateNormal];
-        
         [_visiblePwdSeenBtn setTitleColor:[UIColor colorWithWhite:0.9 alpha:1] forState:UIControlStateNormal];
         [_visiblePwdSeenBtn setTitleColor:[UIColor colorWithWhite:0.5 alpha:0.5] forState:UIControlStateHighlighted];
+        [_visiblePwdSeenBtn addTarget:self action:@selector(clickedPwdSeenBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return _visiblePwdSeenBtn;

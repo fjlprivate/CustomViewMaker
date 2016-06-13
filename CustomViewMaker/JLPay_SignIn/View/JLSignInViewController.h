@@ -15,6 +15,11 @@
 #import "Masonry.h"
 
 @interface JLSignInViewController : UIViewController
+<UITextFieldDelegate>
+
+@property (nonatomic, assign) BOOL seenVisible;
+@property (nonatomic, assign) BOOL savedEnable;
+
 
 @property (nonatomic, strong) UIImageView* backgroundImgView;   // 背景
 
