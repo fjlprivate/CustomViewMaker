@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
+		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
+		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
+		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
+		5E51A8371D19098A00C6FB91 /* iconfont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
 		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
 		5EA2DEFA1C91110D00770353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEF91C91110D00770353 /* main.m */; };
@@ -74,6 +78,11 @@
 /* Begin PBXFileReference section */
 		1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
+		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
+		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
+		5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IconFont_1_1.ttf; path = ../IconFont_1_1.ttf; sourceTree = "<group>"; };
+		5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont_1_1.ttf; sourceTree = "<group>"; };
 		5E66B19B1CD2057B00728547 /* WifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiView.h; sourceTree = "<group>"; };
 		5E66B19C1CD2057B00728547 /* WifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiView.m; sourceTree = "<group>"; };
 		5E66B19E1CD207C200728547 /* TestWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWifiViewController.h; sourceTree = "<group>"; };
@@ -210,6 +219,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
+			isa = PBXGroup;
+			children = (
+				5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */,
+				5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */,
+			);
+			path = IconFont;
+			sourceTree = "<group>";
+		};
 		5E66B19A1CD2057000728547 /* WifiView */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +266,7 @@
 			children = (
 				9E156FB11CA2D3F300244876 /* Category */,
 				9E39A2931CFDC9260035B89C /* JLPay_SignIn */,
+				5E51A7F21D13A34A00C6FB91 /* IconFont */,
 				9E156FA81CA2D3E700244876 /* 登陆界面 */,
 				5E66B19A1CD2057000728547 /* WifiView */,
 				9E1570311CAC0CD500244876 /* TestCollectionView */,
@@ -264,10 +283,6 @@
 				5EA2DEFC1C91110D00770353 /* AppDelegate.m */,
 				5EA2DEFE1C91110D00770353 /* ViewController.h */,
 				5EA2DEFF1C91110D00770353 /* ViewController.m */,
-				5EA2DF011C91110D00770353 /* Main.storyboard */,
-				5EA2DF041C91110D00770353 /* Assets.xcassets */,
-				5EA2DF061C91110D00770353 /* LaunchScreen.storyboard */,
-				5EA2DF091C91110D00770353 /* Info.plist */,
 				5EA2DEF81C91110D00770353 /* Supporting Files */,
 			);
 			path = CustomViewMaker;
@@ -276,6 +291,13 @@
 		5EA2DEF81C91110D00770353 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5EA2DF011C91110D00770353 /* Main.storyboard */,
+				5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */,
+				5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */,
+				5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */,
+				5EA2DF041C91110D00770353 /* Assets.xcassets */,
+				5EA2DF061C91110D00770353 /* LaunchScreen.storyboard */,
+				5EA2DF091C91110D00770353 /* Info.plist */,
 				5EA2DEF91C91110D00770353 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -639,6 +661,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E51A8371D19098A00C6FB91 /* iconfont_1_1.ttf in Resources */,
+				5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */,
+				5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */,
 				5EA2DF081C91110D00770353 /* LaunchScreen.storyboard in Resources */,
 				5EA2DF051C91110D00770353 /* Assets.xcassets in Resources */,
 				5EA2DF031C91110D00770353 /* Main.storyboard in Resources */,
@@ -808,6 +833,7 @@
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
+				5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */,
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,

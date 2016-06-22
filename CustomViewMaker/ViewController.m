@@ -78,6 +78,7 @@
         [_btnTitles addObject: @"登陆界面"];
         [_btnTitles addObject: @"Wifi"];
         [_btnTitles addObject: @"SignIn"];
+        [_btnTitles addObject: @"IconFont"];
     }
     return _btnTitles;
 }
@@ -96,6 +97,7 @@
         [_dicVCNameAndTitles setObject:@"SignInViewController" forKey: @"登陆界面"];
         [_dicVCNameAndTitles setObject:@"TestWifiViewController" forKey: @"Wifi"];
         [_dicVCNameAndTitles setObject:@"JLSignInViewController" forKey: @"SignIn"];
+        [_dicVCNameAndTitles setObject:@"TestForIconFont" forKey: @"IconFont"];
     }
     return _dicVCNameAndTitles;
 }
