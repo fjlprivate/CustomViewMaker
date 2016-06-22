@@ -6,48 +6,43 @@
 	<dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FontAwesome.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>JCAlertView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LTNavigationBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-CustomViewMaker.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>Pods-CustomViewMakerTests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
-		<key>Pods-CustomViewMakerUITests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2656D2E89D3E3BD63E64253519725F0A</key>
+		<key>257982140CEF84C8081C3F4958C49F70</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,22 +57,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>81A311CB0A706632BB274E94C0FC99D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8E16F23C3941DDC72C45FC1B5C8EE8CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3817FF4EB4F6237851CB9AC9C8C08A2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AF120CA79C146831D58852ED6DCFFA0F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CE56CB1D63F9192A70D14E2E8AE0CAAE</key>
+		<key>9ED685AE6B9A3DBB64FFEF8BC750945B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

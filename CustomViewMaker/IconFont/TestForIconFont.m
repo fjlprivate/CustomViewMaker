@@ -7,6 +7,9 @@
 //
 
 #import "TestForIconFont.h"
+#import "UIColor+ColorWithHex.h"
+#import <UINavigationBar+Awesome.h>
+
 
 @implementation TestForIconFont
 
@@ -22,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"IconFont";
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadSubviews];
     [self layoutSubviews];
@@ -36,6 +40,19 @@
         }
     }
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar lt_reset];
 }
 
 - (void) loadSubviews {

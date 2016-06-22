@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <UINavigationBar+Awesome.h>
 
 @interface ViewController ()
 @end
@@ -37,8 +38,18 @@
         
     }
     
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar lt_reset];
+}
 
 #pragma mask 2 添加子按钮
 - (UIButton*) buttonWithTitle:(NSString*)title {

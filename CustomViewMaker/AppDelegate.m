@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <UINavigationBar+Awesome.h>
+#import "UIColor+ColorWithHex.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:@[[UIColor whiteColor], [UIFont boldSystemFontOfSize:15]]
+                                                                                     forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]]];
+    
+    
     return YES;
 }
 

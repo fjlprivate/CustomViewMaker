@@ -8,6 +8,7 @@ pod 'ReactiveCocoa', '~> 2.5'
 pod 'AFNetworking', '~> 2.6.3'
 pod 'JCAlertView', '~> 1.1.4'
 pod 'FontAwesome', '~> 4.3.0'
+pod 'LTNavigationBar', '~> 2.1.1'
 
 end
 
