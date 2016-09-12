@@ -20,9 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:@[[UIColor whiteColor], [UIFont boldSystemFontOfSize:15]]
+    UINavigationBar* navigationBar = [UINavigationBar appearance];
+    [navigationBar setTintColor:[UIColor whiteColor]];
+    [navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjects:@[[UIColor whiteColor], [UIFont boldSystemFontOfSize:15]]
                                                                                      forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]]];
+    [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+    [navigationBar setBarStyle:UIBarStyleBlack];
+    [navigationBar setShadowImage:[UIImage new]];
     
     
     return YES;

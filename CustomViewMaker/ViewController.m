@@ -8,8 +8,15 @@
 
 #import "ViewController.h"
 #import <UINavigationBar+Awesome.h>
+#import "NSString+Custom.h"
+#import "UIColor+ColorWithHex.h"
 
-@interface ViewController ()
+
+
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView* tableView;
+
 @end
 
 @implementation ViewController
@@ -20,54 +27,63 @@
     [self.view addSubview:self.hud];
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil]];
 
-    __weak typeof(self)wself = self;
+    
+    [self.view addSubview:self.tableView];
     CGRect frame = self.view.frame;
-    CGFloat width = frame.size.width/3.f;
-    CGFloat height = 50;
+    frame.origin.y += 64;
+    frame.size.height -= 64;
+    self.tableView.frame  = frame;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    for (int i = 0; i < self.btnTitles.count; i++) {
-        NSString* btnTitle = [self.btnTitles objectAtIndex:i];
-        UIButton* button = [self buttonWithTitle:btnTitle];
-        [self.view addSubview:button];
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(wself.view.mas_left).offset(i%3 * width);
-            make.top.equalTo(wself.view.mas_top).offset(64 + i/3 * height);
-            make.width.mas_equalTo(width);
-            make.height.mas_equalTo(height);
-        }];
-        
+    
+}
+
+
+
+# pragma mask 1 UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.btnTitles.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cellidentifier"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellidentifier"];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.contentView.layer.masksToBounds = YES;
+        cell.contentView.layer.cornerRadius = 3.f;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor brownColor];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    cell.textLabel.text = [self.btnTitles objectAtIndex:indexPath.row];
+    return cell;
+}
+
+# pragma mask 1 UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGRect frame = cell.contentView.frame;
+    frame.origin.y -= 1;
+    frame.size.height -= 1;
+    cell.contentView.frame = frame;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar lt_reset];
-}
-
-#pragma mask 2 添加子按钮
-- (UIButton*) buttonWithTitle:(NSString*)title {
-    UIButton* button = [UIButton new];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(pushToVCName:) forControlEvents:UIControlEventTouchUpInside];
-    return button;
-}
-- (IBAction) pushToVCName:(UIButton*)button {
-    NSString* vcName = [self.dicVCNameAndTitles objectForKey:[button titleForState:UIControlStateNormal]];
-    Class vcClass = NSClassFromString(vcName);
+    NSString* title  = [self.btnTitles objectAtIndex:indexPath.row];
+    Class vcClass = NSClassFromString([self.dicVCNameAndTitles objectForKey:title]);
     UIViewController* viewC = (UIViewController*)[[vcClass alloc] init];
     [self.navigationController pushViewController:viewC animated:YES];
 }
 
-#pragma mask 4 getter 
+
+
+
+#pragma mask 4 getter
 - (MBProgressHUD *)hud {
     if (!_hud) {
         _hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -78,18 +94,21 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
-        [_btnTitles addObject: @"标记勾叉"];
-        [_btnTitles addObject: @"shapeLayer"];
-        [_btnTitles addObject: @"环形标记"];
-        [_btnTitles addObject: @"下拉列表"];
-        [_btnTitles addObject: @"RACCommand"];
-        [_btnTitles addObject: @"JCAlert"];
-        [_btnTitles addObject: @"MBHUD"];
-        [_btnTitles addObject: @"Collection"];
-        [_btnTitles addObject: @"登陆界面"];
-        [_btnTitles addObject: @"Wifi"];
-        [_btnTitles addObject: @"SignIn"];
+        [_btnTitles addObject:@"LabelAutoresize"];
+        [_btnTitles addObject:@"StepSegmentView"];
+        [_btnTitles addObject:@"CustomAlertView"];
         [_btnTitles addObject: @"IconFont"];
+        [_btnTitles addObject: @"SignIn"];
+        [_btnTitles addObject: @"Wifi"];
+        [_btnTitles addObject: @"登陆界面"];
+        [_btnTitles addObject: @"Collection"];
+        [_btnTitles addObject: @"MBHUD"];
+        [_btnTitles addObject: @"JCAlert"];
+        [_btnTitles addObject: @"RACCommand"];
+        [_btnTitles addObject: @"下拉列表"];
+        [_btnTitles addObject: @"环形标记"];
+        [_btnTitles addObject: @"shapeLayer"];
+        [_btnTitles addObject: @"标记勾叉"]; // -- 1
     }
     return _btnTitles;
 }
@@ -109,8 +128,26 @@
         [_dicVCNameAndTitles setObject:@"TestWifiViewController" forKey: @"Wifi"];
         [_dicVCNameAndTitles setObject:@"JLSignInViewController" forKey: @"SignIn"];
         [_dicVCNameAndTitles setObject:@"TestForIconFont" forKey: @"IconFont"];
+        [_dicVCNameAndTitles setObject:@"TestForCustomAlertView" forKey: @"CustomAlertView"];
+        [_dicVCNameAndTitles setObject:@"TestForStepSegmentView" forKey: @"StepSegmentView"];
+        [_dicVCNameAndTitles setObject:@"LabelAutoresize" forKey:@"LabelAutoresize"];
     }
     return _dicVCNameAndTitles;
+}
+
+
+
+
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.tableFooterView = [UIView new];
+        _tableView.backgroundColor = [UIColor colorWithHex:0xeeeeee alpha:1];
+    }
+    return _tableView;
 }
 
 @end

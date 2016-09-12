@@ -45,14 +45,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
 
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar lt_reset];
+//    [self.navigationController.navigationBar lt_reset];
 }
 
 - (void) loadSubviews {
