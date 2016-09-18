@@ -10,6 +10,7 @@
 #import <UINavigationBar+Awesome.h>
 #import "NSString+Custom.h"
 #import "UIColor+ColorWithHex.h"
+#import <RESideMenu.h>
 
 
 
@@ -35,7 +36,22 @@
     self.tableView.frame  = frame;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    
+    // 菜单按钮
+    UIBarButtonItem* leftBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(presentSideMenu:)];
+    [self.navigationItem setLeftBarButtonItem:leftBarBtn];
+}
+
+
+- (IBAction) presentSideMenu:(id)sender {
+    UIViewController* parentVC = [self parentViewController];
+    if ([parentVC isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)parentVC;
+        [sideMenu presentLeftMenuViewController];
+    }
+    else if ([[parentVC parentViewController] isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)[parentVC parentViewController];
+        [sideMenu presentLeftMenuViewController];
+    }
 }
 
 
@@ -94,6 +110,8 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"more滚动子切换"];
+        [_btnTitles addObject:@"3个滚动子切换"];
         [_btnTitles addObject:@"LabelAutoresize"];
         [_btnTitles addObject:@"StepSegmentView"];
         [_btnTitles addObject:@"CustomAlertView"];
@@ -131,6 +149,8 @@
         [_dicVCNameAndTitles setObject:@"TestForCustomAlertView" forKey: @"CustomAlertView"];
         [_dicVCNameAndTitles setObject:@"TestForStepSegmentView" forKey: @"StepSegmentView"];
         [_dicVCNameAndTitles setObject:@"LabelAutoresize" forKey:@"LabelAutoresize"];
+        [_dicVCNameAndTitles setObject:@"TestForTriScrollSegVC" forKey:@"3个滚动子切换"];
+        [_dicVCNameAndTitles setObject:@"TestForMoreSegScrollView" forKey:@"more滚动子切换"];
     }
     return _dicVCNameAndTitles;
 }

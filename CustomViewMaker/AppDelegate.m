@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import <UINavigationBar+Awesome.h>
 #import "UIColor+ColorWithHex.h"
+#import <RESideMenu.h>
+#import "ViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -27,6 +30,18 @@
     [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
     [navigationBar setBarStyle:UIBarStyleBlack];
     [navigationBar setShadowImage:[UIImage new]];
+    
+    
+    ViewController* mainVC = [[ViewController alloc] init];
+    mainVC.view.backgroundColor = [UIColor whiteColor];
+    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    UIViewController* leftVC = [[UIViewController alloc] init];
+    leftVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sideMenuPic"]];
+    
+    RESideMenu* sideMenuVC = [[RESideMenu alloc] initWithContentViewController:navi leftMenuViewController:leftVC rightMenuViewController:nil];
+    sideMenuVC.scaleMenuView = NO;
+    
+    self.window.rootViewController = sideMenuVC;
     
     
     return YES;

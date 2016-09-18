@@ -16,6 +16,10 @@
 		5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
 		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
+		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
+		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
+		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
+		5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */; };
 		5EA2DEFA1C91110D00770353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEF91C91110D00770353 /* main.m */; };
 		5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFC1C91110D00770353 /* AppDelegate.m */; };
 		5EA2DF001C91110D00770353 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFF1C91110D00770353 /* ViewController.m */; };
@@ -49,6 +53,9 @@
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */; };
+		5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */; };
+		5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */; };
+		5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */; };
 		5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */; };
 		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
 		9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAC1CA2D3E700244876 /* SignInInputView.m */; };
@@ -93,6 +100,14 @@
 		5E66B19C1CD2057B00728547 /* WifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiView.m; sourceTree = "<group>"; };
 		5E66B19E1CD207C200728547 /* TestWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWifiViewController.h; sourceTree = "<group>"; };
 		5E66B19F1CD207C200728547 /* TestWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWifiViewController.m; sourceTree = "<group>"; };
+		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
+		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
+		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
+		5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForMoreSegScrollView.m; sourceTree = "<group>"; };
+		5E98DEB21D8E890B000EA1C6 /* MoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreSegScrollView.h; sourceTree = "<group>"; };
+		5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSegScrollView.m; sourceTree = "<group>"; };
+		5E98DEB51D8E9302000EA1C6 /* MSSV_itemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSV_itemView.h; sourceTree = "<group>"; };
+		5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSV_itemView.m; sourceTree = "<group>"; };
 		5EA2DEF51C91110D00770353 /* CustomViewMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomViewMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA2DEF91C91110D00770353 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5EA2DEFB1C91110D00770353 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -164,6 +179,12 @@
 		5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForStepSegmentView.m; sourceTree = "<group>"; };
 		5EDA73A31D864F7E000606A6 /* LabelAutoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAutoresize.h; sourceTree = "<group>"; };
 		5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAutoresize.m; sourceTree = "<group>"; };
+		5EDA73A71D87ACCF000606A6 /* TestForTriScrollSegVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForTriScrollSegVC.h; sourceTree = "<group>"; };
+		5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForTriScrollSegVC.m; sourceTree = "<group>"; };
+		5EDA73AA1D87AD34000606A6 /* TriScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriScrollSegmentView.h; sourceTree = "<group>"; };
+		5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriScrollSegmentView.m; sourceTree = "<group>"; };
+		5EDA73B01D87FB0D000606A6 /* TriSegView_cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriSegView_cell.h; sourceTree = "<group>"; };
+		5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriSegView_cell.m; sourceTree = "<group>"; };
 		5EDC46951CA2477F00B2F872 /* MBProgressHUD+CustomSate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CustomSate.h"; sourceTree = "<group>"; };
 		5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CustomSate.m"; sourceTree = "<group>"; };
 		5EDC46981CA2520500B2F872 /* TestMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMBProgressHUD.h; sourceTree = "<group>"; };
@@ -260,6 +281,19 @@
 			path = WifiView;
 			sourceTree = "<group>";
 		};
+		5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */,
+				5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */,
+				5E98DEB21D8E890B000EA1C6 /* MoreSegScrollView.h */,
+				5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */,
+				5E98DEB51D8E9302000EA1C6 /* MSSV_itemView.h */,
+				5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */,
+			);
+			path = MoreSegScrollView;
+			sourceTree = "<group>";
+		};
 		5EA2DEEC1C91110D00770353 = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +319,8 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
+				5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */,
 				5EDA73A21D864F33000606A6 /* Label自动布局 */,
 				9E156FB11CA2D3F300244876 /* Category */,
 				5E51A9CB1D1B95F700C6FB91 /* CustomIOSAlertView */,
@@ -468,6 +504,21 @@
 				5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */,
 			);
 			name = "Label自动布局";
+			sourceTree = "<group>";
+		};
+		5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				5EDA73A71D87ACCF000606A6 /* TestForTriScrollSegVC.h */,
+				5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */,
+				5EDA73AA1D87AD34000606A6 /* TriScrollSegmentView.h */,
+				5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */,
+				5EDA73B01D87FB0D000606A6 /* TriSegView_cell.h */,
+				5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */,
+				5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */,
+				5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */,
+			);
+			path = TriScrollSegmentView;
 			sourceTree = "<group>";
 		};
 		5EDC46941CA2470E00B2F872 /* TestMBProgressHUD */ = {
@@ -875,12 +926,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
+				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
+				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
+				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
+				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
 				5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */,
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
@@ -895,6 +950,7 @@
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
+				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
 				5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */,
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
@@ -904,9 +960,11 @@
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
 				9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */,
+				5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
 				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
+				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
