@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreSegScrollView : UIView
+@interface MoreSegScrollView : UIScrollView
 
 
 /* 序号 */
 @property (nonatomic, assign) NSInteger curSegIndex;
 
-/*  */
+/* 元素大小 */
 @property (nonatomic, assign) CGSize itemSize;
 
 /*
@@ -31,14 +31,5 @@
 - (instancetype) initWithSegInfos:(NSArray*)segInfos;
 
 
-
-
-
-
-/* 最小缩放比例 */
-//@property (nonatomic, assign) CGFloat minScale;
-
-/* 可显示的item个数 */
-//@property (nonatomic, assign) NSInteger
 
 @end

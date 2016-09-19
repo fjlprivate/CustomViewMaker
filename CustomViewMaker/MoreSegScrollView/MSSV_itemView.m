@@ -24,6 +24,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
 }
 
 - (void) loadSubviews {
@@ -33,6 +36,12 @@
 
 
 - (void)updateConstraints {
+    
+    if (self.bounds.size.width < 0.001) {
+        [super updateConstraints];
+        return;
+    }
+
     __weak typeof(self) wself = self;
     
     [self.imageView mas_updateConstraints:^(MASConstraintMaker *make) {

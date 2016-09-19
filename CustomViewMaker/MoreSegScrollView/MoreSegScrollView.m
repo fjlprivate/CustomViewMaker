@@ -10,17 +10,14 @@
 #import "MSSV_itemView.h"
 #import "UIColor+ColorWithHex.h"
 #import "Masonry.h"
+#import <ReactiveCocoa.h>
 
 
 @interface MoreSegScrollView() <UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIScrollView* scrollView;
-
 @property (nonatomic, strong) NSMutableArray* itemViewList;
 
-
 @end
-
 
 
 
@@ -31,106 +28,86 @@
     self = [super init];
     if (self) {
         self.segInfos = [NSArray arrayWithArray:segInfos];
+        self.showsVerticalScrollIndicator = NO;
+        self.showsHorizontalScrollIndicator = NO;
         [self loadSubviews];
-        
+        self.delegate = self;
     }
     return self;
 }
 
 
 - (void) loadSubviews {
-    [self addSubview:self.scrollView];
     for (UIView* itemView in self.itemViewList) {
-        [self.scrollView addSubview:itemView];
+        [self addSubview:itemView];
     }
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.scrollView.frame = self.bounds;
     
-    
-    self.scrollView.contentSize = CGSizeMake((self.itemSize.width - 10) * self.itemViewList.count + 10, self.bounds.size.height);
-    self.scrollView.contentInset = UIEdgeInsetsMake(0, self.itemSize.width * 0.5, 0, self.itemSize.width * 0.5);
-    
-    
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    
-}
-
-
-- (void)updateConstraints {
-    
-    __weak typeof(self) wself = self;
-    UIView* lastView = nil;
-    for (int i = 0; i < self.itemViewList.count; i++) {
-        UIView* itemView = [self.itemViewList objectAtIndex:i];
-        [itemView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(wself.itemSize.width);
-            make.height.mas_equalTo(wself.itemSize.height);
-            make.centerY.mas_equalTo(wself.scrollView.mas_centerY);
-            
-            if (lastView == nil) {
-                make.left.mas_equalTo(0);
-            } else {
-                make.left.mas_equalTo(lastView.mas_right).offset(-10);
-            }
-            
-        }];
-        itemView.layer.cornerRadius = self.itemSize.height * 0.5;
+    UIView* itemView = [self.itemViewList objectAtIndex:0];
+    if (self.bounds.size.width > 1 && itemView.frame.size.width < 1) {
+        self.contentSize = CGSizeMake((self.itemSize.width - 10) * self.itemViewList.count + 10, self.bounds.size.height);
+        self.contentInset = UIEdgeInsetsMake(0, self.itemSize.width * 0.5, 0, self.itemSize.width * 0.5);
         
-        lastView = itemView;
+        CGRect frame = CGRectMake(0, (self.bounds.size.height - self.itemSize.height) * 0.5, self.itemSize.width, self.itemSize.height);
+        for (int i = 0; i < self.itemViewList.count; i++) {
+            UIView* itemView = [self.itemViewList objectAtIndex:i];
+            [itemView setFrame:frame];
+            itemView.layer.cornerRadius = frame.size.height * 0.5;
+            frame.origin.x += self.itemSize.width - 10;
+        }
     }
-    
-    
-    [super updateConstraints];
 }
+
+
+
 
 
 # pragma mask 2 UITouch 
 
+/* 点击切换元素 */
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
     UITouch* touch = [touches anyObject];
-    CGPoint curPoint = [touch locationInView:self.scrollView];
     
+    // 这个坐标系已经是 scrollView 的 contentSize 里面了
+    CGPoint curPoint = [touch locationInView:self];
     
     UIView* touchedItemView = nil;
     
     for (UIView* itemView in self.itemViewList) {
-        CGRect frame = itemView.frame;
-        frame.origin.x -= self.scrollView.contentOffset.x;
-        if (CGRectContainsPoint(frame, curPoint)) {
+        if (CGRectContainsPoint(itemView.frame, curPoint)) {
             touchedItemView = itemView;
             break;
         }
     }
     
-    NSLog(@"======点击事件, 被点击的cell:[%@]", touchedItemView);
     if (touchedItemView != nil) {
-        CGRect toScrolledRect = self.scrollView.bounds;
-        toScrolledRect.origin.x = self.scrollView.contentOffset.x + (touchedItemView.center.x - (self.scrollView.contentOffset.x + self.scrollView.bounds.size.width * 0.5));
-        toScrolledRect.origin.x = touchedItemView.center.x - self.scrollView.bounds.size.width * 0.5;
-        [self.scrollView scrollRectToVisible:toScrolledRect animated:YES];
+        CGPoint originOffset = self.contentOffset;
+        originOffset.x += touchedItemView.center.x - self.contentOffset.x - self.bounds.size.width * 0.5;
+        __weak typeof(self) wself = self;
+        [UIView animateWithDuration:0.3 animations:^{
+            wself.contentOffset = originOffset;
+        }];
     }
-    
 }
 
 
 # pragma mask 2 UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+
     for (UIView* itemView in self.itemViewList) {
         CGPoint itemCenterP = itemView.center;
         CGFloat curItemCenterX = itemCenterP.x - scrollView.contentOffset.x;
         
         CGFloat scale = 1 - ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5) * 0.35;
+        scale = scale < 0.35 ? 0.35 : scale;
+        scale = scale > 1 ? 1 : scale;
         
         itemView.transform = CGAffineTransformMakeScale(scale, scale);
     }
-    
     
 }
 
@@ -151,28 +128,30 @@
     }
     
     targetContentOffset->x += (nearestItemCenterP.x - centerX);
-    
 }
 
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    for (UIView* itemView in self.itemViewList) {
+        if (itemView.center.x - self.contentOffset.x == self.bounds.size.width * 0.5) {
+            self.curSegIndex = itemView.tag;
+            break;
+        }
+    }
+    NSLog(@"--------- 当前停止的index = [%d]", self.curSegIndex);
+}
 
 
 
 # pragma mask 4 getter
 
-- (UIScrollView *)scrollView {
-    if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
-        _scrollView.delegate = self;
-    }
-    return _scrollView;
-}
-
 - (NSMutableArray *)itemViewList {
     if (!_itemViewList) {
         _itemViewList = [NSMutableArray array];
-        for (NSDictionary* node in self.segInfos) {
+        for (int i = 0; i < self.segInfos.count; i ++) {
+            NSDictionary* node = [self.segInfos objectAtIndex:i];
             MSSV_itemView* itemView = [[MSSV_itemView alloc] initWithFrame:CGRectZero];
+            itemView.tag = i;
             itemView.layer.cornerRadius = 10;
             itemView.backgroundColor = [node objectForKey:@"backColor"];
             itemView.imageView.image = [UIImage imageNamed:[node objectForKey:@"imgName"]];
@@ -183,7 +162,6 @@
     }
     return _itemViewList;
 }
-
 
 
 

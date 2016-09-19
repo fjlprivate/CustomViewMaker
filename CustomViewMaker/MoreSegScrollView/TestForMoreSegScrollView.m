@@ -31,13 +31,29 @@
     CGRect frame = CGRectMake(0, 200, self.view.frame.size.width, 130);
     self.moreSegScrollView.frame = frame;
     self.moreSegScrollView.itemSize = CGSizeMake(self.view.frame.size.width * 0.5, 130 * 0.45);
-    self.moreSegScrollView.backgroundColor = [UIColor colorWithHex:0xeeeeeei];
+    self.moreSegScrollView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
     
     [self.view addSubview:self.moreSegScrollView];
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
+}
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    CGPoint offset = self.moreSegScrollView.contentOffset;
+    offset.x = - self.moreSegScrollView.bounds.size.width * 0.25;
+    __weak typeof(self) wself = self;
+    [UIView animateWithDuration:0.2 animations:^{
+        wself.moreSegScrollView.contentOffset = offset;
+    }];
+
+}
 
 
 # pragma mask 4 getter
