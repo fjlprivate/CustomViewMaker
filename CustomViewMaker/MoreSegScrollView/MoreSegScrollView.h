@@ -14,6 +14,8 @@
 /* 序号 */
 @property (nonatomic, assign) NSInteger curSegIndex;
 
+/*  */
+@property (nonatomic, assign) CGSize itemSize;
 
 /*
  NSDictionary<
@@ -31,8 +33,10 @@
 
 
 
+
+
 /* 最小缩放比例 */
-@property (nonatomic, assign) CGFloat minScale;
+//@property (nonatomic, assign) CGFloat minScale;
 
 /* 可显示的item个数 */
 //@property (nonatomic, assign) NSInteger

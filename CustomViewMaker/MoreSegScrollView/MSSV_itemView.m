@@ -9,6 +9,8 @@
 #import "MSSV_itemView.h"
 #import "Masonry.h"
 #import "NSString+Custom.h"
+#import <ReactiveCocoa.h>
+
 
 @implementation MSSV_itemView
 
@@ -16,10 +18,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self loadSubviews];
-        
-        
-//        [self setNeedsUpdateConstraints];
-//        [self updateFocusIfNeeded];
     }
     return self;
 }
@@ -33,18 +31,21 @@
     [self addSubview:self.titleLabel];
 }
 
+
 - (void)updateConstraints {
     __weak typeof(self) wself = self;
     
-    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    [self.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(20);
+        make.height.mas_equalTo(wself.mas_height).multipliedBy(0.3);
+        make.width.mas_equalTo(wself.imageView.mas_height);
+        make.centerY.mas_equalTo(wself.mas_centerY);
     }];
     
-    [self.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(wself.mas_centerY);
-        make.height.mas_equalTo(wself.mas_height).multipliedBy(0.45);
-        make.width.mas_equalTo(wself.imageView.mas_height);
-        make.right.mas_equalTo(wself.titleLabel.mas_centerY).offset(- ([wself.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:wself.titleLabel.font}].width * 0.5 + 4));
+    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(wself.imageView.mas_right).offset(8);
+        make.right.mas_equalTo(0);
+        make.top.bottom.mas_equalTo(wself.imageView);
     }];
     
     
@@ -66,7 +67,7 @@
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _titleLabel;
 }
