@@ -13,9 +13,14 @@
 #import <ReactiveCocoa.h>
 
 
+
 @interface MoreSegScrollView() <UIScrollViewDelegate>
 
+/* item视图组 */
 @property (nonatomic, strong) NSMutableArray* itemViewList;
+
+/* 每个item间的重叠: 减少item在缩放后的间隔 */
+@property (nonatomic, assign) CGFloat MSSV_ITEM_INSET;
 
 @end
 
@@ -28,6 +33,8 @@
     self = [super init];
     if (self) {
         self.segInfos = [NSArray arrayWithArray:segInfos];
+        self.MSSV_ITEM_INSET = 10.f;
+        
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         [self loadSubviews];
@@ -44,28 +51,64 @@
 }
 
 - (void)layoutSubviews {
+    
     [super layoutSubviews];
     
+    self.contentSize = CGSizeMake((self.itemSize.width - self.MSSV_ITEM_INSET) * self.itemViewList.count + self.MSSV_ITEM_INSET + (self.bounds.size.width - self.itemSize.width),
+                                  self.bounds.size.height);
+
+    // 滚动时也会引发layout, 所以控制第一次重新布局
     UIView* itemView = [self.itemViewList objectAtIndex:0];
     if (self.bounds.size.width > 1 && itemView.frame.size.width < 1) {
-        self.contentSize = CGSizeMake((self.itemSize.width - 10) * self.itemViewList.count + 10, self.bounds.size.height);
-        self.contentInset = UIEdgeInsetsMake(0, self.itemSize.width * 0.5, 0, self.itemSize.width * 0.5);
-        
-        CGRect frame = CGRectMake(0, (self.bounds.size.height - self.itemSize.height) * 0.5, self.itemSize.width, self.itemSize.height);
-        for (int i = 0; i < self.itemViewList.count; i++) {
-            UIView* itemView = [self.itemViewList objectAtIndex:i];
-            [itemView setFrame:frame];
-            itemView.layer.cornerRadius = frame.size.height * 0.5;
-            frame.origin.x += self.itemSize.width - 10;
-        }
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
     }
+}
+
+
+- (void)updateConstraints {
+    
+    __weak typeof(self) wself = self;
+    
+    UIView* lastItemView = nil;
+    for (int i = 0; i < self.itemViewList.count; i++) {
+        UIView* itemView = [self.itemViewList objectAtIndex:i];
+        
+        // 布局
+        [itemView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(wself.itemSize.width);
+            make.height.mas_equalTo(wself.itemSize.height);
+            make.centerY.mas_equalTo(wself.mas_centerY);
+            if (lastItemView) {
+                make.left.mas_equalTo(lastItemView.mas_right).offset(self.MSSV_ITEM_INSET);
+            } else {
+                make.centerX.mas_equalTo(wself.mas_left).offset(wself.bounds.size.width * 0.5);
+            }
+        }];
+        itemView.layer.cornerRadius = self.itemSize.height * 0.5;
+        
+        lastItemView = itemView;
+        
+        // 计算缩放
+        CGPoint itemCenterP = itemView.center;
+        itemCenterP.x = self.bounds.size.width * 0.5 + (self.itemSize.width - self.MSSV_ITEM_INSET) * i;
+        CGFloat curItemCenterX = itemCenterP.x - self.contentOffset.x;
+        
+        CGFloat scale = 1 - ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5) * 0.35;
+        scale = scale < 0.35 ? 0.35 : scale;
+        scale = scale > 1 ? 1 : scale;
+        
+        itemView.transform = CGAffineTransformMakeScale(scale, scale);
+        
+    }
+    
+    [super updateConstraints];
 }
 
 
 
 
-
-# pragma mask 2 UITouch 
+# pragma mask 2 UITouch
 
 /* 点击切换元素 */
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -96,8 +139,8 @@
 
 # pragma mask 2 UIScrollViewDelegate
 
+/* 滚动时进行缩放 */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
     for (UIView* itemView in self.itemViewList) {
         CGPoint itemCenterP = itemView.center;
         CGFloat curItemCenterX = itemCenterP.x - scrollView.contentOffset.x;
@@ -131,6 +174,7 @@
 }
 
 
+/* 滚动停止更新索引 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     for (UIView* itemView in self.itemViewList) {
         if (itemView.center.x - self.contentOffset.x == self.bounds.size.width * 0.5) {
@@ -138,7 +182,6 @@
             break;
         }
     }
-    NSLog(@"--------- 当前停止的index = [%d]", self.curSegIndex);
 }
 
 
@@ -152,7 +195,6 @@
             NSDictionary* node = [self.segInfos objectAtIndex:i];
             MSSV_itemView* itemView = [[MSSV_itemView alloc] initWithFrame:CGRectZero];
             itemView.tag = i;
-            itemView.layer.cornerRadius = 10;
             itemView.backgroundColor = [node objectForKey:@"backColor"];
             itemView.imageView.image = [UIImage imageNamed:[node objectForKey:@"imgName"]];
             itemView.titleLabel.text = [node objectForKey:@"title"];

@@ -37,24 +37,6 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    CGPoint offset = self.moreSegScrollView.contentOffset;
-    offset.x = - self.moreSegScrollView.bounds.size.width * 0.25;
-    __weak typeof(self) wself = self;
-    [UIView animateWithDuration:0.2 animations:^{
-        wself.moreSegScrollView.contentOffset = offset;
-    }];
-
-}
-
 
 # pragma mask 4 getter
 
