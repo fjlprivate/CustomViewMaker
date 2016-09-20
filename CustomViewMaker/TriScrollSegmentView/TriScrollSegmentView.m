@@ -7,23 +7,27 @@
 //
 
 #import "TriScrollSegmentView.h"
-#import "TriSegView_cell.h"
+#import "MSSV_itemView.h"
 #import "UIColor+ColorWithHex.h"
-#import "HJCarouselViewLayout.h"
+#import "Masonry.h"
 
 
 
-@interface TriScrollSegmentView() <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface TriScrollSegmentView() <UIScrollViewDelegate>
 
+@property (nonatomic, strong) MSSV_itemView* leftItemView;
 
+@property (nonatomic, strong) MSSV_itemView* midItemView;
 
+@property (nonatomic, strong) MSSV_itemView* rightItemView;
 
+@property (nonatomic, assign) BOOL scrollDirectionLeft;
 
-
-@property (nonatomic, strong) UICollectionView* collectionView;
-@property (nonatomic, strong) HJCarouselViewLayout* carouseLayout;
+@property (nonatomic, assign) CGPoint lastOffset;
 
 @end
+
+
 
 
 @implementation TriScrollSegmentView
@@ -33,122 +37,137 @@
     if (self) {
         self.segInfos = segInfos;
         self.curSegIndex = 0;
-        
-        [self addSubview:self.collectionView];
+        self.lastOffset = CGPointZero;
+        [self loadSubviews];
+        self.delegate = self;
     }
     return self;
+}
+
+- (void) loadSubviews {
+    [self addSubview:self.leftItemView];
+    [self addSubview:self.midItemView];
+    [self addSubview:self.rightItemView];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.collectionView.frame = self.bounds;
-    self.carouseLayout.itemSize = CGSizeMake(self.bounds.size.width * 0.46, self.bounds.size.height * 0.5);
-}
-
-
-
-
-# pragma mask 2 UICollectionViewDataSource
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.segInfos.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    TriSegView_cell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    self.leftItemView.backgroundColor = [UIColor colorWithHex:0xef454b];
+    self.midItemView.backgroundColor = [UIColor colorWithHex:0x01abf0];
+    self.rightItemView.backgroundColor = [UIColor colorWithHex:0x2da43a];
+    self.contentSize = CGSizeMake(self.itemSize.width * 3, self.bounds.size.height);
     
-    /*
-     NSDictionary<
-     imgName: <NSString> 图片名
-     title: <NSString> 标题
-     titleColor: <UIColor>  标题色
-     backColor: <UIColor>  背景色
-     >
-     */
-    NSDictionary* node = [self.segInfos objectAtIndex:indexPath.row];
-    
-    cell.contentView.backgroundColor = [node objectForKey:@"backColor"];
-    cell.iconImgView.image = [UIImage imageNamed:[node objectForKey:@"imgName"]];
-    cell.titleLabel.text = [node objectForKey:@"title"];
-    cell.titleLabel.textColor = [node objectForKey:@"titleColor"];
-    
-    return cell;
-}
-
-# pragma mask 2 UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGRect frame = cell.contentView.frame;
-    cell.contentView.layer.cornerRadius = frame.size.height * 0.5;
-}
-
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSIndexPath* curIndexPath = [self curIndexPath];
-    if (curIndexPath.row == indexPath.row) {
-        return YES;
-    } else {
-        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-        return NO;
+    if (self.bounds.size.width > 1 && self.leftItemView.frame.size.width < 1) {
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
     }
+    
+}
+
+- (void)updateConstraints {
+    
+    __weak typeof(self) wself = self;
+    
+    [self.leftItemView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.width.mas_equalTo(wself.itemSize.width);
+        make.centerY.mas_equalTo(wself.mas_centerY);
+        make.height.mas_equalTo(wself.itemSize.height);
+    }];
+    
+    [self.midItemView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(wself.leftItemView.mas_right);
+        make.width.mas_equalTo(wself.leftItemView.mas_width);
+        make.top.bottom.mas_equalTo(wself.leftItemView);
+    }];
+    
+    [self.rightItemView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(wself.midItemView.mas_right);
+        make.width.mas_equalTo(wself.leftItemView.mas_width);
+        make.top.bottom.mas_equalTo(wself.leftItemView);
+    }];
+    
+    
+    [super updateConstraints];
 }
 
 
 
+# pragma mask 2 UIScrollViewDelegate
 
-
-
-
-- (NSIndexPath*) curIndexPath {
-    NSArray* visibleIndexPaths = [self.collectionView indexPathsForVisibleItems];
-    NSIndexPath* curIndexPath = nil;
-    NSInteger curZIndex = NSIntegerMin;
-    
-    for (NSIndexPath* indexPath in visibleIndexPaths.objectEnumerator) {
-        UICollectionViewLayoutAttributes* attris = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
-        printf("\n  indexPath.row = [%d], curZIndex = [%d], attris.zIndex = [%d]\n", indexPath.row, curZIndex, attris.zIndex);
-        if (!curIndexPath || curZIndex < attris.zIndex) {
-            curIndexPath = indexPath;
-            curZIndex = attris.zIndex;
-            printf("    new curIndexPath.row = [%d]\n", curIndexPath.row);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self updateScrollDirection];
+    if (self.scrollDirectionLeft) {
+        if (self.contentOffset.x == self.itemSize.width) {
+            CGPoint curOffset = self.contentOffset;
+            curOffset.x = 0;
+            self.contentOffset = curOffset;
+        }
+    } else {
+        if (self.contentOffset.x == 0) {
+            CGPoint curOffset = self.contentOffset;
+            curOffset.x = self.itemSize.width;
+            self.contentOffset = curOffset;
         }
     }
-    
-    return curIndexPath;
 }
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+}
+
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    
+}
+
+
+
+
+
+
+
+# pragma mask 3 private interfunctions
+
+- (void) updateScrollDirection {
+    self.scrollDirectionLeft = (self.lastOffset.x - self.contentOffset.x < 0);
+    self.lastOffset = self.contentOffset;
+}
+
+
 
 
 
 # pragma mask 4 getter
 
-
-
-- (HJCarouselViewLayout *)carouseLayout {
-    if (!_carouseLayout) {
-        _carouseLayout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCoverFlow];
-        _carouseLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+- (MSSV_itemView *)leftItemView {
+    if (!_leftItemView) {
+        _leftItemView = [[MSSV_itemView alloc] init];
+        _leftItemView.titleLabel.text = @"1";
     }
-    return _carouseLayout;
+    return _leftItemView;
 }
 
-- (UICollectionView *)collectionView {
-    if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.carouseLayout];
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        [_collectionView registerClass:[TriSegView_cell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-        _collectionView.backgroundColor = [UIColor colorWithHex:0xeeeeee alpha:1];
-        _collectionView.showsHorizontalScrollIndicator = NO;
+- (MSSV_itemView *)midItemView {
+    if (!_midItemView) {
+        _midItemView = [[MSSV_itemView alloc] init];
+        _midItemView.titleLabel.text = @"2";
     }
-    return _collectionView;
+    return _midItemView;
 }
 
+- (MSSV_itemView *)rightItemView {
+    if (!_rightItemView) {
+        _rightItemView = [[MSSV_itemView alloc] init];
+        _rightItemView.titleLabel.text = @"3";
 
+    }
+    return _rightItemView;
+}
 
 @end

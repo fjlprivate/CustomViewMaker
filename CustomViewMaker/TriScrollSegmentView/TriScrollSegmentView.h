@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TriScrollSegmentView : UIView
+@interface TriScrollSegmentView : UIScrollView
 
 
 /* 序号 */
 @property (nonatomic, assign) NSInteger curSegIndex;
 
+/* 元素大小 */
+@property (nonatomic, assign) CGSize itemSize;
 
 /*
  NSDictionary<

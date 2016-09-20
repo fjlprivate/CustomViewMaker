@@ -52,6 +52,7 @@
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
+		5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3361D91271800FBB63D /* TSSV_itemView.m */; };
 		5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */; };
 		5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */; };
 		5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */; };
@@ -177,6 +178,8 @@
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForStepSegmentView.m; sourceTree = "<group>"; };
+		5ECFD3351D91271800FBB63D /* TSSV_itemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSV_itemView.h; sourceTree = "<group>"; };
+		5ECFD3361D91271800FBB63D /* TSSV_itemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSV_itemView.m; sourceTree = "<group>"; };
 		5EDA73A31D864F7E000606A6 /* LabelAutoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAutoresize.h; sourceTree = "<group>"; };
 		5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAutoresize.m; sourceTree = "<group>"; };
 		5EDA73A71D87ACCF000606A6 /* TestForTriScrollSegVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForTriScrollSegVC.h; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 				5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */,
 				5EDA73AA1D87AD34000606A6 /* TriScrollSegmentView.h */,
 				5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */,
+				5ECFD3351D91271800FBB63D /* TSSV_itemView.h */,
+				5ECFD3361D91271800FBB63D /* TSSV_itemView.m */,
 				5EDA73B01D87FB0D000606A6 /* TriSegView_cell.h */,
 				5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */,
 				5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */,
@@ -932,6 +937,7 @@
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
+				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,

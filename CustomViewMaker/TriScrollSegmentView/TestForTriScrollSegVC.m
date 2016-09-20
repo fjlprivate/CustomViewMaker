@@ -32,7 +32,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.view addSubview:self.triScrollSegView];
-    
+    self.triScrollSegView.itemSize = CGSizeMake(self.view.bounds.size.width * 0.5, 100);
     
     __weak typeof(self) wself = self;
     

@@ -22,6 +22,14 @@
     return self;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self loadSubviews];
+    }
+    return self;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
