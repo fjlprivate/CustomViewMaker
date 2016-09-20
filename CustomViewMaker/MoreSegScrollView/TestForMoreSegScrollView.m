@@ -9,10 +9,14 @@
 #import "TestForMoreSegScrollView.h"
 #import "UIColor+ColorWithHex.h"
 #import "MoreSegScrollView.h"
+#import <ReactiveCocoa.h>
+
 
 @interface TestForMoreSegScrollView()
 
 @property (nonatomic, strong) MoreSegScrollView* moreSegScrollView;
+
+@property (nonatomic, strong) UILabel* indexLabel;
 
 @end
 
@@ -34,6 +38,15 @@
     self.moreSegScrollView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
     
     [self.view addSubview:self.moreSegScrollView];
+    
+    
+    frame.origin.y -= 60;
+    frame.size.height = 30;
+    self.indexLabel.frame = frame;
+    [self.view addSubview:self.indexLabel];
+    RAC(self.indexLabel, text) = [RACObserve(self.moreSegScrollView, curSegIndex) map:^id(id value) {
+        return [NSString stringWithFormat:@"%d", [value intValue]];
+    }];
     
 }
 
@@ -101,5 +114,14 @@
     return _moreSegScrollView;
 }
 
+- (UILabel *)indexLabel {
+    if (!_indexLabel) {
+        _indexLabel = [UILabel new];
+        _indexLabel.textAlignment = NSTextAlignmentCenter;
+        _indexLabel.textColor = [UIColor colorWithHex:HexColorTypeDarkSlateBlue];
+        _indexLabel.font = [UIFont boldSystemFontOfSize:15];
+    }
+    return _indexLabel;
+}
 
 @end

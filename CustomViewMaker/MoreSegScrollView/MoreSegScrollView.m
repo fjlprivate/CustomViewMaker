@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         self.segInfos = [NSArray arrayWithArray:segInfos];
-        self.MSSV_ITEM_INSET = 10.f;
+        self.MSSV_ITEM_INSET = 0.f;
         
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -86,21 +86,10 @@
             }
         }];
         itemView.layer.cornerRadius = self.itemSize.height * 0.5;
-        
         lastItemView = itemView;
-        
-        // 计算缩放
-        CGPoint itemCenterP = itemView.center;
-        itemCenterP.x = self.bounds.size.width * 0.5 + (self.itemSize.width - self.MSSV_ITEM_INSET) * i;
-        CGFloat curItemCenterX = itemCenterP.x - self.contentOffset.x;
-        
-        CGFloat scale = 1 - ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5) * 0.35;
-        scale = scale < 0.35 ? 0.35 : scale;
-        scale = scale > 1 ? 1 : scale;
-        
-        itemView.transform = CGAffineTransformMakeScale(scale, scale);
-        
     }
+    
+    [self makeTransformsForItems];
     
     [super updateConstraints];
 }
@@ -130,8 +119,10 @@
         CGPoint originOffset = self.contentOffset;
         originOffset.x += touchedItemView.center.x - self.contentOffset.x - self.bounds.size.width * 0.5;
         __weak typeof(self) wself = self;
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             wself.contentOffset = originOffset;
+        } completion:^(BOOL finished) {
+            wself.curSegIndex = touchedItemView.tag;
         }];
     }
 }
@@ -141,27 +132,19 @@
 
 /* 滚动时进行缩放 */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    for (UIView* itemView in self.itemViewList) {
-        CGPoint itemCenterP = itemView.center;
-        CGFloat curItemCenterX = itemCenterP.x - scrollView.contentOffset.x;
-        
-        CGFloat scale = 1 - ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5) * 0.35;
-        scale = scale < 0.35 ? 0.35 : scale;
-        scale = scale > 1 ? 1 : scale;
-        
-        itemView.transform = CGAffineTransformMakeScale(scale, scale);
-    }
-    
+    [self makeTransformsForItems];
 }
 
 
 /* 计算停止点为最近的 item.center */
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
+    // 滚动视图的屏幕中点
     CGFloat centerX = targetContentOffset->x + scrollView.frame.size.width * 0.5;
     
     CGPoint nearestItemCenterP = ((UIView*)[self.itemViewList objectAtIndex:0]).center;
     
+    // 扫描并取出离当前滚动视图的屏幕中点最近的item
     for (UIView* itemView in self.itemViewList) {
         CGPoint itemCenter = itemView.center;
         
@@ -184,6 +167,33 @@
     }
 }
 
+
+# pragma mask 3 transforms
+
+/* 对所有items进行缩放和位移 */
+- (void) makeTransformsForItems {
+    for (int i = 0; i < self.itemViewList.count; i++) {
+        UIView* itemView = [self.itemViewList objectAtIndex:i];
+        
+        /* 计算缩放和位移 */
+        CGPoint itemCenterP = itemView.center;
+        itemCenterP.x = self.bounds.size.width * 0.5 + (self.itemSize.width - self.MSSV_ITEM_INSET) * i;
+        CGFloat curItemCenterX = itemCenterP.x - self.contentOffset.x;
+        /* item中点相对中点的偏移比例: 越近越小,min(0) */
+        CGFloat scaleCenterXOffset = ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5);
+        
+        // 缩放
+        CGFloat scale = 1 - scaleCenterXOffset * 0.43;
+        scale = scale > 1 ? 1 : scale;
+        CGAffineTransform scaleTrans = CGAffineTransformMakeScale(scale, scale);
+        
+        // 计算位移
+        CGAffineTransform translateTrans = CGAffineTransformMakeTranslation(0, scaleCenterXOffset * (self.bounds.size.height * 0.5 - self.itemSize.height * 0.5));
+        
+        
+        itemView.transform = CGAffineTransformConcat(scaleTrans, translateTrans);
+    }
+}
 
 
 # pragma mask 4 getter
