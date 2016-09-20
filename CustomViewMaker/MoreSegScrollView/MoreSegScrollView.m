@@ -119,11 +119,14 @@
         CGPoint originOffset = self.contentOffset;
         originOffset.x += touchedItemView.center.x - self.contentOffset.x - self.bounds.size.width * 0.5;
         __weak typeof(self) wself = self;
-        [UIView animateWithDuration:0.2 animations:^{
+        
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             wself.contentOffset = originOffset;
         } completion:^(BOOL finished) {
             wself.curSegIndex = touchedItemView.tag;
         }];
+        
     }
 }
 
@@ -159,12 +162,15 @@
 
 /* 滚动停止更新索引 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    UIView* nearestView = [self.itemViewList firstObject];
+    CGFloat curCenterXOffset = self.contentOffset.x + self.bounds.size.width * 0.5;
+    
     for (UIView* itemView in self.itemViewList) {
-        if (itemView.center.x - self.contentOffset.x == self.bounds.size.width * 0.5) {
-            self.curSegIndex = itemView.tag;
-            break;
+        if (ABS(itemView.center.x - curCenterXOffset) < ABS(nearestView.center.x - curCenterXOffset)) {
+            nearestView = itemView;
         }
     }
+    self.curSegIndex = nearestView.tag;
 }
 
 
@@ -183,7 +189,7 @@
         CGFloat scaleCenterXOffset = ABS(curItemCenterX - self.bounds.size.width * 0.5) / (self.bounds.size.width * 0.5);
         
         // 缩放
-        CGFloat scale = 1 - scaleCenterXOffset * 0.43;
+        CGFloat scale = 1 - scaleCenterXOffset * 0.3;
         scale = scale > 1 ? 1 : scale;
         CGAffineTransform scaleTrans = CGAffineTransformMakeScale(scale, scale);
         
@@ -201,6 +207,8 @@
 - (NSMutableArray *)itemViewList {
     if (!_itemViewList) {
         _itemViewList = [NSMutableArray array];
+        
+        
         for (int i = 0; i < self.segInfos.count; i ++) {
             NSDictionary* node = [self.segInfos objectAtIndex:i];
             MSSV_itemView* itemView = [[MSSV_itemView alloc] initWithFrame:CGRectZero];
