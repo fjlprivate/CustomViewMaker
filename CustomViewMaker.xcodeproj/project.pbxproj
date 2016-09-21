@@ -53,6 +53,7 @@
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3361D91271800FBB63D /* TSSV_itemView.m */; };
+		5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3391D921FF200FBB63D /* WHScrollAndPageView.m */; };
 		5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */; };
 		5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A81D87ACCF000606A6 /* TestForTriScrollSegVC.m */; };
 		5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73AB1D87AD34000606A6 /* TriScrollSegmentView.m */; };
@@ -180,6 +181,8 @@
 		5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForStepSegmentView.m; sourceTree = "<group>"; };
 		5ECFD3351D91271800FBB63D /* TSSV_itemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSV_itemView.h; sourceTree = "<group>"; };
 		5ECFD3361D91271800FBB63D /* TSSV_itemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSV_itemView.m; sourceTree = "<group>"; };
+		5ECFD3381D921FF200FBB63D /* WHScrollAndPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHScrollAndPageView.h; sourceTree = "<group>"; };
+		5ECFD3391D921FF200FBB63D /* WHScrollAndPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHScrollAndPageView.m; sourceTree = "<group>"; };
 		5EDA73A31D864F7E000606A6 /* LabelAutoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAutoresize.h; sourceTree = "<group>"; };
 		5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAutoresize.m; sourceTree = "<group>"; };
 		5EDA73A71D87ACCF000606A6 /* TestForTriScrollSegVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForTriScrollSegVC.h; sourceTree = "<group>"; };
@@ -522,6 +525,8 @@
 				5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */,
 				5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */,
 				5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */,
+				5ECFD3381D921FF200FBB63D /* WHScrollAndPageView.h */,
+				5ECFD3391D921FF200FBB63D /* WHScrollAndPageView.m */,
 			);
 			path = TriScrollSegmentView;
 			sourceTree = "<group>";
@@ -973,6 +978,7 @@
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
+				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
