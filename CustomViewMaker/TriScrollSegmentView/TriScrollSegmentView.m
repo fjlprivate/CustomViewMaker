@@ -104,6 +104,41 @@
     [super updateConstraints];
 }
 
+- (void)drawRect:(CGRect)rect {
+    CGFloat verticalInset = self.itemSize.height * (1 - self.minScale) * 0.3;
+    CGFloat verticalOffsetYItem = self.bounds.size.height - verticalInset - self.itemSize.height * 0.5 - verticalInset - self.itemSize.height * 0.5 * self.minScale;
+    
+    CGFloat radius = ((verticalOffsetYItem * verticalOffsetYItem) + (self.bounds.size.width * 0.5 * self.bounds.size.width * 0.5)) / verticalOffsetYItem/2;
+
+    CGPoint arcCenterP = CGPointMake(rect.origin.x + rect.size.width * 0.5, verticalInset + self.itemSize.height * 0.5 + radius);
+
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    CGPoint leftBottomP = CGPointMake(rect.origin.x, rect.size.height);
+    CGPoint leftCircleBottomP = CGPointMake(rect.origin.x,
+                                            rect.size.height - verticalInset - self.itemSize.height * 0.5 * self.minScale);
+    CGPoint rightBottomP = CGPointMake(rect.origin.x + rect.size.width, rect.size.height);
+    CGPoint rightCircleBottomP = CGPointMake(rect.origin.x + rect.size.width,
+                                             rect.size.height - verticalInset - self.itemSize.height * 0.5 * self.minScale);
+    //CGPoint midTopP = CGPointMake(rect.size.width * 0.5, verticalInset + self.itemSize.height * 0.5);
+    
+    
+    //CGContextRef context = UIGraphicsGetCurrentContext();
+    //CGContextAddPath(context, path.CGPath);
+    
+    [path moveToPoint:leftBottomP];
+    [path addLineToPoint:rightBottomP];
+    [path addLineToPoint:rightCircleBottomP];
+    [path addArcWithCenter:arcCenterP radius:radius startAngle:0 endAngle:M_PI clockwise:NO];
+    [path addLineToPoint:leftCircleBottomP];
+    [path addLineToPoint:leftBottomP];
+    [path closePath];
+    
+    [[UIColor colorWithHex:0xeeeeee] setFill];
+    
+    [path fill];
+    
+}
+
 
 # pragma mask 2 UIScrollViewDelegate
 
@@ -208,7 +243,6 @@
     self.itemView2.titleLabel.textColor = [node2 objectForKey:@"titleColor"];
     self.itemView2.backgroundColor = [node2 objectForKey:@"backColor"];
 
-    
 }
 
 - (void) makeTransformsForItemViews {
@@ -259,6 +293,8 @@
 - (MSSV_itemView *)itemView0 {
     if (!_itemView0) {
         _itemView0 = [[MSSV_itemView alloc] init];
+        _itemView0.layer.borderColor = [UIColor whiteColor].CGColor;
+        _itemView0.layer.borderWidth = 1;
     }
     return _itemView0;
 }
@@ -266,6 +302,9 @@
 - (MSSV_itemView *)itemView1 {
     if (!_itemView1) {
         _itemView1 = [[MSSV_itemView alloc] init];
+        _itemView1.layer.borderColor = [UIColor whiteColor].CGColor;
+        _itemView1.layer.borderWidth = 1;
+
     }
     return _itemView1;
 }
@@ -273,9 +312,18 @@
 - (MSSV_itemView *)itemView2 {
     if (!_itemView2) {
         _itemView2 = [[MSSV_itemView alloc] init];
+        _itemView2.layer.borderColor = [UIColor whiteColor].CGColor;
+        _itemView2.layer.borderWidth = 1;
     }
     return _itemView2;
 }
 
+
+- (UIColor *)backCircleColor {
+    if (!_backCircleColor) {
+        _backCircleColor = [UIColor colorWithHex:0xeeeeee];
+    }
+    return _backCircleColor;
+}
 
 @end

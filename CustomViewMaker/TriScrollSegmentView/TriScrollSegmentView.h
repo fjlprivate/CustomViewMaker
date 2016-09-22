@@ -17,6 +17,9 @@
 /* 元素大小 */
 @property (nonatomic, assign) CGSize itemSize;
 
+/* 半圆形底部颜色 */
+@property (nonatomic, strong) UIColor* backCircleColor;
+
 /*
  NSDictionary<
         imgName: <NSString> 图片名

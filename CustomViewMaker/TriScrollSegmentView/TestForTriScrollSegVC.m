@@ -10,7 +10,7 @@
 #import "TriScrollSegmentView.h"
 #import "UIColor+ColorWithHex.h"
 #import "Masonry.h"
-
+#import <ReactiveCocoa.h>
 #import "WHScrollAndPageView.h"
 
 
@@ -38,13 +38,21 @@
     
     self.triScrollSegView.frame = CGRectMake(0, (self.view.frame.size.height - 100) , self.view.frame.size.width, 100);
     self.triScrollSegView.itemSize = CGSizeMake(self.view.bounds.size.width / 2, 60);
-    self.triScrollSegView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
+    //self.triScrollSegView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
     [self.view addSubview:self.triScrollSegView];
     
     [self.view addSubview:self.whScrollView];
+    
+    //[self addKVOs];
 }
 
-
+- (void) addKVOs {
+    @weakify(self);
+    RAC(self.triScrollSegView, backgroundColor) = [RACObserve(self.triScrollSegView, curSegIndex) map:^id(id value) {
+        @strongify(self);
+        return [[self.triScrollSegView.segInfos objectAtIndex:[value integerValue]] objectForKey:@"backColor"];
+    }];
+}
 
 
 - (TriScrollSegmentView *)triScrollSegView {
@@ -87,28 +95,28 @@
         [node4 setObject:@"标题-3" forKey:@"title"];
         [node4 setObject:[UIColor colorWithHex:0x01abf0 alpha:1] forKey:@"backColor"];
         [node4 setObject:[UIColor whiteColor] forKey:@"titleColor"];
-        [cells addObject:node4];
+        //[cells addObject:node4];
         
         NSMutableDictionary* node5 = [NSMutableDictionary dictionary];
         [node5 setObject:@"alipayWhite" forKey:@"imgName"];
         [node5 setObject:@"标题-4" forKey:@"title"];
         [node5 setObject:[UIColor colorWithHex:0xef454b] forKey:@"backColor"];
         [node5 setObject:[UIColor whiteColor] forKey:@"titleColor"];
-        [cells addObject:node5];
+        //[cells addObject:node5];
         
         NSMutableDictionary* node6 = [NSMutableDictionary dictionary];
         [node6 setObject:@"alipayGray" forKey:@"imgName"];
         [node6 setObject:@"标题-5" forKey:@"title"];
         [node6 setObject:[UIColor colorWithHex:0x2da43a] forKey:@"backColor"];
         [node6 setObject:[UIColor whiteColor] forKey:@"titleColor"];
-        [cells addObject:node6];
+        //[cells addObject:node6];
         
         NSMutableDictionary* node7 = [NSMutableDictionary dictionary];
         [node7 setObject:@"cleanDarkBlue" forKey:@"imgName"];
         [node7 setObject:@"标题-6" forKey:@"title"];
         [node7 setObject:[UIColor colorWithHex:0x01abf0] forKey:@"backColor"];
         [node7 setObject:[UIColor colorWithHex:HexColorTypeDarkSlateBlue alpha:1] forKey:@"titleColor"];
-        [cells addObject:node7];
+        //[cells addObject:node7];
 
         _triScrollSegView = [[TriScrollSegmentView alloc] initWithSegInfos:cells andMidItemCliecked:^{
             NSLog(@" - - - - - -[点击了序号[%d]的item]", _triScrollSegView.curSegIndex);
