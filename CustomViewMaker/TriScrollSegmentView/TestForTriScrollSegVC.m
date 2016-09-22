@@ -36,7 +36,7 @@
     self.title = @"TestForTriScrollSegVC";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.triScrollSegView.frame = CGRectMake(0, (self.view.frame.size.height - 100) / 2, self.view.frame.size.width, 140);
+    self.triScrollSegView.frame = CGRectMake(0, (self.view.frame.size.height - 100) , self.view.frame.size.width, 100);
     self.triScrollSegView.itemSize = CGSizeMake(self.view.bounds.size.width / 2, 60);
     self.triScrollSegView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
     [self.view addSubview:self.triScrollSegView];
@@ -110,7 +110,9 @@
         [node7 setObject:[UIColor colorWithHex:HexColorTypeDarkSlateBlue alpha:1] forKey:@"titleColor"];
         [cells addObject:node7];
 
-        _triScrollSegView = [[TriScrollSegmentView alloc] initWithSegInfos:cells];
+        _triScrollSegView = [[TriScrollSegmentView alloc] initWithSegInfos:cells andMidItemCliecked:^{
+            NSLog(@" - - - - - -[点击了序号[%d]的item]", _triScrollSegView.curSegIndex);
+        }];
     }
     return _triScrollSegView;
 }

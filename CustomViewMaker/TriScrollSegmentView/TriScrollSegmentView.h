@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSArray<NSDictionary*>* segInfos;
 
 
-- (instancetype) initWithSegInfos:(NSArray*)segInfos;
+- (instancetype) initWithSegInfos:(NSArray*)segInfos
+               andMidItemCliecked:(void (^) (void))midItemClicked;
 
 @end

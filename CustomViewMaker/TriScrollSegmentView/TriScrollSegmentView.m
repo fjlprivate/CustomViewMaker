@@ -21,8 +21,12 @@
 
 @property (nonatomic, strong) MSSV_itemView* itemView2;
 
+@property (nonatomic, copy) void (^ midItemViewClicked) (void);
 
-@property (nonatomic, assign) CGPoint lastOffset;
+
+@property (nonatomic, assign) CGFloat minScale;
+
+
 
 @end
 
@@ -31,16 +35,19 @@
 
 @implementation TriScrollSegmentView
 
-- (instancetype)initWithSegInfos:(NSArray *)segInfos {
+- (instancetype)initWithSegInfos:(NSArray *)segInfos andMidItemCliecked:(void (^)(void))midItemClicked {
     self = [super init];
     if (self) {
         self.segInfos = [NSArray arrayWithArray:segInfos];
-        self.curSegIndex = 0;
-        [self loadSubviews];
-        self.showsVerticalScrollIndicator = NO;
-        self.showsHorizontalScrollIndicator = NO;
+        self.midItemViewClicked = midItemClicked;
         
-        self.delegate = self;
+        [self initialProperties];
+        [self loadSubviews];
+        
+        // 点击item后切换到指定的cell
+        UITapGestureRecognizer* tapGestr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedWithGesture:)];
+        [self addGestureRecognizer:tapGestr];
+        
     }
     return self;
 }
@@ -66,24 +73,26 @@
 - (void)updateConstraints {
     __weak typeof(self) wself = self;
     
+    CGFloat verticalInset = self.itemSize.height * (1 - self.minScale) * 0.3;
+    
     [self.itemView0 mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.width.mas_equalTo(wself.itemSize.width);
-        make.centerY.mas_equalTo(wself.mas_centerY);
+        make.top.mas_equalTo(wself.mas_top).offset(verticalInset);
         make.height.mas_equalTo(wself.itemSize.height);
     }];
     
     [self.itemView1 mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(wself.itemView0.mas_right);
         make.width.mas_equalTo(wself.itemSize.width);
-        make.centerY.mas_equalTo(wself.mas_centerY);
+        make.top.mas_equalTo(wself.mas_top).offset(verticalInset);
         make.height.mas_equalTo(wself.itemSize.height);
     }];
     
     [self.itemView2 mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(wself.itemView1.mas_right);
         make.width.mas_equalTo(wself.itemSize.width);
-        make.centerY.mas_equalTo(wself.mas_centerY);
+        make.top.mas_equalTo(wself.mas_top).offset(verticalInset);
         make.height.mas_equalTo(wself.itemSize.height);
     }];
     
@@ -99,7 +108,6 @@
 # pragma mask 2 UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     CGPoint curOffset = self.contentOffset;
     if (self.contentOffset.x > self.itemSize.width) {
         self.curSegIndex = (self.curSegIndex == self.segInfos.count - 1) ? (0) : (self.curSegIndex + 1);
@@ -145,9 +153,32 @@
 }
 
 
+# pragma mask 3 IBAction
+
+- (IBAction) clickedWithGesture:(UITapGestureRecognizer*)sender {
+    CGPoint clickedPoint = [sender locationInView:self];
+    
+    if (CGRectContainsPoint(self.itemView1.frame, clickedPoint) && self.midItemViewClicked) {
+        self.midItemViewClicked();
+    }
+    
+}
+
 
 # pragma mask 3 private interfunctions
 
+- (void) initialProperties {
+    self.minScale = 0.6;
+    self.curSegIndex = 0;
+    
+    self.showsVerticalScrollIndicator = NO;
+    self.showsHorizontalScrollIndicator = NO;
+    self.delegate = self;
+
+}
+
+
+// 加载子视图
 - (void) loadSubviews {
     [self addSubview:self.itemView0];
     [self addSubview:self.itemView1];
@@ -155,12 +186,12 @@
 }
 
 
+// 重载数据
 - (void) reloadData {
-    // 重载数据
     
-    NSDictionary* node0 = [self.segInfos objectAtIndex:(self.curSegIndex == 0 ? self.segInfos.count - 1: self.curSegIndex - 1)];
+    NSDictionary* node0 = [self.segInfos objectAtIndex:(self.curSegIndex <= 0 ? self.segInfos.count - 1: self.curSegIndex - 1)];
     NSDictionary* node1 = [self.segInfos objectAtIndex:self.curSegIndex];
-    NSDictionary* node2 = [self.segInfos objectAtIndex:(self.curSegIndex == self.segInfos.count - 1 ? 0: self.curSegIndex + 1)];
+    NSDictionary* node2 = [self.segInfos objectAtIndex:(self.curSegIndex >= self.segInfos.count - 1 ? 0: self.curSegIndex + 1)];
     
     self.itemView0.imageView.image = [UIImage imageNamed:[node0 objectForKey:@"imgName"]];
     self.itemView0.titleLabel.text = [node0 objectForKey:@"title"];
@@ -182,26 +213,43 @@
 
 - (void) makeTransformsForItemViews {
     CGFloat contentCenterX = self.contentOffset.x + self.bounds.size.width * 0.5;
-    CGFloat denomenater = self.bounds.size.width * 1.1;
     
+    // items相对于当前中点的距离
+    CGFloat centerOffsetXItem0 = ABS(self.itemSize.width * 0.5 - contentCenterX);
+    CGFloat centerOffsetXItem1 = ABS(self.itemSize.width * 1.5 - contentCenterX);
+    CGFloat centerOffsetXItem2 = ABS(self.itemSize.width * 2.5 - contentCenterX);
+
+    
+    CGFloat verticalInset = self.itemSize.height * (1 - self.minScale) * 0.3;
+
+    // 上下两个item的最大间距(center0.y - center1.y)
+    CGFloat verticalOffsetYItem = self.bounds.size.height - verticalInset - self.itemSize.height * 0.5 - verticalInset - self.itemSize.height * 0.5 * self.minScale;
+    
+    CGFloat radius = ((verticalOffsetYItem * verticalOffsetYItem) + (self.bounds.size.width * 0.5 * self.bounds.size.width * 0.5)) / verticalOffsetYItem/2;
     
     // itemView0
-    CGFloat ratioScale0 = 1 - ABS(self.itemSize.width * 0.5 - contentCenterX) / denomenater;
+    CGFloat ratioScale0 = 1 - (centerOffsetXItem0/(self.bounds.size.width * 0.5)) * (1 - self.minScale);
     CGAffineTransform transformScale0 = CGAffineTransformMakeScale(ratioScale0, ratioScale0);
-    self.itemView0.transform = transformScale0;
+    CGFloat translate0 = radius - sqrt(radius * radius - centerOffsetXItem0 * centerOffsetXItem0);
+    CGAffineTransform transformTrans0 = CGAffineTransformMakeTranslation(0, translate0);
+    self.itemView0.transform = CGAffineTransformConcat(transformScale0, transformTrans0);
     
     // itemView1
-    CGFloat ratioScale1 = 1 - ABS(self.itemSize.width * 1.5 - contentCenterX) / denomenater;
+    CGFloat ratioScale1 = 1 - (centerOffsetXItem1/(self.bounds.size.width * 0.5)) * (1 - self.minScale);
     CGAffineTransform transformScale1 = CGAffineTransformMakeScale(ratioScale1, ratioScale1);
-    self.itemView1.transform = transformScale1;
-
+    CGFloat translate1 = radius - sqrt(radius * radius - centerOffsetXItem1 * centerOffsetXItem1);
+    CGAffineTransform transformTrans1 = CGAffineTransformMakeTranslation(0, translate1);
+    self.itemView1.transform = CGAffineTransformConcat(transformScale1, transformTrans1);
 
     // itemView2
-    CGFloat ratioScale2 = 1 - ABS(self.itemSize.width * 2.5 - contentCenterX) / denomenater;
+    CGFloat ratioScale2 = 1 - (centerOffsetXItem2/(self.bounds.size.width * 0.5)) * (1 - self.minScale);
     CGAffineTransform transformScale2 = CGAffineTransformMakeScale(ratioScale2, ratioScale2);
-    self.itemView2.transform = transformScale2;
-    
+    CGFloat translate2 = radius - sqrt(radius * radius - centerOffsetXItem2 * centerOffsetXItem2);
+    CGAffineTransform transformTrans2 = CGAffineTransformMakeTranslation(0, translate2);
+    self.itemView2.transform = CGAffineTransformConcat(transformScale2, transformTrans2);
+
 }
+
 
 
 
