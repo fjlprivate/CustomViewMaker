@@ -38,7 +38,7 @@
     
     self.triScrollSegView.frame = CGRectMake(0, (self.view.frame.size.height - 100) , self.view.frame.size.width, 100);
     self.triScrollSegView.itemSize = CGSizeMake(self.view.bounds.size.width / 2, 60);
-    //self.triScrollSegView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
+    self.triScrollSegView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.triScrollSegView];
     
     [self.view addSubview:self.whScrollView];

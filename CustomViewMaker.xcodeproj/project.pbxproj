@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
+		5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */; };
+		5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */; };
+		5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
 		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
@@ -91,6 +94,12 @@
 /* Begin PBXFileReference section */
 		1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E3CB4181D94C08F0036C1FB /* MainTransViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTransViewController.h; sourceTree = "<group>"; };
+		5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTransViewController.m; sourceTree = "<group>"; };
+		5E3CB41B1D94C39E0036C1FB /* MTVC_screenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_screenView.h; sourceTree = "<group>"; };
+		5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_screenView.m; sourceTree = "<group>"; };
+		5E3CB41E1D94C3B90036C1FB /* MTVC_keybordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_keybordView.h; sourceTree = "<group>"; };
+		5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_keybordView.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
 		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
@@ -258,6 +267,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB4151D94C00F0036C1FB /* Model */,
+				5E3CB4161D94C00F0036C1FB /* View */,
+				5E3CB4171D94C00F0036C1FB /* ViewModel */,
+			);
+			path = "金额输入界面_1.4.0";
+			sourceTree = "<group>";
+		};
+		5E3CB4151D94C00F0036C1FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E3CB4161D94C00F0036C1FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB4181D94C08F0036C1FB /* MainTransViewController.h */,
+				5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */,
+				5E3CB41B1D94C39E0036C1FB /* MTVC_screenView.h */,
+				5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */,
+				5E3CB41E1D94C3B90036C1FB /* MTVC_keybordView.h */,
+				5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E3CB4171D94C00F0036C1FB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +371,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */,
 				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
 				5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */,
 				5EDA73A21D864F33000606A6 /* Label自动布局 */,
@@ -962,9 +1009,12 @@
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
+				5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */,
 				5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */,
+				5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */,
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
+				5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,

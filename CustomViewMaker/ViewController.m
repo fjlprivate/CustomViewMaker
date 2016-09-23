@@ -110,6 +110,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"金额输入界面"];
         [_btnTitles addObject:@"more滚动子切换"];
         [_btnTitles addObject:@"3个滚动子切换"];
         [_btnTitles addObject:@"LabelAutoresize"];
@@ -151,6 +152,7 @@
         [_dicVCNameAndTitles setObject:@"LabelAutoresize" forKey:@"LabelAutoresize"];
         [_dicVCNameAndTitles setObject:@"TestForTriScrollSegVC" forKey:@"3个滚动子切换"];
         [_dicVCNameAndTitles setObject:@"TestForMoreSegScrollView" forKey:@"more滚动子切换"];
+        [_dicVCNameAndTitles setObject:@"MainTransViewController" forKey:@"金额输入界面"];
     }
     return _dicVCNameAndTitles;
 }

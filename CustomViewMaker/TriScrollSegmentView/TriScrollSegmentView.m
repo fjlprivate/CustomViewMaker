@@ -31,6 +31,7 @@
 @end
 
 
+static BOOL firstLayout = YES;
 
 
 @implementation TriScrollSegmentView
@@ -41,6 +42,7 @@
         self.segInfos = [NSArray arrayWithArray:segInfos];
         self.midItemViewClicked = midItemClicked;
         
+        firstLayout = YES;
         [self initialProperties];
         [self loadSubviews];
         
@@ -59,12 +61,12 @@
     
     self.contentSize = CGSizeMake(self.itemSize.width * 3, self.bounds.size.height);
     
-    if (self.bounds.size.width > 1 && self.itemView0.frame.size.width < 1) {
-        
+    if (self.bounds.size.width > 1 && firstLayout) {
         CGPoint curOffset = self.contentOffset;
         curOffset.x = self.itemSize.width * 0.5;
         self.contentOffset = curOffset;
         [self reloadData];
+        firstLayout = NO;
     }
     
 }
@@ -100,7 +102,6 @@
     self.itemView1.layer.cornerRadius = self.itemSize.height * 0.5;
     self.itemView2.layer.cornerRadius = self.itemSize.height * 0.5;
 
-    
     [super updateConstraints];
 }
 
@@ -113,27 +114,11 @@
     CGPoint arcCenterP = CGPointMake(rect.origin.x + rect.size.width * 0.5, verticalInset + self.itemSize.height * 0.5 + radius);
 
     UIBezierPath* path = [UIBezierPath bezierPath];
-    CGPoint leftBottomP = CGPointMake(rect.origin.x, rect.size.height);
-    CGPoint leftCircleBottomP = CGPointMake(rect.origin.x,
-                                            rect.size.height - verticalInset - self.itemSize.height * 0.5 * self.minScale);
-    CGPoint rightBottomP = CGPointMake(rect.origin.x + rect.size.width, rect.size.height);
-    CGPoint rightCircleBottomP = CGPointMake(rect.origin.x + rect.size.width,
-                                             rect.size.height - verticalInset - self.itemSize.height * 0.5 * self.minScale);
-    //CGPoint midTopP = CGPointMake(rect.size.width * 0.5, verticalInset + self.itemSize.height * 0.5);
-    
-    
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGContextAddPath(context, path.CGPath);
-    
-    [path moveToPoint:leftBottomP];
-    [path addLineToPoint:rightBottomP];
-    [path addLineToPoint:rightCircleBottomP];
+    [path moveToPoint:arcCenterP];
     [path addArcWithCenter:arcCenterP radius:radius startAngle:0 endAngle:M_PI clockwise:NO];
-    [path addLineToPoint:leftCircleBottomP];
-    [path addLineToPoint:leftBottomP];
     [path closePath];
     
-    [[UIColor colorWithHex:0xeeeeee] setFill];
+    [self.backCircleColor setFill];
     
     [path fill];
     
@@ -294,7 +279,7 @@
     if (!_itemView0) {
         _itemView0 = [[MSSV_itemView alloc] init];
         _itemView0.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView0.layer.borderWidth = 1;
+        _itemView0.layer.borderWidth = 2;
     }
     return _itemView0;
 }
@@ -303,7 +288,7 @@
     if (!_itemView1) {
         _itemView1 = [[MSSV_itemView alloc] init];
         _itemView1.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView1.layer.borderWidth = 1;
+        _itemView1.layer.borderWidth = 2;
 
     }
     return _itemView1;
@@ -313,7 +298,7 @@
     if (!_itemView2) {
         _itemView2 = [[MSSV_itemView alloc] init];
         _itemView2.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView2.layer.borderWidth = 1;
+        _itemView2.layer.borderWidth = 2;
     }
     return _itemView2;
 }
