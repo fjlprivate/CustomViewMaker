@@ -27,7 +27,6 @@
     self.title = @"主界面";
     [self.view addSubview:self.hud];
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil]];
-
     
     [self.view addSubview:self.tableView];
     CGRect frame = self.view.frame;

@@ -31,7 +31,6 @@
     [navigationBar setBarStyle:UIBarStyleBlack];
     [navigationBar setShadowImage:[UIImage new]];
     
-    
     ViewController* mainVC = [[ViewController alloc] init];
     mainVC.view.backgroundColor = [UIColor whiteColor];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:mainVC];
@@ -42,7 +41,6 @@
     sideMenuVC.scaleMenuView = NO;
     
     self.window.rootViewController = sideMenuVC;
-    
     
     return YES;
 }

@@ -8,6 +8,8 @@
 
 #import "MTVC_keybordView.h"
 #import "UIColor+ColorWithHex.h"
+#import <NSString+FontAwesome.h>
+#import <UIFont+FontAwesome.h>
 
 
 
@@ -60,10 +62,28 @@
         [numberBtn setTitleColor:self.numBtnTextColor forState:UIControlStateNormal];
         numberBtn.backgroundColor = self.numBtnBackColor;
         
+        if (i == self.numberBtnList.count - 1) {
+            numberBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:14];
+        } else {
+            numberBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        }
+        
     }
 }
 
+# pragma mask 2 IBAction
 
+- (IBAction) clickedNumBtnDown:(UIButton*)numBtn {
+    numBtn.alpha = 0.3;
+}
+
+- (IBAction) clickedNumBtnUpOutside:(UIButton*)numBtn {
+    numBtn.alpha = 1;
+}
+
+- (IBAction) clickedNumBtnUpInside:(UIButton*)numBtn {
+    numBtn.alpha = 1;
+}
 
 
 # pragma mask 4 getter
@@ -87,10 +107,26 @@
         NSMutableArray* btnList = [NSMutableArray array];
         for (int i = 1; i <= 12; i++) {
             UIButton* numberBtn = [UIButton new];
-            [numberBtn setTitle:[NSString stringWithFormat:@"%d", i] forState:UIControlStateNormal];
+            
+            NSString* title = [NSString stringWithFormat:@"%d", i];
+            if (i == 10) {
+                title = @"C";
+            } else if (i == 11) {
+                title = @"0";
+            } else if (i == 12) {
+                title = [NSString fontAwesomeIconStringForEnum:FABackward];
+            }
+            
+            
+            [numberBtn setTitle:title forState:UIControlStateNormal];
             [numberBtn setTitleColor:self.numBtnTextColor forState:UIControlStateNormal];
             [numberBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
             numberBtn.backgroundColor = self.numBtnBackColor;
+            
+            [numberBtn addTarget:self action:@selector(clickedNumBtnDown:) forControlEvents:UIControlEventTouchDown];
+            [numberBtn addTarget:self action:@selector(clickedNumBtnUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
+            [numberBtn addTarget:self action:@selector(clickedNumBtnUpInside:) forControlEvents:UIControlEventTouchUpInside];
+
             [btnList addObject:numberBtn];
         }
         _numberBtnList = [NSArray arrayWithArray:btnList];

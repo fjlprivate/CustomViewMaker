@@ -18,4 +18,9 @@
 
 @property (nonatomic, strong) UIButton* businessSwitchBtn;
 
+@property (nonatomic, strong) UILabel* deviceLinkedStateLabel;
+
+@property (nonatomic, copy) NSString* deviceCBtnTitle;
+@property (nonatomic, strong) UIButton* deviceConnectBtn;
+
 @end

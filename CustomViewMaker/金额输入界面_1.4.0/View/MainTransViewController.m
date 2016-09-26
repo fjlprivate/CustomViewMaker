@@ -12,6 +12,9 @@
 #import "TriScrollSegmentView.h"
 #import "UIColor+ColorWithHex.h"
 #import "Masonry.h"
+#import <UIFont+FontAwesome.h>
+#import <NSString+FontAwesome.h>
+#import "NSString+Custom.h"
 
 
 @interface MainTransViewController ()
@@ -21,6 +24,10 @@
 @property (nonatomic, strong) MTVC_keybordView* keybordView;
 
 @property (nonatomic, strong) TriScrollSegmentView* triSwitchView;
+
+@property (nonatomic, strong) UIBarButtonItem* userBarBtn;
+
+@property (nonatomic, strong) UIBarButtonItem* billListBarBtn;
 
 @end
 
@@ -41,44 +48,16 @@
 }
 
 - (void) loadSubviews {
-    
-    
-    CGFloat triSwitchVHeight = self.view.frame.size.height * 1/6.5;
-    CGFloat inset = 15;
-    
-    CGFloat keyBordVHeight = (self.view.frame.size.height - triSwitchVHeight - 64) * 0.5;
-    CGFloat screenVHeight = self.view.frame.size.height - triSwitchVHeight - 64 - keyBordVHeight - inset * 2;
-    /*********
-    
-    CGRect frame = CGRectMake(inset, 64 + inset, self.view.frame.size.width - inset * 2, screenVHeight);
-    [self.screenView setFrame:frame];
-    
-    frame.origin.y += frame.size.height + inset;
-    frame.origin.x = 0;
-    frame.size.width = self.view.frame.size.width;
-    frame.size.height = keyBordVHeight;
-    [self.keybordView setFrame:frame];
-    
-    frame.origin.y += frame.size.height;
-    frame.size.height = triSwitchVHeight ;
-    [self.triSwitchView setFrame:frame];
-    self.triSwitchView.itemSize = CGSizeMake(self.view.frame.size.width * 0.5, triSwitchVHeight * 0.56);
-    
-    //self.triSwitchView.layer.borderColor = [UIColor colorWithHex:0xeeeeee].CGColor;
-    //self.triSwitchView.layer.borderWidth = 2;
-    /*********/
-    
-    
     [self.view addSubview:self.screenView];
     [self.view addSubview:self.keybordView];
     [self.view addSubview:self.triSwitchView];
-
+    [self.navigationItem setLeftBarButtonItem:self.userBarBtn];
+    [self.navigationItem setRightBarButtonItem:self.billListBarBtn];
 }
 
 
 
 
-/*********/
 
 - (void)updateViewConstraints {
     
@@ -110,8 +89,13 @@
     
     [super updateViewConstraints];
 }
-/*********/
 
+
+# pragma mask 2 IBAction
+
+- (IBAction) clickedUserBarBtn:(UIBarButtonItem*)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 
@@ -128,8 +112,11 @@
         _screenView.settleTypeLabel.text = @"T+0";
         _screenView.settleTypeLabel.backgroundColor = [UIColor colorWithHex:0xef454b];
         _screenView.settleTypeLabel.textColor = [UIColor whiteColor];
-        _screenView.businessLabel.text = @"商户:我的捷联通";
+        _screenView.businessLabel.text = @"我的商户:阿迪奥斯逻辑店";
         _screenView.businessLabel.textColor = [UIColor colorWithHex:0x27384b alpha:0.9];
+        _screenView.deviceLinkedStateLabel.text = [NSString fontAwesomeIconStringForEnum:FAExclamationCircle];
+        _screenView.deviceLinkedStateLabel.textColor = [UIColor colorWithHex:0xef454b];
+        _screenView.deviceCBtnTitle = @"请点我,您还未绑定设备!";
     }
     return _screenView;
 }
@@ -179,6 +166,31 @@
 
     }
     return _triSwitchView;
+}
+
+- (UIBarButtonItem *)userBarBtn {
+    if (!_userBarBtn) {
+        UIButton* userBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
+        [userBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAUser] forState:UIControlStateNormal];
+        userBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"teset" resizeFontAtHeight:28 scale:0.9]];
+        [userBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [userBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+        [userBtn addTarget:self action:@selector(clickedUserBarBtn:) forControlEvents:UIControlEventTouchUpInside];
+        _userBarBtn = [[UIBarButtonItem alloc] initWithCustomView:userBtn];
+    }
+    return _userBarBtn;
+}
+
+- (UIBarButtonItem *)billListBarBtn {
+    if (!_billListBarBtn) {
+        UIButton* billListBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        [billListBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAList] forState:UIControlStateNormal];
+        billListBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"teset" resizeFontAtHeight:25 scale:0.8]];
+        [billListBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [billListBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+        _billListBarBtn = [[UIBarButtonItem alloc] initWithCustomView:billListBtn];
+    }
+    return _billListBarBtn;
 }
 
 @end

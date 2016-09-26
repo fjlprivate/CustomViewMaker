@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "NSString+Custom.h"
 #import <ReactiveCocoa.h>
+#import <UIFont+FontAwesome.h>
 
 
 @interface MTVC_screenView()
@@ -41,12 +42,22 @@
     [self addSubview:self.moneyLabel];
     [self addSubview:self.settleTypeLabel];
     [self addSubview:self.businessLabel];
+    [self addSubview:self.deviceLinkedStateLabel];
+    [self addSubview:self.deviceConnectBtn];
 }
 
 - (void) addKVOs {
     @weakify(self);
     [RACObserve(self.businessLabel, text) subscribeNext:^(id x) {
         @strongify(self);
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
+        [self layoutIfNeeded];
+    }];
+    
+    [RACObserve(self, deviceCBtnTitle) subscribeNext:^(id x) {
+        @strongify(self);
+        [self.deviceConnectBtn setTitle:x forState:UIControlStateNormal];
         [self setNeedsUpdateConstraints];
         [self updateConstraintsIfNeeded];
         [self layoutIfNeeded];
@@ -63,7 +74,8 @@
     self.businessLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
     UIFont* maxTextFont = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:1]];
 
-    
+    self.deviceLinkedStateLabel.font = [UIFont fontAwesomeFontOfSize:[@"tet" resizeFontAtHeight:20 scale:1]];
+    self.deviceConnectBtn.titleLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
     __weak typeof(self) wself = self;
     
     
@@ -90,6 +102,18 @@
         make.left.mas_equalTo(wself.businessLabel.mas_right).offset(0);
         make.top.bottom.mas_equalTo(wself.businessLabel);
         make.width.mas_equalTo(wself.businessSwitchBtn.mas_height);
+    }];
+    
+    [self.deviceLinkedStateLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(15);
+        make.width.height.mas_equalTo(20);
+        make.bottom.mas_equalTo(- 15);
+    }];
+    
+    [self.deviceConnectBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(wself.deviceLinkedStateLabel.mas_right).offset(0);
+        make.top.bottom.mas_equalTo(wself.deviceLinkedStateLabel);
+        make.width.mas_equalTo([wself.deviceCBtnTitle resizeAtHeight:20 scale:0.8].width);
     }];
     
     [super updateConstraints];
@@ -122,6 +146,23 @@
         _businessLabel = [UILabel new];
     }
     return _businessLabel;
+}
+
+- (UILabel *)deviceLinkedStateLabel {
+    if (!_deviceLinkedStateLabel) {
+        _deviceLinkedStateLabel = [UILabel new];
+        _deviceLinkedStateLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _deviceLinkedStateLabel;
+}
+
+- (UIButton *)deviceConnectBtn {
+    if (!_deviceConnectBtn) {
+        _deviceConnectBtn = [UIButton new];
+        [_deviceConnectBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_deviceConnectBtn setTitleColor:[UIColor colorWithWhite:0.2 alpha:0.3] forState:UIControlStateHighlighted];
+    }
+    return _deviceConnectBtn;
 }
 
 @end
