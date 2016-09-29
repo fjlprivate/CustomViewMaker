@@ -35,10 +35,33 @@
     mainVC.view.backgroundColor = [UIColor whiteColor];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:mainVC];
     UIViewController* leftVC = [[UIViewController alloc] init];
-    leftVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sideMenuPic"]];
+    //leftVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sideMenuPic"]];
+    leftVC.view.backgroundColor = [UIColor colorWithHex:0x27384b];
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    
+    UILabel* leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, screenWidth - (screenWidth * 0.5 * (1 - 0.7)) - 30, 40)];
+    leftLabel.text = @"leftView";
+    leftLabel.font = [UIFont boldSystemFontOfSize:20];
+    leftLabel.textColor = [UIColor whiteColor];
+    leftLabel.textAlignment = NSTextAlignmentCenter;
+    [leftVC.view addSubview:leftLabel];
+    leftLabel.backgroundColor = [UIColor orangeColor];
+    leftLabel.layer.masksToBounds = YES;
+    leftLabel.layer.cornerRadius = 20;
+    
+    UIButton* testBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 100, 40)];
+    [testBtn setTitle:@"testBtn" forState:UIControlStateNormal];
+    [testBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [testBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+    testBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    testBtn.backgroundColor = [UIColor colorWithHex:0xef454b];
+    [leftVC.view addSubview:testBtn];
+    
     
     RESideMenu* sideMenuVC = [[RESideMenu alloc] initWithContentViewController:navi leftMenuViewController:leftVC rightMenuViewController:nil];
     sideMenuVC.scaleMenuView = NO;
+    sideMenuVC.contentViewShadowEnabled = YES;
+    sideMenuVC.parallaxEnabled = NO;
     
     self.window.rootViewController = sideMenuVC;
     

@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KYAnimatedPageControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LTNavigationBar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +57,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F3E0D6A5F81A4B70FA7735E2C713F9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2A2CA91BAF0AA5B559C3404115ED1832</key>
+		<key>335AEFA2FF745C75BA39A6EB7B8A91DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4A31B2A22F4A35E8608C20BDD5824AE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4F12BBFCA7BEB12EE3268EA5AA1FC3D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BB3B56EE6C65643D87B9D2AAD71C2DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C161CC6601558D0AC0609E298FD12367</key>
+		<key>F9C86A2A96DB9D657E56EEA016F8A697</key>
 		<dict>
 			<key>primary</key>
 			<true/>

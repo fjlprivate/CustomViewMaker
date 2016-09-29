@@ -15,6 +15,7 @@
 #import <UIFont+FontAwesome.h>
 #import <NSString+FontAwesome.h>
 #import "NSString+Custom.h"
+#import <RESideMenu.h>
 
 
 @interface MainTransViewController ()
@@ -94,9 +95,21 @@
 # pragma mask 2 IBAction
 
 - (IBAction) clickedUserBarBtn:(UIBarButtonItem*)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIViewController* parentVC = [self parentViewController];
+    if ([parentVC isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)parentVC;
+        [sideMenu presentLeftMenuViewController];
+    }
+    else if ([[parentVC parentViewController] isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)[parentVC parentViewController];
+        [sideMenu presentLeftMenuViewController];
+    }
+
 }
 
+- (IBAction) clickedListBarBtn:(UIBarButtonItem*)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 
@@ -171,7 +184,7 @@
 - (UIBarButtonItem *)userBarBtn {
     if (!_userBarBtn) {
         UIButton* userBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
-        [userBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAUser] forState:UIControlStateNormal];
+        [userBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACog] forState:UIControlStateNormal];
         userBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"teset" resizeFontAtHeight:28 scale:0.9]];
         [userBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [userBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
@@ -188,6 +201,7 @@
         billListBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"teset" resizeFontAtHeight:25 scale:0.8]];
         [billListBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [billListBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+        [billListBtn addTarget:self action:@selector(clickedListBarBtn:) forControlEvents:UIControlEventTouchUpInside];
         _billListBarBtn = [[UIBarButtonItem alloc] initWithCustomView:billListBtn];
     }
     return _billListBarBtn;

@@ -12,6 +12,9 @@ pod 'LTNavigationBar', '~> 2.1.6'
 pod 'CustomIOSAlertView', '~> 0.9.3'
 pod 'RESideMenu', '~> 4.0.7'
 
+# 带阻尼效果的页数控制器
+pod 'KYAnimatedPageControl', '~> 1.0.5'
+
 end
 
 target 'CustomViewMakerTests' do

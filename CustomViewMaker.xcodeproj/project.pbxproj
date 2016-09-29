@@ -12,6 +12,9 @@
 		5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */; };
 		5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */; };
 		5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */; };
+		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
+		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
+		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
 		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
@@ -100,6 +103,12 @@
 		5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_screenView.m; sourceTree = "<group>"; };
 		5E3CB41E1D94C3B90036C1FB /* MTVC_keybordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_keybordView.h; sourceTree = "<group>"; };
 		5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_keybordView.m; sourceTree = "<group>"; };
+		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
+		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
+		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
+		5E3CB4471D9CA4B00036C1FB /* DampingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DampingView.m; sourceTree = "<group>"; };
+		5E3CB4491D9CA4D50036C1FB /* DampingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingLayer.h; sourceTree = "<group>"; };
+		5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DampingLayer.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
 		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
@@ -304,6 +313,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */,
+				5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */,
+				5E3CB4461D9CA4B00036C1FB /* DampingView.h */,
+				5E3CB4471D9CA4B00036C1FB /* DampingView.m */,
+				5E3CB4491D9CA4D50036C1FB /* DampingLayer.h */,
+				5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */,
+			);
+			path = TestForKYAnimationPageController;
+			sourceTree = "<group>";
+		};
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +393,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */,
 				5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */,
 				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
 				5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */,
@@ -989,6 +1012,7 @@
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
+				5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */,
 				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
@@ -1017,12 +1041,14 @@
 				5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
+				5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
 				9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */,
 				5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
+				5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */,
 				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,

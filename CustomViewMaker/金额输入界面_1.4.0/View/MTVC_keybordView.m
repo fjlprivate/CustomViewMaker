@@ -55,7 +55,6 @@
         frame.origin.x = self.inset + (btnWidth + self.inset) * (i%3);
         frame.origin.y = self.inset + (btnHeight + self.inset) * (i/3);
 
-        
         UIButton* numberBtn = [self.numberBtnList objectAtIndex:i];
         [numberBtn setFrame:frame];
         numberBtn.layer.cornerRadius = btnHeight * 0.5;
@@ -67,8 +66,9 @@
         } else {
             numberBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         }
-        
     }
+    
+    
 }
 
 # pragma mask 2 IBAction
@@ -116,7 +116,6 @@
             } else if (i == 12) {
                 title = [NSString fontAwesomeIconStringForEnum:FABackward];
             }
-            
             
             [numberBtn setTitle:title forState:UIControlStateNormal];
             [numberBtn setTitleColor:self.numBtnTextColor forState:UIControlStateNormal];

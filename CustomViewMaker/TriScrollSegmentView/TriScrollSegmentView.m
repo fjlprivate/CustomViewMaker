@@ -279,7 +279,7 @@ static BOOL firstLayout = YES;
     if (!_itemView0) {
         _itemView0 = [[MSSV_itemView alloc] init];
         _itemView0.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView0.layer.borderWidth = 2;
+        //_itemView0.layer.borderWidth = 2;
     }
     return _itemView0;
 }
@@ -288,7 +288,7 @@ static BOOL firstLayout = YES;
     if (!_itemView1) {
         _itemView1 = [[MSSV_itemView alloc] init];
         _itemView1.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView1.layer.borderWidth = 2;
+        //_itemView1.layer.borderWidth = 2;
 
     }
     return _itemView1;
@@ -298,7 +298,7 @@ static BOOL firstLayout = YES;
     if (!_itemView2) {
         _itemView2 = [[MSSV_itemView alloc] init];
         _itemView2.layer.borderColor = [UIColor whiteColor].CGColor;
-        _itemView2.layer.borderWidth = 2;
+        //_itemView2.layer.borderWidth = 2;
     }
     return _itemView2;
 }

@@ -109,6 +109,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"阻尼动画pageContr"];
         [_btnTitles addObject:@"金额输入界面"];
         [_btnTitles addObject:@"more滚动子切换"];
         [_btnTitles addObject:@"3个滚动子切换"];
@@ -152,6 +153,7 @@
         [_dicVCNameAndTitles setObject:@"TestForTriScrollSegVC" forKey:@"3个滚动子切换"];
         [_dicVCNameAndTitles setObject:@"TestForMoreSegScrollView" forKey:@"more滚动子切换"];
         [_dicVCNameAndTitles setObject:@"MainTransViewController" forKey:@"金额输入界面"];
+        [_dicVCNameAndTitles setObject:@"TestForKYAnimationPageViewController" forKey:@"阻尼动画pageContr"];
     }
     return _dicVCNameAndTitles;
 }
