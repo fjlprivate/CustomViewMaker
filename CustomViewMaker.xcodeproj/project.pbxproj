@@ -15,6 +15,8 @@
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
+		5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */; };
+		5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
 		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
@@ -109,6 +111,10 @@
 		5E3CB4471D9CA4B00036C1FB /* DampingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DampingView.m; sourceTree = "<group>"; };
 		5E3CB4491D9CA4D50036C1FB /* DampingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingLayer.h; sourceTree = "<group>"; };
 		5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DampingLayer.m; sourceTree = "<group>"; };
+		5E3CB44D1D9DFF4D0036C1FB /* TestForCAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForCAViewController.h; sourceTree = "<group>"; };
+		5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForCAViewController.m; sourceTree = "<group>"; };
+		5E3CB4501D9DFFB40036C1FB /* CoreAniLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAniLayer.h; sourceTree = "<group>"; };
+		5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAniLayer.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
 		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
@@ -326,6 +332,17 @@
 			path = TestForKYAnimationPageController;
 			sourceTree = "<group>";
 		};
+		5E3CB44C1D9DFF340036C1FB /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB44D1D9DFF4D0036C1FB /* TestForCAViewController.h */,
+				5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */,
+				5E3CB4501D9DFFB40036C1FB /* CoreAniLayer.h */,
+				5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */,
+			);
+			path = CoreAnimation;
+			sourceTree = "<group>";
+		};
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +410,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E3CB44C1D9DFF340036C1FB /* CoreAnimation */,
 				5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */,
 				5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */,
 				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
@@ -1056,11 +1074,13 @@
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
+				5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
+				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

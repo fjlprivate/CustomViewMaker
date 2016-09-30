@@ -47,10 +47,13 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     CGFloat btnWidth = (self.bounds.size.width - self.inset * 4) / 3;
     CGFloat btnHeight = (self.bounds.size.height - self.inset * 5) / 4;
     CGRect frame = CGRectMake(self.inset, self.inset, btnWidth, btnHeight);
     
+    NSLog(@"----正在重新布局 MTVC_keybordView");
     for (int i = 0; i < self.numberBtnList.count; i++) {
         frame.origin.x = self.inset + (btnWidth + self.inset) * (i%3);
         frame.origin.y = self.inset + (btnHeight + self.inset) * (i/3);
@@ -67,22 +70,47 @@
             numberBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         }
     }
-    
-    
 }
+
+- (void)updateConstraints {
+    
+    for (int i = 0; i < self.numberBtnList.count; i++) {
+        
+    }
+    
+    
+    
+    
+    [super updateConstraints];
+}
+
+
+
+
 
 # pragma mask 2 IBAction
 
 - (IBAction) clickedNumBtnDown:(UIButton*)numBtn {
-    numBtn.alpha = 0.3;
+    //numBtn.alpha = 0.3;
+    [UIView animateWithDuration:0.2 animations:^{
+        numBtn.transform = CGAffineTransformMakeScale(0.9, 0.9);
+    }];
 }
 
 - (IBAction) clickedNumBtnUpOutside:(UIButton*)numBtn {
-    numBtn.alpha = 1;
+    //numBtn.alpha = 1;
+    [UIView animateWithDuration:0.2 animations:^{
+        numBtn.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+
 }
 
 - (IBAction) clickedNumBtnUpInside:(UIButton*)numBtn {
-    numBtn.alpha = 1;
+    //numBtn.alpha = 1;
+    [UIView animateWithDuration:0.2 animations:^{
+        numBtn.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+
 }
 
 

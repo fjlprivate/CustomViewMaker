@@ -39,14 +39,12 @@
     self.title = @"商户收款";
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadSubviews];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
 }
+
 
 - (void) loadSubviews {
     [self.view addSubview:self.screenView];
@@ -62,7 +60,7 @@
 
 - (void)updateViewConstraints {
     
- CGFloat triSwitchVHeight = self.view.frame.size.height * 1/6.5;
+    CGFloat triSwitchVHeight = self.view.frame.size.height * 1/6.5;
     CGFloat inset = 15;
     
     CGFloat keyBordVHeight = (self.view.frame.size.height - triSwitchVHeight - 64) * 0.5;
@@ -104,7 +102,6 @@
         RESideMenu* sideMenu = (RESideMenu*)[parentVC parentViewController];
         [sideMenu presentLeftMenuViewController];
     }
-
 }
 
 - (IBAction) clickedListBarBtn:(UIBarButtonItem*)sender {

@@ -129,6 +129,7 @@ static BOOL firstLayout = YES;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint curOffset = self.contentOffset;
+    
     if (self.contentOffset.x > self.itemSize.width) {
         self.curSegIndex = (self.curSegIndex == self.segInfos.count - 1) ? (0) : (self.curSegIndex + 1);
         curOffset.x = 0;
@@ -180,8 +181,17 @@ static BOOL firstLayout = YES;
     
     if (CGRectContainsPoint(self.itemView1.frame, clickedPoint) && self.midItemViewClicked) {
         self.midItemViewClicked();
+        __weak typeof(self) wself = self;
+        /* 冒泡动效 */
+        [UIView animateWithDuration:0.1 animations:^{
+            wself.itemView1.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                wself.itemView1.transform = CGAffineTransformMakeScale(1, 1);
+            }];
+        }];
     }
-    
+
 }
 
 
