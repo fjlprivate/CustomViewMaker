@@ -27,7 +27,9 @@
     [navigationBar setTintColor:[UIColor whiteColor]];
     [navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjects:@[[UIColor whiteColor], [UIFont boldSystemFontOfSize:15]]
                                                                                      forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]]];
-    [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+    [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b]];
+   // [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
+
     [navigationBar setBarStyle:UIBarStyleBlack];
     [navigationBar setShadowImage:[UIImage new]];
     

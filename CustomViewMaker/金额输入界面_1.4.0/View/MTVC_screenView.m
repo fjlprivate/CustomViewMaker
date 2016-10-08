@@ -67,6 +67,8 @@
 
 - (void)updateConstraints {
     
+    self.moneyLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:40 scale:1]];
+
     self.settleTypeLabel.layer.masksToBounds = YES;
     self.settleTypeLabel.layer.cornerRadius = 10;
     self.settleTypeLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
@@ -84,7 +86,6 @@
         make.centerY.mas_equalTo(wself.mas_centerY);
         make.height.mas_equalTo(30);
     }];
-    self.moneyLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:30 scale:1]];
     
     [self.settleTypeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(15);

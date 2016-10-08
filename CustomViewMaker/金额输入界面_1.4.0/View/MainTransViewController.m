@@ -55,13 +55,11 @@
 }
 
 
-
-
-
 - (void)updateViewConstraints {
     
     CGFloat triSwitchVHeight = self.view.frame.size.height * 1/6.5;
-    CGFloat inset = 15;
+    CGFloat inset = [UIScreen mainScreen].bounds.size.width * 15/320.f;
+    self.screenView.layer.cornerRadius = inset;
     
     CGFloat keyBordVHeight = (self.view.frame.size.height - triSwitchVHeight - 64) * 0.5;
     
@@ -115,18 +113,21 @@
 - (MTVC_screenView *)screenView {
     if (!_screenView) {
         _screenView = [[MTVC_screenView alloc] init];
-        _screenView.moneyLabel.textColor = [UIColor colorWithHex:0x27384b];
-        _screenView.layer.cornerRadius = 15;
-        _screenView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
+        _screenView.moneyLabel.textColor = [UIColor colorWithHex:0xffd300];
+//        _screenView.moneyLabel.textColor = [UIColor colorWithHex:0x27384b];
+        _screenView.backgroundColor = [UIColor colorWithHex:0x27384b];
+//        _screenView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
         _screenView.moneyLabel.text = @"￥1.00";
         _screenView.settleTypeLabel.text = @"T+0";
         _screenView.settleTypeLabel.backgroundColor = [UIColor colorWithHex:0xef454b];
         _screenView.settleTypeLabel.textColor = [UIColor whiteColor];
         _screenView.businessLabel.text = @"我的商户:阿迪奥斯逻辑店";
-        _screenView.businessLabel.textColor = [UIColor colorWithHex:0x27384b alpha:0.9];
+        _screenView.businessLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+//        _screenView.businessLabel.textColor = [UIColor colorWithHex:0x27384b alpha:0.9];
         _screenView.deviceLinkedStateLabel.text = [NSString fontAwesomeIconStringForEnum:FAExclamationCircle];
         _screenView.deviceLinkedStateLabel.textColor = [UIColor colorWithHex:0xef454b];
         _screenView.deviceCBtnTitle = @"请点我,您还未绑定设备!";
+        [_screenView.deviceConnectBtn setTitleColor:[UIColor colorWithHex:0xffd300] forState:UIControlStateNormal];
     }
     return _screenView;
 }
