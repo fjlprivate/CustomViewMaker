@@ -19,27 +19,25 @@
 /* 按钮组 */
 @property (nonatomic, strong) NSArray<UIButton*>* numberBtnList;
 
+/* 按钮点击事件 */
+@property (nonatomic, copy) void (^ numberBtnClickedBlock) (NSInteger number);
+
 @end
+
 
 
 @implementation MTVC_keybordView
 
 
-- (instancetype)init {
+- (instancetype) initWithClickedBlock: (void (^) (NSInteger number)) clickedBlock {
     self = [super init];
-    if ( self) {
+    if (self) {
+        self.numberBtnClickedBlock = clickedBlock;
         [self loadSubviews];
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self loadSubviews];
-    }
-    return self;
-}
 
 - (void) loadSubviews {
     for (UIButton* numberBtn in self.numberBtnList) {
@@ -55,13 +53,10 @@
         numberBtn.layer.cornerRadius = numberBtn.frame.size.height * 0.5;
         [numberBtn setTitleColor:self.numBtnTextColor forState:UIControlStateNormal];
         numberBtn.backgroundColor = self.numBtnBackColor;
-        
     }
 }
 
 - (void)updateConstraints {
-    NSLog(@"----正在重新布局 updateConstraints");
-
     CGFloat inset = [UIScreen mainScreen].bounds.size.width * 9.f/320.f;
     
     UIView* numberBtn1 = [self.numberBtnList objectAtIndex:0];
@@ -179,8 +174,6 @@
         make.bottom.mas_equalTo(numberBtnClear.mas_bottom);
         make.width.mas_equalTo(@[numberBtnClear, numberBtn0]);
     }];
-
-
     
     [super updateConstraints];
 }
@@ -192,18 +185,18 @@
 # pragma mask 2 IBAction
 
 - (IBAction) clickedNumBtnDown:(UIButton*)numBtn {
-    //numBtn.alpha = 0.3;
     numBtn.transform = CGAffineTransformMakeScale(0.9, 0.9);
 }
 
 - (IBAction) clickedNumBtnUpOutside:(UIButton*)numBtn {
-    //numBtn.alpha = 1;
     numBtn.transform = CGAffineTransformMakeScale(1, 1);
 }
 
 - (IBAction) clickedNumBtnUpInside:(UIButton*)numBtn {
-    //numBtn.alpha = 1;
     numBtn.transform = CGAffineTransformMakeScale(1, 1);
+    if (self.numberBtnClickedBlock) {
+        self.numberBtnClickedBlock(numBtn.tag);
+    }
 }
 
 
@@ -236,7 +229,9 @@
                 title = @"0";
             } else if (i == 12) {
                 title = [NSString fontAwesomeIconStringForEnum:FABackward];
+            } else {
             }
+            numberBtn.tag = i;
             
             [numberBtn setTitle:title forState:UIControlStateNormal];
             [numberBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];

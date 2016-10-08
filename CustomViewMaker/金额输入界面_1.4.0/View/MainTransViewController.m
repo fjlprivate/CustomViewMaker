@@ -34,6 +34,32 @@
 
 @implementation MainTransViewController
 
+# pragma mask 1 IBAction
+
+/* 点击了菜单按钮 */
+- (IBAction) clickedUserBarBtn:(UIBarButtonItem*)sender {
+    UIViewController* parentVC = [self parentViewController];
+    if ([parentVC isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)parentVC;
+        [sideMenu presentLeftMenuViewController];
+    }
+    else if ([[parentVC parentViewController] isKindOfClass:[RESideMenu class]]) {
+        RESideMenu* sideMenu = (RESideMenu*)[parentVC parentViewController];
+        [sideMenu presentLeftMenuViewController];
+    }
+}
+
+/* 点击了清单按钮 */
+- (IBAction) clickedListBarBtn:(UIBarButtonItem*)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
+
+# pragma mask 3 界面布局
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商户收款";
@@ -88,23 +114,6 @@
 }
 
 
-# pragma mask 2 IBAction
-
-- (IBAction) clickedUserBarBtn:(UIBarButtonItem*)sender {
-    UIViewController* parentVC = [self parentViewController];
-    if ([parentVC isKindOfClass:[RESideMenu class]]) {
-        RESideMenu* sideMenu = (RESideMenu*)parentVC;
-        [sideMenu presentLeftMenuViewController];
-    }
-    else if ([[parentVC parentViewController] isKindOfClass:[RESideMenu class]]) {
-        RESideMenu* sideMenu = (RESideMenu*)[parentVC parentViewController];
-        [sideMenu presentLeftMenuViewController];
-    }
-}
-
-- (IBAction) clickedListBarBtn:(UIBarButtonItem*)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 
@@ -114,16 +123,13 @@
     if (!_screenView) {
         _screenView = [[MTVC_screenView alloc] init];
         _screenView.moneyLabel.textColor = [UIColor colorWithHex:0xffd300];
-//        _screenView.moneyLabel.textColor = [UIColor colorWithHex:0x27384b];
         _screenView.backgroundColor = [UIColor colorWithHex:0x27384b];
-//        _screenView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
         _screenView.moneyLabel.text = @"￥1.00";
         _screenView.settleTypeLabel.text = @"T+0";
         _screenView.settleTypeLabel.backgroundColor = [UIColor colorWithHex:0xef454b];
         _screenView.settleTypeLabel.textColor = [UIColor whiteColor];
         _screenView.businessLabel.text = @"我的商户:阿迪奥斯逻辑店";
         _screenView.businessLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
-//        _screenView.businessLabel.textColor = [UIColor colorWithHex:0x27384b alpha:0.9];
         _screenView.deviceLinkedStateLabel.text = [NSString fontAwesomeIconStringForEnum:FAExclamationCircle];
         _screenView.deviceLinkedStateLabel.textColor = [UIColor colorWithHex:0xef454b];
         _screenView.deviceCBtnTitle = @"请点我,您还未绑定设备!";
@@ -134,9 +140,11 @@
 
 - (MTVC_keybordView *)keybordView {
     if (!_keybordView) {
-        _keybordView = [[MTVC_keybordView alloc] init];
+        _keybordView = [[MTVC_keybordView alloc] initWithClickedBlock:^(NSInteger number) {
+            NSLog(@"----点击了按钮:[%ld]", number);
+        }];
         _keybordView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
-        _keybordView.numBtnBackColor = [UIColor colorWithHex:0x27384b];
+        _keybordView.numBtnBackColor = [UIColor colorWithHex:HexColorTypeDarkCyan];
         _keybordView.numBtnTextColor = [UIColor whiteColor];
         _keybordView.inset = 8;
     }

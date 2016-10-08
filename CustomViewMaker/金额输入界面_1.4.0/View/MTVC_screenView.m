@@ -67,34 +67,40 @@
 
 - (void)updateConstraints {
     
-    self.moneyLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:40 scale:1]];
+    CGFloat littleLabelHeight = [UIScreen mainScreen].bounds.size.height * 20/568.f;
+    CGFloat moneyLabHeight = [UIScreen mainScreen].bounds.size.height * 35/568.f;
+    CGFloat settleTypeLabWidth = [UIScreen mainScreen].bounds.size.width * 52/320.f;
+    CGFloat inset = [UIScreen mainScreen].bounds.size.height * 15/568.f;
+    
+    
+    self.moneyLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:moneyLabHeight scale:1]];
 
     self.settleTypeLabel.layer.masksToBounds = YES;
-    self.settleTypeLabel.layer.cornerRadius = 10;
-    self.settleTypeLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
+    self.settleTypeLabel.layer.cornerRadius = littleLabelHeight * 0.5;
+    self.settleTypeLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:littleLabelHeight scale:0.7]];
 
-    self.businessLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
-    UIFont* maxTextFont = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:1]];
+    self.businessLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:littleLabelHeight scale:0.7]];
+    UIFont* maxTextFont = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:littleLabelHeight scale:1]];
 
-    self.deviceLinkedStateLabel.font = [UIFont fontAwesomeFontOfSize:[@"tet" resizeFontAtHeight:20 scale:1]];
-    self.deviceConnectBtn.titleLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:20 scale:0.7]];
+    self.deviceLinkedStateLabel.font = [UIFont fontAwesomeFontOfSize:[@"tet" resizeFontAtHeight:littleLabelHeight scale:1]];
+    self.deviceConnectBtn.titleLabel.font = [UIFont boldSystemFontOfSize:[@"test" resizeFontAtHeight:littleLabelHeight scale:0.7]];
     __weak typeof(self) wself = self;
     
     
     [self.moneyLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.centerY.mas_equalTo(wself.mas_centerY);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(moneyLabHeight);
     }];
     
     [self.settleTypeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.top.mas_equalTo(15);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(52);
+        make.left.top.mas_equalTo(inset);
+        make.height.mas_equalTo(littleLabelHeight);
+        make.width.mas_equalTo(settleTypeLabWidth);
     }];
     
     [self.businessLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(wself.settleTypeLabel.mas_right).offset(10);
+        make.left.mas_equalTo(wself.settleTypeLabel.mas_right).offset(inset * 0.5);
         make.top.bottom.mas_equalTo(wself.settleTypeLabel);
         make.width.mas_equalTo([wself.businessLabel.text sizeWithAttributes:@{NSFontAttributeName:maxTextFont}].width);
     }];
@@ -106,15 +112,15 @@
     }];
     
     [self.deviceLinkedStateLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.width.height.mas_equalTo(20);
-        make.bottom.mas_equalTo(- 15);
+        make.left.mas_equalTo(inset);
+        make.width.height.mas_equalTo(littleLabelHeight);
+        make.bottom.mas_equalTo(- inset);
     }];
     
     [self.deviceConnectBtn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(wself.deviceLinkedStateLabel.mas_right).offset(0);
         make.top.bottom.mas_equalTo(wself.deviceLinkedStateLabel);
-        make.width.mas_equalTo([wself.deviceCBtnTitle resizeAtHeight:20 scale:0.8].width);
+        make.width.mas_equalTo([wself.deviceCBtnTitle resizeAtHeight:littleLabelHeight scale:0.8].width);
     }];
     
     [super updateConstraints];

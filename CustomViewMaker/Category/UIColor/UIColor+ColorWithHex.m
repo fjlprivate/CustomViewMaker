@@ -15,7 +15,10 @@
     NSInteger red = (hexInt & 0xff0000) >> 16;
     NSInteger green = (hexInt & 0x00ff00) >> 8;
     NSInteger blue = hexInt & 0x0000ff;
-    return [UIColor colorWithRed:(CGFloat)red/(CGFloat)0xff green:(CGFloat)green/(CGFloat)0xff blue:(CGFloat)blue/(CGFloat)0xff alpha:alpha];
+    return [UIColor colorWithRed:(CGFloat)red/(CGFloat)0xff
+                           green:(CGFloat)green/(CGFloat)0xff
+                            blue:(CGFloat)blue/(CGFloat)0xff
+                           alpha:alpha];
 }
 
 
@@ -23,7 +26,10 @@
     NSInteger red = (hexInt & 0xff0000) >> 16;
     NSInteger green = (hexInt & 0x00ff00) >> 8;
     NSInteger blue = hexInt & 0x0000ff;
-    return [UIColor colorWithRed:(CGFloat)red/(CGFloat)0xff green:(CGFloat)green/(CGFloat)0xff blue:(CGFloat)blue/(CGFloat)0xff alpha:1];
+    return [UIColor colorWithRed:(CGFloat)red/(CGFloat)0xff
+                           green:(CGFloat)green/(CGFloat)0xff
+                            blue:(CGFloat)blue/(CGFloat)0xff
+                           alpha:1];
 }
 
 @end
