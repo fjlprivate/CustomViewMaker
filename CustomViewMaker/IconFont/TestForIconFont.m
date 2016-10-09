@@ -9,18 +9,22 @@
 #import "TestForIconFont.h"
 #import "UIColor+ColorWithHex.h"
 #import <UINavigationBar+Awesome.h>
+#import "FontAwesomeIconFontCell.h"
+#import "ModelFontAwesomeType.h"
+#import <NSString+FontAwesome.h>
+#import <UIFont+FontAwesome.h>
+
+
+@interface TestForIconFont()
+<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) UICollectionView* fontCollectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout* flowLayout;
+
+
+@end
 
 
 @implementation TestForIconFont
-
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 
 - (void)viewDidLoad {
@@ -28,39 +32,59 @@
     self.title = @"IconFont";
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadSubviews];
-    [self layoutSubviews];
-    
-    
-    for (NSString* family in [UIFont familyNames]) {
-        if ([family hasPrefix:@"icon"] || [family hasPrefix:@"Icon"]) {
-            NSLog(@"%@:", family);
-            for (NSString* name in [UIFont fontNamesForFamilyName:family]) {
-                NSLog(@"  %@", name);
-            }
-        }
-    }
-    
+    //[self layoutSubviews];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0xef454b]];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    [self.navigationController.navigationBar lt_reset];
-}
 
 - (void) loadSubviews {
+    [self.view addSubview:self.fontCollectionView];
+    /*
     [self.view addSubview:self.iconFontLabel];
     for (UILabel* label in self.labels) {
         [self.view addSubview:label];
     }
+     */
 }
+
+
+
+
+# pragma mask UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [ModelFontAwesomeType curFontAwesomeTypeList].count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FontAwesomeIconFontCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fontCell" forIndexPath:indexPath];
+    
+    NSArray* fontArray = [ModelFontAwesomeType curFontAwesomeTypeList];
+    cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:indexPath.row];
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@", [fontArray objectAtIndex:indexPath.row]];
+    cell.indexLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    
+    return cell;
+}
+
+
+# pragma mask UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsZero;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+
+
+
 - (void) layoutSubviews {
     __weak typeof(self) wself = self;
     
@@ -74,13 +98,6 @@
             make.height.mas_equalTo(labelHeight);
         }];
     }
-    
-//    [self.iconFontLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(wself.view.mas_centerX);
-//        make.centerY.equalTo(wself.view.mas_centerY);
-//        make.width.equalTo(wself.view.mas_width).multipliedBy(0.38);
-//        make.height.mas_equalTo(60);
-//    }];
     
 }
 
@@ -100,6 +117,35 @@
 
 
 # pragma mask 4 getter
+
+
+- (UICollectionView *)fontCollectionView {
+    if (!_fontCollectionView) {
+        _fontCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
+        [_fontCollectionView registerClass:[FontAwesomeIconFontCell class] forCellWithReuseIdentifier:@"fontCell"];
+        _fontCollectionView.dataSource = self;
+        _fontCollectionView.delegate = self;
+        _fontCollectionView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
+    }
+    return _fontCollectionView;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout {
+    if (!_flowLayout) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(self.view.frame.size.width / 4.f, self.view.frame.size.width / 4.f);
+        _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _flowLayout.headerReferenceSize = CGSizeZero;
+        _flowLayout.footerReferenceSize = CGSizeZero;
+    }
+    return _flowLayout;
+}
+
+
+
+
+
+
 - (UILabel *)iconFontLabel {
     if (!_iconFontLabel) {
         _iconFontLabel = [UILabel new];

@@ -17,6 +17,13 @@
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
 		5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */; };
 		5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */; };
+		5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */; };
+		5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */; };
+		5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */; };
+		5E3CB4631DAA32250036C1FB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4621DAA32250036C1FB /* LeftMenuViewController.m */; };
+		5E3CB4661DAA32FD0036C1FB /* LMVC_userHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4651DAA32FD0036C1FB /* LMVC_userHeadView.m */; };
+		5E3CB4691DAA37400036C1FB /* LMVC_logoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4681DAA37400036C1FB /* LMVC_logoutButton.m */; };
+		5E3CB46C1DAA47B90036C1FB /* LMVC_menuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB46B1DAA47B90036C1FB /* LMVC_menuCell.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
 		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
@@ -115,6 +122,20 @@
 		5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForCAViewController.m; sourceTree = "<group>"; };
 		5E3CB4501D9DFFB40036C1FB /* CoreAniLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAniLayer.h; sourceTree = "<group>"; };
 		5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAniLayer.m; sourceTree = "<group>"; };
+		5E3CB4541DA9D7AF0036C1FB /* TestForWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForWebViewController.h; sourceTree = "<group>"; };
+		5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForWebViewController.m; sourceTree = "<group>"; };
+		5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeIconFontCell.h; sourceTree = "<group>"; };
+		5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesomeIconFontCell.m; sourceTree = "<group>"; };
+		5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFontAwesomeType.h; sourceTree = "<group>"; };
+		5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFontAwesomeType.m; sourceTree = "<group>"; };
+		5E3CB4611DAA32250036C1FB /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		5E3CB4621DAA32250036C1FB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		5E3CB4641DAA32FD0036C1FB /* LMVC_userHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_userHeadView.h; sourceTree = "<group>"; };
+		5E3CB4651DAA32FD0036C1FB /* LMVC_userHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_userHeadView.m; sourceTree = "<group>"; };
+		5E3CB4671DAA37400036C1FB /* LMVC_logoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_logoutButton.h; sourceTree = "<group>"; };
+		5E3CB4681DAA37400036C1FB /* LMVC_logoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_logoutButton.m; sourceTree = "<group>"; };
+		5E3CB46A1DAA47B90036C1FB /* LMVC_menuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_menuCell.h; sourceTree = "<group>"; };
+		5E3CB46B1DAA47B90036C1FB /* LMVC_menuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_menuCell.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
 		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
@@ -343,11 +364,39 @@
 			path = CoreAnimation;
 			sourceTree = "<group>";
 		};
+		5E3CB4531DA9D7490036C1FB /* TestForWebView */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB4541DA9D7AF0036C1FB /* TestForWebViewController.h */,
+				5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */,
+			);
+			path = TestForWebView;
+			sourceTree = "<group>";
+		};
+		5E3CB4601DAA32250036C1FB /* 左侧菜单界面 */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB4611DAA32250036C1FB /* LeftMenuViewController.h */,
+				5E3CB4621DAA32250036C1FB /* LeftMenuViewController.m */,
+				5E3CB4641DAA32FD0036C1FB /* LMVC_userHeadView.h */,
+				5E3CB4651DAA32FD0036C1FB /* LMVC_userHeadView.m */,
+				5E3CB4671DAA37400036C1FB /* LMVC_logoutButton.h */,
+				5E3CB4681DAA37400036C1FB /* LMVC_logoutButton.m */,
+				5E3CB46A1DAA47B90036C1FB /* LMVC_menuCell.h */,
+				5E3CB46B1DAA47B90036C1FB /* LMVC_menuCell.m */,
+			);
+			path = "左侧菜单界面";
+			sourceTree = "<group>";
+		};
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
 			isa = PBXGroup;
 			children = (
 				5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */,
 				5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */,
+				5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */,
+				5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */,
+				5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */,
+				5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */,
 			);
 			path = IconFont;
 			sourceTree = "<group>";
@@ -410,13 +459,14 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E3CB4531DA9D7490036C1FB /* TestForWebView */,
 				5E3CB44C1D9DFF340036C1FB /* CoreAnimation */,
 				5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */,
+				5E3CB4601DAA32250036C1FB /* 左侧菜单界面 */,
 				5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */,
 				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
 				5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */,
 				5EDA73A21D864F33000606A6 /* Label自动布局 */,
-				9E156FB11CA2D3F300244876 /* Category */,
 				5E51A9CB1D1B95F700C6FB91 /* CustomIOSAlertView */,
 				9E39A2931CFDC9260035B89C /* JLPay_SignIn */,
 				5E51A7F21D13A34A00C6FB91 /* IconFont */,
@@ -433,6 +483,7 @@
 				5EA2DF2B1C91116200770353 /* CustomCheckView */,
 				5EA2DF591C929DF600770353 /* CAShapeLayer */,
 				5EA2DF5D1C96A5A600770353 /* ConcentricCirclesCheckView */,
+				9E156FB11CA2D3F300244876 /* Category */,
 				5EA2DEFB1C91110D00770353 /* AppDelegate.h */,
 				5EA2DEFC1C91110D00770353 /* AppDelegate.m */,
 				5EA2DEFE1C91110D00770353 /* ViewController.h */,
@@ -1027,15 +1078,18 @@
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
+				5E3CB4631DAA32250036C1FB /* LeftMenuViewController.m in Sources */,
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
 				5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */,
 				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
+				5E3CB4661DAA32FD0036C1FB /* LMVC_userHeadView.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
+				5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
 				5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */,
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
@@ -1047,6 +1101,7 @@
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
 				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
+				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
@@ -1059,7 +1114,9 @@
 				5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
+				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
 				5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */,
+				5E3CB46C1DAA47B90036C1FB /* LMVC_menuCell.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
@@ -1082,6 +1139,7 @@
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				5E3CB4691DAA37400036C1FB /* LMVC_logoutButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

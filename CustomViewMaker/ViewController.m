@@ -109,6 +109,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"测试webView"];
         [_btnTitles addObject:@"CoreAnimation动画"];
         [_btnTitles addObject:@"阻尼动画pageContr"];
         [_btnTitles addObject:@"金额输入界面"];
@@ -156,6 +157,7 @@
         [_dicVCNameAndTitles setObject:@"MainTransViewController" forKey:@"金额输入界面"];
         [_dicVCNameAndTitles setObject:@"TestForKYAnimationPageViewController" forKey:@"阻尼动画pageContr"];
         [_dicVCNameAndTitles setObject:@"TestForCAViewController" forKey:@"CoreAnimation动画"];
+        [_dicVCNameAndTitles setObject:@"TestForWebViewController" forKey:@"测试webView"];
     }
     return _dicVCNameAndTitles;
 }
