@@ -10,7 +10,7 @@
 #import "UIColor+ColorWithHex.h"
 
 
-@interface LeftMenuViewController ()
+@interface LeftMenuViewController () <UITableViewDelegate>
 
 @property (nonatomic, strong) CAGradientLayer* gradientColorLayer;
 
@@ -19,6 +19,12 @@
 
 @implementation LeftMenuViewController
 
+
+# pragma mask 2 UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 
 
@@ -107,9 +113,18 @@
         _menuTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _menuTableView.backgroundColor = [UIColor clearColor];
         _menuTableView.tableFooterView = [UIView new];
+        _menuTableView.dataSource = self.modelMenuData;
+        _menuTableView.delegate = self;
+        _menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _menuTableView;
 }
 
+- (LMVC_modelMenuData *)modelMenuData {
+    if (!_modelMenuData) {
+        _modelMenuData = [[LMVC_modelMenuData alloc] init];
+    }
+    return _modelMenuData;
+}
 
 @end
