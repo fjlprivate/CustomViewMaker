@@ -7,8 +7,32 @@
 //
 
 #import "ModelFontAwesomeType.h"
+#import "MFontAwesomeNode.h"
+
 
 @implementation ModelFontAwesomeType
+
+/* iconfont name+key组 */
++ (NSArray*) fontAwesomeNameAndKeyList {
+    NSMutableArray* nameAndKeys = [NSMutableArray array];
+    NSArray* iconfontList = [self curFontAwesomeTypeList];
+    for (int i = 0; i < iconfontList.count; i++) {
+        [nameAndKeys addObject:[MFontAwesomeNode fontAwesomeWithName:[iconfontList objectAtIndex:i] key:i]];
+    }
+    return nameAndKeys;
+}
+
+
+/* iconfont 字典组:<name, key> */
++ (NSArray*) fontAwesomeDictionaryList {
+    NSMutableArray* nameAndKeys = [NSMutableArray array];
+    NSArray* iconfontList = [self curFontAwesomeTypeList];
+    for (int i = 0; i < iconfontList.count; i++) {
+        [nameAndKeys addObject:[NSDictionary dictionaryWithObjects:@[[iconfontList objectAtIndex:i], @(i)] forKeys:@[@"name",@"key"]]];
+    }
+    return nameAndKeys;
+}
+
 
 + (NSArray*) curFontAwesomeTypeList {
     return @[ @"FAGlass",

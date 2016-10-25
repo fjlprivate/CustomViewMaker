@@ -68,6 +68,9 @@
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
+		5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */; };
+		5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */; };
+		5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */; };
 		5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3361D91271800FBB63D /* TSSV_itemView.m */; };
 		5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3391D921FF200FBB63D /* WHScrollAndPageView.m */; };
 		5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73A41D864F7E000606A6 /* LabelAutoresize.m */; };
@@ -227,6 +230,12 @@
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForStepSegmentView.m; sourceTree = "<group>"; };
+		5EC3DF321DBF01830014A4A1 /* IconFont_dataSourceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFont_dataSourceFilter.h; sourceTree = "<group>"; };
+		5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFont_dataSourceFilter.m; sourceTree = "<group>"; };
+		5EC3DF351DBF2C690014A4A1 /* MFontAwesomeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFontAwesomeNode.h; sourceTree = "<group>"; };
+		5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFontAwesomeNode.m; sourceTree = "<group>"; };
+		5EC3DF3B1DBF4A110014A4A1 /* IconFontHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFontHeaderView.h; sourceTree = "<group>"; };
+		5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFontHeaderView.m; sourceTree = "<group>"; };
 		5ECFD3351D91271800FBB63D /* TSSV_itemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSV_itemView.h; sourceTree = "<group>"; };
 		5ECFD3361D91271800FBB63D /* TSSV_itemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSV_itemView.m; sourceTree = "<group>"; };
 		5ECFD3381D921FF200FBB63D /* WHScrollAndPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHScrollAndPageView.h; sourceTree = "<group>"; };
@@ -412,12 +421,9 @@
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
 			isa = PBXGroup;
 			children = (
-				5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */,
-				5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */,
-				5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */,
-				5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */,
-				5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */,
-				5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */,
+				5EC3DF3A1DBF3BCF0014A4A1 /* View */,
+				5EC3DF391DBF3BCA0014A4A1 /* Model */,
+				5EC3DF381DBF3BBD0014A4A1 /* ViewModel */,
 			);
 			path = IconFont;
 			sourceTree = "<group>";
@@ -661,6 +667,39 @@
 				5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */,
 			);
 			path = StepSegmentView;
+			sourceTree = "<group>";
+		};
+		5EC3DF381DBF3BBD0014A4A1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5EC3DF321DBF01830014A4A1 /* IconFont_dataSourceFilter.h */,
+				5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		5EC3DF391DBF3BCA0014A4A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */,
+				5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */,
+				5EC3DF351DBF2C690014A4A1 /* MFontAwesomeNode.h */,
+				5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5EC3DF3A1DBF3BCF0014A4A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */,
+				5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */,
+				5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */,
+				5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */,
+				5EC3DF3B1DBF4A110014A4A1 /* IconFontHeaderView.h */,
+				5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		5EDA73A21D864F33000606A6 /* Label自动布局 */ = {
@@ -1125,6 +1164,7 @@
 				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
+				5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
@@ -1144,6 +1184,7 @@
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
 				9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */,
 				5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */,
+				5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
 				5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */,
 				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
@@ -1158,6 +1199,7 @@
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
+				5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,

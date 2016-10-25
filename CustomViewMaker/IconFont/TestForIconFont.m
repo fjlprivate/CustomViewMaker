@@ -10,15 +10,21 @@
 #import "UIColor+ColorWithHex.h"
 #import <UINavigationBar+Awesome.h>
 #import "FontAwesomeIconFontCell.h"
-#import "ModelFontAwesomeType.h"
 #import <NSString+FontAwesome.h>
 #import <UIFont+FontAwesome.h>
+#import "IconFont_dataSourceFilter.h"
+#import "MFontAwesomeNode.h"
+#import "IconFontHeaderView.h"
 
 
 @interface TestForIconFont()
 <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
 @property (nonatomic, strong) UICollectionView* fontCollectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout* flowLayout;
+
+@property (nonatomic, strong) IconFont_dataSourceFilter* datasource;
+
 
 
 @end
@@ -32,19 +38,12 @@
     self.title = @"IconFont";
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadSubviews];
-    //[self layoutSubviews];
     
 }
 
 
 - (void) loadSubviews {
     [self.view addSubview:self.fontCollectionView];
-    /*
-    [self.view addSubview:self.iconFontLabel];
-    for (UILabel* label in self.labels) {
-        [self.view addSubview:label];
-    }
-     */
 }
 
 
@@ -52,8 +51,12 @@
 
 # pragma mask UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return self.datasource.keyTitleList.count;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [ModelFontAwesomeType curFontAwesomeTypeList].count;
+    return [[self.datasource.iconfontList objectAtIndex:section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -61,20 +64,35 @@
 {
     FontAwesomeIconFontCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fontCell" forIndexPath:indexPath];
     
-    NSArray* fontArray = [ModelFontAwesomeType curFontAwesomeTypeList];
-    cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:indexPath.row];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@", [fontArray objectAtIndex:indexPath.row]];
-    cell.indexLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    MFontAwesomeNode* fontNode = [[self.datasource.iconfontList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:fontNode.key];
+    cell.titleLabel.text = fontNode.name;
+    cell.indexLabel.text = [NSString stringWithFormat:@"%d", fontNode.key];
     
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    IconFontHeaderView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"fontHeader" forIndexPath:indexPath];
+    NSArray* list = [self.datasource.iconfontList objectAtIndex:indexPath.section];
+
+    
+    NSString* title = [self.datasource.keyTitleList objectAtIndex:indexPath.section];
+    headerView.titleLabel.text = [title stringByAppendingFormat:@" (%d)", [list count]];
+    
+    headerView.backgroundColor = [UIColor colorWithHex:0x99cccc alpha:1];
+    return headerView;
 }
 
 
 # pragma mask UICollectionViewDelegateFlowLayout
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsZero;
+    return UIEdgeInsetsMake(0, 0, 10, 0);
 }
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
 }
@@ -82,38 +100,11 @@
     return 0;
 }
 
-
-
-
-- (void) layoutSubviews {
-    __weak typeof(self) wself = self;
-    
-    CGFloat labelHeight = 60;
-    for (int i = 0; i < self.labels.count; i ++) {
-        UILabel* label = [self.labels objectAtIndex:i];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(wself.view.mas_centerX);
-            make.top.equalTo(wself.view.mas_top).offset(64 + i * labelHeight);
-            make.width.equalTo(wself.view.mas_width).multipliedBy(0.38);
-            make.height.mas_equalTo(labelHeight);
-        }];
-    }
-    
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(self.view.frame.size.width, 40);
 }
 
-
-- (UILabel*) newIconFontLabel {
-    UILabel* label = [UILabel new];
-    label.backgroundColor = [UIColor orangeColor];
-    label.textColor = [UIColor whiteColor];
-    label.layer.masksToBounds = YES;
-    label.layer.cornerRadius = 5.f;
-    label.layer.borderColor = [UIColor redColor].CGColor;
-    label.layer.borderWidth = 1;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"iconfont" size:20];
-    return label;
-}
 
 
 # pragma mask 4 getter
@@ -123,6 +114,7 @@
     if (!_fontCollectionView) {
         _fontCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
         [_fontCollectionView registerClass:[FontAwesomeIconFontCell class] forCellWithReuseIdentifier:@"fontCell"];
+        [_fontCollectionView registerClass:[IconFontHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"fontHeader"];
         _fontCollectionView.dataSource = self;
         _fontCollectionView.delegate = self;
         _fontCollectionView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
@@ -141,59 +133,12 @@
     return _flowLayout;
 }
 
-
-
-
-
-
-- (UILabel *)iconFontLabel {
-    if (!_iconFontLabel) {
-        _iconFontLabel = [UILabel new];
-        _iconFontLabel.backgroundColor = [UIColor orangeColor];
-        _iconFontLabel.textColor = [UIColor whiteColor];
-        _iconFontLabel.layer.cornerRadius = 5.f;
-        _iconFontLabel.textAlignment = NSTextAlignmentCenter;
-        _iconFontLabel.text = @"\ue667"; //xe608
-        _iconFontLabel.font = [UIFont fontWithName:@"iconfont" size:20];
-    }
-    return _iconFontLabel;
+- (IconFont_dataSourceFilter *)datasource {
+    if (!_datasource) {
+        _datasource = [[IconFont_dataSourceFilter alloc] init];
+    }return _datasource;
 }
 
-- (NSMutableArray *)labels {
-    if (!_labels) {
-        _labels = [NSMutableArray array];
-        for (NSString* icon in self.icons) {
-            UILabel* label = [self newIconFontLabel];
-            label.text = icon;
-            [_labels addObject:label];
-        }
-    }
-    return _labels;
-}
 
-- (NSMutableArray *)icons {
-    if (!_icons) {
-        _icons = [NSMutableArray array];
-        /*
-        IconFontType_codeScanning           = 0xe667,
-        IconFontType_barCodeAndQRCode       = 0xe654,
-        
-        IconFontType_backspace				= 0xea82,
-        IconFontType_user					= 0xe611,
-        IconFontType_alipay					= 0xe631,
-        IconFontType_wechatPay				= 0xe6dc,	/
-        IconFontType_card					= 0xe65f,	/
-        IconFontType_search					= 0xe677,	/
-
-         */
-        [_icons addObject:@"\ue667"];
-        [_icons addObject:@"\ue654"];
-        [_icons addObject:@"\uea82"];
-        [_icons addObject:@"\ue611"];
-        [_icons addObject:@"\ue631"];
-
-    }
-    return _icons;
-}
 
 @end

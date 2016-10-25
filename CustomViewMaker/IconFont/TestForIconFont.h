@@ -11,10 +11,5 @@
 
 @interface TestForIconFont : UIViewController
 
-@property (nonatomic, strong) UILabel* iconFontLabel;
-
-
-@property (nonatomic, strong) NSMutableArray* icons;
-@property (nonatomic, strong) NSMutableArray* labels;
 
 @end
