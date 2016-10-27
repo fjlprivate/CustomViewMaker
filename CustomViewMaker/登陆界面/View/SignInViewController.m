@@ -12,6 +12,8 @@
 #import "SignInInputView.h"
 #import <NSString+FontAwesome.h>
 #import <UIFont+FontAwesome.h>
+#import "UIColor+ColorWithHex.h"
+
 
 @interface SignInViewController()
 
@@ -28,10 +30,21 @@
 @property (nonatomic, strong) UIButton* forgetPwdButton;
 @property (nonatomic, strong) UIButton* signupButton;
 
+
+/* 退出按钮 */
+@property (nonatomic, strong) UIButton* cancelBtn;
+
 @end
 
 
 @implementation SignInViewController
+
+
+- (IBAction) clickedPopVC:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,7 +65,10 @@
     [self.view addSubview:self.signinButton];
     [self.view addSubview:self.forgetPwdButton];
     [self.view addSubview:self.signupButton];
+    [self.view addSubview:self.cancelBtn];
 }
+
+
 - (void) relayoutSubviews {
     __weak typeof(self) wself = self;
     CGRect frame = self.view.frame;    
@@ -223,6 +239,19 @@
         [_signupButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     }
     return _signupButton;
+}
+
+- (UIButton *)cancelBtn {
+    if (!_cancelBtn) {
+        _cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15 - 40, 64, 40, 40)];
+        _cancelBtn.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+        [_cancelBtn setTitle:[NSString fontAwesomeIconStringForEnum:FATimes] forState:UIControlStateNormal];
+        _cancelBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:40 scale:0.7]];
+        [_cancelBtn setTitleColor:[UIColor colorWithHex:0xeeeeee alpha:1] forState:UIControlStateNormal];
+        [_cancelBtn addTarget:self action:@selector(clickedPopVC:) forControlEvents:UIControlEventTouchUpInside];
+        _cancelBtn.layer.cornerRadius = 20;
+    }
+    return _cancelBtn;
 }
 
 @end

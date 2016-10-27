@@ -9,68 +9,103 @@
 #import "IconFont_dataSourceFilter.h"
 #import "ModelFontAwesomeType.h"
 #import "MFontAwesomeNode.h"
+#import <ReactiveCocoa.h>
+
+
+
+@interface IconFont_dataSourceFilter()
+
+/* 原始的分组 */
+@property (nonatomic, strong) NSArray* originIconfontsSeperatedArray;
+
+
+
+@end
 
 
 @implementation IconFont_dataSourceFilter
 
 
-# pragma  mask getter
 
-- (NSArray *)keyTitleList {
-    if (!_keyTitleList) {
-        _keyTitleList = [IconFont_dataSourceFilter keySingleWordList];
-    }
-    return _keyTitleList;
+- (void) addKVO {
+    @weakify(self);
+    
+    /* 监控: 过滤条件 */
+    [[RACObserve(self, filterKey) delay:0.3] subscribeNext:^(NSString* key) {
+        @strongify(self);
+        if (key && key.length > 0) {
+            self.iconfontList = [self iconfontListFilteredWithKey:key];
+            NSLog(@"正在过滤[%@]: [%@]", key, self.iconfontList);
+        } else {
+            if (self.iconfontList != self.originIconfontsSeperatedArray) {
+                self.iconfontList = self.originIconfontsSeperatedArray;
+            }
+        }
+    }];
+    
+    /* 绑定: 更新了过滤数组，就要更新对应的标题组 */
+    RAC(self, keyTitleList) = [RACObserve(self, iconfontList) map:^id(NSArray* iconfontList) {
+        
+        NSMutableArray* keyList = [NSMutableArray array];
+        for (NSArray* nodeList in iconfontList) {
+            MFontAwesomeNode* node = [nodeList firstObject];
+            NSString* key = [node.name substringWithRange:NSMakeRange(2, 1)];
+            char cKey = [key characterAtIndex:0];
+            cKey = (cKey >= 'A' && cKey <= 'Z') ? cKey : cKey - 'a' + 'A';
+            [keyList addObject:[NSString stringWithFormat:@"%c", cKey]];
+        }
+        return keyList;
+    }];
+    
 }
 
-- (NSArray *)iconfontList {
-    if (!_iconfontList) {
-        _iconfontList = [IconFont_dataSourceFilter twoDimentionalArrayOfIconTypeList];
+
+/* 根据关键字过滤出匹配的数组 */
+- (NSArray* ) iconfontListFilteredWithKey:(NSString*) key {
+    NSArray* iconfontNameAndKeyList = [ModelFontAwesomeType fontAwesomeNameAndKeyList];
+
+    NSString* format = [NSString stringWithFormat:@"name CONTAINS[c] '%@'", key];
+    
+    NSArray* filterArray = [iconfontNameAndKeyList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:format]];
+
+    if (filterArray && filterArray.count > 0) {
+        return [self seperatedWithIconfontList:filterArray];
     }
-    return _iconfontList;
+    
+    return nil;
 }
 
 
-
-/* 分组字头组 */
-+ (NSArray*) keySingleWordList {
+- (NSArray*) seperatedWithIconfontList:(NSArray*)iconfontList {
+    NSMutableArray* seperatedIconfontList = [NSMutableArray array];
     
-    
-    NSArray* originIconTypes = [NSArray arrayWithArray:[ModelFontAwesomeType fontAwesomeNameAndKeyList]];
-    NSMutableArray* keyStrings = [NSMutableArray array];
     for (char c = 'A'; c <= 'Z'; c++) {
-        NSString* format = [NSString stringWithFormat:@"name LIKE[c] 'FA%c*'", c];
-        NSPredicate* predFilter = [NSPredicate predicateWithFormat:format];
-        NSArray* subArrayFilteredByChar = [originIconTypes filteredArrayUsingPredicate:predFilter];
-        //NSLog(@"---过滤[%c]组的结果[%@]", c, subArrayFilteredByChar);
-        if (subArrayFilteredByChar && subArrayFilteredByChar.count > 0) {
-            [keyStrings addObject:[NSString stringWithFormat:@"%c", c]];
+        
+        NSString* format = [NSString stringWithFormat:@"name BEGINSWITH[c] 'FA%c'", c];
+        NSArray* filteredArray = [iconfontList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:format]];
+        if (filteredArray && filteredArray.count > 0) {
+            [seperatedIconfontList addObject:filteredArray];
         }
     }
-    
-    return keyStrings;
+    return seperatedIconfontList;
 }
 
-/* 分组组数 */
-+ (NSInteger) numberOfSeperatedArray {
-    return [[self keySingleWordList] count];
-}
 
-/* 分组二维数组 */
-+ (NSArray<NSArray*>*) twoDimentionalArrayOfIconTypeList {
-    NSArray* originIconTypes = [ModelFontAwesomeType fontAwesomeNameAndKeyList];
-    NSMutableArray* allIconTypeList = [NSMutableArray array];
-    for (NSString* key in [self keySingleWordList]) {
-        NSString* format = [NSString stringWithFormat:@"name LIKE[c] 'FA%@*'", key];
-        NSPredicate* predFilter = [NSPredicate predicateWithFormat:format];
-        NSArray* subArrayFilteredByChar = [originIconTypes filteredArrayUsingPredicate:predFilter];
-        if (subArrayFilteredByChar && subArrayFilteredByChar.count > 0) {
-            [allIconTypeList addObject:subArrayFilteredByChar];
-        }
+# pragma mask 4 初始化
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self makeOriginDatas];
+        [self addKVO];
     }
-    return allIconTypeList;
+    return self;
 }
 
+
+- (void) makeOriginDatas {
+    _originIconfontsSeperatedArray = [self seperatedWithIconfontList:[ModelFontAwesomeType fontAwesomeNameAndKeyList]];
+}
 
 
 @end

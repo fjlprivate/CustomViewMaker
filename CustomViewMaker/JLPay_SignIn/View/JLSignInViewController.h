@@ -42,4 +42,7 @@
 @property (nonatomic, strong) UIView* separateViewLeft;         // 分割线-left
 @property (nonatomic, strong) UIView* separateViewRight;        // 分割线-right
 
+/* 退出按钮 */
+@property (nonatomic, strong) UIButton* cancelBtn;
+
 @end

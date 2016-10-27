@@ -64,6 +64,12 @@
     self.seenVisible = !self.seenVisible;
 }
 
+- (IBAction) clickedPopVC:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
 # pragma mask 3 UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     // 处理遮挡
@@ -141,6 +147,9 @@
     
     [self.view addSubview:self.signUpBtn];
     [self.view addSubview:self.signInBtn];
+    
+    [self.view addSubview:self.cancelBtn];
+
     
 }
 
@@ -389,5 +398,17 @@
     }
     return _visiblePwdSeenBtn;
 }
+
+- (UIButton *)cancelBtn {
+    if (!_cancelBtn) {
+        _cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 20 - 40, 20+10, 40, 40)];
+        [_cancelBtn setTitle:[NSString fontAwesomeIconStringForEnum:FATimesCircle] forState:UIControlStateNormal];
+        _cancelBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:40 scale:0.85]];
+        [_cancelBtn setTitleColor:[UIColor colorWithHex:0xeeeeee alpha:1] forState:UIControlStateNormal];
+        [_cancelBtn addTarget:self action:@selector(clickedPopVC:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelBtn;
+}
+
 
 @end

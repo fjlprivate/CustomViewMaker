@@ -40,6 +40,10 @@
     [self.navigationItem setLeftBarButtonItem:leftBarBtn];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 
 - (IBAction) presentSideMenu:(id)sender {
     UIViewController* parentVC = [self parentViewController];
@@ -109,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"幻灯效果label"];
         [_btnTitles addObject:@"测试webView"];
         [_btnTitles addObject:@"CoreAnimation动画"];
         [_btnTitles addObject:@"阻尼动画pageContr"];
@@ -158,6 +163,7 @@
         [_dicVCNameAndTitles setObject:@"TestForKYAnimationPageViewController" forKey:@"阻尼动画pageContr"];
         [_dicVCNameAndTitles setObject:@"TestForCAViewController" forKey:@"CoreAnimation动画"];
         [_dicVCNameAndTitles setObject:@"TestForWebViewController" forKey:@"测试webView"];
+        [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
     }
     return _dicVCNameAndTitles;
 }

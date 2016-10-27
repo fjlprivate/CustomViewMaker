@@ -11,20 +11,15 @@
 @interface IconFont_dataSourceFilter : NSObject
 
 
+/* 过滤的关键字 */
+@property (nonatomic, copy) NSString* filterKey;
 
+/* 数据源组 */
+@property (nonatomic, strong) NSArray<NSArray*>* iconfontList;
+
+/* 标题组 */
 @property (nonatomic, strong) NSArray* keyTitleList;
 
-@property (nonatomic, strong) NSArray* iconfontList;
 
-
-
-/* 分组字头组 */
-+ (NSArray*) keySingleWordList;
-
-/* 分组组数 */
-+ (NSInteger) numberOfSeperatedArray;
-
-/* 分组二维数组 */
-+ (NSArray<NSArray*>*) twoDimentionalArrayOfIconTypeList;
 
 @end
