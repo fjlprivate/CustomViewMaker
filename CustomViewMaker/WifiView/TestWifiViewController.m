@@ -8,6 +8,7 @@
 
 #import "TestWifiViewController.h"
 
+
 @implementation TestWifiViewController
 
 - (void)viewDidLoad {
@@ -22,6 +23,7 @@
     [self.view addSubview:self.startButton];
     [self.view addSubview:self.stopButton];
     [self.view addSubview:self.wifiView];
+    [self.view addSubview:self.mlwifiView];
 }
 - (void) layoutSubviews {
     __weak typeof(self) wself = self;
@@ -30,7 +32,6 @@
         make.centerX.equalTo(wself.view.mas_centerX);
         make.centerY.equalTo(wself.view.mas_centerY);
         make.size.mas_equalTo(CGSizeMake(200, 200));
-//        wself.blueToothBackView.layer.cornerRadius = 100;
     }];
     
     [self.wifiView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -39,6 +40,12 @@
         make.centerX.equalTo(wself.blueToothBackView.mas_centerX);
         make.centerY.equalTo(wself.blueToothBackView.mas_centerY).offset(- 200 * 0.8 * 0.5 * 0.25);
     }];
+    [self.mlwifiView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(74);
+        make.bottom.mas_equalTo(wself.wifiView.mas_top).offset(- 10);
+        make.width.mas_equalTo(wself.mlwifiView.mas_height);
+    }];
+
     
     [self.startButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(wself.view.mas_left);
@@ -149,6 +156,13 @@
         _wifiView.centerCircleLayer.strokeColor = [UIColor clearColor].CGColor;
     }
     return _wifiView;
+}
+
+- (MLWifiView *)mlwifiView {
+    if (!_mlwifiView) {
+        _mlwifiView = [[MLWifiView alloc] init];
+    }
+    return _mlwifiView;
 }
 
 @end

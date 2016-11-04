@@ -122,12 +122,9 @@
         _flGradientLayer = [FLGradientLabelLayer layer];
         _flGradientLayer.backColor = [UIColor colorWithHex:0x99cccc alpha:1];
         _flGradientLayer.tintColor = [UIColor colorWithHex:0xef454b alpha:1];
-//        _flGradientLayer.gradientDuration = 1;
         _flGradientLayer.text = @"我的很长";
         _flGradientLayer.textFont = [UIFont boldSystemFontOfSize:17];
-//        _flGradientLayer.direction = FLGradientDirectionFromLeftToRight;
         _flGradientLayer.minGradientSection = 0.2;
-//        _flGradientLayer.textAlpha = 0.5;
     }
     return _flGradientLayer;
 }

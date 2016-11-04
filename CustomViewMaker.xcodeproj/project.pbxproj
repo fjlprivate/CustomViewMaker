@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
+		5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807CD1DCC776300C7C5FE /* MLWifiView.m */; };
 		5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */; };
 		5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */; };
+		5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */; };
 		5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */; };
 		5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */; };
 		5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */; };
@@ -28,9 +30,6 @@
 		5E3CB47A1DAB22610036C1FB /* LMVC_userHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4751DAB22610036C1FB /* LMVC_userHeadView.m */; };
 		5E3CB47D1DAB22830036C1FB /* LMVC_modelMenuData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB47C1DAB22830036C1FB /* LMVC_modelMenuData.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
-		5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */; };
-		5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */; };
-		5E51A8371D19098A00C6FB91 /* iconfont_1_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */; };
 		5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
 		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
@@ -70,6 +69,10 @@
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
+		5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */; };
+		5EB9E4E91DC840F4006A61D1 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E81DC840F4006A61D1 /* iconfont.ttf */; };
+		5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4EB1DC84121006A61D1 /* VMIFDataSource.m */; };
+		5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4EE1DC84291006A61D1 /* NSString+IconFont.m */; };
 		5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */; };
 		5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */; };
 		5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */; };
@@ -114,10 +117,14 @@
 /* Begin PBXFileReference section */
 		1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1807CC1DCC776300C7C5FE /* MLWifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWifiView.h; sourceTree = "<group>"; };
+		5E1807CD1DCC776300C7C5FE /* MLWifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWifiView.m; sourceTree = "<group>"; };
 		5E1C92B31DC191F000C65379 /* TestForGradientLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForGradientLabel.h; sourceTree = "<group>"; };
 		5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForGradientLabel.m; sourceTree = "<group>"; };
 		5E1C92B61DC1A17400C65379 /* FLGradientLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGradientLabelLayer.h; sourceTree = "<group>"; };
 		5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGradientLabelLayer.m; sourceTree = "<group>"; };
+		5E1C92B91DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FontAwesomeString.h"; sourceTree = "<group>"; };
+		5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FontAwesomeString.m"; sourceTree = "<group>"; };
 		5E3CB4181D94C08F0036C1FB /* MainTransViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTransViewController.h; sourceTree = "<group>"; };
 		5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTransViewController.m; sourceTree = "<group>"; };
 		5E3CB41B1D94C39E0036C1FB /* MTVC_screenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_screenView.h; sourceTree = "<group>"; };
@@ -152,9 +159,6 @@
 		5E3CB47C1DAB22830036C1FB /* LMVC_modelMenuData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_modelMenuData.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
-		5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IconFont_1_0.ttf; sourceTree = "<group>"; };
-		5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IconFont_1_1.ttf; path = ../IconFont_1_1.ttf; sourceTree = "<group>"; };
-		5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont_1_1.ttf; sourceTree = "<group>"; };
 		5E51A9CC1D1B960C00C6FB91 /* TestForCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForCustomAlertView.h; sourceTree = "<group>"; };
 		5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForCustomAlertView.m; sourceTree = "<group>"; };
 		5E66B19B1CD2057B00728547 /* WifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiView.h; sourceTree = "<group>"; };
@@ -238,6 +242,13 @@
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForStepSegmentView.m; sourceTree = "<group>"; };
+		5EB9E4E41DC840B4006A61D1 /* TestForIconfontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconfontVC.h; sourceTree = "<group>"; };
+		5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconfontVC.m; sourceTree = "<group>"; };
+		5EB9E4E81DC840F4006A61D1 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		5EB9E4EA1DC84121006A61D1 /* VMIFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMIFDataSource.h; sourceTree = "<group>"; };
+		5EB9E4EB1DC84121006A61D1 /* VMIFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMIFDataSource.m; sourceTree = "<group>"; };
+		5EB9E4ED1DC84291006A61D1 /* NSString+IconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IconFont.h"; sourceTree = "<group>"; };
+		5EB9E4EE1DC84291006A61D1 /* NSString+IconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IconFont.m"; sourceTree = "<group>"; };
 		5EC3DF321DBF01830014A4A1 /* IconFont_dataSourceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFont_dataSourceFilter.h; sourceTree = "<group>"; };
 		5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFont_dataSourceFilter.m; sourceTree = "<group>"; };
 		5EC3DF351DBF2C690014A4A1 /* MFontAwesomeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFontAwesomeNode.h; sourceTree = "<group>"; };
@@ -467,6 +478,8 @@
 				5E66B19C1CD2057B00728547 /* WifiView.m */,
 				5E66B19E1CD207C200728547 /* TestWifiViewController.h */,
 				5E66B19F1CD207C200728547 /* TestWifiViewController.m */,
+				5E1807CC1DCC776300C7C5FE /* MLWifiView.h */,
+				5E1807CD1DCC776300C7C5FE /* MLWifiView.m */,
 			);
 			path = WifiView;
 			sourceTree = "<group>";
@@ -509,6 +522,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5EB9E4E31DC8409A006A61D1 /* AwesomeFont */,
 				5E1C92B21DC191B400C65379 /* 幻灯效果UILabel */,
 				5EC3DF3E1DC04D4A0014A4A1 /* TestForSearchController */,
 				5E3CB4531DA9D7490036C1FB /* TestForWebView */,
@@ -549,9 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA2DF011C91110D00770353 /* Main.storyboard */,
-				5E51A8361D19098A00C6FB91 /* iconfont_1_1.ttf */,
-				5E51A7F61D13A38000C6FB91 /* IconFont_1_0.ttf */,
-				5E51A7FA1D13AB3F00C6FB91 /* IconFont_1_1.ttf */,
+				5EB9E4E81DC840F4006A61D1 /* iconfont.ttf */,
 				5EA2DF041C91110D00770353 /* Assets.xcassets */,
 				5EA2DF061C91110D00770353 /* LaunchScreen.storyboard */,
 				5EA2DF091C91110D00770353 /* Info.plist */,
@@ -692,6 +704,17 @@
 				5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */,
 			);
 			path = StepSegmentView;
+			sourceTree = "<group>";
+		};
+		5EB9E4E31DC8409A006A61D1 /* AwesomeFont */ = {
+			isa = PBXGroup;
+			children = (
+				5EB9E4E41DC840B4006A61D1 /* TestForIconfontVC.h */,
+				5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */,
+				5EB9E4EA1DC84121006A61D1 /* VMIFDataSource.h */,
+				5EB9E4EB1DC84121006A61D1 /* VMIFDataSource.m */,
+			);
+			path = AwesomeFont;
 			sourceTree = "<group>";
 		};
 		5EC3DF381DBF3BBD0014A4A1 /* ViewModel */ = {
@@ -842,6 +865,10 @@
 			children = (
 				9E156FB31CA2D3F300244876 /* NSString+Custom.h */,
 				9E156FB41CA2D3F300244876 /* NSString+Custom.m */,
+				5EB9E4ED1DC84291006A61D1 /* NSString+IconFont.h */,
+				5EB9E4EE1DC84291006A61D1 /* NSString+IconFont.m */,
+				5E1C92B91DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.h */,
+				5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -1026,9 +1053,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E51A8371D19098A00C6FB91 /* iconfont_1_1.ttf in Resources */,
-				5E51A7FB1D13AB3F00C6FB91 /* IconFont_1_1.ttf in Resources */,
-				5E51A7F91D13AA4C00C6FB91 /* IconFont_1_0.ttf in Resources */,
+				5EB9E4E91DC840F4006A61D1 /* iconfont.ttf in Resources */,
 				5EA2DF081C91110D00770353 /* LaunchScreen.storyboard in Resources */,
 				5EA2DF051C91110D00770353 /* Assets.xcassets in Resources */,
 				5EA2DF031C91110D00770353 /* Main.storyboard in Resources */,
@@ -1197,6 +1222,7 @@
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
+				5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
 				5E3CB4771DAB22610036C1FB /* LeftMenuViewController.m in Sources */,
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
@@ -1222,11 +1248,13 @@
 				5E3CB4781DAB22610036C1FB /* LMVC_logoutButton.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
+				5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */,
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
 				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
+				5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */,
 				5EC3DF441DC04D830014A4A1 /* TestForSearchBarVC.m in Sources */,
 				5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
@@ -1242,7 +1270,9 @@
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
+				5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */,
 				5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */,
+				5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */,
 				5EA2DF5C1C929E1B00770353 /* TestCAShapeLayerViewController.m in Sources */,
 				5EA2DF4D1C9115F900770353 /* MASViewAttribute.m in Sources */,
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,

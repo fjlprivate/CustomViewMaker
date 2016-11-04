@@ -197,7 +197,7 @@
         [cancelBtn addTarget:self action:@selector(clickedCancelBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         UIView* nullView = [[UIView alloc] initWithFrame:CGRectZero];
-        _cancelBarItem = [[UIBarButtonItem alloc] initWithCustomView:nullView];
+        _cancelBarItem = [[UIBarButtonItem alloc] initWithCustomView:cancelBtn];
     }
     return _cancelBarItem;
 }

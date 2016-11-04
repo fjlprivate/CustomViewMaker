@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"AwesomeIcon"];
         [_btnTitles addObject:@"幻灯效果label"];
         [_btnTitles addObject:@"测试webView"];
         [_btnTitles addObject:@"CoreAnimation动画"];
@@ -164,6 +165,7 @@
         [_dicVCNameAndTitles setObject:@"TestForCAViewController" forKey:@"CoreAnimation动画"];
         [_dicVCNameAndTitles setObject:@"TestForWebViewController" forKey:@"测试webView"];
         [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
+        [_dicVCNameAndTitles setObject:@"TestForIconfontVC" forKey:@"AwesomeIcon"];
     }
     return _dicVCNameAndTitles;
 }

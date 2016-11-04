@@ -10,6 +10,7 @@
 #import "WifiView.h"
 #import "Masonry.h"
 #import "UIColor+ColorWithHex.h"
+#import "MLWifiView.h"
 
 
 @interface TestWifiViewController : UIViewController
@@ -20,6 +21,8 @@
 
 @property (nonatomic, strong) UIButton* startButton;
 @property (nonatomic, strong) UIButton* stopButton;
+
+@property (nonatomic, strong) MLWifiView* mlwifiView;
 
 
 @end
