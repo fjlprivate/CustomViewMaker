@@ -44,6 +44,7 @@
         make.top.mas_equalTo(74);
         make.bottom.mas_equalTo(wself.wifiView.mas_top).offset(- 10);
         make.width.mas_equalTo(wself.mlwifiView.mas_height);
+        make.centerX.mas_equalTo(0);
     }];
 
     
@@ -161,6 +162,7 @@
 - (MLWifiView *)mlwifiView {
     if (!_mlwifiView) {
         _mlwifiView = [[MLWifiView alloc] init];
+        _mlwifiView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
     }
     return _mlwifiView;
 }

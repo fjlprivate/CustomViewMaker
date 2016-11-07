@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject: @"Wifi"];
         [_btnTitles addObject:@"AwesomeIcon"];
         [_btnTitles addObject:@"幻灯效果label"];
         [_btnTitles addObject:@"测试webView"];
@@ -126,7 +127,6 @@
         [_btnTitles addObject:@"CustomAlertView"];
         [_btnTitles addObject: @"IconFont"];
         [_btnTitles addObject: @"SignIn"];
-        [_btnTitles addObject: @"Wifi"];
         [_btnTitles addObject: @"登陆界面"];
         [_btnTitles addObject: @"Collection"];
         [_btnTitles addObject: @"MBHUD"];
