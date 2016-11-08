@@ -16,12 +16,11 @@
 /* 背景色 */
 @property (nonatomic, copy) UIColor* backColor;
 
-/* 可否动效 */
-@property (nonatomic, assign) BOOL canAnimation;
+/* 状态: on tint or back */
+@property (nonatomic, assign) BOOL onTint;
 
 /* 单位动效持续时间 */
 @property (nonatomic, assign) CGFloat uniteDuration;
-
 
 
 

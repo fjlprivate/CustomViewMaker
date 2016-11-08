@@ -10,6 +10,7 @@
 		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
 		5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807CD1DCC776300C7C5FE /* MLWifiView.m */; };
+		5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */; };
 		5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */; };
 		5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */; };
 		5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */; };
@@ -119,6 +120,8 @@
 		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1807CC1DCC776300C7C5FE /* MLWifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWifiView.h; sourceTree = "<group>"; };
 		5E1807CD1DCC776300C7C5FE /* MLWifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWifiView.m; sourceTree = "<group>"; };
+		5E1807CF1DD19EA600C7C5FE /* MLStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLStepSegmentView.h; sourceTree = "<group>"; };
+		5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLStepSegmentView.m; sourceTree = "<group>"; };
 		5E1C92B31DC191F000C65379 /* TestForGradientLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForGradientLabel.h; sourceTree = "<group>"; };
 		5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForGradientLabel.m; sourceTree = "<group>"; };
 		5E1C92B61DC1A17400C65379 /* FLGradientLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGradientLabelLayer.h; sourceTree = "<group>"; };
@@ -702,6 +705,8 @@
 				5EB2215C1D73D139008591E5 /* StepSegmentView.m */,
 				5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */,
 				5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */,
+				5E1807CF1DD19EA600C7C5FE /* MLStepSegmentView.h */,
+				5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */,
 			);
 			path = StepSegmentView;
 			sourceTree = "<group>";
@@ -1284,6 +1289,7 @@
 				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
+				5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5E3CB47D1DAB22830036C1FB /* LMVC_modelMenuData.m in Sources */,

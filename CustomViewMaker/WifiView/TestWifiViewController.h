@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "UIColor+ColorWithHex.h"
 #import "MLWifiView.h"
+#import "MBProgressHUD+CustomSate.h"
 
 
 @interface TestWifiViewController : UIViewController
@@ -24,5 +25,11 @@
 
 @property (nonatomic, strong) MLWifiView* mlwifiView;
 
+
+@property (nonatomic, strong) UILabel* stateLabel;
+
+@property (nonatomic, strong) MBProgressHUD* hud;
+
+@property (nonatomic, strong) UIBarButtonItem* stopBarBtn;
 
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "TestWifiViewController.h"
+#import <NSString+FontAwesome.h>
+#import <UIFont+FontAwesome.h>
+#import "NSString+Custom.h"
+
 
 
 @implementation TestWifiViewController
@@ -24,6 +28,9 @@
     [self.view addSubview:self.stopButton];
     [self.view addSubview:self.wifiView];
     [self.view addSubview:self.mlwifiView];
+    [self.view addSubview:self.stateLabel];
+    [self.view addSubview:self.hud];
+    [self.navigationItem setRightBarButtonItem:self.stopBarBtn];
 }
 - (void) layoutSubviews {
     __weak typeof(self) wself = self;
@@ -41,8 +48,8 @@
         make.centerY.equalTo(wself.blueToothBackView.mas_centerY).offset(- 200 * 0.8 * 0.5 * 0.25);
     }];
     [self.mlwifiView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(74);
-        make.bottom.mas_equalTo(wself.wifiView.mas_top).offset(- 10);
+        make.top.mas_equalTo(64 + 25);
+        make.bottom.mas_equalTo(wself.wifiView.mas_top).offset(- 25);
         make.width.mas_equalTo(wself.mlwifiView.mas_height);
         make.centerX.mas_equalTo(0);
     }];
@@ -62,6 +69,12 @@
         make.bottom.equalTo(wself.startButton.mas_bottom);
     }];
     
+    [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(wself.startButton.mas_bottom).offset(10);
+        make.height.mas_equalTo(wself.startButton.mas_height);
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,7 +83,26 @@
     [self.blueToothBackView.layer addSublayer:[self makeBlueToothPathShapeLayerInFrame:CGRectMake(0, 0, 200, 200)]];
 }
 
-
+# pragma mask 1 IBActions 
+- (IBAction) clickedStart:(id)sender {
+    
+    [self.mlwifiView startAnimatingOnCompleted:^{
+        [self.hud show:YES];
+        self.stateLabel.text = @"正在启动wifi动效...";
+        
+        UIButton* btn = self.navigationItem.rightBarButtonItem.customView;
+        [btn setTitle:[NSString fontAwesomeIconStringForEnum:FAPause] forState:UIControlStateNormal];
+    }];
+}
+- (IBAction) clickedEnd:(id)sender {
+    [self.mlwifiView endAnimatingOnCompleted:^{
+        self.stateLabel.text = @"正在关闭wifi动效...";
+        [self.hud hide:YES];
+        
+        UIButton* btn = self.navigationItem.rightBarButtonItem.customView;
+        [btn setTitle:[NSString fontAwesomeIconStringForEnum:FAPlay] forState:UIControlStateNormal];
+    }];
+}
 
 
 
@@ -131,6 +163,7 @@
         [_startButton setTitle:@"开始" forState:UIControlStateNormal];
         [_startButton setTitleColor:[UIColor colorWithHex:HexColorTypeDarkCyan alpha:1] forState:UIControlStateNormal];
         [_startButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        [_startButton addTarget:self action:@selector(clickedStart:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _startButton;
 }
@@ -140,6 +173,7 @@
         [_stopButton setTitle:@"停止" forState:UIControlStateNormal];
         [_stopButton setTitleColor:[UIColor colorWithHex:HexColorTypeDarkSlateBlue alpha:1] forState:UIControlStateNormal];
         [_stopButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        [_stopButton addTarget:self action:@selector(clickedEnd:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _stopButton;
 }
@@ -162,9 +196,38 @@
 - (MLWifiView *)mlwifiView {
     if (!_mlwifiView) {
         _mlwifiView = [[MLWifiView alloc] init];
-        _mlwifiView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
+        _mlwifiView.onTint = NO;
     }
     return _mlwifiView;
+}
+
+- (UILabel *)stateLabel {
+    if (!_stateLabel) {
+        _stateLabel = [UILabel new];
+        _stateLabel.textAlignment = NSTextAlignmentCenter;
+        _stateLabel.textColor = [UIColor colorWithHex:0x27384b alpha:0.9];
+        _stateLabel.font = [UIFont boldSystemFontOfSize:14];
+    }
+    return _stateLabel;
+}
+
+- (MBProgressHUD *)hud {
+    if (!_hud) {
+        _hud = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    return _hud;
+}
+
+- (UIBarButtonItem *)stopBarBtn {
+    if (!_stopBarBtn) {
+        UIButton* stopBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        [stopBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAPlay] forState:UIControlStateNormal];
+        stopBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:25 scale:0.9]];
+        [stopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [stopBtn addTarget:self action:@selector(clickedEnd:) forControlEvents:UIControlEventTouchUpInside];
+        _stopBarBtn = [[UIBarButtonItem alloc] initWithCustomView:stopBtn];
+    }
+    return _stopBarBtn;
 }
 
 @end
