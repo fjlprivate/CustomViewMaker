@@ -11,12 +11,20 @@
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
 		5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807CD1DCC776300C7C5FE /* MLWifiView.m */; };
 		5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */; };
+		5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D61DD1B2CD00C7C5FE /* LeftMenuViewController.m */; };
+		5E1807F11DD1B2CE00C7C5FE /* LMVC_logoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D81DD1B2CE00C7C5FE /* LMVC_logoutButton.m */; };
+		5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807DA1DD1B2CE00C7C5FE /* LMVC_menuCell.m */; };
+		5E1807F31DD1B2CE00C7C5FE /* LMVC_userHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807DC1DD1B2CE00C7C5FE /* LMVC_userHeadView.m */; };
+		5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807DF1DD1B2CE00C7C5FE /* LMVC_modelMenuData.m */; };
+		5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807E31DD1B2CE00C7C5FE /* SignInInputView.m */; };
+		5E1807F61DD1B2CE00C7C5FE /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807E51DD1B2CE00C7C5FE /* SignInViewController.m */; };
+		5E1807F71DD1B2CE00C7C5FE /* MainTransViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807EA1DD1B2CE00C7C5FE /* MainTransViewController.m */; };
+		5E1807F81DD1B2CE00C7C5FE /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807EC1DD1B2CE00C7C5FE /* MTVC_keybordView.m */; };
+		5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807EE1DD1B2CE00C7C5FE /* MTVC_screenView.m */; };
+		5E1807FD1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807FC1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m */; };
 		5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */; };
 		5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */; };
 		5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */; };
-		5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */; };
-		5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */; };
-		5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */; };
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
@@ -25,11 +33,6 @@
 		5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */; };
 		5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */; };
 		5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */; };
-		5E3CB4771DAB22610036C1FB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB46F1DAB22610036C1FB /* LeftMenuViewController.m */; };
-		5E3CB4781DAB22610036C1FB /* LMVC_logoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4711DAB22610036C1FB /* LMVC_logoutButton.m */; };
-		5E3CB4791DAB22610036C1FB /* LMVC_menuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4731DAB22610036C1FB /* LMVC_menuCell.m */; };
-		5E3CB47A1DAB22610036C1FB /* LMVC_userHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4751DAB22610036C1FB /* LMVC_userHeadView.m */; };
-		5E3CB47D1DAB22830036C1FB /* LMVC_modelMenuData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB47C1DAB22830036C1FB /* LMVC_modelMenuData.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
@@ -87,8 +90,6 @@
 		5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA73B11D87FB0D000606A6 /* TriSegView_cell.m */; };
 		5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */; };
 		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
-		9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAC1CA2D3E700244876 /* SignInInputView.m */; };
-		9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FAE1CA2D3E700244876 /* SignInViewController.m */; };
 		9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB41CA2D3F300244876 /* NSString+Custom.m */; };
 		9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB71CA2D3F300244876 /* UIColor+ColorWithHex.m */; };
 		9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570331CAC0CEE00244876 /* TestCollectionView.m */; };
@@ -122,18 +123,34 @@
 		5E1807CD1DCC776300C7C5FE /* MLWifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWifiView.m; sourceTree = "<group>"; };
 		5E1807CF1DD19EA600C7C5FE /* MLStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLStepSegmentView.h; sourceTree = "<group>"; };
 		5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLStepSegmentView.m; sourceTree = "<group>"; };
+		5E1807D51DD1B2CD00C7C5FE /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		5E1807D61DD1B2CD00C7C5FE /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		5E1807D71DD1B2CD00C7C5FE /* LMVC_logoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_logoutButton.h; sourceTree = "<group>"; };
+		5E1807D81DD1B2CE00C7C5FE /* LMVC_logoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_logoutButton.m; sourceTree = "<group>"; };
+		5E1807D91DD1B2CE00C7C5FE /* LMVC_menuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_menuCell.h; sourceTree = "<group>"; };
+		5E1807DA1DD1B2CE00C7C5FE /* LMVC_menuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_menuCell.m; sourceTree = "<group>"; };
+		5E1807DB1DD1B2CE00C7C5FE /* LMVC_userHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_userHeadView.h; sourceTree = "<group>"; };
+		5E1807DC1DD1B2CE00C7C5FE /* LMVC_userHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_userHeadView.m; sourceTree = "<group>"; };
+		5E1807DE1DD1B2CE00C7C5FE /* LMVC_modelMenuData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_modelMenuData.h; sourceTree = "<group>"; };
+		5E1807DF1DD1B2CE00C7C5FE /* LMVC_modelMenuData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_modelMenuData.m; sourceTree = "<group>"; };
+		5E1807E21DD1B2CE00C7C5FE /* SignInInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInInputView.h; sourceTree = "<group>"; };
+		5E1807E31DD1B2CE00C7C5FE /* SignInInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInInputView.m; sourceTree = "<group>"; };
+		5E1807E41DD1B2CE00C7C5FE /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		5E1807E51DD1B2CE00C7C5FE /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		5E1807E91DD1B2CE00C7C5FE /* MainTransViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTransViewController.h; sourceTree = "<group>"; };
+		5E1807EA1DD1B2CE00C7C5FE /* MainTransViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTransViewController.m; sourceTree = "<group>"; };
+		5E1807EB1DD1B2CE00C7C5FE /* MTVC_keybordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_keybordView.h; sourceTree = "<group>"; };
+		5E1807EC1DD1B2CE00C7C5FE /* MTVC_keybordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_keybordView.m; sourceTree = "<group>"; };
+		5E1807ED1DD1B2CE00C7C5FE /* MTVC_screenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_screenView.h; sourceTree = "<group>"; };
+		5E1807EE1DD1B2CE00C7C5FE /* MTVC_screenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_screenView.m; sourceTree = "<group>"; };
+		5E1807FB1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeCardVC_connectDevice.h; sourceTree = "<group>"; };
+		5E1807FC1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeCardVC_connectDevice.m; sourceTree = "<group>"; };
 		5E1C92B31DC191F000C65379 /* TestForGradientLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForGradientLabel.h; sourceTree = "<group>"; };
 		5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForGradientLabel.m; sourceTree = "<group>"; };
 		5E1C92B61DC1A17400C65379 /* FLGradientLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGradientLabelLayer.h; sourceTree = "<group>"; };
 		5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGradientLabelLayer.m; sourceTree = "<group>"; };
 		5E1C92B91DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FontAwesomeString.h"; sourceTree = "<group>"; };
 		5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FontAwesomeString.m"; sourceTree = "<group>"; };
-		5E3CB4181D94C08F0036C1FB /* MainTransViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTransViewController.h; sourceTree = "<group>"; };
-		5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTransViewController.m; sourceTree = "<group>"; };
-		5E3CB41B1D94C39E0036C1FB /* MTVC_screenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_screenView.h; sourceTree = "<group>"; };
-		5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_screenView.m; sourceTree = "<group>"; };
-		5E3CB41E1D94C3B90036C1FB /* MTVC_keybordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVC_keybordView.h; sourceTree = "<group>"; };
-		5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_keybordView.m; sourceTree = "<group>"; };
 		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
 		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
 		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
@@ -150,16 +167,6 @@
 		5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesomeIconFontCell.m; sourceTree = "<group>"; };
 		5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFontAwesomeType.h; sourceTree = "<group>"; };
 		5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFontAwesomeType.m; sourceTree = "<group>"; };
-		5E3CB46E1DAB22610036C1FB /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
-		5E3CB46F1DAB22610036C1FB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
-		5E3CB4701DAB22610036C1FB /* LMVC_logoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_logoutButton.h; sourceTree = "<group>"; };
-		5E3CB4711DAB22610036C1FB /* LMVC_logoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_logoutButton.m; sourceTree = "<group>"; };
-		5E3CB4721DAB22610036C1FB /* LMVC_menuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_menuCell.h; sourceTree = "<group>"; };
-		5E3CB4731DAB22610036C1FB /* LMVC_menuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_menuCell.m; sourceTree = "<group>"; };
-		5E3CB4741DAB22610036C1FB /* LMVC_userHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_userHeadView.h; sourceTree = "<group>"; };
-		5E3CB4751DAB22610036C1FB /* LMVC_userHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_userHeadView.m; sourceTree = "<group>"; };
-		5E3CB47B1DAB22830036C1FB /* LMVC_modelMenuData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMVC_modelMenuData.h; sourceTree = "<group>"; };
-		5E3CB47C1DAB22830036C1FB /* LMVC_modelMenuData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMVC_modelMenuData.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
 		5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForIconFont.m; sourceTree = "<group>"; };
 		5E51A9CC1D1B960C00C6FB91 /* TestForCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForCustomAlertView.h; sourceTree = "<group>"; };
@@ -281,10 +288,6 @@
 		69A7357F4B4C84D8E38114DF /* Pods-CustomViewMakerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.release.xcconfig"; sourceTree = "<group>"; };
 		98B33814A8F0DAD8CBA5DEA2 /* Pods-CustomViewMakerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMakerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E156FAB1CA2D3E700244876 /* SignInInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInInputView.h; sourceTree = "<group>"; };
-		9E156FAC1CA2D3E700244876 /* SignInInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInInputView.m; sourceTree = "<group>"; };
-		9E156FAD1CA2D3E700244876 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
-		9E156FAE1CA2D3E700244876 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		9E156FB31CA2D3F300244876 /* NSString+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Custom.h"; sourceTree = "<group>"; };
 		9E156FB41CA2D3F300244876 /* NSString+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Custom.m"; sourceTree = "<group>"; };
 		9E156FB61CA2D3F300244876 /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
@@ -341,6 +344,115 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5E1807D21DD1B2CD00C7C5FE /* JLPay界面设计 */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807FA1DD1B2F300C7C5FE /* 刷卡界面_1.4.2 */,
+				5E1807D31DD1B2CD00C7C5FE /* 左侧菜单界面 */,
+				5E1807E01DD1B2CE00C7C5FE /* 登陆界面 */,
+				5E1807E61DD1B2CE00C7C5FE /* 金额输入界面_1.4.0 */,
+			);
+			path = "JLPay界面设计";
+			sourceTree = "<group>";
+		};
+		5E1807D31DD1B2CD00C7C5FE /* 左侧菜单界面 */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807D41DD1B2CD00C7C5FE /* View */,
+				5E1807DD1DD1B2CE00C7C5FE /* ViewModel */,
+			);
+			path = "左侧菜单界面";
+			sourceTree = "<group>";
+		};
+		5E1807D41DD1B2CD00C7C5FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807D51DD1B2CD00C7C5FE /* LeftMenuViewController.h */,
+				5E1807D61DD1B2CD00C7C5FE /* LeftMenuViewController.m */,
+				5E1807D71DD1B2CD00C7C5FE /* LMVC_logoutButton.h */,
+				5E1807D81DD1B2CE00C7C5FE /* LMVC_logoutButton.m */,
+				5E1807D91DD1B2CE00C7C5FE /* LMVC_menuCell.h */,
+				5E1807DA1DD1B2CE00C7C5FE /* LMVC_menuCell.m */,
+				5E1807DB1DD1B2CE00C7C5FE /* LMVC_userHeadView.h */,
+				5E1807DC1DD1B2CE00C7C5FE /* LMVC_userHeadView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E1807DD1DD1B2CE00C7C5FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807DE1DD1B2CE00C7C5FE /* LMVC_modelMenuData.h */,
+				5E1807DF1DD1B2CE00C7C5FE /* LMVC_modelMenuData.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5E1807E01DD1B2CE00C7C5FE /* 登陆界面 */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807E11DD1B2CE00C7C5FE /* View */,
+			);
+			path = "登陆界面";
+			sourceTree = "<group>";
+		};
+		5E1807E11DD1B2CE00C7C5FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807E21DD1B2CE00C7C5FE /* SignInInputView.h */,
+				5E1807E31DD1B2CE00C7C5FE /* SignInInputView.m */,
+				5E1807E41DD1B2CE00C7C5FE /* SignInViewController.h */,
+				5E1807E51DD1B2CE00C7C5FE /* SignInViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E1807E61DD1B2CE00C7C5FE /* 金额输入界面_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807E71DD1B2CE00C7C5FE /* Model */,
+				5E1807E81DD1B2CE00C7C5FE /* View */,
+				5E1807EF1DD1B2CE00C7C5FE /* ViewModel */,
+			);
+			path = "金额输入界面_1.4.0";
+			sourceTree = "<group>";
+		};
+		5E1807E71DD1B2CE00C7C5FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E1807E81DD1B2CE00C7C5FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807E91DD1B2CE00C7C5FE /* MainTransViewController.h */,
+				5E1807EA1DD1B2CE00C7C5FE /* MainTransViewController.m */,
+				5E1807EB1DD1B2CE00C7C5FE /* MTVC_keybordView.h */,
+				5E1807EC1DD1B2CE00C7C5FE /* MTVC_keybordView.m */,
+				5E1807ED1DD1B2CE00C7C5FE /* MTVC_screenView.h */,
+				5E1807EE1DD1B2CE00C7C5FE /* MTVC_screenView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E1807EF1DD1B2CE00C7C5FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5E1807FA1DD1B2F300C7C5FE /* 刷卡界面_1.4.2 */ = {
+			isa = PBXGroup;
+			children = (
+				5E1807FB1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.h */,
+				5E1807FC1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m */,
+			);
+			path = "刷卡界面_1.4.2";
+			sourceTree = "<group>";
+		};
 		5E1C92B21DC191B400C65379 /* 幻灯效果UILabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,43 +462,6 @@
 				5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */,
 			);
 			path = "幻灯效果UILabel";
-			sourceTree = "<group>";
-		};
-		5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */ = {
-			isa = PBXGroup;
-			children = (
-				5E3CB4151D94C00F0036C1FB /* Model */,
-				5E3CB4161D94C00F0036C1FB /* View */,
-				5E3CB4171D94C00F0036C1FB /* ViewModel */,
-			);
-			path = "金额输入界面_1.4.0";
-			sourceTree = "<group>";
-		};
-		5E3CB4151D94C00F0036C1FB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5E3CB4161D94C00F0036C1FB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5E3CB4181D94C08F0036C1FB /* MainTransViewController.h */,
-				5E3CB4191D94C08F0036C1FB /* MainTransViewController.m */,
-				5E3CB41B1D94C39E0036C1FB /* MTVC_screenView.h */,
-				5E3CB41C1D94C39E0036C1FB /* MTVC_screenView.m */,
-				5E3CB41E1D94C3B90036C1FB /* MTVC_keybordView.h */,
-				5E3CB41F1D94C3B90036C1FB /* MTVC_keybordView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5E3CB4171D94C00F0036C1FB /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */ = {
@@ -420,39 +495,6 @@
 				5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */,
 			);
 			path = TestForWebView;
-			sourceTree = "<group>";
-		};
-		5E3CB4601DAA32250036C1FB /* 左侧菜单界面 */ = {
-			isa = PBXGroup;
-			children = (
-				5E3CB46D1DAB22610036C1FB /* View */,
-				5E3CB4761DAB22610036C1FB /* ViewModel */,
-			);
-			path = "左侧菜单界面";
-			sourceTree = "<group>";
-		};
-		5E3CB46D1DAB22610036C1FB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5E3CB46E1DAB22610036C1FB /* LeftMenuViewController.h */,
-				5E3CB46F1DAB22610036C1FB /* LeftMenuViewController.m */,
-				5E3CB4701DAB22610036C1FB /* LMVC_logoutButton.h */,
-				5E3CB4711DAB22610036C1FB /* LMVC_logoutButton.m */,
-				5E3CB4721DAB22610036C1FB /* LMVC_menuCell.h */,
-				5E3CB4731DAB22610036C1FB /* LMVC_menuCell.m */,
-				5E3CB4741DAB22610036C1FB /* LMVC_userHeadView.h */,
-				5E3CB4751DAB22610036C1FB /* LMVC_userHeadView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5E3CB4761DAB22610036C1FB /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5E3CB47B1DAB22830036C1FB /* LMVC_modelMenuData.h */,
-				5E3CB47C1DAB22830036C1FB /* LMVC_modelMenuData.m */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5E51A7F21D13A34A00C6FB91 /* IconFont */ = {
@@ -525,21 +567,19 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E1807D21DD1B2CD00C7C5FE /* JLPay界面设计 */,
 				5EB9E4E31DC8409A006A61D1 /* AwesomeFont */,
 				5E1C92B21DC191B400C65379 /* 幻灯效果UILabel */,
 				5EC3DF3E1DC04D4A0014A4A1 /* TestForSearchController */,
 				5E3CB4531DA9D7490036C1FB /* TestForWebView */,
 				5E3CB44C1D9DFF340036C1FB /* CoreAnimation */,
 				5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */,
-				5E3CB4601DAA32250036C1FB /* 左侧菜单界面 */,
-				5E3CB4141D94C00F0036C1FB /* 金额输入界面_1.4.0 */,
 				5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */,
 				5EDA73A61D87ACB0000606A6 /* TriScrollSegmentView */,
 				5EDA73A21D864F33000606A6 /* Label自动布局 */,
 				5E51A9CB1D1B95F700C6FB91 /* CustomIOSAlertView */,
 				9E39A2931CFDC9260035B89C /* JLPay_SignIn */,
 				5E51A7F21D13A34A00C6FB91 /* IconFont */,
-				9E156FA81CA2D3E700244876 /* 登陆界面 */,
 				5E66B19A1CD2057000728547 /* WifiView */,
 				5EB2215A1D73D139008591E5 /* StepSegmentView */,
 				9E1570311CAC0CD500244876 /* TestCollectionView */,
@@ -827,33 +867,6 @@
 				5EDC46961CA2477F00B2F872 /* MBProgressHUD+CustomSate.m */,
 			);
 			path = TestMBProgressHUD;
-			sourceTree = "<group>";
-		};
-		9E156FA81CA2D3E700244876 /* 登陆界面 */ = {
-			isa = PBXGroup;
-			children = (
-				9E156FA91CA2D3E700244876 /* Model */,
-				9E156FAA1CA2D3E700244876 /* View */,
-			);
-			path = "登陆界面";
-			sourceTree = "<group>";
-		};
-		9E156FA91CA2D3E700244876 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9E156FAA1CA2D3E700244876 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9E156FAB1CA2D3E700244876 /* SignInInputView.h */,
-				9E156FAC1CA2D3E700244876 /* SignInInputView.m */,
-				9E156FAD1CA2D3E700244876 /* SignInViewController.h */,
-				9E156FAE1CA2D3E700244876 /* SignInViewController.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9E156FB11CA2D3F300244876 /* Category */ = {
@@ -1227,9 +1240,11 @@
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
+				5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */,
+				5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */,
 				5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
-				5E3CB4771DAB22610036C1FB /* LeftMenuViewController.m in Sources */,
+				5E1807FD1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m in Sources */,
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
@@ -1241,7 +1256,6 @@
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
 				5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */,
-				5E3CB47A1DAB22610036C1FB /* LMVC_userHeadView.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
 				5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */,
 				5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */,
@@ -1249,14 +1263,14 @@
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
-				9E156FAF1CA2D3E700244876 /* SignInInputView.m in Sources */,
-				5E3CB4781DAB22610036C1FB /* LMVC_logoutButton.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
 				5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */,
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,
 				5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */,
 				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
+				5E1807F11DD1B2CE00C7C5FE /* LMVC_logoutButton.m in Sources */,
+				5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */,
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */,
@@ -1265,16 +1279,13 @@
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
-				5E3CB4201D94C3B90036C1FB /* MTVC_keybordView.m in Sources */,
-				5E3CB4791DAB22610036C1FB /* LMVC_menuCell.m in Sources */,
 				5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */,
-				5E3CB41A1D94C08F0036C1FB /* MainTransViewController.m in Sources */,
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
-				5E3CB41D1D94C39E0036C1FB /* MTVC_screenView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
+				5E1807F81DD1B2CE00C7C5FE /* MTVC_keybordView.m in Sources */,
 				5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */,
 				5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */,
 				5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */,
@@ -1283,21 +1294,24 @@
 				5EA2DF511C9115F900770353 /* View+MASAdditions.m in Sources */,
 				9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */,
 				5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */,
+				5E1807F71DD1B2CE00C7C5FE /* MainTransViewController.m in Sources */,
+				5E1807F31DD1B2CE00C7C5FE /* LMVC_userHeadView.m in Sources */,
 				5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
 				5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */,
-				9E156FB01CA2D3E700244876 /* SignInViewController.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
 				5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
-				5E3CB47D1DAB22830036C1FB /* LMVC_modelMenuData.m in Sources */,
+				5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
+				5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */,
 				5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
+				5E1807F61DD1B2CE00C7C5FE /* SignInViewController.m in Sources */,
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
 				5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,

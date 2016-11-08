@@ -78,8 +78,6 @@
 - (IBAction) tapInStepView:(UITapGestureRecognizer*)tapGesture {
     CGPoint curPoint = [tapGesture locationInView:self];
     self.itemSelected = (NSInteger)(curPoint.x / (self.frame.size.width / self.titles.count));
-    
-    NSLog(@"------点击的坐标:[%@]", NSStringFromCGPoint(curPoint));
 }
 
 
@@ -117,8 +115,8 @@
     
     CGFloat inset = 1.5;
     CGFloat uniteWidth = (self.frame.size.width - inset * (self.titles.count - 1) ) / self.titles.count;
-    CGFloat labelHeight = self.frame.size.height * 24.f/30.f;
-    CGFloat lineHeight = self.frame.size.height * 6.f/30.f;
+    CGFloat labelHeight = self.frame.size.height * 26.f/30.f;
+    CGFloat lineHeight = self.frame.size.height * 4.f/30.f;
     
     CGRect labelFrame = CGRectMake(0, 0, uniteWidth, labelHeight);
     CGRect lineFrame = CGRectMake(0, labelHeight, uniteWidth, lineHeight);

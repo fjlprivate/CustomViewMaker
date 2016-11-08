@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"刷卡_设备连接"];
         [_btnTitles addObject: @"Wifi"];
         [_btnTitles addObject:@"AwesomeIcon"];
         [_btnTitles addObject:@"幻灯效果label"];
@@ -166,6 +167,7 @@
         [_dicVCNameAndTitles setObject:@"TestForWebViewController" forKey:@"测试webView"];
         [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
         [_dicVCNameAndTitles setObject:@"TestForIconfontVC" forKey:@"AwesomeIcon"];
+        [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice" forKey:@"刷卡_设备连接"];
     }
     return _dicVCNameAndTitles;
 }

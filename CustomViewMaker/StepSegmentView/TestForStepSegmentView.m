@@ -38,9 +38,9 @@
     [self.view addSubview:self.stepSegView];
     
     self.mlStepSegView = [[MLStepSegmentView alloc] initWithTitles:@[@"连接设备", @"刷卡", @"发起交易"]];
-    self.mlStepSegView.frame = CGRectMake(30, 280 + 40 + 20, self.view.frame.size.width - 60, 40);
+    self.mlStepSegView.frame = CGRectMake(30, 64, self.view.frame.size.width - 60, 40);
     self.mlStepSegView.stepIsSingle = YES;
-    self.mlStepSegView.tintColor = [UIColor colorWithHex:0x00bb9c alpha:1];
+    self.mlStepSegView.tintColor = [UIColor colorWithHex:0xef454b alpha:1];
     [self.view addSubview:self.mlStepSegView];
     
     
