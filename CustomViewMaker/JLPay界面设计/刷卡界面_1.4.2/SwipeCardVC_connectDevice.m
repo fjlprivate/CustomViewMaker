@@ -27,8 +27,6 @@
 @property (nonatomic, strong) UILabel* stateLabel;
 /* 设备sn标签 */
 @property (nonatomic, strong) UILabel* deviceSNLabel;
-/* mpos标签 */
-@property (nonatomic, strong) UILabel* deviceNameLabel;
 /* 图片icon标签 */
 @property (nonatomic, strong) UILabel* deviceIconLabel;
 /* wifi视图 */
@@ -62,7 +60,6 @@
     [self.view addSubview:self.timeSecondLabel];
     [self.view addSubview:self.stateLabel];
     [self.view addSubview:self.deviceSNLabel];
-    [self.view addSubview:self.deviceNameLabel];
     [self.view addSubview:self.deviceIconLabel];
     [self.view addSubview:self.wifiView];
     [self.view addSubview:self.iphoneIconLabe];
@@ -85,15 +82,13 @@
     CGFloat heightTimeSec = screenHeight * 20/612.f;
     CGFloat heightState = screenHeight * 20/612.f;
     CGFloat heightDeviceSn = screenHeight * 20/612.f;
-    CGFloat heightDeviceName = screenHeight * 20/612.f;
     CGFloat heightDeviceIcon = screenHeight * 60/612.f;
     CGFloat heightWifi = screenHeight * 24.f * 2 / 612.f;
     CGFloat heightIphone = screenHeight * 94.f/612.f;
     
     self.timeSecondLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightTimeSec scale:1.2]];
     self.stateLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightState scale:0.9]];
-    self.deviceSNLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightDeviceSn scale:0.8]];
-    self.deviceNameLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightDeviceName scale:0.6]];
+    self.deviceSNLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightDeviceSn scale:0.6]];
     self.deviceIconLabel.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:heightDeviceIcon scale:0.9]];
     self.iphoneIconLabe.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:heightIphone scale:1.5]];
 
@@ -109,28 +104,21 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(heightTimeSec);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1507 - 1356)/612.f * screenHeight + heightTimeSec * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1527 - 1356)/612.f * screenHeight + heightTimeSec * 0.5);
     }];
     
     [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(heightState);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1540 - 1356)/612.f * screenHeight + heightState * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1565 - 1356)/612.f * screenHeight + heightState * 0.5);
     }];
     
     [self.deviceSNLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(heightDeviceSn);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1597 - 1356)/612.f * screenHeight + heightDeviceSn * 0.5);
-    }];
-    
-    [self.deviceNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(0);
-        make.right.mas_equalTo(0);
-        make.height.mas_equalTo(heightDeviceName);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1639 - 1356)/612.f * screenHeight + heightDeviceName * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1629 - 1356)/612.f * screenHeight + heightDeviceSn * 0.5);
     }];
     
     
@@ -193,15 +181,6 @@
         _deviceSNLabel.text = @"设备:SMIT001000000234";
     }
     return _deviceSNLabel;
-}
-- (UILabel *)deviceNameLabel {
-    if (!_deviceNameLabel) {
-        _deviceNameLabel = [UILabel new];
-        _deviceNameLabel.textAlignment = NSTextAlignmentCenter;
-        _deviceNameLabel.textColor = [UIColor colorWithHex:0x999999 alpha:0.9];
-        _deviceNameLabel.text = @"蓝牙设备";
-    }
-    return _deviceNameLabel;
 }
 - (MLWifiView *)wifiView {
     if (!_wifiView) {

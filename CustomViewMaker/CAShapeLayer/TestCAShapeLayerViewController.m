@@ -27,17 +27,12 @@
     [self addSubViews];
     [self relayoutSubViews];
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(moveShapeLayerToMax) userInfo:nil repeats:NO];
 }
+
+
 - (void) moveShapeLayerToMax {
     self.testShapeLayer.strokeEnd = 1;
     self.checkShapeLayer.strokeEnd = 1;

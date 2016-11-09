@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject: @"shapeLayer"];
         [_btnTitles addObject:@"刷卡_设备连接"];
         [_btnTitles addObject: @"Wifi"];
         [_btnTitles addObject:@"AwesomeIcon"];
@@ -135,7 +136,6 @@
         [_btnTitles addObject: @"RACCommand"];
         [_btnTitles addObject: @"下拉列表"];
         [_btnTitles addObject: @"环形标记"];
-        [_btnTitles addObject: @"shapeLayer"];
         [_btnTitles addObject: @"标记勾叉"]; // -- 1
     }
     return _btnTitles;
@@ -145,7 +145,7 @@
     if (!_dicVCNameAndTitles) {
         _dicVCNameAndTitles = [NSMutableDictionary dictionary];
         [_dicVCNameAndTitles setObject:@"CheckViewController" forKey: @"标记勾叉"];
-        [_dicVCNameAndTitles setObject:@"TestCAShapeLayerViewController" forKey: @"shapeLayer"];
+        [_dicVCNameAndTitles setObject:@"TestForMLActivitorVC" forKey: @"shapeLayer"]; // TestForMLActivitorVC  TestCAShapeLayerViewController
         [_dicVCNameAndTitles setObject:@"TestCheckViewController" forKey: @"环形标记"];
         [_dicVCNameAndTitles setObject:@"TextPullListViewController" forKey: @"下拉列表"];
         [_dicVCNameAndTitles setObject:@"TestRACCommand" forKey: @"RACCommand"];

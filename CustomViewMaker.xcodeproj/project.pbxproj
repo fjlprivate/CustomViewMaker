@@ -22,6 +22,8 @@
 		5E1807F81DD1B2CE00C7C5FE /* MTVC_keybordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807EC1DD1B2CE00C7C5FE /* MTVC_keybordView.m */; };
 		5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807EE1DD1B2CE00C7C5FE /* MTVC_screenView.m */; };
 		5E1807FD1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807FC1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m */; };
+		5E1808001DD2BD8C00C7C5FE /* MLActivitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807FF1DD2BD8C00C7C5FE /* MLActivitor.m */; };
+		5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1808021DD2FD9400C7C5FE /* TestForMLActivitorVC.m */; };
 		5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */; };
 		5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92B71DC1A17400C65379 /* FLGradientLabelLayer.m */; };
 		5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */; };
@@ -145,6 +147,11 @@
 		5E1807EE1DD1B2CE00C7C5FE /* MTVC_screenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVC_screenView.m; sourceTree = "<group>"; };
 		5E1807FB1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeCardVC_connectDevice.h; sourceTree = "<group>"; };
 		5E1807FC1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeCardVC_connectDevice.m; sourceTree = "<group>"; };
+		5E1807FE1DD2BD8C00C7C5FE /* MLActivitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLActivitor.h; sourceTree = "<group>"; };
+		5E1807FF1DD2BD8C00C7C5FE /* MLActivitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLActivitor.m; sourceTree = "<group>"; };
+		5E1808011DD2FD9400C7C5FE /* TestForMLActivitorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMLActivitorVC.h; sourceTree = "<group>"; };
+		5E1808021DD2FD9400C7C5FE /* TestForMLActivitorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForMLActivitorVC.m; sourceTree = "<group>"; };
+		5E1808041DD3208A00C7C5FE /* PublicHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicHeader.h; sourceTree = "<group>"; };
 		5E1C92B31DC191F000C65379 /* TestForGradientLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForGradientLabel.h; sourceTree = "<group>"; };
 		5E1C92B41DC191F000C65379 /* TestForGradientLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForGradientLabel.m; sourceTree = "<group>"; };
 		5E1C92B61DC1A17400C65379 /* FLGradientLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGradientLabelLayer.h; sourceTree = "<group>"; };
@@ -595,6 +602,7 @@
 				9E156FB11CA2D3F300244876 /* Category */,
 				5EA2DEFB1C91110D00770353 /* AppDelegate.h */,
 				5EA2DEFC1C91110D00770353 /* AppDelegate.m */,
+				5E1808041DD3208A00C7C5FE /* PublicHeader.h */,
 				5EA2DEFE1C91110D00770353 /* ViewController.h */,
 				5EA2DEFF1C91110D00770353 /* ViewController.m */,
 				5EA2DEF81C91110D00770353 /* Supporting Files */,
@@ -681,6 +689,10 @@
 			children = (
 				5EA2DF5A1C929E1B00770353 /* TestCAShapeLayerViewController.h */,
 				5EA2DF5B1C929E1B00770353 /* TestCAShapeLayerViewController.m */,
+				5E1807FE1DD2BD8C00C7C5FE /* MLActivitor.h */,
+				5E1807FF1DD2BD8C00C7C5FE /* MLActivitor.m */,
+				5E1808011DD2FD9400C7C5FE /* TestForMLActivitorVC.h */,
+				5E1808021DD2FD9400C7C5FE /* TestForMLActivitorVC.m */,
 			);
 			path = CAShapeLayer;
 			sourceTree = "<group>";
@@ -1273,10 +1285,12 @@
 				5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */,
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
+				5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */,
 				5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */,
 				5EC3DF441DC04D830014A4A1 /* TestForSearchBarVC.m in Sources */,
 				5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
+				5E1808001DD2BD8C00C7C5FE /* MLActivitor.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
 				5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */,
