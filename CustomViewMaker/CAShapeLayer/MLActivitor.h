@@ -12,6 +12,12 @@
 
 @property (nonatomic, copy) UIColor* tintColor;
 
+/* 单个item动画时间, default 0.6f */
+@property (nonatomic, assign) CGFloat uniteDuration;
+
+/* 一次轮询时间 */
+@property (nonatomic, assign) CGFloat perCircleDuration;
+
 - (void) show;
 - (void) hide;
 

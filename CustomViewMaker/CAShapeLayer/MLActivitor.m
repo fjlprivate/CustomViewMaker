@@ -35,18 +35,27 @@
         [self.timer invalidate];
         self.timer = nil;
     }
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1/8.f target:self selector:@selector(timerFuncGlobal) userInfo:nil repeats:YES];
     
+    // 因为 CAShapeLayer 的动画不占用CPU,所以定时器可以放在主/副线程都可以,但在主线程的话要指定模式为 :NSRunLoopCommonModes
+    self.timer = [NSTimer timerWithTimeInterval:self.perCircleDuration/(CGFloat)self.activityItems.count
+                                         target:self
+                                       selector:@selector(timerFuncGlobal)
+                                       userInfo:nil
+                                        repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)hide {
-    
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 # pragma mask 1 定时器z
 
 - (void) timerFuncGlobal {
-    if (self.index == 8 - 1 ) {
+    if (self.index >= self.activityItems.count - 1 ) {
         self.index = 0;
     } else {
         self.index ++;
@@ -57,18 +66,18 @@
 - (void) animatingForShapeLayerItem {
     CAShapeLayer* curShapeLayer = [self.activityItems objectAtIndex:self.index];
     
-    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    animation.duration = 0.5f;
-    animation.fillMode = kCAFillModeForwards;
+    CAKeyframeAnimation* animationT = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animationT.duration = self.uniteDuration;
+    animationT.fillMode = kCAFillModeForwards;
     
-    animation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],
+    animationT.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)],
                          [NSValue valueWithCATransform3D:CATransform3DMakeScale(self.maxScaleRate, self.maxScaleRate, 1)],
                          [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
-    animation.keyTimes = @[@0, @0.5, @1];
+    animationT.keyTimes = @[@0, @0.5, @1];
     
     
     [curShapeLayer removeAllAnimations];
-    [curShapeLayer addAnimation:animation forKey:@"scaleAnimation"];
+    [curShapeLayer addAnimation:animationT forKey:nil];
 }
 
 
@@ -101,10 +110,12 @@
 
 
 - (void) initialDatas {
-    self.maxScaleRate = 1.8;
+    self.maxScaleRate = 2.f;
+    self.uniteDuration = 0.56f;
+    self.perCircleDuration = 1.f;
     self.canAnimating = YES; // no
     self.index = 0;
-    _tintColor = [UIColor colorWithHex:0x999999 alpha:1];
+    _tintColor = [UIColor colorWithHex:0x888888 alpha:0.9];
     self.layer.masksToBounds = YES;
 }
 
@@ -115,7 +126,7 @@
 }
 
 - (void) layoutSublayers {
-    CGFloat maxItemRadius = self.frame.size.height * 0.24 * 0.5;
+    CGFloat maxItemRadius = self.frame.size.height * 0.265 * 0.5;
     CGFloat minItemRadius = maxItemRadius / self.maxScaleRate;
     CGFloat oCenterX = self.frame.size.width * 0.5;
     CGFloat oCenterY = self.frame.size.height * 0.5;

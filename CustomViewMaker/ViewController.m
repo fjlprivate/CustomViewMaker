@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"测试ChildVC"];
         [_btnTitles addObject: @"shapeLayer"];
         [_btnTitles addObject:@"刷卡_设备连接"];
         [_btnTitles addObject: @"Wifi"];
@@ -168,6 +169,7 @@
         [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
         [_dicVCNameAndTitles setObject:@"TestForIconfontVC" forKey:@"AwesomeIcon"];
         [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice" forKey:@"刷卡_设备连接"];
+        [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController" forKey:@"测试ChildVC"];
     }
     return _dicVCNameAndTitles;
 }

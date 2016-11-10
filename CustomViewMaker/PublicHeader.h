@@ -17,6 +17,11 @@
 #import <UIFont+FontAwesome.h>
 #import "NSString+Custom.h"
 
+#import <ReactiveCocoa.h>
+
+
+// 定义弱自引用
+#define NameWself(wself)      __weak typeof(self) wself = self;
 
 
 #endif /* PublicHeader_h */
