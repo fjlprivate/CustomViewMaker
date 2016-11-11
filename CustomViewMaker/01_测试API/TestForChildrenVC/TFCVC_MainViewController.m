@@ -10,6 +10,7 @@
 #import "PublicHeader.h"
 #import "TFCVC_childViewController.h"
 #import "MLStepSegmentView.h"
+#import "SwipeCardVC_connectDevice.h"
 
 
 @interface TFCVC_MainViewController ()
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) NSArray* colors;
 
 @property (nonatomic, assign) NSInteger curIndexVC;
+
+@property (nonatomic, weak) UIViewController* curShownChildVC;
 
 @end
 
@@ -41,46 +44,34 @@
         if (targetIndex == self.curIndexVC) {
             return ;
         }
-        else if (targetIndex < self.curIndexVC) {
-            UIViewController* curChildVC = [self.childrenVCs objectAtIndex:self.curIndexVC];
-            UIViewController* targetChildVC = [self.childrenVCs objectAtIndex:targetIndex];
-            [self transitionFromViewController:curChildVC toViewController:targetChildVC duration:0.3 options:UIViewAnimationOptionTransitionNone animations:^{
-                @strongify(self);
-                [curChildVC.view.layer removeAllAnimations];
-                CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-                animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-                animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(self.view.frame.size.width, 0, 0)];
-                animation.duration = 0.3;
-                [curChildVC.view.layer addAnimation:animation forKey:nil];
-                
-            } completion:^(BOOL finished) {
-                
-            }];
-        }
-        else {
-            UIViewController* curChildVC = [self.childrenVCs objectAtIndex:self.curIndexVC];
-            UIViewController* targetChildVC = [self.childrenVCs objectAtIndex:targetIndex];
-            [self transitionFromViewController:curChildVC toViewController:targetChildVC duration:0.3 options:UIViewAnimationOptionTransitionNone animations:^{
-                @strongify(self);
-                [curChildVC.view.layer removeAllAnimations];
-                CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-                animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-                animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-self.view.frame.size.width, 0, 0)];
-                animation.duration = 0.3;
-                [curChildVC.view.layer addAnimation:animation forKey:nil];
-            } completion:^(BOOL finished) {
-                
-            }];
-        }
-        
-        
-        self.curIndexVC = [index integerValue];
+        [self switchChildVCFromIndex:self.curIndexVC toIndex:targetIndex];
+        self.curIndexVC = targetIndex;
     }];
 }
 
 
+# pragma mask 1 切换动画
+
+- (void) switchChildVCFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
+    UIViewController* childVCFrom = [self.childrenVCs objectAtIndex:fromIndex];
+    UIViewController* childVCTo = [self.childrenVCs objectAtIndex:toIndex];
+    
+    [self.view addSubview:childVCTo.view];
+    
+    // 添加动画-添加在containerVC
+    CATransition* transitionAni = [CATransition animation];
+    transitionAni.type = kCATransitionFade;
+    transitionAni.subtype = fromIndex < toIndex ? kCATransitionFromRight : kCATransitionFromLeft;
+    transitionAni.duration = 0.3;
+    [self.view.layer removeAllAnimations];
+    [self.view.layer addAnimation:transitionAni forKey:nil];
+    
+    [childVCFrom.view removeFromSuperview];
+}
 
 
+
+# pragma mask 2 界面布局
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,8 +82,10 @@
     [self addKVO];
 }
 
+
+
 - (void) initialDatas {
-    for (TFCVC_childViewController* vc in self.childrenVCs) {
+    for (UIViewController* vc in self.childrenVCs) {
         [self addChildViewController:vc];
     }
     self.curIndexVC = 0;
@@ -105,7 +98,6 @@
 }
 
 - (void) layoutSubviews {
-    
     [self.stepSegView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(64 + 5);
         make.left.mas_equalTo(30);
@@ -117,7 +109,7 @@
                               64 + 5 + 34 + 10,
                               self.view.frame.size.width - 60,
                               self.view.frame.size.height - (64 + 5 + 34 + 10 + 10));
-    for (TFCVC_childViewController* vc in self.childrenVCs) {
+    for (UIViewController* vc in self.childrenVCs) {
         vc.view.frame = frame;
     }
 }
@@ -129,23 +121,24 @@
 - (NSArray *)colors {
     if (!_colors) {
         _colors = @[[UIColor colorWithHex:0x00bb9c alpha:1],
-                    [UIColor colorWithHex:0xffcc00 alpha:1],
-                    [UIColor colorWithHex:0x27384b alpha:1]];
+                    [UIColor colorWithHex:0xffcc00 alpha:1]];
     }
     return _colors;
 }
 
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[@"VC1", @"VC2", @"VC3"];
+        _titles = @[@"VC1", @"VC2"];
     }
     return _titles;
 }
 
 - (MLStepSegmentView *)stepSegView {
     if (!_stepSegView) {
-        _stepSegView = [[MLStepSegmentView alloc] initWithTitles:self.titles];
-        _stepSegView.stepIsSingle = YES;
+        NSMutableArray* titleList = [NSMutableArray arrayWithArray:self.titles];
+        [titleList addObject:@"Swipe"];
+        _stepSegView = [[MLStepSegmentView alloc] initWithTitles:titleList];
+        _stepSegView.tintColor = [UIColor colorWithHex:0x00bb9c alpha:1];
         _stepSegView.itemSelected = 0;
     }
     return _stepSegView;
@@ -163,6 +156,9 @@
             childvc.tag = i;
             [children addObject:childvc];
         }
+        
+        SwipeCardVC_connectDevice* swipeVC = [[SwipeCardVC_connectDevice alloc] init];
+        [children addObject:swipeVC];
         
         _childrenVCs = [NSArray arrayWithArray:children];
     }

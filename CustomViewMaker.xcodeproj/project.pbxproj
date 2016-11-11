@@ -29,6 +29,9 @@
 		5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C92BA1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m */; };
 		5E2A58921DD45C0700AAF7FA /* TFCVC_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58911DD45C0700AAF7FA /* TFCVC_MainViewController.m */; };
 		5E2A58951DD45C1600AAF7FA /* TFCVC_childViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58941DD45C1600AAF7FA /* TFCVC_childViewController.m */; };
+		5E2A58981DD5A08200AAF7FA /* TFCVC_mainVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58971DD5A08200AAF7FA /* TFCVC_mainVC2.m */; };
+		5E2A589B1DD5A09800AAF7FA /* TFCVC_childVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A589A1DD5A09800AAF7FA /* TFCVC_childVC2.m */; };
+		5E2A589E1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A589D1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m */; };
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
@@ -164,6 +167,12 @@
 		5E2A58911DD45C0700AAF7FA /* TFCVC_MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_MainViewController.m; sourceTree = "<group>"; };
 		5E2A58931DD45C1600AAF7FA /* TFCVC_childViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFCVC_childViewController.h; sourceTree = "<group>"; };
 		5E2A58941DD45C1600AAF7FA /* TFCVC_childViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_childViewController.m; sourceTree = "<group>"; };
+		5E2A58961DD5A08200AAF7FA /* TFCVC_mainVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFCVC_mainVC2.h; sourceTree = "<group>"; };
+		5E2A58971DD5A08200AAF7FA /* TFCVC_mainVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_mainVC2.m; sourceTree = "<group>"; };
+		5E2A58991DD5A09800AAF7FA /* TFCVC_childVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFCVC_childVC2.h; sourceTree = "<group>"; };
+		5E2A589A1DD5A09800AAF7FA /* TFCVC_childVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_childVC2.m; sourceTree = "<group>"; };
+		5E2A589C1DD5A75E00AAF7FA /* TFCVC_spreadBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFCVC_spreadBtn.h; sourceTree = "<group>"; };
+		5E2A589D1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_spreadBtn.m; sourceTree = "<group>"; };
 		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
 		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
 		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
@@ -492,6 +501,12 @@
 				5E2A58911DD45C0700AAF7FA /* TFCVC_MainViewController.m */,
 				5E2A58931DD45C1600AAF7FA /* TFCVC_childViewController.h */,
 				5E2A58941DD45C1600AAF7FA /* TFCVC_childViewController.m */,
+				5E2A58961DD5A08200AAF7FA /* TFCVC_mainVC2.h */,
+				5E2A58971DD5A08200AAF7FA /* TFCVC_mainVC2.m */,
+				5E2A58991DD5A09800AAF7FA /* TFCVC_childVC2.h */,
+				5E2A589A1DD5A09800AAF7FA /* TFCVC_childVC2.m */,
+				5E2A589C1DD5A75E00AAF7FA /* TFCVC_spreadBtn.h */,
+				5E2A589D1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m */,
 			);
 			path = TestForChildrenVC;
 			sourceTree = "<group>";
@@ -1290,6 +1305,7 @@
 				5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */,
 				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
+				5E2A58981DD5A08200AAF7FA /* TFCVC_mainVC2.m in Sources */,
 				5E2A58951DD45C1600AAF7FA /* TFCVC_childViewController.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
@@ -1302,6 +1318,7 @@
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
+				5E2A589E1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
 				5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */,
@@ -1313,6 +1330,7 @@
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */,
+				5E2A589B1DD5A09800AAF7FA /* TFCVC_childVC2.m in Sources */,
 				5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */,
 				5EC3DF441DC04D830014A4A1 /* TestForSearchBarVC.m in Sources */,
 				5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */,

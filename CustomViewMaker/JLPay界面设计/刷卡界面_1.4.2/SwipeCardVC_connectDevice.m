@@ -19,8 +19,6 @@
 
 @interface SwipeCardVC_connectDevice ()
 
-/* 流程步骤视图 */
-@property (nonatomic, strong) MLStepSegmentView* stepView;
 /* 定时器秒表显示标签 */
 @property (nonatomic, strong) UILabel* timeSecondLabel;
 /* 状态标签 */
@@ -44,47 +42,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消费:￥100.00";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithHex:0xffffff alpha:1];
     [self loadSubviews];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self relayoutSubviews];
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     [self.wifiView startAnimatingOnCompleted:^{
         
     }];
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear: animated];
+    [self.wifiView endAnimatingOnCompleted:^{
+        
+    }];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+}
 
 - (void) loadSubviews {
-    [self.view addSubview:self.stepView];
     [self.view addSubview:self.timeSecondLabel];
     [self.view addSubview:self.stateLabel];
     [self.view addSubview:self.deviceSNLabel];
     [self.view addSubview:self.deviceIconLabel];
     [self.view addSubview:self.wifiView];
     [self.view addSubview:self.iphoneIconLabe];
-    
-//    self.timeSecondLabel.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-//    self.stateLabel.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-//    self.deviceSNLabel.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-//    self.deviceNameLabel.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-//    self.deviceIconLabel.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-//    self.iphoneIconLabe.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.5];
-
 }
 
 - (void) relayoutSubviews {
     __weak typeof(self) wself = self;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-
-    CGFloat heightStep = screenHeight * 40.f/612.f;
-    CGFloat heightTimeSec = screenHeight * 20/612.f;
-    CGFloat heightState = screenHeight * 20/612.f;
-    CGFloat heightDeviceSn = screenHeight * 20/612.f;
-    CGFloat heightDeviceIcon = screenHeight * 60/612.f;
-    CGFloat heightWifi = screenHeight * 24.f * 2 / 612.f;
-    CGFloat heightIphone = screenHeight * 94.f/612.f;
+    CGFloat screenHeight = self.view.frame.size.height;
+    
+    CGFloat scaleHeight = 500.f;
+    
+    CGFloat heightTimeSec = screenHeight * 20/scaleHeight;
+    CGFloat heightState = screenHeight * 20/scaleHeight;
+    CGFloat heightDeviceSn = screenHeight * 20/scaleHeight;
+    CGFloat heightDeviceIcon = screenHeight * 60/scaleHeight;
+    CGFloat heightWifi = screenHeight * 24.f * 2 / scaleHeight;
+    CGFloat heightIphone = screenHeight * 94.f/scaleHeight;
     
     self.timeSecondLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightTimeSec scale:1.2]];
     self.stateLabel.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:heightState scale:0.9]];
@@ -93,51 +97,44 @@
     self.iphoneIconLabe.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:heightIphone scale:1.5]];
 
     
-    [self.stepView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(screenWidth * 40.f/334.f);
-        make.right.mas_equalTo(- screenWidth * 40.f/334.f);
-        make.height.mas_equalTo(heightStep);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset( 64 + 5 + heightStep * 0.5);
-    }];
-    
-    [self.timeSecondLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.timeSecondLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(heightTimeSec);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1527 - 1356)/612.f * screenHeight + heightTimeSec * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1507 - 1468)/scaleHeight * screenHeight + heightTimeSec * 0.5);
     }];
     
-    [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.stateLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(heightState);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1565 - 1356)/612.f * screenHeight + heightState * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1553 - 1468)/scaleHeight * screenHeight + heightState * 0.5);
     }];
     
-    [self.deviceSNLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.deviceSNLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(heightDeviceSn);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1629 - 1356)/612.f * screenHeight + heightDeviceSn * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1627 - 1468)/scaleHeight * screenHeight + heightDeviceSn * 0.5);
     }];
     
     
-    [self.deviceIconLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.deviceIconLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(wself.view.mas_centerX);
         make.width.height.mas_equalTo(heightDeviceIcon);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1659 - 1356)/612.f * screenHeight + heightDeviceIcon * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1659 - 1468)/scaleHeight * screenHeight + heightDeviceIcon * 0.5);
     }];
     
-    [self.wifiView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.wifiView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(wself.view.mas_centerX);
         make.width.height.mas_equalTo(heightWifi);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1739 - 1356)/612.f * screenHeight + heightWifi * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1741 - 1468)/scaleHeight * screenHeight + heightWifi * 0.5);
     }];
     
-    [self.iphoneIconLabe mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.iphoneIconLabe mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(wself.view.mas_centerX);
         make.width.height.mas_equalTo(heightIphone);
-        make.centerY.mas_equalTo(wself.view.mas_top).offset((1816 - 1356)/612.f * screenHeight + heightIphone * 0.5);
+        make.centerY.mas_equalTo(wself.view.mas_top).offset((1816 - 1468)/scaleHeight * screenHeight + heightIphone * 0.5);
     }];
 }
 
@@ -147,14 +144,6 @@
 
 # pragma mask 4 getter
 
-- (MLStepSegmentView *)stepView {
-    if (!_stepView) {
-        _stepView = [[MLStepSegmentView alloc] initWithTitles:@[@"连接设备", @"刷卡", @"发起交易"]];
-        _stepView.tintColor = [UIColor colorWithHex:0x00bb9c alpha:1];
-        _stepView.itemSelected = 0;
-    }
-    return _stepView;
-}
 - (UILabel *)timeSecondLabel {
     if (!_timeSecondLabel) {
         _timeSecondLabel = [UILabel new];

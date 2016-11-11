@@ -169,7 +169,7 @@
         [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
         [_dicVCNameAndTitles setObject:@"TestForIconfontVC" forKey:@"AwesomeIcon"];
         [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice" forKey:@"刷卡_设备连接"];
-        [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController" forKey:@"测试ChildVC"];
+        [_dicVCNameAndTitles setObject:@"TFCVC_mainVC2" forKey:@"测试ChildVC"];
     }
     return _dicVCNameAndTitles;
 }
