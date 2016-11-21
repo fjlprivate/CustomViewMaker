@@ -44,7 +44,8 @@
         if (targetIndex == self.curIndexVC) {
             return ;
         }
-        [self switchChildVCFromIndex:self.curIndexVC toIndex:targetIndex];
+//        [self switchChildVCFromIndex:self.curIndexVC toIndex:targetIndex];
+        [self customSwitchChildVCFromIndex:self.curIndexVC toIndex:targetIndex];
         self.curIndexVC = targetIndex;
     }];
 }
@@ -57,7 +58,6 @@
     UIViewController* childVCTo = [self.childrenVCs objectAtIndex:toIndex];
     
     [self.view addSubview:childVCTo.view];
-    
     // 添加动画-添加在containerVC
     CATransition* transitionAni = [CATransition animation];
     transitionAni.type = kCATransitionFade;
@@ -68,6 +68,31 @@
     
     [childVCFrom.view removeFromSuperview];
 }
+
+- (void) customSwitchChildVCFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
+    UIViewController* childVCFrom = [self.childrenVCs objectAtIndex:fromIndex];
+    UIViewController* childVCTo = [self.childrenVCs objectAtIndex:toIndex];
+
+    CGRect fromFrameStart = childVCFrom.view.frame;
+    CGRect fromFrameEnd = childVCFrom.view.frame;
+    fromFrameEnd.origin.x -= fromIndex < toIndex ? self.view.frame.size.width : - self.view.frame.size.width;
+    
+    CGRect toFrameStart = fromFrameStart;
+    toFrameStart.origin.x += fromIndex < toIndex ? self.view.frame.size.width : - self.view.frame.size.width;
+    CGRect toFrameEnd = fromFrameStart;
+    
+    [self.view addSubview:childVCTo.view];
+    childVCTo.view.frame = toFrameStart;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        childVCFrom.view.frame = fromFrameEnd;
+        childVCTo.view.frame = toFrameEnd;
+    } completion:^(BOOL finished) {
+        [childVCFrom.view removeFromSuperview];
+    }];
+    
+}
+
 
 
 
@@ -85,16 +110,16 @@
 
 
 - (void) initialDatas {
-    for (UIViewController* vc in self.childrenVCs) {
-        [self addChildViewController:vc];
-    }
+//    for (UIViewController* vc in self.childrenVCs) {
+//        [self addChildViewController:vc];
+//    }
     self.curIndexVC = 0;
 }
 
 - (void) loadSubviews {
     [self.view addSubview:self.stepSegView];
-    TFCVC_childViewController* vc = [self.childrenVCs firstObject];
-    [self.view addSubview:vc.view];
+//    TFCVC_childViewController* vc = [self.childrenVCs firstObject];
+//    [self.view addSubview:vc.view];
 }
 
 - (void) layoutSubviews {
@@ -109,9 +134,13 @@
                               64 + 5 + 34 + 10,
                               self.view.frame.size.width - 60,
                               self.view.frame.size.height - (64 + 5 + 34 + 10 + 10));
-    for (UIViewController* vc in self.childrenVCs) {
-        vc.view.frame = frame;
-    }
+//    for (UIViewController* vc in self.childrenVCs) {
+//        vc.view.frame = frame;
+//    }
+    TFCVC_childViewController* vc = [self.childrenVCs firstObject];
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    vc.view.frame = frame;
 }
 
 
@@ -140,6 +169,7 @@
         _stepSegView = [[MLStepSegmentView alloc] initWithTitles:titleList];
         _stepSegView.tintColor = [UIColor colorWithHex:0x00bb9c alpha:1];
         _stepSegView.itemSelected = 0;
+        _stepSegView.userInteractionEnabled = YES;
     }
     return _stepSegView;
 }

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TFCVC_labelForChildVCTest.h"
 
 @interface TFCVC_childViewController : UIViewController
 
-@property (nonatomic, strong) UILabel* textLabel;
+@property (nonatomic, strong) TFCVC_labelForChildVCTest* textLabel;
 
 @property (nonatomic, assign) NSInteger tag;
 

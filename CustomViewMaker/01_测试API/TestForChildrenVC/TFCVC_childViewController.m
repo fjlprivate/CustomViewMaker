@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     
-    _textLabel = [[UILabel alloc] init];
+    _textLabel = [[TFCVC_labelForChildVCTest alloc] init];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [UIFont boldSystemFontOfSize:16];
     self.textLabel.textColor = [UIColor whiteColor];
@@ -32,6 +32,7 @@
     
     
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
