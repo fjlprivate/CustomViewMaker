@@ -34,6 +34,15 @@
 		5E2A589E1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A589D1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m */; };
 		5E2A58A11DD95AC100AAF7FA /* TFCVC_labelForChildVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58A01DD95AC100AAF7FA /* TFCVC_labelForChildVCTest.m */; };
 		5E2A58A51DD98A0900AAF7FA /* TestForKeywindowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58A41DD98A0900AAF7FA /* TestForKeywindowVC.m */; };
+		5E2A58DB1DE282AC00AAF7FA /* BitmapMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58D21DE282AC00AAF7FA /* BitmapMaker.m */; };
+		5E2A58DC1DE282AC00AAF7FA /* jbig.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58D31DE282AC00AAF7FA /* jbig.c */; };
+		5E2A58DD1DE282AC00AAF7FA /* jbig85.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58D51DE282AC00AAF7FA /* jbig85.c */; };
+		5E2A58DE1DE282AC00AAF7FA /* jbig_ar.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58D71DE282AC00AAF7FA /* jbig_ar.c */; };
+		5E2A58DF1DE282AC00AAF7FA /* JLJBIGEnCoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58D91DE282AC00AAF7FA /* JLJBIGEnCoder.c */; };
+		5E2A58E21DE282C400AAF7FA /* TestForJBIG.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58E11DE282C400AAF7FA /* TestForJBIG.m */; };
+		5E2A58F51DE2EF7100AAF7FA /* ElecSignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58F41DE2EF7100AAF7FA /* ElecSignView.m */; };
+		5E2A58F81DE2EFB000AAF7FA /* ElecSignFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */; };
+		5E2A58FB1DE4227F00AAF7FA /* JLElecSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58FA1DE4227F00AAF7FA /* JLElecSignController.m */; };
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
@@ -179,6 +188,24 @@
 		5E2A58A01DD95AC100AAF7FA /* TFCVC_labelForChildVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFCVC_labelForChildVCTest.m; sourceTree = "<group>"; };
 		5E2A58A31DD98A0900AAF7FA /* TestForKeywindowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKeywindowVC.h; sourceTree = "<group>"; };
 		5E2A58A41DD98A0900AAF7FA /* TestForKeywindowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKeywindowVC.m; sourceTree = "<group>"; };
+		5E2A58D11DE282AC00AAF7FA /* BitmapMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapMaker.h; sourceTree = "<group>"; };
+		5E2A58D21DE282AC00AAF7FA /* BitmapMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitmapMaker.m; sourceTree = "<group>"; };
+		5E2A58D31DE282AC00AAF7FA /* jbig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jbig.c; sourceTree = "<group>"; };
+		5E2A58D41DE282AC00AAF7FA /* jbig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jbig.h; sourceTree = "<group>"; };
+		5E2A58D51DE282AC00AAF7FA /* jbig85.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jbig85.c; sourceTree = "<group>"; };
+		5E2A58D61DE282AC00AAF7FA /* jbig85.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jbig85.h; sourceTree = "<group>"; };
+		5E2A58D71DE282AC00AAF7FA /* jbig_ar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jbig_ar.c; sourceTree = "<group>"; };
+		5E2A58D81DE282AC00AAF7FA /* jbig_ar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jbig_ar.h; sourceTree = "<group>"; };
+		5E2A58D91DE282AC00AAF7FA /* JLJBIGEnCoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = JLJBIGEnCoder.c; sourceTree = "<group>"; };
+		5E2A58DA1DE282AC00AAF7FA /* JLJBIGEnCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLJBIGEnCoder.h; sourceTree = "<group>"; };
+		5E2A58E01DE282C400AAF7FA /* TestForJBIG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForJBIG.h; sourceTree = "<group>"; };
+		5E2A58E11DE282C400AAF7FA /* TestForJBIG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForJBIG.m; sourceTree = "<group>"; };
+		5E2A58F31DE2EF7100AAF7FA /* ElecSignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElecSignView.h; sourceTree = "<group>"; };
+		5E2A58F41DE2EF7100AAF7FA /* ElecSignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElecSignView.m; sourceTree = "<group>"; };
+		5E2A58F61DE2EFB000AAF7FA /* ElecSignFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElecSignFrameView.h; sourceTree = "<group>"; };
+		5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElecSignFrameView.m; sourceTree = "<group>"; };
+		5E2A58F91DE4227F00AAF7FA /* JLElecSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLElecSignController.h; sourceTree = "<group>"; };
+		5E2A58FA1DE4227F00AAF7FA /* JLElecSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLElecSignController.m; sourceTree = "<group>"; };
 		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
 		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
 		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
@@ -529,6 +556,31 @@
 			path = TestForKeywindow;
 			sourceTree = "<group>";
 		};
+		5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */ = {
+			isa = PBXGroup;
+			children = (
+				5E2A58E01DE282C400AAF7FA /* TestForJBIG.h */,
+				5E2A58E11DE282C400AAF7FA /* TestForJBIG.m */,
+				5E2A58D11DE282AC00AAF7FA /* BitmapMaker.h */,
+				5E2A58D21DE282AC00AAF7FA /* BitmapMaker.m */,
+				5E2A58F91DE4227F00AAF7FA /* JLElecSignController.h */,
+				5E2A58FA1DE4227F00AAF7FA /* JLElecSignController.m */,
+				5E2A58F61DE2EFB000AAF7FA /* ElecSignFrameView.h */,
+				5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */,
+				5E2A58F31DE2EF7100AAF7FA /* ElecSignView.h */,
+				5E2A58F41DE2EF7100AAF7FA /* ElecSignView.m */,
+				5E2A58D31DE282AC00AAF7FA /* jbig.c */,
+				5E2A58D41DE282AC00AAF7FA /* jbig.h */,
+				5E2A58D51DE282AC00AAF7FA /* jbig85.c */,
+				5E2A58D61DE282AC00AAF7FA /* jbig85.h */,
+				5E2A58D71DE282AC00AAF7FA /* jbig_ar.c */,
+				5E2A58D81DE282AC00AAF7FA /* jbig_ar.h */,
+				5E2A58D91DE282AC00AAF7FA /* JLJBIGEnCoder.c */,
+				5E2A58DA1DE282AC00AAF7FA /* JLJBIGEnCoder.h */,
+			);
+			path = "02_测试jbig";
+			sourceTree = "<group>";
+		};
 		5E3CB4421D9BAB170036C1FB /* TestForKYAnimationPageController */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +684,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */,
 				5E2A588E1DD45B0C00AAF7FA /* 01_测试API */,
 				5E1807D21DD1B2CD00C7C5FE /* JLPay界面设计 */,
 				5EB9E4E31DC8409A006A61D1 /* AwesomeFont */,
@@ -1310,6 +1363,7 @@
 			files = (
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
+				5E2A58DF1DE282AC00AAF7FA /* JLJBIGEnCoder.c in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */,
 				5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */,
@@ -1318,16 +1372,19 @@
 				5E1807FD1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m in Sources */,
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
+				5E2A58E21DE282C400AAF7FA /* TestForJBIG.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
 				5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */,
 				5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */,
 				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
+				5E2A58F81DE2EFB000AAF7FA /* ElecSignFrameView.m in Sources */,
 				5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */,
 				5E2A58981DD5A08200AAF7FA /* TFCVC_mainVC2.m in Sources */,
 				5E2A58951DD45C1600AAF7FA /* TFCVC_childViewController.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
+				5E2A58FB1DE4227F00AAF7FA /* JLElecSignController.m in Sources */,
 				5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
 				5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */,
@@ -1336,7 +1393,9 @@
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
+				5E2A58DE1DE282AC00AAF7FA /* jbig_ar.c in Sources */,
 				5E2A589E1DD5A75E00AAF7FA /* TFCVC_spreadBtn.m in Sources */,
+				5E2A58F51DE2EF7100AAF7FA /* ElecSignView.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
 				5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */,
@@ -1349,6 +1408,7 @@
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */,
+				5E2A58DB1DE282AC00AAF7FA /* BitmapMaker.m in Sources */,
 				5E2A589B1DD5A09800AAF7FA /* TFCVC_childVC2.m in Sources */,
 				5EB9E4EC1DC84121006A61D1 /* VMIFDataSource.m in Sources */,
 				5EC3DF441DC04D830014A4A1 /* TestForSearchBarVC.m in Sources */,
@@ -1362,6 +1422,7 @@
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
+				5E2A58DC1DE282AC00AAF7FA /* jbig.c in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
 				5E2A58A51DD98A0900AAF7FA /* TestForKeywindowVC.m in Sources */,
@@ -1386,6 +1447,7 @@
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
+				5E2A58DD1DE282AC00AAF7FA /* jbig85.c in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */,
 				5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */,

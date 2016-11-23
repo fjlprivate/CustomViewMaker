@@ -25,6 +25,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    /* 捕获异常错误日志 */
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+
+    
+    
     
     /* 设置全局的导航栏背景 */
     UINavigationBar* navigationBar = [UINavigationBar appearance];
@@ -55,6 +60,14 @@
     
     return YES;
 }
+
+# pragma mask ::: 捕获详细的内存崩溃日志
+void uncaughtExceptionHandler(NSException* exception){
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@",[exception callStackSymbols]);
+}
+
+
 
 
 @end

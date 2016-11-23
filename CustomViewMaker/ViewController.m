@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"TestForJBIG"];
         [_btnTitles addObject:@"测试keywindow"];
         [_btnTitles addObject:@"测试ChildVC"];
         [_btnTitles addObject: @"shapeLayer"];
@@ -172,6 +173,7 @@
         [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice" forKey:@"刷卡_设备连接"];
         [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController" forKey:@"测试ChildVC"]; // TFCVC_MainViewController  TFCVC_mainVC2
         [_dicVCNameAndTitles setObject:@"TestForKeywindowVC" forKey:@"测试keywindow"];
+        [_dicVCNameAndTitles setObject:@"TestForJBIG" forKey:@"TestForJBIG"];
     }
     return _dicVCNameAndTitles;
 }
