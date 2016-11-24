@@ -1968,11 +1968,6 @@ void jbg_enc_out(struct jbg_enc_state *s)
                    }
                }
       }
-
-    /* added by fjl: 用来标示结束 */
-//    unsigned char* end;
-//    *end = 0xee;
-//    s->data_out(end, 1, s->file);
     
   return;
 }

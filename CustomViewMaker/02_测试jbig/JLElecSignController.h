@@ -9,10 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "ElecSignFrameView.h"
 
+@protocol ElecSignDelegate <NSObject>
+
+- (void) doneWithEncoded;
+
+@end
 
 @interface JLElecSignController : UIView
 
 + (instancetype) sharedElecSign;
+
+@property (nonatomic, weak) id<ElecSignDelegate> delegate;
 
 /* 签名 */
 - (void) signWithCompletion:(void (^) (void))completionBlock

@@ -13,9 +13,10 @@
 #import <ReactiveCocoa.h>
 
 #import "JLElecSignController.h"
+#import "ImageHelper.h"
 
 
-@interface TestForJBIG ()
+@interface TestForJBIG () <ElecSignDelegate>
 
 @property (nonatomic, strong) UILabel* stateLabel;
 @property (nonatomic, strong) UIButton* encodingBtn;
@@ -37,23 +38,38 @@
 //    [[JLElecSignController sharedElecSign] rewriteCharacteristicCode:@"2016-11"];
 //    [self.elecSignC makeCurSignEncoded];
     
+    size_t len = 0;
     
+    UIImage* image = [self imageForView:self.elecSignView];
+    unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
+    
+    unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
+    NSMutableString* ttt = [NSMutableString string];
+    for (int i = 0; i < len; i++) {
+        [ttt appendFormat:@"%02x", jbigStr[i]];
+    }
+    free(jbigStr);
+    self.stateLabel.text = ttt;
+    NSLog(@"------完成编码[%@]",ttt);
+    free(bmpStr);
     self.elecSignView.keyElementLabel.text = @"sdfjdlfj";
 
     
 }
 - (IBAction) clickedShowV:(id)sender {
     [self.elecSignC signWithCompletion:^{
-            BitmapMaker* bmpMaker = [BitmapMaker new];
-            size_t len = 0;
-            unsigned char* bmpStr = [bmpMaker bmpFromView:self.elecSignC.elecSignView];
-            unsigned char* jbigStr = JLJBIGEncode(bmpStr, bmpMaker.bmpWidth, bmpMaker.bmpHeight, bmpMaker.bmpTotalSize, &len);
-            NSMutableString* ttt = [NSMutableString string];
-            for (int i = 0; i < len; i++) {
-                [ttt appendFormat:@"%02x", jbigStr[i]];
-            }
-            free(jbigStr);
-            self.stateLabel.text = ttt;
+        size_t len = 0;
+        
+        UIImage* image = [self imageForView:self.elecSignView];
+        unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
+
+        unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
+        NSMutableString* ttt = [NSMutableString string];
+        for (int i = 0; i < len; i++) {
+            [ttt appendFormat:@"%02x", jbigStr[i]];
+        }
+        free(jbigStr);
+        self.stateLabel.text = ttt;
         NSLog(@"------完成编码[%@]",ttt);
         free(bmpStr);
         
@@ -61,6 +77,39 @@
         
     }];
 }
+
+
+# pragma mask ElecSignDelegate
+
+- (void)doneWithEncoded {
+    size_t len = 0;
+    
+    UIImage* image = [self imageForView:self.elecSignView];
+    unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
+    
+    unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
+    NSMutableString* ttt = [NSMutableString string];
+    for (int i = 0; i < len; i++) {
+        [ttt appendFormat:@"%02x", jbigStr[i]];
+    }
+    free(jbigStr);
+    self.stateLabel.text = ttt;
+    NSLog(@"------完成编码[%@]",ttt);
+    free(bmpStr);
+}
+
+
+
+- (UIImage*) imageForView:(UIView*)view {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 1.f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 
 
 
@@ -179,6 +228,7 @@
 - (JLElecSignController *)elecSignC {
     if (!_elecSignC) {
         _elecSignC = [[JLElecSignController alloc] initWithFrame:self.view.bounds];
+        _elecSignC.delegate = self;
     }
     return _elecSignC;
 }

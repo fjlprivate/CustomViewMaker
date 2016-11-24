@@ -18,27 +18,12 @@
 unsigned long total_length = 0;
 unsigned char* pbmJbigEncoded = NULL;
 
-// 编码完成标志
-static int hasBeenEncoded = 0;
-
-unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t height, size_t totalSize);
+unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t height);
 void jbigEncode(unsigned char* pbmStr, size_t width, size_t height);
 
 
 static void data_out(unsigned char *start, size_t len, void *file)
-{
-    if (len == 1) {
-        printf("\n-------------------=len[%ld]--------=buf[0]=[%x]\n",len, start[0]);
-    } else {
-        printf("\n-------------------=len[%ld]--------=buf[0]=[%x],buf[1]=[%x]\n",len, start[0], start[1]);
-    }
-    
-    if (len == 1 && start[0] == 0xee) {
-        hasBeenEncoded = 1;
-        printf("--=--=-== 已接收到编码结束符:0xee\n");
-        return;
-    }
-    
+{    
     total_length += len;
 
     if (pbmJbigEncoded == NULL) {
@@ -55,16 +40,12 @@ static void data_out(unsigned char *start, size_t len, void *file)
  1. bmp 转为 pbm
  2. 对 pbm 进行编码
  */
-unsigned char* JLJBIGEncode(unsigned char* bitmapStr, size_t width, size_t height, size_t totalSize, size_t* encodedLen) {
+unsigned char* JLJBIGEncode(unsigned char* bitmapStr, size_t width, size_t height, size_t* encodedLen) {
 
     total_length = 0;
-    hasBeenEncoded = 0;
     pbmJbigEncoded = NULL;
-    unsigned char* pbmStr = pbmTransferFromBmp(bitmapStr, width, height, totalSize);
-    printf("-----已转换好了pbm文件数据:[%s]\n", pbmStr);
-    printf("-----正在准备编码jbig文件\n");
-//    jbigEncode(pbmStr, width, height);
-    printf("-----jbig文件完毕\n");
+    unsigned char* pbmStr = pbmTransferFromBmp(bitmapStr, width, height);
+    jbigEncode(pbmStr, width, height);
     free(pbmStr);
     *encodedLen = total_length;
     return pbmJbigEncoded;
@@ -72,13 +53,14 @@ unsigned char* JLJBIGEncode(unsigned char* bitmapStr, size_t width, size_t heigh
 
 
 /* bmp 转为 pbm */
-unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t height, size_t totalSize) {
+unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t height) {
     
     /* 保存转换后的 pbm 串 */
-    printf("- - - - - - - - - pbmTransferFromBmp : 0，totalSize / 4 / 8 = [%ld] \n", totalSize / 4 / 8);
+    size_t totalLen = width * height;
+    totalLen = (totalLen % 8 == 0) ? totalLen/8 : (totalLen/8 + 1);
     
-    unsigned char* pbmStr = (unsigned char*)malloc(totalSize / 4 / 8);
-    memset(pbmStr, 0x00, totalSize / 4 / 8);
+    unsigned char* pbmStr = (unsigned char*)malloc(totalLen);
+    memset(pbmStr, 0x00, totalLen);
     
     /* 已转换的字节数 */
     size_t countTransed = 0;
@@ -86,15 +68,14 @@ unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t
     for (int h = 0; h < (int)height; h++) {
         unsigned char pbmChar = 0;
         // 每 4*8 个字节一取,转为 pbm 的一个字节
-        for (int w = 0; w < width * 4; w += 4 * 8) {
+        for (int wOffset = 0; wOffset < width * 4; wOffset += 4 * 8) {
             pbmChar = 0;
-            int start = w;
             // 将 8 个字节转换为 0|1 ，并填充到 pbm 的单字节
             for (int i = 0; i < 8; i++) {
-                if (h * width * 4 + start + i * 4 >= totalSize) {
+                if (h * width * 4 + wOffset + i * 4 >= totalLen) {
                     break;
                 }
-                unsigned char curBmpBitChar = *(bitmapStr + h * width * 4 + start + i * 4);
+                unsigned char curBmpBitChar = *(bitmapStr + h * width * 4 + wOffset + i * 4);
                 int tmp = (curBmpBitChar & 0xc0/*0xc0~0xff*/) ? (0/*0xff*/) : (1/*0x00*/);
                 if (tmp) {
                     pbmChar = pbmChar | (0x80 >> i);
@@ -107,9 +88,6 @@ unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t
     
     return pbmStr;
 }
-
-//static struct jbg_enc_state s;
-
 
 void jbigEncode(unsigned char* pbmStr, size_t width, size_t height) {
     struct jbg_enc_state s;

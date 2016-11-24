@@ -43,6 +43,7 @@
 		5E2A58F51DE2EF7100AAF7FA /* ElecSignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58F41DE2EF7100AAF7FA /* ElecSignView.m */; };
 		5E2A58F81DE2EFB000AAF7FA /* ElecSignFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */; };
 		5E2A58FB1DE4227F00AAF7FA /* JLElecSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58FA1DE4227F00AAF7FA /* JLElecSignController.m */; };
+		5E2A624D1DE6C2A600AAF7FA /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A624C1DE6C2A600AAF7FA /* ImageHelper.m */; };
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
@@ -206,6 +207,8 @@
 		5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElecSignFrameView.m; sourceTree = "<group>"; };
 		5E2A58F91DE4227F00AAF7FA /* JLElecSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLElecSignController.h; sourceTree = "<group>"; };
 		5E2A58FA1DE4227F00AAF7FA /* JLElecSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLElecSignController.m; sourceTree = "<group>"; };
+		5E2A624B1DE6C2A600AAF7FA /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
+		5E2A624C1DE6C2A600AAF7FA /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
 		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
 		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
@@ -577,6 +580,8 @@
 				5E2A58D81DE282AC00AAF7FA /* jbig_ar.h */,
 				5E2A58D91DE282AC00AAF7FA /* JLJBIGEnCoder.c */,
 				5E2A58DA1DE282AC00AAF7FA /* JLJBIGEnCoder.h */,
+				5E2A624B1DE6C2A600AAF7FA /* ImageHelper.h */,
+				5E2A624C1DE6C2A600AAF7FA /* ImageHelper.m */,
 			);
 			path = "02_测试jbig";
 			sourceTree = "<group>";
@@ -1440,6 +1445,7 @@
 				5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
 				5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */,
+				5E2A624D1DE6C2A600AAF7FA /* ImageHelper.m in Sources */,
 				5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */,
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
 				5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */,

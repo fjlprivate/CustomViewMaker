@@ -21,14 +21,15 @@
     return [self convertUIImageToBitmapRGBA8:self.copiedImage];
 }
 
-- (void) imageForView:(UIView*)view {
+- (UIImage*) imageForView:(UIView*)view {
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 1.f);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [view.layer renderInContext:context];
     
     self.copiedImage = UIGraphicsGetImageFromCurrentImageContext();
-//    image=[UIImage imageWithData:UIImageJPEGRepresentation(image, 1)];
     UIGraphicsEndImageContext();
+    
+    return self.copiedImage;
 }
 
 
@@ -80,21 +81,6 @@
     
     CGContextRelease(context);
     
-//    NSLog(@"\n/ ---------------begin-bmp--------------------");
-//    printf("01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f \n");
-//    int len = self.bmpTotalSize;
-//    int tSize = 0;
-//    while (tSize < len) {
-//        int minLen = (len - tSize >= 16) ? (16) : (len - tSize);
-//        for (int i = 0; i < minLen; i ++) {
-//            printf("%02x ", *(newBitmap + tSize + i));
-//        }
-//        printf("\n");
-//        tSize += 16;
-//    }
-//    NSLog(@"\n/ ---------------end-bmp--------------------");
-
-    
     return newBitmap;
 }
 
@@ -131,7 +117,6 @@
     }
     
     //Create bitmap context
-    
     context = CGBitmapContextCreate(bitmapData,
                                     self.bmpWidth,
                                     self.bmpHeight,

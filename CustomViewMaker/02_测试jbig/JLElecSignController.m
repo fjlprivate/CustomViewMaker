@@ -84,6 +84,12 @@
 
 # pragma mask 1 IBActions 
 - (IBAction) clickedCancelBtn:(id)sender {
+    
+//    self.hidden = YES;
+//    if (self.delegate) {
+//        [self.delegate doneWithEncoded];
+//    }
+
     NameWeakSelf(wself);
     [self hiddenAnimationOnFinished:^{
         if (wself.cancelBlock) {
@@ -321,7 +327,6 @@
     unsigned char* jbigEncoded = JLJBIGEncode(bmpStr,
                                               bmpMaker.bmpWidth,
                                               bmpMaker.bmpHeight,
-                                              bmpMaker.bmpTotalSize,
                                               &len);
     
     NSLog(@"--=--=-  编码签名图片完成!");
