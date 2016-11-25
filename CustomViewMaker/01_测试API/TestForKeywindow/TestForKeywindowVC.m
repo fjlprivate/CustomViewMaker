@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.title = @"test key window";
     self.view.backgroundColor = [UIColor colorWithHex:0x00bb9c alpha:1];
-    NameWself(wself);
+    NameWeakSelf(wself);
     self.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     
     [self.view addSubview:self.showBtn];

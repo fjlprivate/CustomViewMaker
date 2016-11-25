@@ -192,4 +192,23 @@
     return image;
 }
 
+
++ (UIImage*) imageForView:(UIView*)view {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 1.f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
++ (UIImage*) elecSignImgWithView:(UIView*)view {
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320,256), NO, 1.f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 @end

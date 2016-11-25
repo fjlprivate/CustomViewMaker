@@ -8,15 +8,14 @@
 
 #import "TestForJBIG.h"
 #import "PublicHeader.h"
-#import "BitmapMaker.h"
 #import "JLJBIGEnCoder.h"
 #import <ReactiveCocoa.h>
-
-#import "JLElecSignController.h"
+#import "ElecSignFrameView.h"
 #import "ImageHelper.h"
+#import "JLElecSignController.h"
 
 
-@interface TestForJBIG () <ElecSignDelegate>
+@interface TestForJBIG ()
 
 @property (nonatomic, strong) UILabel* stateLabel;
 @property (nonatomic, strong) UIButton* encodingBtn;
@@ -25,7 +24,6 @@
 
 @property (nonatomic, strong) ElecSignFrameView* elecSignView;
 
-@property (nonatomic, strong) JLElecSignController* elecSignC;
 
 
 @end
@@ -35,55 +33,24 @@
 
 # pragma mask 2 IBAction
 - (IBAction) clickedEncodingBtn:(id)sender {
-//    [[JLElecSignController sharedElecSign] rewriteCharacteristicCode:@"2016-11"];
-//    [self.elecSignC makeCurSignEncoded];
-    
-    size_t len = 0;
-    
-    UIImage* image = [self imageForView:self.elecSignView];
-    unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
-    
-    unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
-    NSMutableString* ttt = [NSMutableString string];
-    for (int i = 0; i < len; i++) {
-        [ttt appendFormat:@"%02x", jbigStr[i]];
-    }
-    free(jbigStr);
-    self.stateLabel.text = ttt;
-    NSLog(@"------完成编码[%@]",ttt);
-    free(bmpStr);
-    self.elecSignView.keyElementLabel.text = @"sdfjdlfj";
-
+//    [self makeSignViewEncoding];
     
 }
 - (IBAction) clickedShowV:(id)sender {
-    [self.elecSignC signWithCompletion:^{
-        size_t len = 0;
-        
-        UIImage* image = [self imageForView:self.elecSignView];
-        unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
-
-        unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
-        NSMutableString* ttt = [NSMutableString string];
-        for (int i = 0; i < len; i++) {
-            [ttt appendFormat:@"%02x", jbigStr[i]];
-        }
-        free(jbigStr);
-        self.stateLabel.text = ttt;
-        NSLog(@"------完成编码[%@]",ttt);
-        free(bmpStr);
-        
+//    [self.elecSignView.elecSignView reSign];
+    NSLog(@"-------显示签名");
+    JLElecSignController* signCtrl = [JLElecSignController sharedElecSign];
+    [signCtrl signWithCompletion:^{
+        [signCtrl rewriteCharacteristicCode:@"2016-11-25"];
     } orCancel:^{
         
     }];
 }
 
-
-# pragma mask ElecSignDelegate
-
-- (void)doneWithEncoded {
+- (void) makeSignViewEncoding {
+    static int count;
+    self.elecSignView.keyElementLabel.text = [NSString stringWithFormat:@"count%d", count++];
     size_t len = 0;
-    
     UIImage* image = [self imageForView:self.elecSignView];
     unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
     
@@ -118,20 +85,7 @@
 //    [[RACObserve(self.elecSignView.keyElementLabel, text) filter:^BOOL(NSString* value) {
 //        return value && value.length > 0 ? YES : NO;
 //    }] subscribeNext:^(id x) {
-//        @strongify(self);
-//        BitmapMaker* bmpMaker = [BitmapMaker new];
-//        size_t len = 0;
-//        
-//        unsigned char* bmpStr = [bmpMaker bmpFromView:self.elecSignView];
-//        unsigned char* jbigStr = JLJBIGEncode(bmpStr, bmpMaker.bmpWidth, bmpMaker.bmpHeight, bmpMaker.bmpTotalSize, &len);
-//        NSMutableString* ttt = [NSMutableString string];
-//        for (int i = 0; i < len; i++) {
-//            [ttt appendFormat:@"%02x", jbigStr[i]];
-//        }
-//        free(jbigStr);
-//        NSLog(@"------完成编码");
-//        self.stateLabel.text = ttt;
-//
+//        [self makeSignViewEncoding];
 //    }];
     
 
@@ -151,7 +105,6 @@
     [self.view addSubview:self.stateLabel];
     [self.view addSubview:self.encodingBtn];
     [self.view addSubview:self.showSignV];
-    [self.view addSubview:self.elecSignC];
 }
 - (void) layoutSubviews {
     CGFloat inset = 15;
@@ -169,7 +122,6 @@
     frame.origin.y += frame.size.height + 20;
     frame.size.height = heightBtn;
     frame.size.width = widthBtn;
-//    frame.origin.x = (self.view.frame.size.width - widthBtn)/2;
     frame.origin.x = self.view.frame.size.width * 0.5 + 10;
     self.encodingBtn.frame = frame;
     self.encodingBtn.layer.cornerRadius = frame.size.height * 0.5;
@@ -216,7 +168,7 @@
 - (UIButton *)showSignV {
     if (!_showSignV) {
         _showSignV = [UIButton new];
-        [_showSignV setTitle:@"签名" forState:UIControlStateNormal];
+        [_showSignV setTitle:@"重签" forState:UIControlStateNormal];
         [_showSignV setTitleColor:[UIColor colorWithHex:0xffffff alpha:1] forState:UIControlStateNormal];
         [_showSignV setTitleColor:[UIColor colorWithHex:0xffffff alpha:0.5] forState:UIControlStateHighlighted];
         _showSignV.backgroundColor = [UIColor colorWithHex:0x00bb9c alpha:1];
@@ -225,13 +177,6 @@
     return _showSignV;
 }
 
-- (JLElecSignController *)elecSignC {
-    if (!_elecSignC) {
-        _elecSignC = [[JLElecSignController alloc] initWithFrame:self.view.bounds];
-        _elecSignC.delegate = self;
-    }
-    return _elecSignC;
-}
 
 - (ElecSignFrameView *)elecSignView {
     if (!_elecSignView) {

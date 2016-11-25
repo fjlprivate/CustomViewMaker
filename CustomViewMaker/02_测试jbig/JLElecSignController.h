@@ -9,17 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "ElecSignFrameView.h"
 
-@protocol ElecSignDelegate <NSObject>
 
-- (void) doneWithEncoded;
-
-@end
-
-@interface JLElecSignController : UIView
+@interface JLElecSignController : NSObject
 
 + (instancetype) sharedElecSign;
-
-@property (nonatomic, weak) id<ElecSignDelegate> delegate;
 
 /* 签名 */
 - (void) signWithCompletion:(void (^) (void))completionBlock
@@ -28,13 +21,13 @@
 /* 重写特征码 */
 - (void) rewriteCharacteristicCode:(NSString*)characteristicCode;
 
+/* 签名图片 */
+@property (nonatomic, strong) UIImage* elecSignImage;
+
+/* 编码后的电签串 */
+@property (nonatomic, strong) NSString* elecSignEncoded;
+
 /* 签名视图 */
 @property (nonatomic, strong) ElecSignFrameView* elecSignView;
-
-/* 签名图片JBIG数据 */
-@property (nonatomic, strong) NSString* elecSignJBIGEncoded;
-
-
-- (void) makeCurSignEncoded ;
 
 @end

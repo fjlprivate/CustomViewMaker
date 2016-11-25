@@ -27,9 +27,9 @@ static void data_out(unsigned char *start, size_t len, void *file)
     total_length += len;
 
     if (pbmJbigEncoded == NULL) {
-        pbmJbigEncoded = malloc(total_length);
+        pbmJbigEncoded = (unsigned char*)malloc(total_length);
     } else {
-        pbmJbigEncoded = realloc(pbmJbigEncoded, total_length);
+        pbmJbigEncoded = (unsigned char*)realloc(pbmJbigEncoded, total_length);
     }
     memcpy(pbmJbigEncoded + total_length - len, start, len);
     return;
@@ -46,6 +46,8 @@ unsigned char* JLJBIGEncode(unsigned char* bitmapStr, size_t width, size_t heigh
     pbmJbigEncoded = NULL;
     unsigned char* pbmStr = pbmTransferFromBmp(bitmapStr, width, height);
     jbigEncode(pbmStr, width, height);
+    
+    
     free(pbmStr);
     *encodedLen = total_length;
     return pbmJbigEncoded;
@@ -59,13 +61,16 @@ unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t
     size_t totalLen = width * height;
     totalLen = (totalLen % 8 == 0) ? totalLen/8 : (totalLen/8 + 1);
     
+    printf("............ pbmTransferFromBmp 准备分配 pbmStr 内存...\n");
     unsigned char* pbmStr = (unsigned char*)malloc(totalLen);
+    printf("............ pbmTransferFromBmp 分配 pbmStr 内存完毕\n");
     memset(pbmStr, 0x00, totalLen);
     
     /* 已转换的字节数 */
     size_t countTransed = 0;
     
     for (int h = 0; h < (int)height; h++) {
+        printf("h:[%d] ", h);
         unsigned char pbmChar = 0;
         // 每 4*8 个字节一取,转为 pbm 的一个字节
         for (int wOffset = 0; wOffset < width * 4; wOffset += 4 * 8) {
@@ -85,6 +90,7 @@ unsigned char* pbmTransferFromBmp(unsigned char* bitmapStr, size_t width, size_t
             countTransed ++;
         }
     }
+    printf("\n");
     
     return pbmStr;
 }

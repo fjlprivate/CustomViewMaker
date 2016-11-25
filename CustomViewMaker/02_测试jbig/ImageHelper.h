@@ -33,4 +33,10 @@
                                 withWidth:(int)width
                                withHeight:(int)height;
 
+
+
++ (UIImage*) imageForView:(UIView*)view ;
+
++ (UIImage*) elecSignImgWithView:(UIView*)view;
+
 @end

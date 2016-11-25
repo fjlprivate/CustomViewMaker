@@ -21,7 +21,10 @@
 
 
 // 定义弱自引用
-#define NameWself(wself)      __weak typeof(self) wself = self;
+#define NameWeakSelf(weakself)         __weak typeof(self) weakself = self;
+
+#define ScreenWidth                 [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight                [UIScreen mainScreen].bounds.size.height
 
 
 #endif /* PublicHeader_h */

@@ -24,7 +24,7 @@
 
 
 - (void)doClose {
-    NameWself(wself);
+    NameWeakSelf(wself);
     [UIView animateWithDuration:0.3 animations:^{
         wself.spreadBtn.center = CGPointMake(wself.view.frame.size.width * 0.5f, wself.view.frame.size.height * 0.3f);
     } completion:^(BOOL finished) {

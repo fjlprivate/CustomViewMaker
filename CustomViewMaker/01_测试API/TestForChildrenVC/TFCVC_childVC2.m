@@ -21,7 +21,7 @@
 
 
 - (void)doSpread {
-    NameWself(wself);
+    NameWeakSelf(wself);
     [UIView animateWithDuration:0.3 animations:^{
         wself.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
         wself.closeBtn.center = CGPointMake(wself.view.frame.size.width * 0.5f, wself.view.frame.size.height * 0.5f);

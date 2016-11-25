@@ -9,17 +9,15 @@
 #import "JLElecSignController.h"
 #import "JCAlertView.h"
 #import "Masonry.h"
-
-#import "UIColor+ColorWithHex.h"
-#import "BitmapMaker.h"
+#import "ImageHelper.h"
 #import "JLJBIGEnCoder.h"
-#import <ReactiveCocoa.h>
-
-#define NameWeakSelf(weakSelf)          __weak typeof(self) weakSelf = self;
+#import "PublicHeader.h"
 
 
 @interface JLElecSignController()
 
+/* 背景视图 */
+@property (nonatomic, strong) UIView* bgView;
 /* 承载视图 */
 @property (nonatomic, strong) UIView* bearView;
 
@@ -54,7 +52,7 @@
 {
     self.completionBlock = completionBlock;
     self.cancelBlock = cancel;
-
+    
     [self.elecSignView.elecSignView reSign];
     self.elecSignView.keyElementLabel.text = nil;
     
@@ -65,9 +63,19 @@
 - (void) rewriteCharacteristicCode:(NSString *)characteristicCode {
     self.elecSignView.layer.cornerRadius = 0;
     self.elecSignView.keyElementLabel.text = characteristicCode;
+    NameWeakSelf(wself);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        wself.elecSignImage = [ImageHelper elecSignImgWithView:wself.elecSignView];
+        unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:wself.elecSignImage];
+        size_t len = 0;
+        unsigned char* elecSignString = JLJBIGEncode(bmpStr, wself.elecSignImage.size.width, wself.elecSignImage.size.height, &len);
+        NSMutableString* code = [NSMutableString string];
+        for (int i = 0; i < len; i++) {
+            [code appendFormat:@"%02x", elecSignString[i]];
+        }
+        wself.elecSignEncoded = code;
+    });
 }
-
-
 
 
 
@@ -84,12 +92,6 @@
 
 # pragma mask 1 IBActions 
 - (IBAction) clickedCancelBtn:(id)sender {
-    
-//    self.hidden = YES;
-//    if (self.delegate) {
-//        [self.delegate doneWithEncoded];
-//    }
-
     NameWeakSelf(wself);
     [self hiddenAnimationOnFinished:^{
         if (wself.cancelBlock) {
@@ -100,9 +102,6 @@
 
 - (IBAction) clickedSureBtn:(id)sender {
     NameWeakSelf(wself);
-    
-//    [self makeCurSignEncoded];
-    
     [self hiddenAnimationOnFinished:^{
         if (wself.completionBlock) {
             wself.completionBlock();
@@ -119,22 +118,22 @@
 - (void) shownAnimationOnFinished:(void (^) (void))finishedBlock {
     NameWeakSelf(wself);
     
-//    [self loadSubviews];
-//    [self relayoutSubviews];
+    [self loadSubviews];
+    [self initialFrames];
 
     [UIView animateWithDuration:0.3 animations:^{
-        wself.hidden = NO;
-//        wself.bearView.transform = CGAffineTransformMakeScale(1, 1);
+        wself.bgView.hidden = NO;
+        wself.bearView.transform = CGAffineTransformMakeScale(1, 1);
     } completion:^(BOOL finished) {
     }];
 }
 - (void) hiddenAnimationOnFinished:(void (^) (void))finishedBlock {
     NameWeakSelf(wself);
     [UIView animateWithDuration:0.3 animations:^{
-//        wself.bearView.transform = CGAffineTransformMakeScale(0, 0);
+        wself.bearView.transform = CGAffineTransformMakeScale(0, 0);
     } completion:^(BOOL finished) {
-        wself.hidden = YES;
-//        [wself removeAllSubviews];
+        wself.bgView.hidden = YES;
+        [wself removeAllSubviews];
         if (finished) finishedBlock();
     }];
 }
@@ -145,12 +144,17 @@
 - (void) initialFrames {
     CGFloat insetHorizontal = 10;
     CGFloat insetVertical = 4;
-    CGFloat screenHeight = self.bounds.size.height;
-    CGFloat screenWidth = self.bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     
-    CGFloat widthSignView = screenWidth - insetHorizontal * 2;
-    widthSignView = widthSignView > 600 ? 600 : widthSignView;
-    CGFloat heightSignView = widthSignView * 0.5;
+//    CGFloat widthSignView = [UIScreen mainScreen].bounds.size.width - insetHorizontal * 2;
+////    widthSignView = widthSignView > 600 ? 600 : widthSignView;
+//    if (widthSignView > 600) {
+//        widthSignView = 600;
+//    }
+//    CGFloat heightSignView = widthSignView * 0.5;
+    CGFloat widthSignView = 240;
+    CGFloat heightSignView = 192;
     
     CGFloat heightTitleBack = heightSignView * 0.4;
     CGFloat heightTitle = (heightTitleBack - insetVertical * 2) * 0.56;
@@ -162,7 +166,8 @@
     self.sureBtn.layer.cornerRadius = heightBtn * 0.5;
     self.resignBtn.layer.cornerRadius = heightBtn * 2/3.f * 0.5;
 
-    CGRect frame = CGRectMake(insetHorizontal, (screenHeight - heightSignView)/2, widthSignView, heightSignView);
+    CGRect frame = CGRectMake((screenWidth - widthSignView)/2,
+                              (screenHeight - heightSignView)/2, widthSignView, heightSignView);
     self.elecSignView.frame = frame;
     
     frame.origin.y -= insetVertical + heightTitleBack;
@@ -266,38 +271,15 @@
 {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-        [self loadSubviews];
-
-        
-//        @weakify(self);
-//        [[[RACObserve(self.elecSignView.keyElementLabel, text) filter:^BOOL(NSString* value) {
-//            return value && value.length > 0 ? YES : NO;
-//        }] deliverOnMainThread] subscribeNext:^(id x) {
-//            @strongify(self);
-//            /* 对签名视图进行编码 */
-//            
-//        }];
-        
     }
     return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self loadSubviews];
-    }
-    return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self relayoutSubviews];
 }
 
 - (void) loadSubviews {
-    [self addSubview:self.bearView];
+    UIWindow* curKeyWindow = [UIApplication sharedApplication].keyWindow;
+    [curKeyWindow addSubview:self.bgView];
+    [curKeyWindow bringSubviewToFront:self.bgView];
+    [self.bgView addSubview:self.bearView];
     [self.bearView addSubview:self.titleBackView];
     [self.bearView addSubview:self.titleLabel];
     [self.bearView addSubview:self.titleDesLabel];
@@ -306,42 +288,35 @@
     [self.bearView addSubview:self.sureBtn];
     [self.bearView addSubview:self.resignBtn];
     
-//    self.bearView.transform = CGAffineTransformMakeScale(0, 0);
-    self.hidden = YES;
+    self.bearView.transform = CGAffineTransformMakeScale(0, 0);
+    self.bgView.hidden = YES;
+}
+
+- (void) removeAllSubviews {
+    [self.resignBtn removeFromSuperview];
+    [self.cancelBtn removeFromSuperview];
+    [self.sureBtn removeFromSuperview];
+    [self.elecSignView removeFromSuperview];
+    [self.titleLabel removeFromSuperview];
+    [self.titleBackView removeFromSuperview];
+    [self.titleDesLabel removeFromSuperview];
+    [self.bearView removeFromSuperview];
+    [self.bgView removeFromSuperview];
 }
 
 
 
-- (void) makeCurSignEncoded {
-    BitmapMaker* bmpMaker = [BitmapMaker new];
-    size_t len = 0;
-    NSLog(@"--=--=-  正在编码签名图片......");
-    
-    UILabel * testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 256)];
-    testLabel.backgroundColor = [UIColor whiteColor];
-    testLabel.text = @"sldfjlajsdlf";
-    
-    
-    unsigned char* bmpStr = [bmpMaker bmpFromView:self.elecSignView];
-    
-    unsigned char* jbigEncoded = JLJBIGEncode(bmpStr,
-                                              bmpMaker.bmpWidth,
-                                              bmpMaker.bmpHeight,
-                                              &len);
-    
-    NSLog(@"--=--=-  编码签名图片完成!");
-    NSMutableString* jbigString = [NSMutableString string];
-    for (int i = 0; i < len; i++) {
-        [jbigString appendFormat:@"%02x", jbigEncoded[i]];
-    }
-    free(bmpStr);
-    //            free(jbigEncoded);
-    self.elecSignJBIGEncoded = [NSString stringWithString:jbigString];
-}
 
 
 # pragma mask 4 getter
 
+- (UIView *)bgView {
+    if (!_bgView) {
+        _bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+    }
+    return _bgView;
+}
 
 - (UIView *)bearView {
     if (!_bearView) {
