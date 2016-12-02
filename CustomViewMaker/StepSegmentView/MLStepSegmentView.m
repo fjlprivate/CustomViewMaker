@@ -47,30 +47,7 @@
     @weakify(self);
     [[RACObserve(self, itemSelected) deliverOnMainThread] subscribeNext:^(id index) {
         @strongify(self);
-        
-        for (int i = 0; i < self.titles.count; i ++) {
-            UILabel* label = [self.titleLabs objectAtIndex:i];
-            UIView* lineView = [self.backStepViews objectAtIndex:i];
-
-            if (i < [index integerValue]) {
-                if (self.stepIsSingle) {
-                    label.textColor = self.normalColor;
-                    lineView.backgroundColor = self.normalColor;
-                } else {
-                    label.textColor = self.tintColor;
-                    lineView.backgroundColor = self.tintColor;
-                }
-            }
-            else if (i == [index integerValue]) {
-                label.textColor = self.tintColor;
-                lineView.backgroundColor = self.tintColor;
-            }
-            else {
-                label.textColor = self.normalColor;
-                lineView.backgroundColor = self.normalColor;
-            }
-        }
-        
+        [self setNeedsLayout];
     }];
 }
 
@@ -87,7 +64,7 @@
     _titleLabs = [NSMutableArray array];
     _backStepViews = [NSMutableArray array];
     _tintColor = [UIColor colorWithHex:0x27384b alpha:1];
-    _normalColor = [UIColor colorWithHex:0xaaaaaa alpha:0.9];
+    _normalColor = [UIColor colorWithHex:0xe0e0e0 alpha:0.9];
     _stepIsSingle = NO;
     
     for (NSString* title in self.titles) {
@@ -131,7 +108,31 @@
         label.frame = labelFrame;
         lineView.frame = lineFrame;
         
-        label.font = [UIFont boldSystemFontOfSize:[@"ss" resizeFontAtHeight:labelHeight scale:0.45]];
+        UIFont* maxFont = [UIFont boldSystemFontOfSize:[NSString resizeFontAtHeight:labelHeight scale:0.4]];
+        UIFont* minFont = [UIFont systemFontOfSize:[NSString resizeFontAtHeight:labelHeight scale:0.37]];
+        
+        if (i < self.itemSelected) {
+            if (self.stepIsSingle) {
+                label.textColor = self.normalColor;
+                label.font = minFont;
+                lineView.backgroundColor = self.normalColor;
+            } else {
+                label.textColor = self.tintColor;
+                label.font = maxFont;
+                lineView.backgroundColor = self.tintColor;
+            }
+        }
+        else if (i == self.itemSelected) {
+            label.textColor = self.tintColor;
+            label.font = maxFont;
+            lineView.backgroundColor = self.tintColor;
+        }
+        else {
+            label.textColor = self.normalColor;
+            label.font = minFont;
+            lineView.backgroundColor = self.normalColor;
+        }
+
     }
     
 }

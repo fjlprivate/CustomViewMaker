@@ -14,6 +14,8 @@
 
 // -- 重新计算字体大小:指定高度
 - (CGFloat) resizeFontAtHeight:(CGFloat)height scale:(CGFloat)scale;
++ (CGFloat) resizeFontAtHeight:(CGFloat)height scale:(CGFloat)scale;
+
 
 - (CGSize) resizeAtHeight:(CGFloat)height scale:(CGFloat)scale;
 

@@ -18,16 +18,12 @@
 - (void) signWithCompletion:(void (^) (void))completionBlock
                    orCancel:(void (^) (void))cancel;
 
-/* 重写特征码 */
-- (void) rewriteCharacteristicCode:(NSString*)characteristicCode;
 
-/* 签名图片 */
-@property (nonatomic, strong) UIImage* elecSignImage;
+/* 特征码 :(in) */
+@property (nonatomic, copy) NSString* characteristicCode;
 
-/* 编码后的电签串 */
-@property (nonatomic, strong) NSString* elecSignEncoded;
 
-/* 签名视图 */
+/* 签名视图 :(read_only) */
 @property (nonatomic, strong) ElecSignFrameView* elecSignView;
 
 @end

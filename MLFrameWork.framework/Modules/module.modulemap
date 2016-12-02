@@ -1,0 +1,6 @@
+framework module MLFrameWork {
+  umbrella header "MLFrameWork.h"
+
+  export *
+  module * { export * }
+}

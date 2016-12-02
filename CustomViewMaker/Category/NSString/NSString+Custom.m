@@ -17,6 +17,13 @@
     return (height/oldTextSize.height) * testFontSize * scale;
 }
 
++ (CGFloat) resizeFontAtHeight:(CGFloat)height scale:(CGFloat)scale {
+    CGFloat testFontSize = 20.f;
+    CGSize oldTextSize = [@"sdsdf" sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:testFontSize] forKey:NSFontAttributeName]];
+    return (height/oldTextSize.height) * testFontSize * scale;
+}
+
+
 - (CGSize) resizeAtHeight:(CGFloat)height scale:(CGFloat)scale{
     CGFloat newFontSize = [self resizeFontAtHeight:height scale:scale];
     CGSize size = [self sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:newFontSize] forKey:NSFontAttributeName]];

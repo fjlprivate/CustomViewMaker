@@ -113,6 +113,8 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"中付金服新界面"];
+        [_btnTitles addObject:@"StepSegmentView"];
         [_btnTitles addObject:@"TestForJBIG"];
         [_btnTitles addObject:@"测试keywindow"];
         [_btnTitles addObject:@"测试ChildVC"];
@@ -128,7 +130,6 @@
         [_btnTitles addObject:@"more滚动子切换"];
         [_btnTitles addObject:@"3个滚动子切换"];
         [_btnTitles addObject:@"LabelAutoresize"];
-        [_btnTitles addObject:@"StepSegmentView"];
         [_btnTitles addObject:@"CustomAlertView"];
         [_btnTitles addObject: @"IconFont"];
         [_btnTitles addObject: @"SignIn"];
@@ -174,6 +175,7 @@
         [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController" forKey:@"测试ChildVC"]; // TFCVC_MainViewController  TFCVC_mainVC2
         [_dicVCNameAndTitles setObject:@"TestForKeywindowVC" forKey:@"测试keywindow"];
         [_dicVCNameAndTitles setObject:@"TestForJBIG" forKey:@"TestForJBIG"];
+        [_dicVCNameAndTitles setObject:@"ZFJFMainViewController" forKey:@"中付金服新界面"];
     }
     return _dicVCNameAndTitles;
 }

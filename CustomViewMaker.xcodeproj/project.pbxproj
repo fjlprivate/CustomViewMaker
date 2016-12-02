@@ -43,6 +43,7 @@
 		5E2A58F81DE2EFB000AAF7FA /* ElecSignFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A58F71DE2EFB000AAF7FA /* ElecSignFrameView.m */; };
 		5E2A624D1DE6C2A600AAF7FA /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A624C1DE6C2A600AAF7FA /* ImageHelper.m */; };
 		5E2A62561DE820B000AAF7FA /* JLElecSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A62551DE820B000AAF7FA /* JLElecSignController.m */; };
+		5E2A63181DEFCD0B00AAF7FA /* MLFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E2A63171DEFCD0B00AAF7FA /* MLFrameWork.framework */; };
 		5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */; };
 		5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4471D9CA4B00036C1FB /* DampingView.m */; };
 		5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44A1D9CA4D50036C1FB /* DampingLayer.m */; };
@@ -55,6 +56,11 @@
 		5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */; };
 		5E66B19D1CD2057B00728547 /* WifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19C1CD2057B00728547 /* WifiView.m */; };
 		5E66B1A01CD207C200728547 /* TestWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66B19F1CD207C200728547 /* TestWifiViewController.m */; };
+		5E7A16981DF00A8200CB9E97 /* ZFJFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16971DF00A8200CB9E97 /* ZFJFMainViewController.m */; };
+		5E7A169B1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A169A1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m */; };
+		5E7A16A21DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16A11DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m */; };
+		5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */; };
+		5E7A16AB1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */; };
 		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
@@ -206,6 +212,7 @@
 		5E2A624C1DE6C2A600AAF7FA /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		5E2A62541DE820B000AAF7FA /* JLElecSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLElecSignController.h; sourceTree = "<group>"; };
 		5E2A62551DE820B000AAF7FA /* JLElecSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLElecSignController.m; sourceTree = "<group>"; };
+		5E2A63171DEFCD0B00AAF7FA /* MLFrameWork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MLFrameWork.framework; sourceTree = "<group>"; };
 		5E3CB4431D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForKYAnimationPageViewController.h; sourceTree = "<group>"; };
 		5E3CB4441D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForKYAnimationPageViewController.m; sourceTree = "<group>"; };
 		5E3CB4461D9CA4B00036C1FB /* DampingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DampingView.h; sourceTree = "<group>"; };
@@ -230,6 +237,16 @@
 		5E66B19C1CD2057B00728547 /* WifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiView.m; sourceTree = "<group>"; };
 		5E66B19E1CD207C200728547 /* TestWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWifiViewController.h; sourceTree = "<group>"; };
 		5E66B19F1CD207C200728547 /* TestWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWifiViewController.m; sourceTree = "<group>"; };
+		5E7A16961DF00A8200CB9E97 /* ZFJFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJFMainViewController.h; sourceTree = "<group>"; };
+		5E7A16971DF00A8200CB9E97 /* ZFJFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJFMainViewController.m; sourceTree = "<group>"; };
+		5E7A16991DF00ACA00CB9E97 /* ZFJF_mainVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_mainVCCell.h; sourceTree = "<group>"; };
+		5E7A169A1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_mainVCCell.m; sourceTree = "<group>"; };
+		5E7A16A01DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vmMainVCDatasource.h; sourceTree = "<group>"; };
+		5E7A16A11DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vmMainVCDatasource.m; sourceTree = "<group>"; };
+		5E7A16A31DF1673700CB9E97 /* ZFJF_mMainVCCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_mMainVCCellItem.h; sourceTree = "<group>"; };
+		5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_mMainVCCellItem.m; sourceTree = "<group>"; };
+		5E7A16A91DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vCollectionFlowLayout.h; sourceTree = "<group>"; };
+		5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vCollectionFlowLayout.m; sourceTree = "<group>"; };
 		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
@@ -366,6 +383,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E2A63181DEFCD0B00AAF7FA /* MLFrameWork.framework in Frameworks */,
 				390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +410,7 @@
 		13D0C894E5E1CD44CFD522EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E2A63171DEFCD0B00AAF7FA /* MLFrameWork.framework */,
 				57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */,
 				ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */,
 				9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */,
@@ -646,6 +665,47 @@
 			path = WifiView;
 			sourceTree = "<group>";
 		};
+		5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A16A61DF167AB00CB9E97 /* View */,
+				5E7A16A81DF167B500CB9E97 /* ViewModel */,
+				5E7A16A71DF167B000CB9E97 /* Model */,
+			);
+			path = "中付金服新主界面";
+			sourceTree = "<group>";
+		};
+		5E7A16A61DF167AB00CB9E97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A16961DF00A8200CB9E97 /* ZFJFMainViewController.h */,
+				5E7A16971DF00A8200CB9E97 /* ZFJFMainViewController.m */,
+				5E7A16991DF00ACA00CB9E97 /* ZFJF_mainVCCell.h */,
+				5E7A169A1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m */,
+				5E7A16A91DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.h */,
+				5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5E7A16A71DF167B000CB9E97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A16A31DF1673700CB9E97 /* ZFJF_mMainVCCellItem.h */,
+				5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5E7A16A81DF167B500CB9E97 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A16A01DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.h */,
+				5E7A16A11DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +744,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */,
 				5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */,
 				5E2A588E1DD45B0C00AAF7FA /* 01_测试API */,
 				5E1807D21DD1B2CD00C7C5FE /* JLPay界面设计 */,
@@ -1364,6 +1425,7 @@
 				5EA2DF7A1C97B89B00770353 /* TextPullListViewController.m in Sources */,
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5E2A58DF1DE282AC00AAF7FA /* JLJBIGEnCoder.c in Sources */,
+				5E7A16A21DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */,
 				5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */,
@@ -1374,6 +1436,7 @@
 				9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */,
 				5E2A58E21DE282C400AAF7FA /* TestForJBIG.m in Sources */,
 				5EA2DF4B1C9115F900770353 /* MASConstraintMaker.m in Sources */,
+				5E7A16AB1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m in Sources */,
 				5E3CB44B1D9CA4D50036C1FB /* DampingLayer.m in Sources */,
 				5E1C92B51DC191F000C65379 /* TestForGradientLabel.m in Sources */,
 				5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */,
@@ -1406,6 +1469,7 @@
 				5E1807F11DD1B2CE00C7C5FE /* LMVC_logoutButton.m in Sources */,
 				5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */,
 				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
+				5E7A169B1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */,
 				5E2A589B1DD5A09800AAF7FA /* TFCVC_childVC2.m in Sources */,
@@ -1448,6 +1512,7 @@
 				5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
 				5E2A58DD1DE282AC00AAF7FA /* jbig85.c in Sources */,
+				5E7A16981DF00A8200CB9E97 /* ZFJFMainViewController.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */,
 				5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */,
@@ -1457,6 +1522,7 @@
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
 				5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
+				5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1600,6 +1666,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Luo (RSZ786K7Q7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1615,6 +1685,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Luo (RSZ786K7Q7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

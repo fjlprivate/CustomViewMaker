@@ -18,12 +18,15 @@
 @interface TestForJBIG ()
 
 @property (nonatomic, strong) UILabel* stateLabel;
+@property (nonatomic, strong) UIImageView* imageView;
 @property (nonatomic, strong) UIButton* encodingBtn;
 
 @property (nonatomic, strong) UIButton* showSignV;
 
 @property (nonatomic, strong) ElecSignFrameView* elecSignView;
 
+
+@property (nonatomic, strong) RACCommand* cmd_showTimeOut;
 
 
 @end
@@ -39,9 +42,11 @@
 - (IBAction) clickedShowV:(id)sender {
 //    [self.elecSignView.elecSignView reSign];
     NSLog(@"-------显示签名");
+    NameWeakSelf(wself);
     JLElecSignController* signCtrl = [JLElecSignController sharedElecSign];
     [signCtrl signWithCompletion:^{
-        [signCtrl rewriteCharacteristicCode:@"2016-11-25"];
+        signCtrl.characteristicCode = @"2016-11-28";
+        [wself makeSignViewEncoding];
     } orCancel:^{
         
     }];
@@ -51,7 +56,7 @@
     static int count;
     self.elecSignView.keyElementLabel.text = [NSString stringWithFormat:@"count%d", count++];
     size_t len = 0;
-    UIImage* image = [self imageForView:self.elecSignView];
+    UIImage* image = [ImageHelper elecSignImgWithView:[JLElecSignController sharedElecSign].elecSignView];
     unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:image];
     
     unsigned char* jbigStr = JLJBIGEncode(bmpStr, image.size.width, image.size.height, &len);
@@ -63,30 +68,18 @@
     self.stateLabel.text = ttt;
     NSLog(@"------完成编码[%@]",ttt);
     free(bmpStr);
-}
-
-
-
-- (UIImage*) imageForView:(UIView*)view {
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 1.f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
     
-    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
+    
+    self.imageView.image = image;
 }
+
+
+
 
 
 
 
 - (void) addKVO {
-//    @weakify(self);
-//    [[RACObserve(self.elecSignView.keyElementLabel, text) filter:^BOOL(NSString* value) {
-//        return value && value.length > 0 ? YES : NO;
-//    }] subscribeNext:^(id x) {
-//        [self makeSignViewEncoding];
-//    }];
     
 
 }
@@ -105,6 +98,7 @@
     [self.view addSubview:self.stateLabel];
     [self.view addSubview:self.encodingBtn];
     [self.view addSubview:self.showSignV];
+    [self.view addSubview:self.imageView];
 }
 - (void) layoutSubviews {
     CGFloat inset = 15;
@@ -131,10 +125,17 @@
     self.showSignV.layer.cornerRadius = frame.size.height * 0.5;
     
     frame.origin.y += frame.size.height + 40;
-    frame.size.height = self.view.frame.size.height - frame.origin.y - 20;
+    CGFloat lastHeight = self.view.frame.size.height - frame.origin.y - 20;
+    
+    frame.size.height = (lastHeight - 10) / 2;
     frame.origin.x = inset;
     frame.size.width = width;
     self.stateLabel.frame = frame;
+    
+    frame.origin.y += frame.size.height + 10;
+    frame.size.width = frame.size.height;
+    frame.origin.x = (ScreenWidth - frame.size.width)/2 ;
+    self.imageView.frame = frame;
     
     
 }
@@ -185,6 +186,29 @@
     }
     return _elecSignView;
 }
+
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] init];
+        _imageView.backgroundColor = [UIColor orangeColor];
+    }
+    return _imageView;
+}
+
+
+- (RACCommand *)cmd_showTimeOut {
+    if (!_cmd_showTimeOut) {
+        _cmd_showTimeOut = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                static NSInteger timecount = 0;
+                self.stateLabel.text = [NSString stringWithFormat:@"%ld", timecount++];
+                return nil;
+            }] repeat];
+        }];
+    }
+    return _cmd_showTimeOut;
+}
+
 
 
 @end

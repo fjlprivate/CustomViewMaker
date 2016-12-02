@@ -12,9 +12,12 @@
 #import "ImageHelper.h"
 #import "JLJBIGEnCoder.h"
 #import "PublicHeader.h"
+#import <ReactiveCocoa.h>
 
 
 @interface JLElecSignController()
+
+@property (nonatomic, assign) CGFloat elecSignScale;
 
 /* 背景视图 */
 @property (nonatomic, strong) UIView* bgView;
@@ -60,22 +63,6 @@
     [self shownAnimationOnFinished:nil];
 }
 
-- (void) rewriteCharacteristicCode:(NSString *)characteristicCode {
-    self.elecSignView.layer.cornerRadius = 0;
-    self.elecSignView.keyElementLabel.text = characteristicCode;
-    NameWeakSelf(wself);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        wself.elecSignImage = [ImageHelper elecSignImgWithView:wself.elecSignView];
-        unsigned char* bmpStr = [ImageHelper convertUIImageToBitmapRGBA8:wself.elecSignImage];
-        size_t len = 0;
-        unsigned char* elecSignString = JLJBIGEncode(bmpStr, wself.elecSignImage.size.width, wself.elecSignImage.size.height, &len);
-        NSMutableString* code = [NSMutableString string];
-        for (int i = 0; i < len; i++) {
-            [code appendFormat:@"%02x", elecSignString[i]];
-        }
-        wself.elecSignEncoded = code;
-    });
-}
 
 
 
@@ -119,11 +106,11 @@
     NameWeakSelf(wself);
     
     [self loadSubviews];
-    [self initialFrames];
+    [self relayoutSubviews];
 
     [UIView animateWithDuration:0.3 animations:^{
         wself.bgView.hidden = NO;
-        wself.bearView.transform = CGAffineTransformMakeScale(1, 1);
+        wself.bearView.transform = CGAffineTransformMakeScale(wself.elecSignScale, wself.elecSignScale);
     } completion:^(BOOL finished) {
     }];
 }
@@ -141,84 +128,31 @@
 
 # pragma mask 2 布局
 
-- (void) initialFrames {
-    CGFloat insetHorizontal = 10;
-    CGFloat insetVertical = 4;
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    
-//    CGFloat widthSignView = [UIScreen mainScreen].bounds.size.width - insetHorizontal * 2;
-////    widthSignView = widthSignView > 600 ? 600 : widthSignView;
-//    if (widthSignView > 600) {
-//        widthSignView = 600;
-//    }
-//    CGFloat heightSignView = widthSignView * 0.5;
-    CGFloat widthSignView = 240;
-    CGFloat heightSignView = 192;
-    
-    CGFloat heightTitleBack = heightSignView * 0.4;
-    CGFloat heightTitle = (heightTitleBack - insetVertical * 2) * 0.56;
-    
-    CGFloat heightBtn = 45;
-    CGFloat widthBtn = widthSignView * 0.35;
-    
-    self.cancelBtn.layer.cornerRadius = heightBtn * 0.5;
-    self.sureBtn.layer.cornerRadius = heightBtn * 0.5;
-    self.resignBtn.layer.cornerRadius = heightBtn * 2/3.f * 0.5;
-
-    CGRect frame = CGRectMake((screenWidth - widthSignView)/2,
-                              (screenHeight - heightSignView)/2, widthSignView, heightSignView);
-    self.elecSignView.frame = frame;
-    
-    frame.origin.y -= insetVertical + heightTitleBack;
-    frame.size.height = heightTitleBack;
-    self.titleBackView.frame = frame;
-    
-    frame.origin.y += insetVertical;
-    frame.size.height = heightTitle;
-    self.titleLabel.frame = frame;
-    
-    frame.origin.y += frame.size.height;
-    frame.size.height = heightTitleBack - heightTitle - insetVertical * 2;
-    self.titleDesLabel.frame = frame;
-    
-    frame = self.titleDesLabel.frame ;
-    frame.origin.y -= insetHorizontal * 1.4;
-    frame.size.height = insetHorizontal * 1.4;
-    frame.size.width = widthBtn * 2/3.f;
-    frame.origin.x = (screenWidth - frame.size.width)/2.f;
-    self.resignBtn.frame = frame;
-    
-    frame = self.elecSignView.frame;
-    frame.origin.y += frame.size.height + insetHorizontal * 1.5;
-    frame.size.width = widthBtn;
-    frame.size.height = heightBtn;
-    self.cancelBtn.frame = frame;
-    
-    frame.origin.x += widthSignView - widthBtn;
-    self.sureBtn.frame = frame;
-    
-}
 
 - (void) relayoutSubviews {
     NameWeakSelf(wself);
     
-    CGFloat insetHorizontal = 10;
-    CGFloat insetVertical = 4;
+    CGFloat insetHorizontal = ScreenWidth * 10/320.f;
+    CGFloat insetVertical = ScreenWidth * 4/320.f;
     
-    CGFloat widthSignView = [UIScreen mainScreen].bounds.size.width - insetHorizontal * 2;
-    widthSignView = widthSignView > 600 ? 600 : widthSignView;
-    CGFloat heightSignView = widthSignView * 0.5;
+    CGFloat widthSignView = 320.f;//[UIScreen mainScreen].bounds.size.width - insetHorizontal * 2;
+    CGFloat heightSignView = 256.f;//widthSignView * 4/5.f;
     
-    CGFloat heightTitleBack = heightSignView * 0.4;
+    CGFloat heightTitleBack = ScreenWidth * 60/320.f;
     CGFloat heightTitle = (heightTitleBack - insetVertical * 2) * 0.56;
     
-    CGFloat heightBtn = 45;
+    CGFloat heightBtn = ScreenWidth * 45/320.f;
     CGFloat widthBtn = widthSignView * 0.35;
+    CGFloat heightResignBtn = ScreenWidth * 35/320.f;
+    
     
     self.cancelBtn.layer.cornerRadius = heightBtn * 0.5;
     self.sureBtn.layer.cornerRadius = heightBtn * 0.5;
-    self.resignBtn.layer.cornerRadius = heightBtn * 2/3.f * 0.5;
+    self.resignBtn.layer.cornerRadius = heightResignBtn * 0.5;
+    
+    [self.bearView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    }];
     
     [self.elecSignView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.mas_equalTo(wself.bearView);
@@ -259,7 +193,7 @@
     
     [self.resignBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(wself.titleBackView.mas_top).offset(- insetHorizontal * 1.4);
-        make.height.mas_equalTo(heightBtn * 2/3.f);
+        make.height.mas_equalTo(heightResignBtn);
         make.centerX.mas_equalTo(wself.elecSignView.mas_centerX);
         make.width.mas_equalTo(widthBtn * 2/3.f);
     }];
@@ -271,6 +205,13 @@
 {
     self = [super init];
     if (self) {
+        RAC(self.elecSignView.layer, cornerRadius) = [[RACObserve(self, characteristicCode) filter:^BOOL(NSString* code) {
+            return code && code.length > 0 ? YES : NO;
+        }] map:^id(id value) {
+            return @(0);
+        }];
+        
+        RAC(self.elecSignView.keyElementLabel, text) = RACObserve(self, characteristicCode);
     }
     return self;
 }
@@ -409,6 +350,10 @@
         _resignBtn.backgroundColor = [UIColor colorWithHex:0x27384b alpha:0.9];
     }
     return _resignBtn;
+}
+
+- (CGFloat)elecSignScale {
+    return (ScreenWidth * 0.90) / 320.f;
 }
 
 @end

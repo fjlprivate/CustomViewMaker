@@ -203,6 +203,15 @@
 }
 
 + (UIImage*) elecSignImgWithView:(UIView*)view {
+//    CGRect frame = CGRectMake(0, 0, 320, 256);
+//    UIView* bearView = [[UIView alloc] initWithFrame:frame];
+//    CGRect viewFrame = view.frame;
+//    frame.origin.x = (frame.size.width - viewFrame.size.width) / 2;
+//    frame.origin.y = (frame.size.height - viewFrame.size.height) / 2;
+//    frame.size.width = viewFrame.size.width;
+//    frame.size.height = viewFrame.size.height;
+    
+//    CGFloat scale = 320.f / view.frame.size.width;
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(320,256), NO, 1.f);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [view.layer renderInContext:context];
