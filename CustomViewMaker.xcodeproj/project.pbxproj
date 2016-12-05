@@ -61,6 +61,7 @@
 		5E7A16A21DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16A11DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m */; };
 		5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */; };
 		5E7A16AB1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */; };
+		5E7A16B01DF53F4F00CB9E97 /* ZFJF_vNetBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */; };
 		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
@@ -247,6 +248,8 @@
 		5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_mMainVCCellItem.m; sourceTree = "<group>"; };
 		5E7A16A91DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vCollectionFlowLayout.h; sourceTree = "<group>"; };
 		5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vCollectionFlowLayout.m; sourceTree = "<group>"; };
+		5E7A16AE1DF53F4F00CB9E97 /* ZFJF_vNetBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vNetBackView.h; sourceTree = "<group>"; };
+		5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vNetBackView.m; sourceTree = "<group>"; };
 		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
@@ -684,6 +687,8 @@
 				5E7A169A1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m */,
 				5E7A16A91DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.h */,
 				5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */,
+				5E7A16AE1DF53F4F00CB9E97 /* ZFJF_vNetBackView.h */,
+				5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1445,6 +1450,7 @@
 				5E2A58981DD5A08200AAF7FA /* TFCVC_mainVC2.m in Sources */,
 				5E2A58951DD45C1600AAF7FA /* TFCVC_childViewController.m in Sources */,
 				5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */,
+				5E7A16B01DF53F4F00CB9E97 /* ZFJF_vNetBackView.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
 				5E2A62561DE820B000AAF7FA /* JLElecSignController.m in Sources */,
