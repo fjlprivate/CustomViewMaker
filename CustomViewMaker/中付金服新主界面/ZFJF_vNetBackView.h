@@ -12,14 +12,6 @@
 
 
 
-/* 网格背景视图的初始化
- * @param vCount:       纵方向格个数;
- * @param hCount:       横方向格个数;
- * @param hasBorder:    是否有边界;
- */
-- (instancetype) initWithVCount:(NSInteger)vCount
-                         hCount:(NSInteger)hCount
-                      hasBorder:(BOOL)hasBorder;
 
 
 /* 网格线条色  default: 0xeeeeee */

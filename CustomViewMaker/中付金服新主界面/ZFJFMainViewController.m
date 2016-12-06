@@ -11,43 +11,26 @@
 #import "PublicHeader.h"
 #import "ZFJF_mainVCCell.h"
 #import "ZFJF_vCollectionFlowLayout.h"
+#import "ZFJF_vHeaderView.h"
 
 @interface ZFJFMainViewController ()
-<UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+<UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView* collcetionView;
 @property (nonatomic, strong) ZFJF_vCollectionFlowLayout* flowlayout;
-@property (nonatomic, strong) ZFJF_vmMainVCDatasource* dataSource;
 
 @end
 
 @implementation ZFJFMainViewController
 
 
-# pragma mask 2 UICollectionViewDelegateFlowLayout
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CGFloat width = ScreenWidth / 3.1;
-//    return CGSizeMake(width, width);
-//}
-//
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    return UIEdgeInsetsZero;
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 0;
-//}
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 0;
-//}
-
 
 # pragma mask 2 UICollectionViewDelegate
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZFJF_mMainVCCellItem* item = [[ZFJF_vmMainVCDatasource mainDataSource].items objectAtIndex:indexPath.row];
+    NSLog(@"----------------点击了item:[%@]", item.itemTitle);
+}
 
 
 # pragma mask 3 界面布局
@@ -66,11 +49,8 @@
 }
 
 - (void) layoutSubviews {
-    CGFloat heightCollectionV = ScreenHeight * 0.67;
-    CGRect frame = CGRectMake(0, ScreenHeight - heightCollectionV, ScreenWidth, heightCollectionV);
+    CGRect frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64);
     self.collcetionView.frame = frame;
-    
-    
 }
 
 
@@ -81,10 +61,11 @@
 - (UICollectionView *)collcetionView {
     if (!_collcetionView) {
         _collcetionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowlayout];
-        _collcetionView.dataSource = self.dataSource;
+        _collcetionView.dataSource = [ZFJF_vmMainVCDatasource mainDataSource];
         _collcetionView.delegate = self;
-        _collcetionView.backgroundColor = [UIColor colorWithHex:0xe0e0e0 alpha:1];
+        _collcetionView.backgroundColor = [UIColor colorWithHex:0xffffff alpha:1];
         [_collcetionView registerClass:[ZFJF_mainVCCell class] forCellWithReuseIdentifier:@"ZFJF_mainVCCell"];
+        [_collcetionView registerClass:[ZFJF_vHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ZFJF_vHeaderView"];
     }
     return _collcetionView;
 }
@@ -92,25 +73,12 @@
 
 - (ZFJF_vCollectionFlowLayout *)flowlayout {
     if (!_flowlayout) {
-        _flowlayout = [[ZFJF_vCollectionFlowLayout alloc] initWithItemsCount:self.dataSource.items.count];
+        _flowlayout = [[ZFJF_vCollectionFlowLayout alloc] initWithItemsCount:[ZFJF_vmMainVCDatasource mainDataSource].items.count];
         _flowlayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     }
     return _flowlayout;
 }
-//- (UICollectionViewFlowLayout *)flowlayout {
-//    if (!_flowlayout) {
-//        _flowlayout = [[UICollectionViewFlowLayout alloc] init];
-//        _flowlayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//    }
-//    return _flowlayout;
-//}
 
-- (ZFJF_vmMainVCDatasource *)dataSource {
-    if (!_dataSource) {
-        _dataSource = [ZFJF_vmMainVCDatasource new];
-    }
-    return _dataSource;
-}
 
 
 @end

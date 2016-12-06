@@ -62,6 +62,7 @@
 		5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16A41DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m */; };
 		5E7A16AB1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */; };
 		5E7A16B01DF53F4F00CB9E97 /* ZFJF_vNetBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */; };
+		5E7A16B31DF664EC00CB9E97 /* ZFJF_vHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */; };
 		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
@@ -250,6 +251,8 @@
 		5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vCollectionFlowLayout.m; sourceTree = "<group>"; };
 		5E7A16AE1DF53F4F00CB9E97 /* ZFJF_vNetBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vNetBackView.h; sourceTree = "<group>"; };
 		5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vNetBackView.m; sourceTree = "<group>"; };
+		5E7A16B11DF664EC00CB9E97 /* ZFJF_vHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vHeaderView.h; sourceTree = "<group>"; };
+		5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vHeaderView.m; sourceTree = "<group>"; };
 		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
@@ -689,6 +692,8 @@
 				5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */,
 				5E7A16AE1DF53F4F00CB9E97 /* ZFJF_vNetBackView.h */,
 				5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */,
+				5E7A16B11DF664EC00CB9E97 /* ZFJF_vHeaderView.h */,
+				5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1435,6 +1440,7 @@
 				5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */,
 				5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */,
 				5E1C92BB1DC1D9AA00C65379 /* NSAttributedString+FontAwesomeString.m in Sources */,
+				5E7A16B31DF664EC00CB9E97 /* ZFJF_vHeaderView.m in Sources */,
 				5EA2DF771C97B52B00770353 /* PullListSegView.m in Sources */,
 				5E1807FD1DD1B36C00C7C5FE /* SwipeCardVC_connectDevice.m in Sources */,
 				5EDA73A91D87ACCF000606A6 /* TestForTriScrollSegVC.m in Sources */,

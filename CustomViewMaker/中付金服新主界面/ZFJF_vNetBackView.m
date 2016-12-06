@@ -8,6 +8,7 @@
 
 #import "ZFJF_vNetBackView.h"
 #import "UIColor+ColorWithHex.h"
+#import "ZFJF_vmMainVCDatasource.h"
 
 
 @interface ZFJF_vNetBackView()
@@ -21,22 +22,24 @@
 
 @implementation ZFJF_vNetBackView
 
-- (instancetype)initWithVCount:(NSInteger)vCount hCount:(NSInteger)hCount hasBorder:(BOOL)hasBorder
-{
-    self = [super init];
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        _vCount = vCount;
-        _hCount = hCount;
-        _hasBorder = hasBorder;
+        _hCount = [ZFJF_vmMainVCDatasource mainDataSource].numberOfColumns;
+        NSInteger itemsCount = [ZFJF_vmMainVCDatasource mainDataSource].items.count;
+        _vCount = itemsCount % _hCount == 0 ? itemsCount / _hCount : itemsCount / _hCount + 1 ;
+        _hasBorder = YES;
         [self.layer addSublayer:self.shapeLayer];
     }
     return self;
 }
 
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     UIBezierPath* path = [UIBezierPath bezierPath];
-    
+
     
     CGFloat wView = self.bounds.size.width;
     CGFloat hView = self.bounds.size.height;
@@ -44,14 +47,14 @@
     
     
     // 绘制纵线条
-    for (int i = 1; i < self.vCount; i++) {
+    for (int i = 1; i < self.hCount; i++) {
         CGPoint upPoint = CGPointMake(uniteWidth * i, 0);
         CGPoint downPoint = CGPointMake(uniteWidth * i, hView);
         [path moveToPoint:upPoint];
         [path addLineToPoint:downPoint];
     }
     // 绘制横线条
-    for (int i = 1; i < self.hCount; i++) {
+    for (int i = 1; i < self.vCount; i++) {
         CGPoint leftPoint = CGPointMake(0, uniteWidth * i);
         CGPoint rightPoint = CGPointMake(wView, uniteWidth * i);
         [path moveToPoint:leftPoint];
@@ -91,13 +94,13 @@
 
 - (UIColor *)borderLineColor {
     if (!_borderLineColor) {
-        _borderLineColor = [UIColor colorWithHex:0xeeeeee alpha:1];
+        _borderLineColor = [UIColor colorWithHex:0xe0e0e0 alpha:1];
     }
     return _borderLineColor;
 }
 - (CGFloat)borderLineWidth {
     if (_borderLineWidth < 0.0001) {
-        _borderLineWidth = 0.8f;
+        _borderLineWidth = 0.5f;
     }
     return _borderLineWidth;
 }

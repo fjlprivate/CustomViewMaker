@@ -8,19 +8,20 @@
 
 #import "ZFJF_vCollectionFlowLayout.h"
 #import "ZFJF_vNetBackView.h"
+#import "ZFJF_vmMainVCDatasource.h"
 
 
 @interface ZFJF_vCollectionFlowLayout()
 
 @property (nonatomic, assign) NSInteger itemsCount;
 
+@property (nonatomic, assign) CGFloat heightHeaderView;
+
+@property (nonatomic, strong) ZFJF_vNetBackView* backView;
+
 @end
 
 @implementation ZFJF_vCollectionFlowLayout
-
-
-
-
 
 
 # pragma mask 3 初始化
@@ -37,39 +38,45 @@
 /* 注册背景视图 */
 - (void)prepareLayout {
     [super prepareLayout];
-    NSLog(@"------- prepareLayout");
-    [self registerClass:[ZFJF_vNetBackView class] forDecorationViewOfKind:@"ZFJF_vNetBackView"];
+    
+    if (!self.backView.superview) {
+        [self.collectionView addSubview:self.backView];
+    }
+    CGSize viewSize = [self collectionViewContentSize];
+    self.backView.frame = CGRectMake(0, self.heightHeaderView, viewSize.width, viewSize.height - self.heightHeaderView);
 }
 
 
 /* 初始化layout的大小 */
 - (CGSize)collectionViewContentSize {
-    NSLog(@"------- collectionViewContentSize [%@]", NSStringFromCGSize(self.collectionView.bounds.size));
     CGSize size = self.collectionView.bounds.size;
-    size.height = size.width/3.f * (self.itemsCount % 3 == 0 ? self.itemsCount / 3 : self.itemsCount / 3 + 1);
+    NSInteger numberColumn = [ZFJF_vmMainVCDatasource mainDataSource].numberOfColumns;
+    CGFloat allItemsHeight = size.width/numberColumn * (self.itemsCount % numberColumn == 0 ? self.itemsCount / numberColumn : self.itemsCount / numberColumn + 1);
+    self.heightHeaderView = size.height * 0.4;
+    size.height = allItemsHeight + self.heightHeaderView;
     return size;
 }
 
 /* 计算item的属性 */
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger numberColumn = [ZFJF_vmMainVCDatasource mainDataSource].numberOfColumns;
+
     UICollectionViewLayoutAttributes* attri = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    CGFloat width = [self collectionViewContentSize].width / 3.f;
-    NSLog(@"--------item.width = [%lf]", width);
+    CGFloat width = [self collectionViewContentSize].width / numberColumn;
     attri.size = CGSizeMake(width, width);
-    attri.center = CGPointMake((indexPath.row % 3 + 0.5) * width, (indexPath.row / 3 + 0.5) * width);
+    attri.center = CGPointMake((indexPath.row % numberColumn + 0.5) * width, self.heightHeaderView + (indexPath.row / numberColumn + 0.5) * width);
     return attri;
 }
 
-/* 计算decorationView的布局属性 */
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
-                                                                  atIndexPath:(NSIndexPath *)indexPath
+/* 计算header的属性 */
+- (UICollectionViewLayoutAttributes*) layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewLayoutAttributes* attri = [UICollectionViewLayoutAttributes
-                                               layoutAttributesForDecorationViewOfKind:elementKind
-                                               withIndexPath:indexPath];
-    attri.frame = self.collectionView.bounds;
-    return attri;
+    UICollectionViewLayoutAttributes* headerAttri = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:elementKind withIndexPath:indexPath];
+    CGFloat width = self.collectionView.bounds.size.width;
+    headerAttri.frame = CGRectMake(0, 0, width, self.heightHeaderView);
+    
+    return headerAttri;
 }
 
 /* 布局可视范围内的items+decorationView */
@@ -77,8 +84,8 @@
 {
     NSMutableArray* attris = [NSMutableArray array];
     
-    // decorationView
-    [attris addObject:[self layoutAttributesForDecorationViewOfKind:@"ZFJF_vNetBackView" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
+    // header
+    [attris addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     
     // items
     for (int i = 0; i < self.itemsCount; i++) {
@@ -90,18 +97,13 @@
 }
 
 
+# pragma mask 4 getter
 
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-{
-    
-    CGRect oldBounds = self.collectionView.bounds;
-    if (!CGSizeEqualToSize(oldBounds.size, newBounds.size)) {
-        return YES;
+- (ZFJF_vNetBackView *)backView {
+    if (!_backView) {
+        _backView = [[ZFJF_vNetBackView alloc] initWithFrame:CGRectZero];
     }
-    return NO;
-    
-    //
-    //    return YES;
+    return _backView;
 }
 
 @end

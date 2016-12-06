@@ -9,6 +9,7 @@
 #import "ZFJF_vmMainVCDatasource.h"
 #import "ZFJF_mainVCCell.h"
 #import "ZFJF_mMainVCCellItem.h"
+#import "ZFJF_vHeaderView.h"
 
 @interface ZFJF_vmMainVCDatasource()
 
@@ -19,6 +20,15 @@
 
 
 @implementation ZFJF_vmMainVCDatasource
+
++ (instancetype)mainDataSource {
+    static ZFJF_vmMainVCDatasource* datasource;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        datasource = [[ZFJF_vmMainVCDatasource alloc] init];
+    });
+    return datasource;
+}
 
 
 # pragma mask 2 UICollectionViewDataSource
@@ -35,6 +45,13 @@
     cell.iconImageView.image = [UIImage imageNamed:item.imageName];
     cell.iconLabel.text = item.itemTitle;
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                              withReuseIdentifier:@"ZFJF_vHeaderView" forIndexPath:indexPath];
+    return headerView;
 }
 
 
@@ -57,5 +74,11 @@
     return _items;
 }
 
+- (NSInteger)numberOfColumns {
+    if (_numberOfColumns <= 0) {
+        _numberOfColumns = 2;
+    }
+    return _numberOfColumns;
+}
 
 @end
