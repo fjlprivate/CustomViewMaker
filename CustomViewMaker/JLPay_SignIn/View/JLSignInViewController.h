@@ -23,7 +23,8 @@
 
 @property (nonatomic, strong) UIImageView* backgroundImgView;   // 背景
 
-@property (nonatomic, strong) UIImageView* logoImgView;         // logo
+@property (nonatomic, strong) UIImageView* logoIconImgView;     // logo
+@property (nonatomic, strong) UIImageView* logoNameImgView;
 
 @property (nonatomic, strong) UILabel* headLabel;               // 头像
 @property (nonatomic, strong) UILabel* lockLabel;               // 密码锁

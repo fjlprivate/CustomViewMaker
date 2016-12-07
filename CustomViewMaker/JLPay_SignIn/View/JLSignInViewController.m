@@ -133,7 +133,8 @@
     
     [self.view addSubview:self.backgroundImgView];
     
-    [self.view addSubview:self.logoImgView];
+    [self.view addSubview:self.logoIconImgView];
+    [self.view addSubview:self.logoNameImgView];
     
     [self.view addSubview:self.userTextField];
     [self.view addSubview:self.pwdTextField];
@@ -158,8 +159,9 @@
     
     CGFloat inset = 15;
     
-    CGFloat widthLogoImg = self.view.frame.size.width * 0.5;
-    CGFloat heightLogoImg = widthLogoImg * self.logoImgView.image.size.height/self.logoImgView.image.size.width;
+    CGFloat widthLogoIconImg = self.view.frame.size.width * 0.18;
+    CGFloat heightLogoTitleImg = 18;
+    CGFloat widthLogoTitleImg = heightLogoTitleImg * self.logoNameImgView.image.size.width/self.logoNameImgView.image.size.height;
     
     CGFloat heightTxtField = self.view.frame.size.height * 1/13;
     CGFloat heightBtn = self.view.frame.size.height * 1/13;
@@ -189,10 +191,16 @@
         make.bottom.equalTo(wself.view.mas_bottom);
     }];
     
-    [self.logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.logoIconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(wself.view.mas_centerX);
         make.bottom.equalTo(wself.view.mas_top).offset(wself.view.frame.size.height * 0.25);
-        make.size.mas_equalTo(CGSizeMake(widthLogoImg, heightLogoImg));
+        make.size.mas_equalTo(CGSizeMake(widthLogoIconImg, widthLogoIconImg));
+    }];
+    [self.logoNameImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(wself.view.mas_centerX);
+        make.top.mas_equalTo(wself.logoIconImgView.mas_bottom).offset(inset);
+        make.width.mas_equalTo(widthLogoTitleImg);
+        make.height.mas_equalTo(heightLogoTitleImg);
     }];
     
     [self.userTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -278,11 +286,18 @@
     }
     return _backgroundImgView;
 }
-- (UIImageView *)logoImgView {
-    if (!_logoImgView) {
-        _logoImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AppLogoImage"]];
+- (UIImageView *)logoIconImgView {
+    if (!_logoIconImgView) {
+        _logoIconImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoIcon_red"]];
     }
-    return _logoImgView;
+    return _logoIconImgView;
+}
+
+- (UIImageView *)logoNameImgView {
+    if (!_logoNameImgView) {
+        _logoNameImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_title_gray"]];
+    }
+    return _logoNameImgView;
 }
 
 - (UILabel *)headLabel {
@@ -309,8 +324,9 @@
         _userTextField = [UITextField new];
         _userTextField.placeholder = @"请输入用户名";
         _userTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _userTextField.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:0.7].CGColor;
-        _userTextField.layer.borderWidth = 1.f;
+//        _userTextField.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:0.7].CGColor;
+//        _userTextField.layer.borderWidth = 1.f;
+        _userTextField.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
         _userTextField.textAlignment = NSTextAlignmentCenter;
         _userTextField.textColor = [UIColor whiteColor];
         _userTextField.delegate = self;
@@ -322,8 +338,9 @@
         _pwdTextField = [UITextField new];
         _pwdTextField.placeholder = @"请输入8位密码";
         _pwdTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _pwdTextField.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:0.7].CGColor;
-        _pwdTextField.layer.borderWidth = 1.f;
+//        _pwdTextField.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:0.7].CGColor;
+//        _pwdTextField.layer.borderWidth = 1.f;
+        _pwdTextField.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
         _pwdTextField.textAlignment = NSTextAlignmentCenter;
         _pwdTextField.textColor = [UIColor whiteColor];
         _pwdTextField.keyboardType = UIKeyboardTypeAlphabet;

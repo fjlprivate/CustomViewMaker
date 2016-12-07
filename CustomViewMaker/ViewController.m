@@ -113,6 +113,8 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject: @"SignIn"];
+        [_btnTitles addObject: @"Collection"];
         [_btnTitles addObject:@"中付金服新界面"];
         [_btnTitles addObject:@"StepSegmentView"];
         [_btnTitles addObject:@"TestForJBIG"];
@@ -132,9 +134,7 @@
         [_btnTitles addObject:@"LabelAutoresize"];
         [_btnTitles addObject:@"CustomAlertView"];
         [_btnTitles addObject: @"IconFont"];
-        [_btnTitles addObject: @"SignIn"];
         [_btnTitles addObject: @"登陆界面"];
-        [_btnTitles addObject: @"Collection"];
         [_btnTitles addObject: @"MBHUD"];
         [_btnTitles addObject: @"JCAlert"];
         [_btnTitles addObject: @"RACCommand"];
@@ -148,34 +148,35 @@
 - (NSMutableDictionary *)dicVCNameAndTitles {
     if (!_dicVCNameAndTitles) {
         _dicVCNameAndTitles = [NSMutableDictionary dictionary];
-        [_dicVCNameAndTitles setObject:@"CheckViewController" forKey: @"标记勾叉"];
-        [_dicVCNameAndTitles setObject:@"TestForMLActivitorVC" forKey: @"shapeLayer"]; // TestForMLActivitorVC  TestCAShapeLayerViewController
-        [_dicVCNameAndTitles setObject:@"TestCheckViewController" forKey: @"环形标记"];
-        [_dicVCNameAndTitles setObject:@"TextPullListViewController" forKey: @"下拉列表"];
-        [_dicVCNameAndTitles setObject:@"TestRACCommand" forKey: @"RACCommand"];
-        [_dicVCNameAndTitles setObject:@"TestJLAlertView" forKey: @"JCAlert"];
-        [_dicVCNameAndTitles setObject:@"TestMBProgressHUD" forKey: @"MBHUD"];
-        [_dicVCNameAndTitles setObject:@"TestCollectionView" forKey: @"Collection"];
-        [_dicVCNameAndTitles setObject:@"SignInViewController" forKey: @"登陆界面"];
-        [_dicVCNameAndTitles setObject:@"TestWifiViewController" forKey: @"Wifi"];
-        [_dicVCNameAndTitles setObject:@"JLSignInViewController" forKey: @"SignIn"];
-        [_dicVCNameAndTitles setObject:@"TestForIconFont" forKey: @"IconFont"];
-        [_dicVCNameAndTitles setObject:@"TestForCustomAlertView" forKey: @"CustomAlertView"];
-        [_dicVCNameAndTitles setObject:@"TestForStepSegmentView" forKey: @"StepSegmentView"];
-        [_dicVCNameAndTitles setObject:@"LabelAutoresize" forKey:@"LabelAutoresize"];
-        [_dicVCNameAndTitles setObject:@"TestForTriScrollSegVC" forKey:@"3个滚动子切换"];
-        [_dicVCNameAndTitles setObject:@"TestForMoreSegScrollView" forKey:@"more滚动子切换"];
-        [_dicVCNameAndTitles setObject:@"MainTransViewController" forKey:@"金额输入界面"];
+        [_dicVCNameAndTitles setObject:@"CheckViewController"           forKey: @"标记勾叉"];
+        [_dicVCNameAndTitles setObject:@"TestForMLActivitorVC"          forKey: @"shapeLayer"]; // TestForMLActivitorVC  TestCAShapeLayerViewController
+        [_dicVCNameAndTitles setObject:@"TestCheckViewController"       forKey: @"环形标记"];
+        [_dicVCNameAndTitles setObject:@"TextPullListViewController"    forKey: @"下拉列表"];
+        [_dicVCNameAndTitles setObject:@"TestRACCommand"                forKey: @"RACCommand"];
+        [_dicVCNameAndTitles setObject:@"TestJLAlertView"               forKey: @"JCAlert"];
+        [_dicVCNameAndTitles setObject:@"TestMBProgressHUD"             forKey: @"MBHUD"];
+        [_dicVCNameAndTitles setObject:@"TestCollectionView"            forKey: @"Collection"];
+        [_dicVCNameAndTitles setObject:@"SignInViewController"          forKey: @"登陆界面"];
+        [_dicVCNameAndTitles setObject:@"TestWifiViewController"        forKey: @"Wifi"];
+        [_dicVCNameAndTitles setObject:@"JLSignInViewController"        forKey: @"SignIn"];
+        [_dicVCNameAndTitles setObject:@"TestForIconFont"               forKey: @"IconFont"];
+        [_dicVCNameAndTitles setObject:@"TestForCustomAlertView"        forKey: @"CustomAlertView"];
+        [_dicVCNameAndTitles setObject:@"TestForStepSegmentView"        forKey: @"StepSegmentView"];
+        [_dicVCNameAndTitles setObject:@"LabelAutoresize"               forKey:@"LabelAutoresize"];
+        [_dicVCNameAndTitles setObject:@"TestForTriScrollSegVC"         forKey:@"3个滚动子切换"];
+        [_dicVCNameAndTitles setObject:@"TestForMoreSegScrollView"      forKey:@"more滚动子切换"];
+        [_dicVCNameAndTitles setObject:@"MainTransViewController"       forKey:@"金额输入界面"];
         [_dicVCNameAndTitles setObject:@"TestForKYAnimationPageViewController" forKey:@"阻尼动画pageContr"];
-        [_dicVCNameAndTitles setObject:@"TestForCAViewController" forKey:@"CoreAnimation动画"];
-        [_dicVCNameAndTitles setObject:@"TestForWebViewController" forKey:@"测试webView"];
-        [_dicVCNameAndTitles setObject:@"TestForGradientLabel" forKey:@"幻灯效果label"];
-        [_dicVCNameAndTitles setObject:@"TestForIconfontVC" forKey:@"AwesomeIcon"];
-        [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice" forKey:@"刷卡_设备连接"];
-        [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController" forKey:@"测试ChildVC"]; // TFCVC_MainViewController  TFCVC_mainVC2
-        [_dicVCNameAndTitles setObject:@"TestForKeywindowVC" forKey:@"测试keywindow"];
-        [_dicVCNameAndTitles setObject:@"TestForJBIG" forKey:@"TestForJBIG"];
-        [_dicVCNameAndTitles setObject:@"ZFJFMainViewController" forKey:@"中付金服新界面"];
+        [_dicVCNameAndTitles setObject:@"TestForCAViewController"       forKey:@"CoreAnimation动画"];
+        [_dicVCNameAndTitles setObject:@"TestForWebViewController"      forKey:@"测试webView"];
+        [_dicVCNameAndTitles setObject:@"TestForGradientLabel"          forKey:@"幻灯效果label"];
+        [_dicVCNameAndTitles setObject:@"TestForIconfontVC"             forKey:@"AwesomeIcon"];
+        [_dicVCNameAndTitles setObject:@"SwipeCardVC_connectDevice"     forKey:@"刷卡_设备连接"];
+        // TFCVC_MainViewController  TFCVC_mainVC2
+        [_dicVCNameAndTitles setObject:@"TFCVC_MainViewController"      forKey:@"测试ChildVC"];
+        [_dicVCNameAndTitles setObject:@"TestForKeywindowVC"            forKey:@"测试keywindow"];
+        [_dicVCNameAndTitles setObject:@"TestForJBIG"                   forKey:@"TestForJBIG"];
+        [_dicVCNameAndTitles setObject:@"ZFJFMainViewController"        forKey:@"中付金服新界面"];
     }
     return _dicVCNameAndTitles;
 }

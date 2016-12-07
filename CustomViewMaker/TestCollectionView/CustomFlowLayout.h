@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomFlowLayout : UICollectionViewFlowLayout
+@interface CustomFlowLayout : UICollectionViewLayout
+
+- (instancetype) initWithColumnCount:(NSInteger)columnCount
+                       allItemsCount:(NSInteger)itemsCount;
+
 
 @end

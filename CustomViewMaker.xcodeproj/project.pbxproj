@@ -63,6 +63,8 @@
 		5E7A16AB1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AA1DF1720D00CB9E97 /* ZFJF_vCollectionFlowLayout.m */; };
 		5E7A16B01DF53F4F00CB9E97 /* ZFJF_vNetBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */; };
 		5E7A16B31DF664EC00CB9E97 /* ZFJF_vHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */; };
+		5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */; };
+		5E7A16B91DF7DB8B00CB9E97 /* TCV_mItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */; };
 		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
@@ -253,6 +255,10 @@
 		5E7A16AF1DF53F4F00CB9E97 /* ZFJF_vNetBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vNetBackView.m; sourceTree = "<group>"; };
 		5E7A16B11DF664EC00CB9E97 /* ZFJF_vHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJF_vHeaderView.h; sourceTree = "<group>"; };
 		5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJF_vHeaderView.m; sourceTree = "<group>"; };
+		5E7A16B41DF7A9DB00CB9E97 /* TCV_vmDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCV_vmDataSource.h; sourceTree = "<group>"; };
+		5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_vmDataSource.m; sourceTree = "<group>"; };
+		5E7A16B71DF7DB8B00CB9E97 /* TCV_mItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCV_mItem.h; sourceTree = "<group>"; };
+		5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_mItem.m; sourceTree = "<group>"; };
 		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
@@ -1104,6 +1110,10 @@
 				9E1570361CAC0D0800244876 /* CustomFlowLayout.m */,
 				9E1570381CAC0E6900244876 /* CustomCollectionViewCell.h */,
 				9E1570391CAC0E6900244876 /* CustomCollectionViewCell.m */,
+				5E7A16B41DF7A9DB00CB9E97 /* TCV_vmDataSource.h */,
+				5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */,
+				5E7A16B71DF7DB8B00CB9E97 /* TCV_mItem.h */,
+				5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */,
 			);
 			path = TestCollectionView;
 			sourceTree = "<group>";
@@ -1490,6 +1500,7 @@
 				5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */,
 				5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */,
 				5E1808001DD2BD8C00C7C5FE /* MLActivitor.m in Sources */,
+				5E7A16B91DF7DB8B00CB9E97 /* TCV_mItem.m in Sources */,
 				5E2A58921DD45C0700AAF7FA /* TFCVC_MainViewController.m in Sources */,
 				5EA2DF4E1C9115F900770353 /* MASViewConstraint.m in Sources */,
 				5EDA73B21D87FB0D000606A6 /* TriSegView_cell.m in Sources */,
@@ -1537,6 +1548,7 @@
 				5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
+				5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

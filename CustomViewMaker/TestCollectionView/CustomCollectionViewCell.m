@@ -21,9 +21,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    CGRect frame = self.bounds;
-    
-    self.label.frame = frame;
+    self.label.frame = self.bounds;
 }
 
 #pragma mask 4 getter
@@ -32,6 +30,7 @@
         _label = [UILabel new];
         _label.textAlignment = NSTextAlignmentCenter;
         _label.textColor = [UIColor whiteColor];
+        _label.font = [UIFont boldSystemFontOfSize:14];
     }
     return _label;
 }

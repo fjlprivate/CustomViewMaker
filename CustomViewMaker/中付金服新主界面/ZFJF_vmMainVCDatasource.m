@@ -76,7 +76,7 @@
 
 - (NSInteger)numberOfColumns {
     if (_numberOfColumns <= 0) {
-        _numberOfColumns = 2;
+        _numberOfColumns = 3;
     }
     return _numberOfColumns;
 }
