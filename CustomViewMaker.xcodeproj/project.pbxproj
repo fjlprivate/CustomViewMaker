@@ -65,6 +65,9 @@
 		5E7A16B31DF664EC00CB9E97 /* ZFJF_vHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */; };
 		5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */; };
 		5E7A16B91DF7DB8B00CB9E97 /* TCV_mItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */; };
+		5E7A16BD1DF901CC00CB9E97 /* MLFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */; };
+		5E7A16C01DF90F2000CB9E97 /* MLFilterView2Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */; };
+		5E7A16C31DF938D200CB9E97 /* TestForMLFitlerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16C21DF938D200CB9E97 /* TestForMLFitlerView.m */; };
 		5E98DEAD1D8E42B9000EA1C6 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */; };
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
@@ -259,6 +262,12 @@
 		5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_vmDataSource.m; sourceTree = "<group>"; };
 		5E7A16B71DF7DB8B00CB9E97 /* TCV_mItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCV_mItem.h; sourceTree = "<group>"; };
 		5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_mItem.m; sourceTree = "<group>"; };
+		5E7A16BB1DF901CC00CB9E97 /* MLFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFilterView.h; sourceTree = "<group>"; };
+		5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFilterView.m; sourceTree = "<group>"; };
+		5E7A16BE1DF90F2000CB9E97 /* MLFilterView2Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFilterView2Section.h; sourceTree = "<group>"; };
+		5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFilterView2Section.m; sourceTree = "<group>"; };
+		5E7A16C11DF938D200CB9E97 /* TestForMLFitlerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMLFitlerView.h; sourceTree = "<group>"; };
+		5E7A16C21DF938D200CB9E97 /* TestForMLFitlerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForMLFitlerView.m; sourceTree = "<group>"; };
 		5E98DEAB1D8E42B9000EA1C6 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		5E98DEAC1D8E42B9000EA1C6 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		5E98DEAF1D8E88F1000EA1C6 /* TestForMoreSegScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMoreSegScrollView.h; sourceTree = "<group>"; };
@@ -722,6 +731,19 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
+		5E7A16BA1DF9019700CB9E97 /* 筛选视图 */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A16C11DF938D200CB9E97 /* TestForMLFitlerView.h */,
+				5E7A16C21DF938D200CB9E97 /* TestForMLFitlerView.m */,
+				5E7A16BE1DF90F2000CB9E97 /* MLFilterView2Section.h */,
+				5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */,
+				5E7A16BB1DF901CC00CB9E97 /* MLFilterView.h */,
+				5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */,
+			);
+			path = "筛选视图";
+			sourceTree = "<group>";
+		};
 		5E98DEAE1D8E88C5000EA1C6 /* MoreSegScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +782,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5E7A16BA1DF9019700CB9E97 /* 筛选视图 */,
 				5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */,
 				5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */,
 				5E2A588E1DD45B0C00AAF7FA /* 01_测试API */,
@@ -1469,7 +1492,9 @@
 				5E7A16B01DF53F4F00CB9E97 /* ZFJF_vNetBackView.m in Sources */,
 				5EA2DF2E1C91116200770353 /* CustomCheckView.m in Sources */,
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
+				5E7A16C31DF938D200CB9E97 /* TestForMLFitlerView.m in Sources */,
 				5E2A62561DE820B000AAF7FA /* JLElecSignController.m in Sources */,
+				5E7A16C01DF90F2000CB9E97 /* MLFilterView2Section.m in Sources */,
 				5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
 				5E1C92B81DC1A17400C65379 /* FLGradientLabelLayer.m in Sources */,
@@ -1508,6 +1533,7 @@
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
+				5E7A16BD1DF901CC00CB9E97 /* MLFilterView.m in Sources */,
 				5E2A58DC1DE282AC00AAF7FA /* jbig.c in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,

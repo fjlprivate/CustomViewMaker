@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"MLFilter筛选器"];
         [_btnTitles addObject: @"SignIn"];
         [_btnTitles addObject: @"Collection"];
         [_btnTitles addObject:@"中付金服新界面"];
@@ -177,6 +178,7 @@
         [_dicVCNameAndTitles setObject:@"TestForKeywindowVC"            forKey:@"测试keywindow"];
         [_dicVCNameAndTitles setObject:@"TestForJBIG"                   forKey:@"TestForJBIG"];
         [_dicVCNameAndTitles setObject:@"ZFJFMainViewController"        forKey:@"中付金服新界面"];
+        [_dicVCNameAndTitles setObject:@"TestForMLFitlerView"           forKey:@"MLFilter筛选器"];
     }
     return _dicVCNameAndTitles;
 }
