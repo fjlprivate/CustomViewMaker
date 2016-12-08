@@ -179,11 +179,10 @@ static NSInteger tagMLSubTableView = 233;
 # pragma mask 1 IBAction
 
 - (IBAction) clickedResetBtn:(id)sender {
-    for (NSMutableArray* subItems in self.subSelectedArray) {
-        if (subItems && subItems.count > 0) {
-            [subItems removeAllObjects];
-        }
+    if (self.subSelectedArray.count > 0) {
+        [self.subSelectedArray removeAllObjects];
     }
+    [self initialDatas];
     [self.mainTableView reloadData];
     [self.subTableView reloadData];
 }
@@ -353,45 +352,28 @@ static NSInteger tagMLSubTableView = 233;
 
 /* 判断当前被选序号是否在sub被选组中 */
 - (BOOL) subItemsContainSelectedIndex:(NSInteger)index {
-    BOOL contain = NO;
     NSArray* curSubitems = [self.subSelectedArray objectAtIndex:self.curIndexMainItems];
-    for (NSNumber* indexNum in curSubitems) {
-        if (index == indexNum.integerValue) {
-            contain = YES;
-            break;
-        }
-    }
-    return contain;
+    return [[curSubitems objectAtIndex:index] boolValue];
 }
 
 /* 更新index到对应的sub被选组: 指定被选中还是未选中 */
 - (void) updateSubselectedArrayWithIndex:(NSInteger)index selectedOrNot:(BOOL)selected {
     NSMutableArray* curSubitems = [self.subSelectedArray objectAtIndex:self.curIndexMainItems];
-    /* 添加 */
-    if (selected) {
-        [curSubitems addObject:@(index)];
-    }
-    /* 删除 */
-    else {
-        NSNumber* item = nil;
-        for (NSNumber* itemNode in curSubitems) {
-            if (itemNode.integerValue == index) {
-                item = itemNode;
-                break;
-            }
-        }
-        if (item) {
-            [curSubitems removeObject:item];
-        }
-    }
+    NSNumber* item = selected ? @(YES): @(NO);
+    [curSubitems replaceObjectAtIndex:index withObject:item];
 }
 
 /* 被选中item个数: subSelectedArray中的组 */
 - (NSInteger) numberOfSelectedAtSubItemsIndex:(NSInteger)subindex {
     NSMutableArray* curSubitems = [self.subSelectedArray objectAtIndex:subindex];
-    NSLog(@"------numberOfSelectedAtSubItemsIndex[%d] = [%d]", subindex, [curSubitems count]);
-    return [curSubitems count];
+    NSInteger number = 0;
+    for (NSNumber* item in curSubitems) {
+        number += ([item boolValue] ? 1 : 0);
+    }
+    return number;
 }
+
+
 
 
 
@@ -454,7 +436,17 @@ static NSInteger tagMLSubTableView = 233;
 }
 
 - (void) initialDatas {
-    self.bgView.alpha = 0;
+    if (self.subSelectedArray.count == self.subItems.count) {
+        return;
+    }
+    for (int i = 0; i < self.subItems.count; i++) {
+        NSArray* items = [self.subItems objectAtIndex:i];
+        NSMutableArray* selectedIndexs = [NSMutableArray arrayWithCapacity:items.count];
+        for (int j = 0; j < items.count; j++) {
+            [selectedIndexs addObject:@(NO)];
+        }
+        [self.subSelectedArray addObject:selectedIndexs];
+    }
 }
 
 
@@ -490,6 +482,7 @@ static NSInteger tagMLSubTableView = 233;
     if (!_bgView) {
         _bgView = [UIView new];
         _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        _bgView.alpha = 0;
     }
     return _bgView;
 }
@@ -553,10 +546,7 @@ static NSInteger tagMLSubTableView = 233;
 
 - (NSMutableArray *)subSelectedArray {
     if (!_subSelectedArray) {
-        _subSelectedArray = [NSMutableArray arrayWithCapacity:self.mainItems.count];
-        for (int i = 0; i < self.mainItems.count; i++) {
-            [_subSelectedArray addObject:[NSMutableArray array]];
-        }
+        _subSelectedArray = [NSMutableArray array];
     }
     return _subSelectedArray;
 }

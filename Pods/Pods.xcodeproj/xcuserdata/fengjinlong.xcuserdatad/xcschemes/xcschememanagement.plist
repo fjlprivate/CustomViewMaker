@@ -8,41 +8,77 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>CustomIOSAlertView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>FontAwesome.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>JCAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>KYAnimatedPageControl.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>LTNavigationBar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-CustomViewMaker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-CustomViewMakerTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-CustomViewMakerUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>RESideMenu.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -52,12 +88,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>335AEFA2FF745C75BA39A6EB7B8A91DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4A31B2A22F4A35E8608C20BDD5824AE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4F12BBFCA7BEB12EE3268EA5AA1FC3D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BB3B56EE6C65643D87B9D2AAD71C2DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A3E7C3A4E39D33477AFD6798025CE5C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>81A311CB0A706632BB274E94C0FC99D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,6 +139,11 @@
 			<true/>
 		</dict>
 		<key>CE56CB1D63F9192A70D14E2E8AE0CAAE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9C86A2A96DB9D657E56EEA016F8A697</key>
 		<dict>
 			<key>primary</key>
 			<true/>

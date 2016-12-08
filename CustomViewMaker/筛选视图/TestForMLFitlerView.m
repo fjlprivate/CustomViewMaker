@@ -46,6 +46,7 @@
         [self.filterView showWithMainItems:mainitems
                                   subItems:subitems
                               onCompletion:^(NSArray<NSNumber *> *subSelectedArray) {
+                                  NSLog(@"确定了筛选组[%@]", subSelectedArray);
                               }
                                   onCancel:^{
                                   }];
