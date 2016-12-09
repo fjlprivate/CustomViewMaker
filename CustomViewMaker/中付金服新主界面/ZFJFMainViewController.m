@@ -12,12 +12,14 @@
 #import "ZFJF_mainVCCell.h"
 #import "ZFJF_vCollectionFlowLayout.h"
 #import "ZFJF_vHeaderView.h"
+#import <UINavigationBar+Awesome.h>
 
 @interface ZFJFMainViewController ()
 <UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView* collcetionView;
 @property (nonatomic, strong) ZFJF_vCollectionFlowLayout* flowlayout;
+@property (nonatomic, strong) UIBarButtonItem* billListBarItem;
 
 @end
 
@@ -28,8 +30,7 @@
 # pragma mask 2 UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZFJF_mMainVCCellItem* item = [[ZFJF_vmMainVCDatasource mainDataSource].items objectAtIndex:indexPath.row];
-    NSLog(@"----------------点击了item:[%@]", item.itemTitle);
+//    ZFJF_mMainVCCellItem* item = [[ZFJF_vmMainVCDatasource mainDataSource].items objectAtIndex:indexPath.row];
 }
 
 
@@ -44,8 +45,19 @@
     [self layoutSubviews];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x12c4a3 alpha:1]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b alpha:1]];
+}
+
 - (void) loadSubviews {
     [self.view addSubview:self.collcetionView];
+    [self.navigationItem setRightBarButtonItem:self.billListBarItem];
 }
 
 - (void) layoutSubviews {
@@ -79,6 +91,17 @@
     return _flowlayout;
 }
 
+- (UIBarButtonItem *)billListBarItem {
+    if (!_billListBarItem) {
+        UIButton* billListBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+        [billListBtn setTitle:[NSString fontAwesomeIconStringForEnum:FABars] forState:UIControlStateNormal];
+        billListBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:24 scale:1]];
+        [billListBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [billListBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+        _billListBarItem = [[UIBarButtonItem alloc] initWithCustomView:billListBtn];
+    }
+    return _billListBarItem;
+}
 
 
 @end

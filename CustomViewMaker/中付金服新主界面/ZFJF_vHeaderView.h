@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZFJF_vBtnItem.h"
 
 @interface ZFJF_vHeaderView : UICollectionReusableView
 
+@property (nonatomic, strong) UILabel* noteLabel;
+
+@property (nonatomic, strong) ZFJF_vBtnItem* btnBitCode;
+@property (nonatomic, strong) ZFJF_vBtnItem* btnPayCode;
+@property (nonatomic, strong) ZFJF_vBtnItem* btnQRCode;
 
 
 

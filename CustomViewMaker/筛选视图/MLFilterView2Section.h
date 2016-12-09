@@ -30,12 +30,12 @@
 /* 显示筛选器: 带2个输入和3个响应回调;
  * @param mainItems:            * 主选项数据
  * @param subItems:             * 副选项数据(二维数组)
- * @param completionBlock:      * 回调:选定了数据(回调的是序号)
+ * @param completionBlock:      * 回调:选定了数据(回调的是序号对应的BOOL值)
  * @param cancelBlock:          - 回调:取消
  */
 - (void) showWithMainItems:(NSArray*) mainItems
                   subItems:(NSArray<NSArray*>*) subItems
-              onCompletion:(void (^) (NSArray<NSNumber*>* subSelectedArray)) completionBlock
+              onCompletion:(void (^) (NSArray<NSArray<NSNumber*>*>* subSelectedArray)) completionBlock
                   onCancel:(void (^) (void)) cancelBlock;
 
 

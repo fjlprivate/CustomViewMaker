@@ -109,7 +109,7 @@ static NSInteger tagMLSubTableView = 233;
 @property (nonatomic, copy) NSArray* subItems;
 
 /* 选择完毕的回调 */
-@property (nonatomic, copy) void (^ filterCompleted) (NSArray<NSNumber *> * subSelectedArray);
+@property (nonatomic, copy) void (^ filterCompleted) (NSArray<NSArray<NSNumber*> *> * subSelectedArray);
 
 /* 选择取消的回调 */
 @property (nonatomic, copy) void (^ filterCanceled) (void);
@@ -146,7 +146,7 @@ static NSInteger tagMLSubTableView = 233;
 /* 显示筛选器: 带2个输入和3个响应回调 */
 - (void)showWithMainItems:(NSArray *)mainItems
                  subItems:(NSArray *)subItems
-             onCompletion:(void (^)(NSArray<NSNumber *> *))completionBlock
+             onCompletion:(void (^)(NSArray<NSArray<NSNumber *> *> *))completionBlock
                  onCancel:(void (^)(void))cancelBlock
 {
     self.mainItems = mainItems;
