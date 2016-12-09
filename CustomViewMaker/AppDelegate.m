@@ -30,12 +30,11 @@
 
     
     
-    
     /* 设置全局的导航栏背景 */
     UINavigationBar* navigationBar = [UINavigationBar appearance];
     [navigationBar setTintColor:[UIColor whiteColor]];
     [navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjects:@[[UIColor whiteColor], [UIFont boldSystemFontOfSize:15]]
-                                                                                     forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]]];
+                                                                      forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]]];
     [navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b]];
 
     [navigationBar setBarStyle:UIBarStyleBlack];
