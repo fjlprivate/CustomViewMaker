@@ -113,17 +113,18 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"测试cell被选"];
         [_btnTitles addObject:@"MLFilter筛选器"];
-        [_btnTitles addObject: @"SignIn"];
-        [_btnTitles addObject: @"Collection"];
+        [_btnTitles addObject:@"SignIn"];
+        [_btnTitles addObject:@"Collection"];
         [_btnTitles addObject:@"中付金服新界面"];
         [_btnTitles addObject:@"StepSegmentView"];
         [_btnTitles addObject:@"TestForJBIG"];
         [_btnTitles addObject:@"测试keywindow"];
         [_btnTitles addObject:@"测试ChildVC"];
-        [_btnTitles addObject: @"shapeLayer"];
+        [_btnTitles addObject:@"shapeLayer"];
         [_btnTitles addObject:@"刷卡_设备连接"];
-        [_btnTitles addObject: @"Wifi"];
+        [_btnTitles addObject:@"Wifi"];
         [_btnTitles addObject:@"AwesomeIcon"];
         [_btnTitles addObject:@"幻灯效果label"];
         [_btnTitles addObject:@"测试webView"];
@@ -179,6 +180,7 @@
         [_dicVCNameAndTitles setObject:@"TestForJBIG"                   forKey:@"TestForJBIG"];
         [_dicVCNameAndTitles setObject:@"ZFJFMainViewController"        forKey:@"中付金服新界面"];
         [_dicVCNameAndTitles setObject:@"TestForMLFitlerView"           forKey:@"MLFilter筛选器"];
+        [_dicVCNameAndTitles setObject:@"TestForCellSelectedVC"         forKey:@"测试cell被选"];
     }
     return _dicVCNameAndTitles;
 }

@@ -73,6 +73,10 @@
 		5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB01D8E88F1000EA1C6 /* TestForMoreSegScrollView.m */; };
 		5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */; };
 		5E98DEB71D8E9302000EA1C6 /* MSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */; };
+		5E9BD8FB1E10B4ED00566B09 /* TestForCellSelectedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BD8FA1E10B4ED00566B09 /* TestForCellSelectedVC.m */; };
+		5E9BD8FE1E10CA4B00566B09 /* TLVC_vCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BD8FD1E10CA4B00566B09 /* TLVC_vCell.m */; };
+		5E9BD9011E10F36B00566B09 /* TLVC_vHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BD9001E10F36B00566B09 /* TLVC_vHeadView.m */; };
+		5E9BD9041E11039F00566B09 /* TLVC_vmDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BD9031E11039F00566B09 /* TLVC_vmDatasource.m */; };
 		5EA2DEFA1C91110D00770353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEF91C91110D00770353 /* main.m */; };
 		5EA2DEFD1C91110D00770353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFC1C91110D00770353 /* AppDelegate.m */; };
 		5EA2DF001C91110D00770353 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DEFF1C91110D00770353 /* ViewController.m */; };
@@ -279,6 +283,14 @@
 		5E98DEB31D8E890B000EA1C6 /* MoreSegScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSegScrollView.m; sourceTree = "<group>"; };
 		5E98DEB51D8E9302000EA1C6 /* MSSV_itemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSV_itemView.h; sourceTree = "<group>"; };
 		5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSV_itemView.m; sourceTree = "<group>"; };
+		5E9BD8F91E10B4ED00566B09 /* TestForCellSelectedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForCellSelectedVC.h; sourceTree = "<group>"; };
+		5E9BD8FA1E10B4ED00566B09 /* TestForCellSelectedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForCellSelectedVC.m; sourceTree = "<group>"; };
+		5E9BD8FC1E10CA4B00566B09 /* TLVC_vCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVC_vCell.h; sourceTree = "<group>"; };
+		5E9BD8FD1E10CA4B00566B09 /* TLVC_vCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVC_vCell.m; sourceTree = "<group>"; };
+		5E9BD8FF1E10F36B00566B09 /* TLVC_vHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVC_vHeadView.h; sourceTree = "<group>"; };
+		5E9BD9001E10F36B00566B09 /* TLVC_vHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVC_vHeadView.m; sourceTree = "<group>"; };
+		5E9BD9021E11039F00566B09 /* TLVC_vmDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVC_vmDatasource.h; sourceTree = "<group>"; };
+		5E9BD9031E11039F00566B09 /* TLVC_vmDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVC_vmDatasource.m; sourceTree = "<group>"; };
 		5EA2DEF51C91110D00770353 /* CustomViewMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomViewMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA2DEF91C91110D00770353 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5EA2DEFB1C91110D00770353 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -565,6 +577,7 @@
 		5E2A588E1DD45B0C00AAF7FA /* 01_测试API */ = {
 			isa = PBXGroup;
 			children = (
+				5E9BD8F81E10B4CB00566B09 /* 测试tableViewCell的选择状态 */,
 				5E2A58A21DD989F000AAF7FA /* TestForKeywindow */,
 				5E2A588F1DD45B0C00AAF7FA /* TestForChildrenVC */,
 			);
@@ -760,6 +773,21 @@
 				5E98DEB61D8E9302000EA1C6 /* MSSV_itemView.m */,
 			);
 			path = MoreSegScrollView;
+			sourceTree = "<group>";
+		};
+		5E9BD8F81E10B4CB00566B09 /* 测试tableViewCell的选择状态 */ = {
+			isa = PBXGroup;
+			children = (
+				5E9BD8F91E10B4ED00566B09 /* TestForCellSelectedVC.h */,
+				5E9BD8FA1E10B4ED00566B09 /* TestForCellSelectedVC.m */,
+				5E9BD8FC1E10CA4B00566B09 /* TLVC_vCell.h */,
+				5E9BD8FD1E10CA4B00566B09 /* TLVC_vCell.m */,
+				5E9BD8FF1E10F36B00566B09 /* TLVC_vHeadView.h */,
+				5E9BD9001E10F36B00566B09 /* TLVC_vHeadView.m */,
+				5E9BD9021E11039F00566B09 /* TLVC_vmDatasource.h */,
+				5E9BD9031E11039F00566B09 /* TLVC_vmDatasource.m */,
+			);
+			path = "测试tableViewCell的选择状态";
 			sourceTree = "<group>";
 		};
 		5EA2DEEC1C91110D00770353 = {
@@ -1475,6 +1503,7 @@
 				5EDA73AC1D87AD34000606A6 /* TriScrollSegmentView.m in Sources */,
 				5E2A58DF1DE282AC00AAF7FA /* JLJBIGEnCoder.c in Sources */,
 				5E7A16A21DF1648900CB9E97 /* ZFJF_vmMainVCDatasource.m in Sources */,
+				5E9BD9041E11039F00566B09 /* TLVC_vmDatasource.m in Sources */,
 				5EDC46971CA2477F00B2F872 /* MBProgressHUD+CustomSate.m in Sources */,
 				5E1807F21DD1B2CE00C7C5FE /* LMVC_menuCell.m in Sources */,
 				5E1807F41DD1B2CE00C7C5FE /* LMVC_modelMenuData.m in Sources */,
@@ -1546,6 +1575,7 @@
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
 				5E2A58A51DD98A0900AAF7FA /* TestForKeywindowVC.m in Sources */,
 				5E1807F81DD1B2CE00C7C5FE /* MTVC_keybordView.m in Sources */,
+				5E9BD8FB1E10B4ED00566B09 /* TestForCellSelectedVC.m in Sources */,
 				5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */,
 				5E3CB4481D9CA4B00036C1FB /* DampingView.m in Sources */,
 				5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */,
@@ -1567,12 +1597,14 @@
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
+				5E9BD8FE1E10CA4B00566B09 /* TLVC_vCell.m in Sources */,
 				5E2A58DD1DE282AC00AAF7FA /* jbig85.c in Sources */,
 				5E7A16981DF00A8200CB9E97 /* ZFJFMainViewController.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */,
 				5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */,
 				5EA2DF601C96A5C000770353 /* ConcentricCirclesCheckView.m in Sources */,
+				5E9BD9011E10F36B00566B09 /* TLVC_vHeadView.m in Sources */,
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
 				5E1807F61DD1B2CE00C7C5FE /* SignInViewController.m in Sources */,
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
@@ -1729,7 +1761,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CustomViewMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1750,7 +1782,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CustomViewMaker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CustomViewMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
