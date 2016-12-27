@@ -11,8 +11,6 @@
 @interface TLVC_vHeadView : UITableViewHeaderFooterView
 
 
-/* 展开状态 */
-@property (nonatomic, assign) BOOL spreaded;
 
 /* 标题视图 */
 @property (nonatomic, strong) UILabel* titleLabel;

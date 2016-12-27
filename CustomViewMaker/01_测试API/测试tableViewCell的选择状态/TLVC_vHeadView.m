@@ -9,7 +9,13 @@
 #import "TLVC_vHeadView.h"
 #import "PublicHeader.h"
 
+@interface TLVC_vHeadView()
 
+/* 展开状态 */
+@property (nonatomic, assign) BOOL spreaded;
+
+
+@end
 
 
 @implementation TLVC_vHeadView
@@ -36,20 +42,42 @@
 
 
 - (void) addKVO {
-    @weakify(self);
-    [[RACObserve(self, spreaded) deliverOnMainThread] subscribeNext:^(id x) {
-        if ([x boolValue]) {
-            [UIView animateWithDuration:0.2 animations:^{
-                @strongify(self);
-                self.spreadBtn.transform = CGAffineTransformIdentity;
-            }];
-        } else {
-            [UIView animateWithDuration:0.2 animations:^{
-                @strongify(self);
-                self.spreadBtn.transform = CGAffineTransformMakeRotation(-M_PI_2);
-            }];
-        }
-    }];
+    /*
+     @weakify(self);
+     [RACObserve(self, spreaded) subscribeNext:^(id x) {
+     @strongify(self);
+     if ([x boolValue]) {
+     [self.spreadBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretDown]
+     forState:UIControlStateNormal];
+     } else {
+     [self.spreadBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretRight]
+     forState:UIControlStateNormal];
+     }
+     }];
+     
+     
+     
+     [[RACObserve(self, spreaded) deliverOnMainThread] subscribeNext:^(id x) {
+     @strongify(self);
+     if ([x boolValue]) {
+     NSLog(@"-------------------------正在重置方向按钮的方向 ");
+     CABasicAnimation* basicAni = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+     basicAni.fromValue = @(-M_PI_2);
+     basicAni.toValue = @(0);
+     basicAni.duration = 0.2;
+     basicAni.fillMode = kCAFillModeForwards;
+     [self.spreadBtn.layer addAnimation:basicAni forKey:nil];
+     } else {
+     NSLog(@"-------------------------正在旋转方向按钮到: 展开 ");
+     CABasicAnimation* basicAni = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+     basicAni.fromValue = @(0);
+     basicAni.toValue = @(-M_PI_2);
+     basicAni.duration = 0.2;
+     basicAni.fillMode = kCAFillModeForwards;
+     [self.spreadBtn.layer addAnimation:basicAni forKey:nil];
+     }
+     }];
+     */
     
     RAC(self.stateLabel.layer, cornerRadius) = [RACObserve(self.stateLabel, bounds) map:^id(id value) {
         return @([value CGRectValue].size.height * 0.5);
@@ -75,7 +103,6 @@
     NameWeakSelf(wself);
     CGFloat insetH = ScreenWidth * 15/320.f;
     CGFloat widthState = ScreenWidth * 40/320.f;
-    
     [self.spreadBtn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.mas_equalTo(0);
         make.width.mas_equalTo(wself.spreadBtn.mas_height).multipliedBy(0.618);
@@ -105,7 +132,7 @@
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        _titleLabel.textColor = [UIColor colorWithHex:0x00a1ac alpha:1];
+        _titleLabel.textColor = [UIColor colorWithHex:0x00a1dc alpha:1];
     }
     return _titleLabel;
 }
@@ -115,7 +142,7 @@
         _stateLabel = [UILabel new];
         _stateLabel.font = [UIFont boldSystemFontOfSize:10];
         _stateLabel.textAlignment = NSTextAlignmentCenter;
-        _stateLabel.backgroundColor = [UIColor colorWithHex:0x00a1ac alpha:1];
+        _stateLabel.backgroundColor = [UIColor colorWithHex:0x00a1dc alpha:1];
         _stateLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
         _stateLabel.layer.masksToBounds = YES;
     }
@@ -127,8 +154,8 @@
         _spreadBtn = [UIButton new];
         [_spreadBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretDown] forState:UIControlStateNormal];
         _spreadBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:13];
-        [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1ac alpha:1] forState:UIControlStateNormal];
-        [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1ac alpha:0.5] forState:UIControlStateHighlighted];
+        [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1dc alpha:1] forState:UIControlStateNormal];
+        [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1dc alpha:0.5] forState:UIControlStateHighlighted];
         [_spreadBtn addTarget:self action:@selector(clickedSpreadBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _spreadBtn;

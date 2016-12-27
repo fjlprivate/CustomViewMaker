@@ -11,15 +11,37 @@
 #import "TLVC_vCell.h"
 #import "TLVC_vHeadView.h"
 
+
+@interface TLVC_mItem : NSObject
+
+@property (nonatomic, assign) BOOL spreaded;
+@property (nonatomic, strong) NSArray* itemsInSection;
+
+@end
+
+@implementation TLVC_mItem
+
+- (instancetype) initWithSpreaded:(BOOL)spreaded items:(NSArray*)items {
+    self = [super init];
+    if (self) {
+        self.spreaded = spreaded;
+        self.itemsInSection = [NSArray arrayWithArray:items];
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
 @interface TestForCellSelectedVC () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
 
-
-@property (nonatomic, assign) BOOL spreaded;
-
 @property (nonatomic, strong) NSArray<NSArray*>* dataSource;
-@property (nonatomic, strong) NSMutableArray<NSArray*>* shownDatas;
+@property (nonatomic, strong) NSMutableArray<TLVC_mItem*>* shownDatas;
 
 
 @end
@@ -35,17 +57,8 @@
     
     [self loadSubviews];
     [self makeMasonries];
-    //[self addKVO];
 }
 
-- (void) addKVO {
-    @weakify(self);
-    [RACObserve(self, spreaded) subscribeNext:^(id x) {
-        @strongify(self);
-        NSLog(@"---------变换了展开状态");
-        [self.tableView reloadData];
-    }];
-}
 
 - (void) loadSubviews {
     [self.view addSubview:self.tableView];
@@ -61,7 +74,6 @@
 # pragma mask 2 UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"------------点击了cell[%d]", indexPath.row);
 }
 
 
@@ -71,8 +83,8 @@
     return self.shownDatas.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return [self.shownDatas objectAtIndex:section].count;
+    TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
+    return item.itemsInSection.count;
 }
 
 
@@ -82,8 +94,8 @@
     if (!cell) {
         cell = [[TLVC_vCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TLVC_vCell"];
     }
-    
-    NSDictionary* node = [[self.shownDatas objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    TLVC_mItem* item = [self.shownDatas objectAtIndex:indexPath.section];
+    NSDictionary* node = [item.itemsInSection objectAtIndex:indexPath.row];
     cell.titleLabel.text = node[@"titleLabel"];
     cell.subTitleLabel.text = node[@"subTitleLabel"];
     cell.contextLabel.text = node[@"contextLabel"];
@@ -99,23 +111,38 @@
     TLVC_vHeadView* headView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TLVC_vHeadView"];
     if (!headView) {
         headView = [[TLVC_vHeadView alloc] initWithReuseIdentifier:@"TLVC_vHeadView"];
-        
-        @weakify(self);
-        [[[headView.spreadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:headView.rac_prepareForReuseSignal] subscribeNext:^(UIButton* spreadBtn) {
-            TLVC_vHeadView* headv = (TLVC_vHeadView*)[spreadBtn superview];
-            NSLog(@"===-=-=-=-=点击了第[%d]个spreadBtn, 是否展开:[%@]",spreadBtn.tag, headv.spreaded ? @"是": @"否");
-            
-        }];
+        headView.tag = section;
     }
-    headView.spreadBtn.tag = section;
-    NSArray* items = [self.shownDatas objectAtIndex:section];
+    @weakify(self);
+    [[[[headView.spreadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:headView.rac_prepareForReuseSignal] delay:0.0] subscribeNext:^(UIButton* spreadBtn) {
+        @strongify(self);
+        [self updateDataSourceAtSection:section];
+        [self.tableView reloadData];
+    }];
+    /*
+     */
+    
+    NSArray* items = [self.dataSource objectAtIndex:section];
+    TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
     NSInteger minDay = 20;
     headView.titleLabel.text = [NSString stringWithFormat:@"12月%02d日", minDay + section];
     headView.stateLabel.text = [NSString stringWithFormat:@"%d笔", items.count];
+    NSString* title = item.spreaded ? [NSString fontAwesomeIconStringForEnum:FACaretDown] : [NSString fontAwesomeIconStringForEnum:FACaretRight];
+    [headView.spreadBtn setTitle:title forState:UIControlStateNormal];
     return headView;
 }
 
 
+# pragma mask 2 更新数据源
+- (void) updateDataSourceAtSection:(NSInteger)section  {
+    TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
+    item.spreaded = !item.spreaded;
+    if (item.spreaded) {
+        item.itemsInSection = [NSArray arrayWithArray:[self.dataSource objectAtIndex:section]];
+    } else {
+        item.itemsInSection = [NSArray array];
+    }
+}
 
 
 # pragma mask 4 getter
@@ -162,7 +189,7 @@
         [item2 setObject:@"13:32:33" forKey:@"subContextLabel"];
         [item2 setObject:@"已撤销" forKey:@"stateLabel"];
         [item2 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item2 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item2 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec1 addObject:item2];
 
         NSMutableArray* sec2 = [NSMutableArray array];
@@ -173,7 +200,7 @@
         [item21 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item21 setObject:@"已撤销" forKey:@"stateLabel"];
         [item21 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item21 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item21 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec2 addObject:item21];
         NSMutableDictionary* item22 = [NSMutableDictionary dictionary];
         [item22 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -182,7 +209,7 @@
         [item22 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item22 setObject:@"已撤销" forKey:@"stateLabel"];
         [item22 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item22 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item22 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec2 addObject:item22];
         NSMutableDictionary* item23 = [NSMutableDictionary dictionary];
         [item23 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -191,7 +218,7 @@
         [item23 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item23 setObject:@"已撤销" forKey:@"stateLabel"];
         [item23 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item23 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item23 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec2 addObject:item23];
         NSMutableDictionary* item24 = [NSMutableDictionary dictionary];
         [item24 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -200,7 +227,7 @@
         [item24 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item24 setObject:@"已撤销" forKey:@"stateLabel"];
         [item24 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item24 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item24 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec2 addObject:item24];
 
         NSMutableArray* sec3 = [NSMutableArray array];
@@ -211,7 +238,7 @@
         [item31 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item31 setObject:@"已撤销" forKey:@"stateLabel"];
         [item31 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item31 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item31 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec3 addObject:item31];
         NSMutableDictionary* item32 = [NSMutableDictionary dictionary];
         [item32 setObject:@"支付宝支付" forKey:@"titleLabel"];
@@ -220,7 +247,7 @@
         [item32 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item32 setObject:@"已撤销" forKey:@"stateLabel"];
         [item32 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item32 setObject:[UIColor colorWithHex:0x00a1ac alpha:1] forKey:@"contextLabel.color"];
+        [item32 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec3 addObject:item32];
         
         [sections addObject:sec1];
@@ -236,7 +263,10 @@
 - (NSMutableArray *)shownDatas {
     if (!_shownDatas) {
         _shownDatas = [NSMutableArray array];
-        _shownDatas = [NSMutableArray arrayWithArray:self.dataSource];
+        for (int i = 0; i < self.dataSource.count; i++) {
+            TLVC_mItem* item = [[TLVC_mItem alloc] initWithSpreaded:YES items:self.dataSource[i]];
+            [_shownDatas addObject:item];
+        }
     }
     return _shownDatas;
 }
