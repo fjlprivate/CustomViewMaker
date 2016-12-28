@@ -11,7 +11,6 @@
 @interface TLVC_vHeadView : UITableViewHeaderFooterView
 
 
-
 /* 标题视图 */
 @property (nonatomic, strong) UILabel* titleLabel;
 

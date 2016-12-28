@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL spreaded;
 @property (nonatomic, strong) NSArray* itemsInSection;
 
+
 @end
 
 @implementation TLVC_mItem
@@ -43,7 +44,6 @@
 @property (nonatomic, strong) NSArray<NSArray*>* dataSource;
 @property (nonatomic, strong) NSMutableArray<TLVC_mItem*>* shownDatas;
 
-
 @end
 
 
@@ -54,7 +54,6 @@
     [super viewDidLoad];
     self.title = @"测试cell的被选状态";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     [self loadSubviews];
     [self makeMasonries];
 }
@@ -75,7 +74,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 
 # pragma mask 2 UITableViewDataSource
@@ -109,32 +107,49 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TLVC_vHeadView* headView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TLVC_vHeadView"];
+    TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
+
     if (!headView) {
         headView = [[TLVC_vHeadView alloc] initWithReuseIdentifier:@"TLVC_vHeadView"];
-        headView.tag = section;
     }
-    @weakify(self);
-    [[[[headView.spreadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:headView.rac_prepareForReuseSignal] delay:0.0] subscribeNext:^(UIButton* spreadBtn) {
-        @strongify(self);
-        [self updateDataSourceAtSection:section];
-        [self.tableView reloadData];
-    }];
-    /*
-     */
     
+    @weakify(self);
+    [[[headView.spreadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:headView.rac_prepareForReuseSignal] subscribeNext:^(UIButton* spreadBtn) {
+        @strongify(self);
+        // 更新指定序号的显示数据源的状态
+        [self updateDatasourceAtSection:section];
+        // 对应的按钮执行动画,动画完毕再更新列表
+        if (item.spreaded) {
+            [UIView animateWithDuration:0.2 animations:^{
+                spreadBtn.transform = CGAffineTransformMakeRotation(0);
+            } completion:^(BOOL finished) {
+                @strongify(self);
+                [self.tableView reloadData];
+            }];
+        } else {
+            [UIView animateWithDuration:0.2 animations:^{
+                spreadBtn.transform = CGAffineTransformMakeRotation(- M_PI_2);
+            } completion:^(BOOL finished) {
+                @strongify(self);
+                [self.tableView reloadData];
+            }];
+        }
+    }];
+
     NSArray* items = [self.dataSource objectAtIndex:section];
-    TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
     NSInteger minDay = 20;
     headView.titleLabel.text = [NSString stringWithFormat:@"12月%02d日", minDay + section];
     headView.stateLabel.text = [NSString stringWithFormat:@"%d笔", items.count];
-    NSString* title = item.spreaded ? [NSString fontAwesomeIconStringForEnum:FACaretDown] : [NSString fontAwesomeIconStringForEnum:FACaretRight];
-    [headView.spreadBtn setTitle:title forState:UIControlStateNormal];
+    // 由于更新列表后,头视图可能已经打乱了顺序,所以要根据对应的状态更新方向
+    headView.spreadBtn.transform = item.spreaded ? CGAffineTransformMakeRotation(0) : CGAffineTransformMakeRotation(-M_PI_2);
+    
     return headView;
 }
 
 
+
 # pragma mask 2 更新数据源
-- (void) updateDataSourceAtSection:(NSInteger)section  {
+- (void) updateDatasourceAtSection:(NSInteger)section {
     TLVC_mItem* item = [self.shownDatas objectAtIndex:section];
     item.spreaded = !item.spreaded;
     if (item.spreaded) {
@@ -165,13 +180,6 @@
     if (!_dataSource) {
         NSMutableArray* sections = [NSMutableArray array];
         
-        /*
-        @property (nonatomic, strong) UILabel* titleLabel;
-        @property (nonatomic, strong) UILabel* subTitleLabel;
-        @property (nonatomic, strong) UILabel* contextLabel;
-        @property (nonatomic, strong) UILabel* subContextLabel;
-        @property (nonatomic, strong) UILabel* stateLabel;
-         */
         NSMutableArray* sec1 = [NSMutableArray array];
         NSMutableDictionary* item1 = [NSMutableDictionary dictionary];
         [item1 setObject:@"消费" forKey:@"titleLabel"];
@@ -191,6 +199,34 @@
         [item2 setObject:@(YES) forKey:@"stateLabel.hidden"];
         [item2 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
         [sec1 addObject:item2];
+        NSMutableDictionary* item3 = [NSMutableDictionary dictionary];
+        [item3 setObject:@"消费" forKey:@"titleLabel"];
+        [item3 setObject:@"633224******2735" forKey:@"subTitleLabel"];
+        [item3 setObject:@"￥232.00" forKey:@"contextLabel"];
+        [item3 setObject:@"13:32:33" forKey:@"subContextLabel"];
+        [item3 setObject:@"已撤销" forKey:@"stateLabel"];
+        [item3 setObject:@(YES) forKey:@"stateLabel.hidden"];
+        [item3 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [sec1 addObject:item3];
+        NSMutableDictionary* item4 = [NSMutableDictionary dictionary];
+        [item4 setObject:@"消费" forKey:@"titleLabel"];
+        [item4 setObject:@"633224******2735" forKey:@"subTitleLabel"];
+        [item4 setObject:@"￥232.00" forKey:@"contextLabel"];
+        [item4 setObject:@"13:32:33" forKey:@"subContextLabel"];
+        [item4 setObject:@"已撤销" forKey:@"stateLabel"];
+        [item4 setObject:@(YES) forKey:@"stateLabel.hidden"];
+        [item4 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [sec1 addObject:item4];
+        NSMutableDictionary* item5 = [NSMutableDictionary dictionary];
+        [item5 setObject:@"消费" forKey:@"titleLabel"];
+        [item5 setObject:@"633224******2735" forKey:@"subTitleLabel"];
+        [item5 setObject:@"￥232.00" forKey:@"contextLabel"];
+        [item5 setObject:@"13:32:33" forKey:@"subContextLabel"];
+        [item5 setObject:@"已撤销" forKey:@"stateLabel"];
+        [item5 setObject:@(YES) forKey:@"stateLabel.hidden"];
+        [item5 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [sec1 addObject:item5];
+
 
         NSMutableArray* sec2 = [NSMutableArray array];
         NSMutableDictionary* item21 = [NSMutableDictionary dictionary];

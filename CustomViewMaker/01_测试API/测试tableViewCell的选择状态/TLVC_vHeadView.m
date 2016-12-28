@@ -9,22 +9,9 @@
 #import "TLVC_vHeadView.h"
 #import "PublicHeader.h"
 
-@interface TLVC_vHeadView()
-
-/* 展开状态 */
-@property (nonatomic, assign) BOOL spreaded;
-
-
-@end
 
 
 @implementation TLVC_vHeadView
-
-
-# pragma mask 2 IBAction
-- (IBAction) clickedSpreadBtn:(id)sender {
-    self.spreaded = !self.spreaded;
-}
 
 
 # pragma mask 3 布局和初始化
@@ -32,7 +19,6 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        self.spreaded = YES;
         [self initialDatas];
         [self loadSubviews];
         [self addKVO];
@@ -42,43 +28,6 @@
 
 
 - (void) addKVO {
-    /*
-     @weakify(self);
-     [RACObserve(self, spreaded) subscribeNext:^(id x) {
-     @strongify(self);
-     if ([x boolValue]) {
-     [self.spreadBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretDown]
-     forState:UIControlStateNormal];
-     } else {
-     [self.spreadBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretRight]
-     forState:UIControlStateNormal];
-     }
-     }];
-     
-     
-     
-     [[RACObserve(self, spreaded) deliverOnMainThread] subscribeNext:^(id x) {
-     @strongify(self);
-     if ([x boolValue]) {
-     NSLog(@"-------------------------正在重置方向按钮的方向 ");
-     CABasicAnimation* basicAni = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-     basicAni.fromValue = @(-M_PI_2);
-     basicAni.toValue = @(0);
-     basicAni.duration = 0.2;
-     basicAni.fillMode = kCAFillModeForwards;
-     [self.spreadBtn.layer addAnimation:basicAni forKey:nil];
-     } else {
-     NSLog(@"-------------------------正在旋转方向按钮到: 展开 ");
-     CABasicAnimation* basicAni = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-     basicAni.fromValue = @(0);
-     basicAni.toValue = @(-M_PI_2);
-     basicAni.duration = 0.2;
-     basicAni.fillMode = kCAFillModeForwards;
-     [self.spreadBtn.layer addAnimation:basicAni forKey:nil];
-     }
-     }];
-     */
-    
     RAC(self.stateLabel.layer, cornerRadius) = [RACObserve(self.stateLabel, bounds) map:^id(id value) {
         return @([value CGRectValue].size.height * 0.5);
     }];
@@ -156,7 +105,6 @@
         _spreadBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:13];
         [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1dc alpha:1] forState:UIControlStateNormal];
         [_spreadBtn setTitleColor:[UIColor colorWithHex:0x00a1dc alpha:0.5] forState:UIControlStateHighlighted];
-        [_spreadBtn addTarget:self action:@selector(clickedSpreadBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _spreadBtn;
 }
