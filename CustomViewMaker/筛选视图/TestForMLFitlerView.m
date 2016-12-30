@@ -63,6 +63,7 @@
 - (MLFilterView2Section *)filterView {
     if (!_filterView) {
         _filterView = [[MLFilterView2Section alloc] initWithSuperVC:self];
+        _filterView.tintColor = [UIColor colorWithHex:0x00a1dc alpha:1];
     }
     return _filterView;
 }

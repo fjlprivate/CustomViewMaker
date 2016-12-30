@@ -113,6 +113,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"MLIconButtonR"];
         [_btnTitles addObject:@"测试cell被选"];
         [_btnTitles addObject:@"MLFilter筛选器"];
         [_btnTitles addObject:@"SignIn"];
@@ -181,6 +182,7 @@
         [_dicVCNameAndTitles setObject:@"ZFJFMainViewController"        forKey:@"中付金服新界面"];
         [_dicVCNameAndTitles setObject:@"TestForMLFitlerView"           forKey:@"MLFilter筛选器"];
         [_dicVCNameAndTitles setObject:@"TestForCellSelectedVC"         forKey:@"测试cell被选"];
+        [_dicVCNameAndTitles setObject:@"TestIconBtnVC"                 forKey:@"MLIconButtonR"];
     }
     return _dicVCNameAndTitles;
 }

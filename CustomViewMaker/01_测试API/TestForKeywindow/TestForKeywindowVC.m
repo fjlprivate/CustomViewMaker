@@ -41,7 +41,7 @@
     [self.newsKeyWindow addSubview:self.hiddenBtn];
     [self.hiddenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(wself.newsKeyWindow);
-        make.centerY.mas_equalTo(wself.newsKeyWindow.mas_centerY).offset(25 + 20);
+        make.centerY.mas_equalTo(wself.newsKeyWindow.mas_centerY).offset(25 + 30);
         make.width.mas_equalTo(200);
         make.height.mas_equalTo(50);
     }];
@@ -94,6 +94,7 @@
     if (!_newsKeyWindow) {
         _newsKeyWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _newsKeyWindow.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.4];
+        _newsKeyWindow.windowLevel = UIWindowLevelNormal;
     }
     return _newsKeyWindow;
 }

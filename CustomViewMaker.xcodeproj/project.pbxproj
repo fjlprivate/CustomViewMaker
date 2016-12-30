@@ -107,6 +107,8 @@
 		5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF881C97E47E00770353 /* TestRACCommand.m */; };
 		5EA2DF8C1C97E52B00770353 /* VMDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */; };
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
+		5EA3A0751E16587A00ABAAEE /* MLIconButtonR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A0741E16587A00ABAAEE /* MLIconButtonR.m */; };
+		5EA3A0781E165E7100ABAAEE /* TestIconBtnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */; };
@@ -356,6 +358,10 @@
 		5EA2DF8B1C97E52B00770353 /* VMDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMDataRequester.m; sourceTree = "<group>"; };
 		5EA2DF981C9FA31A00770353 /* TestJLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestJLAlertView.h; sourceTree = "<group>"; };
 		5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestJLAlertView.m; sourceTree = "<group>"; };
+		5EA3A0731E16587A00ABAAEE /* MLIconButtonR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLIconButtonR.h; sourceTree = "<group>"; };
+		5EA3A0741E16587A00ABAAEE /* MLIconButtonR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLIconButtonR.m; sourceTree = "<group>"; };
+		5EA3A0761E165E7100ABAAEE /* TestIconBtnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestIconBtnVC.h; sourceTree = "<group>"; };
+		5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestIconBtnVC.m; sourceTree = "<group>"; };
 		5EB2215B1D73D139008591E5 /* StepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
@@ -815,6 +821,7 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5EA3A0711E16586200ABAAEE /* 03_自定义视图 */,
 				5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */,
 				5E7A16BA1DF9019700CB9E97 /* 筛选视图 */,
 				5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */,
@@ -993,6 +1000,25 @@
 				5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */,
 			);
 			path = TestJLAlertView;
+			sourceTree = "<group>";
+		};
+		5EA3A0711E16586200ABAAEE /* 03_自定义视图 */ = {
+			isa = PBXGroup;
+			children = (
+				5EA3A0721E16586200ABAAEE /* MLIconButtonR */,
+			);
+			path = "03_自定义视图";
+			sourceTree = "<group>";
+		};
+		5EA3A0721E16586200ABAAEE /* MLIconButtonR */ = {
+			isa = PBXGroup;
+			children = (
+				5EA3A0731E16587A00ABAAEE /* MLIconButtonR.h */,
+				5EA3A0741E16587A00ABAAEE /* MLIconButtonR.m */,
+				5EA3A0761E165E7100ABAAEE /* TestIconBtnVC.h */,
+				5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */,
+			);
+			path = MLIconButtonR;
 			sourceTree = "<group>";
 		};
 		5EB2215A1D73D139008591E5 /* StepSegmentView */ = {
@@ -1529,6 +1555,7 @@
 				5E98DEB41D8E890B000EA1C6 /* MoreSegScrollView.m in Sources */,
 				5E7A16C31DF938D200CB9E97 /* TestForMLFitlerView.m in Sources */,
 				5E2A62561DE820B000AAF7FA /* JLElecSignController.m in Sources */,
+				5EA3A0781E165E7100ABAAEE /* TestIconBtnVC.m in Sources */,
 				5E7A16C01DF90F2000CB9E97 /* MLFilterView2Section.m in Sources */,
 				5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */,
 				5EDA73A51D864F7E000606A6 /* LabelAutoresize.m in Sources */,
@@ -1594,6 +1621,7 @@
 				5E98DEB11D8E88F1000EA1C6 /* TestForMoreSegScrollView.m in Sources */,
 				5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */,
 				5EA2DF801C97DA5200770353 /* ChooseButton.m in Sources */,
+				5EA3A0751E16587A00ABAAEE /* MLIconButtonR.m in Sources */,
 				5EA2DEFA1C91110D00770353 /* main.m in Sources */,
 				5E1807F51DD1B2CE00C7C5FE /* SignInInputView.m in Sources */,
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,

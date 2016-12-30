@@ -33,6 +33,7 @@ static NSInteger tagMLSubTableView = 233;
     if (self) {
         [self addSubview:self.mlCheckView];
         [self addSubview:self.mlNumTagLabel];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
@@ -387,6 +388,7 @@ static NSInteger tagMLSubTableView = 233;
     [self.bearView addSubview:self.subTableView];
     [self.bearView addSubview:self.resetBtn];
     [self.bearView addSubview:self.doneBtn];
+    self.doneBtn.backgroundColor = self.tintColor;
 }
 
 - (void) removeAllSubviews {
@@ -505,6 +507,7 @@ static NSInteger tagMLSubTableView = 233;
         _resetBtn.backgroundColor = [UIColor whiteColor];
         _resetBtn.layer.borderColor = [UIColor colorWithRed:(CGFloat)0xee/0xff green:(CGFloat)0xee/0xff blue:(CGFloat)0xee/0xff alpha:1].CGColor;
         _resetBtn.layer.borderWidth = 0.6;
+        _resetBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [_resetBtn addTarget:self action:@selector(clickedResetBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _resetBtn;
@@ -518,6 +521,7 @@ static NSInteger tagMLSubTableView = 233;
         [_doneBtn setTitleColor:[UIColor colorWithRed:(CGFloat)0xff/0xff green:(CGFloat)0xff/0xff blue:(CGFloat)0xff/0xff alpha:0.5]
                         forState:UIControlStateHighlighted];
         _doneBtn.backgroundColor = [UIColor colorWithRed:(CGFloat)0x00/0xff green:(CGFloat)0xbb/0xff blue:(CGFloat)0x9c/0xff alpha:1];
+        _doneBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [_doneBtn addTarget:self action:@selector(clickedDoneBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneBtn;
