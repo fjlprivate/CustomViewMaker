@@ -14,6 +14,8 @@
 @interface TestIconBtnVC ()
 
 @property (nonatomic, strong) MLIconButtonR* iconBtn;
+@property (nonatomic, strong) MLIconButtonR* iconBtnTitle;
+@property (nonatomic, assign) BOOL spreaded;
 
 @end
 
@@ -21,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"MLIconButtonR";
+    
+    self.spreaded = NO;
+    
+//    self.title = @"MLIconButtonR";
     [self.view addSubview:self.iconBtn];
     self.view.backgroundColor = [UIColor whiteColor];
     NameWeakSelf(wself);
@@ -33,6 +38,22 @@
     }];
     self.iconBtn.layer.cornerRadius = 22;
     
+    [self.navigationItem setTitleView:self.iconBtnTitle];
+    
+    @weakify(self);
+    [RACObserve(self, spreaded) subscribeNext:^(id spreaded) {
+        [UIView animateWithDuration:0.2 animations:^{
+            @strongify(self);
+            self.iconBtnTitle.rightIconLabel.transform = CGAffineTransformMakeRotation([spreaded boolValue] ? M_PI : 0);
+            self.iconBtn.rightIconLabel.transform = CGAffineTransformMakeRotation([spreaded boolValue] ? M_PI : 0);
+        }];
+    }];
+    
+}
+
+
+- (IBAction) clickedSpreadBtn:(id)sender {
+    self.spreaded = !self.spreaded;
 }
 
 - (MLIconButtonR *)iconBtn {
@@ -48,6 +69,21 @@
         _iconBtn.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
     }
     return _iconBtn;
+}
+
+- (MLIconButtonR *)iconBtnTitle {
+    if (!_iconBtnTitle) {
+        _iconBtnTitle = [[MLIconButtonR alloc] initWithFrame:CGRectMake(0, 0, 120, 44)];
+        _iconBtnTitle.rightIconLabel.text = [NSString fontAwesomeIconStringForEnum:FACaretDown];
+        _iconBtnTitle.rightIconLabel.font = [UIFont fontAwesomeFontOfSize:15];
+        _iconBtnTitle.rightIconLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
+        [_iconBtnTitle setTitle:@"2016年12月" forState:UIControlStateNormal];
+        [_iconBtnTitle setTitleColor:[UIColor colorWithHex:0xffffff alpha:1] forState:UIControlStateNormal];
+        [_iconBtnTitle setTitleColor:[UIColor colorWithHex:0xffffff alpha:0.5] forState:UIControlStateHighlighted];
+        _iconBtnTitle.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [_iconBtnTitle addTarget:self action:@selector(clickedSpreadBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _iconBtnTitle;
 }
 
 
