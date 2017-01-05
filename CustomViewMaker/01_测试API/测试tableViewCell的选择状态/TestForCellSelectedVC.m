@@ -196,7 +196,7 @@
 
 - (IBAction) clickedMonthTitleBtn:(MLIconButtonR*)sender {
     if (self.monthFilterView.isSpread) {
-        [self.monthFilterView hideOnCompletion:nil];
+        [self.monthFilterView hide];
     } else {
         [self.monthFilterView showWithItems:self.months onCompletion:^(NSInteger selectedIndex) {
             

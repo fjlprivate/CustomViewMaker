@@ -109,6 +109,9 @@
 		5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2DF991C9FA31A00770353 /* TestJLAlertView.m */; };
 		5EA3A0751E16587A00ABAAEE /* MLIconButtonR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A0741E16587A00ABAAEE /* MLIconButtonR.m */; };
 		5EA3A0781E165E7100ABAAEE /* TestIconBtnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */; };
+		5EA4BFCB1E1E381D00707191 /* TestVCIconfont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFCA1E1E381D00707191 /* TestVCIconfont.m */; };
+		5EA4BFCE1E1E397E00707191 /* TVCI_vmDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */; };
+		5EA4BFD41E1E4A3300707191 /* TVCI_vCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */; };
@@ -362,6 +365,12 @@
 		5EA3A0741E16587A00ABAAEE /* MLIconButtonR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLIconButtonR.m; sourceTree = "<group>"; };
 		5EA3A0761E165E7100ABAAEE /* TestIconBtnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestIconBtnVC.h; sourceTree = "<group>"; };
 		5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestIconBtnVC.m; sourceTree = "<group>"; };
+		5EA4BFC91E1E381D00707191 /* TestVCIconfont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVCIconfont.h; sourceTree = "<group>"; };
+		5EA4BFCA1E1E381D00707191 /* TestVCIconfont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVCIconfont.m; sourceTree = "<group>"; };
+		5EA4BFCC1E1E397E00707191 /* TVCI_vmDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vmDatasource.h; sourceTree = "<group>"; };
+		5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vmDatasource.m; sourceTree = "<group>"; };
+		5EA4BFD21E1E4A3300707191 /* TVCI_vCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vCell.h; sourceTree = "<group>"; };
+		5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vCell.m; sourceTree = "<group>"; };
 		5EB2215B1D73D139008591E5 /* StepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
@@ -583,6 +592,7 @@
 		5E2A588E1DD45B0C00AAF7FA /* 01_测试API */ = {
 			isa = PBXGroup;
 			children = (
+				5EA4BFC51E1E380400707191 /* FontAwesomeAndIconFont */,
 				5E9BD8F81E10B4CB00566B09 /* 测试tableViewCell的选择状态 */,
 				5E2A58A21DD989F000AAF7FA /* TestForKeywindow */,
 				5E2A588F1DD45B0C00AAF7FA /* TestForChildrenVC */,
@@ -1019,6 +1029,43 @@
 				5EA3A0771E165E7100ABAAEE /* TestIconBtnVC.m */,
 			);
 			path = MLIconButtonR;
+			sourceTree = "<group>";
+		};
+		5EA4BFC51E1E380400707191 /* FontAwesomeAndIconFont */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4BFC61E1E380400707191 /* Model */,
+				5EA4BFC71E1E380400707191 /* View */,
+				5EA4BFC81E1E380400707191 /* ViewModel */,
+			);
+			path = FontAwesomeAndIconFont;
+			sourceTree = "<group>";
+		};
+		5EA4BFC61E1E380400707191 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5EA4BFC71E1E380400707191 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4BFC91E1E381D00707191 /* TestVCIconfont.h */,
+				5EA4BFCA1E1E381D00707191 /* TestVCIconfont.m */,
+				5EA4BFD21E1E4A3300707191 /* TVCI_vCell.h */,
+				5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5EA4BFC81E1E380400707191 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4BFCC1E1E397E00707191 /* TVCI_vmDatasource.h */,
+				5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5EB2215A1D73D139008591E5 /* StepSegmentView */ = {
@@ -1614,6 +1661,7 @@
 				5E1807F71DD1B2CE00C7C5FE /* MainTransViewController.m in Sources */,
 				5E1807F31DD1B2CE00C7C5FE /* LMVC_userHeadView.m in Sources */,
 				5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */,
+				5EA4BFCE1E1E397E00707191 /* TVCI_vmDatasource.m in Sources */,
 				9E15703A1CAC0E6900244876 /* CustomCollectionViewCell.m in Sources */,
 				5E3CB4451D9BAB3A0036C1FB /* TestForKYAnimationPageViewController.m in Sources */,
 				5E2A624D1DE6C2A600AAF7FA /* ImageHelper.m in Sources */,
@@ -1627,6 +1675,7 @@
 				5ECFD33A1D921FF200FBB63D /* WHScrollAndPageView.m in Sources */,
 				5E9BD8FE1E10CA4B00566B09 /* TLVC_vCell.m in Sources */,
 				5E2A58DD1DE282AC00AAF7FA /* jbig85.c in Sources */,
+				5EA4BFCB1E1E381D00707191 /* TestVCIconfont.m in Sources */,
 				5E7A16981DF00A8200CB9E97 /* ZFJFMainViewController.m in Sources */,
 				5EA2DF631C96AB5200770353 /* TestCheckViewController.m in Sources */,
 				5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */,
@@ -1640,6 +1689,7 @@
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
+				5EA4BFD41E1E4A3300707191 /* TVCI_vCell.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

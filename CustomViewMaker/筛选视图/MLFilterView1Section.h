@@ -39,9 +39,8 @@
 
 
 /* 隐藏筛选器;
- * @param hideCompletion:       - 回调:完成了动画
  */
-- (void) hideOnCompletion:(void (^) (void))hideCompletion;
+- (void) hide;
 
 
 

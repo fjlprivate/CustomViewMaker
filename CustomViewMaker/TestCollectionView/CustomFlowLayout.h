@@ -10,8 +10,11 @@
 
 @interface CustomFlowLayout : UICollectionViewLayout
 
-- (instancetype) initWithColumnCount:(NSInteger)columnCount
-                       allItemsCount:(NSInteger)itemsCount;
+/* 列数 */
+@property (nonatomic, assign) NSInteger numberOfColumns;
+
+/* 总个数 */
+@property (nonatomic, assign) NSInteger numberOfItems;
 
 
 @end

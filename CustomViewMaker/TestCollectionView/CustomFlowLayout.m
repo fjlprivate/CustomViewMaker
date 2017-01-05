@@ -12,12 +12,6 @@
 
 @interface CustomFlowLayout()
 
-/* 列数 */
-@property (nonatomic, assign) NSInteger numberOfColumns;
-
-/* 总个数 */
-@property (nonatomic, assign) NSInteger numberOfItems;
-
 /* x位置组: 每列 */
 @property (nonatomic, strong) NSArray* originXArray;
 
@@ -38,17 +32,6 @@
 
 @implementation CustomFlowLayout
 
-- (instancetype)initWithColumnCount:(NSInteger)columnCount allItemsCount:(NSInteger)itemsCount {
-    self = [super init];
-    if (self) {
-        _numberOfItems = itemsCount;
-        _numberOfColumns = columnCount;
-        /* 
-         本案例是列数确定的，且单位宽度确定的，高度数组可以从参数获取
-         */
-    }
-    return self;
-}
 
 # pragma mask 2 重载
 

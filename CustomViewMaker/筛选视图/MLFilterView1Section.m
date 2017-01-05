@@ -80,7 +80,6 @@
 /* 选择取消的回调 */
 @property (nonatomic, copy) void (^ filterCanceled) (void);
 
-
 @end
 
 
@@ -96,53 +95,73 @@
     self.filterCanceled = cancelBlock;
     
     if (self.isSpread) {
-        [self hideAnimation];
+        [self hideFilterView];
     } else {
-        [self showAnimation];
+        [self showFilterView];
     }
 }
 
-- (void)hideOnCompletion:(void (^)(void))hideCompletion {
-    [self hideAnimation];
+- (void)hide {
+    [self hideFilterView];
 }
+
 
 # pragma mask 2 tools
 /* 显示: 动画 */
-- (void) showAnimation {
-    [self.superVC.view addSubview:self];
+- (void) showFilterView {
+    [self loadSubviews];
     [self makeFrames];
-    [self.tableView reloadData];
+    [self showAnimation];
+}
+- (void) hideFilterView {
+    [self hideAnimation];
+}
+
+
+- (void) showAnimation {
     NameWeakSelf(wself);
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         wself.bgView.alpha = 1;
         CGRect frame = wself.contentView.frame;
-        frame.origin.y += frame.size.height;
+        frame.origin.y = 20;
         wself.contentView.frame = frame;
     } completion:^(BOOL finished) {
-        wself.isSpread = YES;
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = wself.contentView.frame;
+            frame.origin.y = 0;
+            wself.contentView.frame = frame;
+        } completion:^(BOOL finished) {
+            wself.isSpread = YES;
+        }];
     }];
 }
 
 /* 隐藏: 动画 */
 - (void) hideAnimation {
     NameWeakSelf(wself);
-    [UIView animateWithDuration:0.2 animations:^{
-        wself.bgView.alpha = 0;
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = wself.contentView.frame;
-        frame.origin.y -= frame.size.height;
+        frame.origin.y = 20;
         wself.contentView.frame = frame;
     } completion:^(BOOL finished) {
-        [wself removeFromSuperview];
-        wself.isSpread = NO;
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            wself.bgView.alpha = 0;
+            CGRect frame = wself.contentView.frame;
+            frame.origin.y = -frame.size.height;
+            wself.contentView.frame = frame;
+        } completion:^(BOOL finished) {
+            wself.isSpread = NO;
+            [wself removeSubviews];
+        }];
     }];
 }
 
+
+
+
 /* 点击空白隐藏 */
 - (IBAction) clickedOutSpace:(id)sender {
-    [self hideAnimation];
-    if (self.filterCanceled) {
-        self.filterCanceled();
-    }
+    [self hideFilterView];
 }
 
 # pragma mask 2 UIGestureRecognizerDelegate
@@ -178,11 +197,10 @@
     
     NameWeakSelf(wself);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [wself hideOnCompletion:^{
-            if (wself.filterCompleted) {
-                wself.filterCompleted(wself.selectedIndex);
-            }
-        }];
+        [wself hideFilterView];
+        if (wself.filterCompleted) {
+            wself.filterCompleted(wself.selectedIndex);
+        }
     });
 }
 
@@ -197,20 +215,25 @@
         UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedOutSpace:)];
         tapGes.delegate = self;
         [self addGestureRecognizer:tapGes];
-        [self loadSubviews];
+//        [self loadSubviews];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
 
 
 - (void) loadSubviews {
+    [self.superVC.view addSubview:self];
     [self addSubview:self.bgView];
     [self addSubview:self.contentView];
     [self.contentView addSubview:self.tableView];
+    [self.tableView reloadData];
+}
+- (void) removeSubviews {
+    [self.tableView removeFromSuperview];
+    [self.contentView removeFromSuperview];
+    [self.bgView removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 - (void) makeFrames {

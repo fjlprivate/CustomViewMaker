@@ -21,7 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CustomIOSAlertView (0.9.5)
-  - FontAwesome (4.3.0)
+  - FontAwesome (4.5.0)
   - JCAlertView (1.1.5)
   - KYAnimatedPageControl (1.0.5)
   - LTNavigationBar (2.1.6)
@@ -38,7 +38,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - CustomIOSAlertView (~> 0.9.3)
-  - FontAwesome (~> 4.3.0)
+  - FontAwesome (~> 4.5.0)
   - JCAlertView (~> 1.1.4)
   - KYAnimatedPageControl (~> 1.0.5)
   - LTNavigationBar (~> 2.1.6)
@@ -49,7 +49,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   CustomIOSAlertView: cc4fa8e36219be3fd5ebcd40789f5b4aaae0f38e
-  FontAwesome: 341b52261cad8254017da3ddfc01d67c87c0ca88
+  FontAwesome: dd8c48bf965e771309d8af17c4d8579217b3e756
   JCAlertView: c65a7b298b8b497b3db783d82f719b88f4914869
   KYAnimatedPageControl: 4b6360b6ed2cad47b757aa11e8903827d2cd2385
   LTNavigationBar: 9ef51488bf289b1f65dbcb17ac92888c4ae23e30

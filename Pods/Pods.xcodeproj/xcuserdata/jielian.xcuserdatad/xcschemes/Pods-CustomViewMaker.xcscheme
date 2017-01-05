@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '311E15BDB4C3771D5E69BA76'
+               BlueprintIdentifier = 'A61BC6A478471A46D613F354'
                BlueprintName = 'Pods-CustomViewMaker'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-CustomViewMaker.a'>

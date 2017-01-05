@@ -69,7 +69,9 @@
 
 - (CustomFlowLayout *)flowlayout {
     if (!_flowlayout) {
-        _flowlayout = [[CustomFlowLayout alloc] initWithColumnCount:4 allItemsCount:self.dataSource.items.count];
+        _flowlayout = [CustomFlowLayout new];
+        _flowlayout.numberOfColumns = 4;
+        _flowlayout.numberOfItems = self.dataSource.items.count;
     }
     return _flowlayout;
 }

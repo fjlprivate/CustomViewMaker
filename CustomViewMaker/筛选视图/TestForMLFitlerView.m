@@ -46,7 +46,7 @@
     NSArray* mainitems = @[@"2017-01-01", @"2017-01-02", @"2017-01-03", @"2017-01-04"];
     self.filterView1.selectedIndex = 2;
     if (self.filterView1.isSpread) {
-        [self.filterView1 hideOnCompletion:nil];
+        [self.filterView1 hide];
     } else {
         [self.filterView1 showWithItems:mainitems onCompletion:^(NSInteger selectedIndex) {
             

@@ -222,37 +222,47 @@ static NSInteger tagMLSubTableView = 233;
     [self initialFrame];
     // 动画
     __weak typeof(self) wself = self;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         wself.bgView.alpha = 1;
-        CGRect frame = self.bearView.frame;
-        frame.origin.y = 0;
+        CGRect frame = wself.bearView.frame;
+        frame.origin.y = 20;
         wself.bearView.frame = frame;
     } completion:^(BOOL finished) {
-        if (completion) {
-            completion();
-        }
-        // 更新展开状态
-        wself.isSpread = YES;
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = wself.bearView.frame;
+            frame.origin.y = 0;
+            wself.bearView.frame = frame;
+        } completion:^(BOOL finished) {
+            if (completion) {
+                completion();
+            }
+            wself.isSpread = YES;
+        }];
     }];
+
 }
 
 /* 隐藏动画 */
 - (void) hideAnimationOnCompletion:(void (^) (void))hideCompletion {
     // 动画
     __weak typeof(self) wself = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect frame = self.bearView.frame;
-        frame.origin.y = - frame.size.height;
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect frame = wself.bearView.frame;
+        frame.origin.y = 20;
         wself.bearView.frame = frame;
-        wself.bgView.alpha = 0;
     } completion:^(BOOL finished) {
-        // 移除子视图
-        [wself removeAllSubviews];
-        if (hideCompletion) {
-            hideCompletion();
-        }
-        // 更新展开状态
-        wself.isSpread = NO;
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            wself.bgView.alpha = 0;
+            CGRect frame = wself.bearView.frame;
+            frame.origin.y = -frame.size.height;
+            wself.bearView.frame = frame;
+        } completion:^(BOOL finished) {
+            wself.isSpread = NO;
+            [wself removeAllSubviews];
+            if (hideCompletion) {
+                hideCompletion();
+            }
+        }];
     }];
 }
 
