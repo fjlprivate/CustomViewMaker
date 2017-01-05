@@ -10,13 +10,15 @@
 #import "PublicHeader.h"
 #import "TLVC_vCell.h"
 #import "TLVC_vHeadView.h"
+#import "MLFilterView1Section.h"
+#import "MLFilterView2Section.h"
+#import "MLIconButtonR.h"
 
 
 @interface TLVC_mItem : NSObject
 
 @property (nonatomic, assign) BOOL spreaded;
 @property (nonatomic, strong) NSArray* itemsInSection;
-
 
 @end
 
@@ -43,6 +45,10 @@
 
 @property (nonatomic, strong) NSArray<NSArray*>* dataSource;
 @property (nonatomic, strong) NSMutableArray<TLVC_mItem*>* shownDatas;
+@property (nonatomic, strong) MLFilterView1Section* monthFilterView;
+@property (nonatomic, strong) MLFilterView2Section* datasFilterView;
+@property (nonatomic, strong) MLIconButtonR* titleBtn;
+@property (nonatomic, strong) NSArray* months;
 
 @end
 
@@ -50,17 +56,23 @@
 
 @implementation TestForCellSelectedVC
 
+
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"测试cell的被选状态";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self loadSubviews];
     [self makeMasonries];
+    [self addKVO];
 }
 
 
 - (void) loadSubviews {
     [self.view addSubview:self.tableView];
+    [self.navigationItem setTitleView:self.titleBtn];
 }
 
 - (void) makeMasonries {
@@ -69,6 +81,29 @@
         make.top.mas_equalTo(64);
     }];
 }
+
+- (void) addKVO {
+    @weakify(self);
+    [RACObserve(self.monthFilterView, selectedIndex) subscribeNext:^(id x) {
+        @strongify(self);
+        [self.titleBtn setTitle:[self.months objectAtIndex:[x integerValue]] forState:UIControlStateNormal];
+    }];
+    
+    [RACObserve(self.monthFilterView, isSpread) subscribeNext:^(id x) {
+        if ([x boolValue]) {
+            [UIView animateWithDuration:0.2 animations:^{
+                @strongify(self);
+                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            }];
+        } else {
+            [UIView animateWithDuration:0.2 animations:^{
+                @strongify(self);
+                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(0);
+            }];
+        }
+    }];
+}
+
 
 # pragma mask 2 UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -158,6 +193,22 @@
         item.itemsInSection = [NSArray array];
     }
 }
+
+- (IBAction) clickedMonthTitleBtn:(MLIconButtonR*)sender {
+    if (self.monthFilterView.isSpread) {
+        [self.monthFilterView hideOnCompletion:nil];
+    } else {
+        [self.monthFilterView showWithItems:self.months onCompletion:^(NSInteger selectedIndex) {
+            
+        } onCancel:^{
+            
+        }];
+    }
+}
+- (IBAction) clickedDatasFilter:(id)sender {
+//    self.datasFilterView 
+}
+
 
 
 # pragma mask 4 getter
@@ -307,5 +358,34 @@
     return _shownDatas;
 }
 
+- (MLFilterView1Section *)monthFilterView {
+    if (!_monthFilterView) {
+        _monthFilterView = [[MLFilterView1Section alloc] initWithSuperVC:self];
+    }
+    return _monthFilterView;
+}
+- (MLFilterView2Section *)datasFilterView {
+    if (!_datasFilterView) {
+        _datasFilterView = [[MLFilterView2Section alloc] initWithSuperVC:self];
+    }
+    return _datasFilterView;
+}
+- (MLIconButtonR *)titleBtn {
+    if (!_titleBtn) {
+        _titleBtn = [[MLIconButtonR alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+        _titleBtn.rightIconLabel.text = [NSString fontAwesomeIconStringForEnum:FACaretDown];
+        _titleBtn.rightIconLabel.font = [UIFont fontAwesomeFontOfSize:15];
+        _titleBtn.rightIconLabel.textColor = [UIColor whiteColor];
+        _titleBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+        [_titleBtn addTarget:self action:@selector(clickedMonthTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _titleBtn;
+}
+- (NSArray *)months {
+    if (!_months) {
+        _months = @[@"2016年10月", @"2016年11月", @"2016年12月", @"2017年01月"];
+    }
+    return _months;
+}
 
 @end

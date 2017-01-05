@@ -8,15 +8,23 @@
 
 #import "TestForMLFitlerView.h"
 #import "MLFilterView2Section.h"
+#import "MLFilterView1Section.h"
 #import "PublicHeader.h"
+
 
 
 
 @interface TestForMLFitlerView ()
 
 @property (nonatomic, strong) MLFilterView2Section* filterView;
+@property (nonatomic, strong) MLFilterView1Section* filterView1;
+
 
 @property (nonatomic, strong) UIBarButtonItem* showBarItem;
+
+
+@property (nonatomic, strong) UIBarButtonItem* showBarItem3;
+
 
 
 @end
@@ -25,13 +33,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"MLFilter筛选器";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationItem setRightBarButtonItem:self.showBarItem];
+    self.navigationItem.rightBarButtonItems = @[self.showBarItem, self.showBarItem3];
     
 }
 
 # pragma mask 2 IBAction 
+
+- (IBAction) clickedShowBarItem1:(id)sender {
+    NSArray* mainitems = @[@"2017-01-01", @"2017-01-02", @"2017-01-03", @"2017-01-04"];
+    self.filterView1.selectedIndex = 2;
+    if (self.filterView1.isSpread) {
+        [self.filterView1 hideOnCompletion:nil];
+    } else {
+        [self.filterView1 showWithItems:mainitems onCompletion:^(NSInteger selectedIndex) {
+            
+        } onCancel:^{
+            
+        }];
+    }
+}
+
 
 - (IBAction) clickedShowBarItem:(id)sender {
     if (!self.filterView.isSpread) {
@@ -57,6 +81,13 @@
     }
 }
 
+
+
+# pragma mask 3 dataSource maker
+
+
+
+
 # pragma mask 4 getter
 
 
@@ -67,6 +98,14 @@
     }
     return _filterView;
 }
+
+- (MLFilterView1Section *)filterView1 {
+    if (!_filterView1) {
+        _filterView1 = [[MLFilterView1Section alloc] initWithSuperVC:self];
+    }
+    return _filterView1;
+}
+
 
 - (UIBarButtonItem *)showBarItem {
     if (!_showBarItem) {
@@ -80,6 +119,19 @@
     }
     return _showBarItem;
 }
+- (UIBarButtonItem *)showBarItem3 {
+    if (!_showBarItem3) {
+        UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        [btn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretLeft] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:25 scale:0.9]];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
+        [btn addTarget:self action:@selector(clickedShowBarItem1:) forControlEvents:UIControlEventTouchUpInside];
+        _showBarItem3 = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    return _showBarItem3;
+}
+
 
 
 @end

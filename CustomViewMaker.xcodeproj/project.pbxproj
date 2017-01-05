@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		33FF4D14DE3A13D6CB9DA1ED /* libPods-CustomViewMakerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED710E75A6B9402CB16E16A0 /* libPods-CustomViewMakerTests.a */; };
 		390629E76ECFB7144406E7E2 /* libPods-CustomViewMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */; };
+		5E109C241E1CCDE50009D7A4 /* MLFilterView1Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E109C231E1CCDE50009D7A4 /* MLFilterView1Section.m */; };
 		5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807CD1DCC776300C7C5FE /* MLWifiView.m */; };
 		5E1807D11DD19EA600C7C5FE /* MLStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D01DD19EA600C7C5FE /* MLStepSegmentView.m */; };
 		5E1807F01DD1B2CE00C7C5FE /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1807D61DD1B2CD00C7C5FE /* LeftMenuViewController.m */; };
@@ -65,7 +66,6 @@
 		5E7A16B31DF664EC00CB9E97 /* ZFJF_vHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B21DF664EC00CB9E97 /* ZFJF_vHeaderView.m */; };
 		5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */; };
 		5E7A16B91DF7DB8B00CB9E97 /* TCV_mItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */; };
-		5E7A16BD1DF901CC00CB9E97 /* MLFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */; };
 		5E7A16C01DF90F2000CB9E97 /* MLFilterView2Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */; };
 		5E7A16C31DF938D200CB9E97 /* TestForMLFitlerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16C21DF938D200CB9E97 /* TestForMLFitlerView.m */; };
 		5E7A16C61DFA42F000CB9E97 /* ZFJF_vBtnItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A16C51DFA42F000CB9E97 /* ZFJF_vBtnItem.m */; };
@@ -157,6 +157,8 @@
 /* Begin PBXFileReference section */
 		1482064A0E5AAA9D2EEBBB64 /* Pods-CustomViewMakerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerUITests/Pods-CustomViewMakerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		57957F0395FFC16A6254A959 /* libPods-CustomViewMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E109C221E1CCDE50009D7A4 /* MLFilterView1Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFilterView1Section.h; sourceTree = "<group>"; };
+		5E109C231E1CCDE50009D7A4 /* MLFilterView1Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFilterView1Section.m; sourceTree = "<group>"; };
 		5E1807CC1DCC776300C7C5FE /* MLWifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWifiView.h; sourceTree = "<group>"; };
 		5E1807CD1DCC776300C7C5FE /* MLWifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWifiView.m; sourceTree = "<group>"; };
 		5E1807CF1DD19EA600C7C5FE /* MLStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLStepSegmentView.h; sourceTree = "<group>"; };
@@ -269,8 +271,6 @@
 		5E7A16B51DF7A9DB00CB9E97 /* TCV_vmDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_vmDataSource.m; sourceTree = "<group>"; };
 		5E7A16B71DF7DB8B00CB9E97 /* TCV_mItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCV_mItem.h; sourceTree = "<group>"; };
 		5E7A16B81DF7DB8B00CB9E97 /* TCV_mItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCV_mItem.m; sourceTree = "<group>"; };
-		5E7A16BB1DF901CC00CB9E97 /* MLFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFilterView.h; sourceTree = "<group>"; };
-		5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFilterView.m; sourceTree = "<group>"; };
 		5E7A16BE1DF90F2000CB9E97 /* MLFilterView2Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFilterView2Section.h; sourceTree = "<group>"; };
 		5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFilterView2Section.m; sourceTree = "<group>"; };
 		5E7A16C11DF938D200CB9E97 /* TestForMLFitlerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForMLFitlerView.h; sourceTree = "<group>"; };
@@ -762,8 +762,8 @@
 				5E7A16C21DF938D200CB9E97 /* TestForMLFitlerView.m */,
 				5E7A16BE1DF90F2000CB9E97 /* MLFilterView2Section.h */,
 				5E7A16BF1DF90F2000CB9E97 /* MLFilterView2Section.m */,
-				5E7A16BB1DF901CC00CB9E97 /* MLFilterView.h */,
-				5E7A16BC1DF901CC00CB9E97 /* MLFilterView.m */,
+				5E109C221E1CCDE50009D7A4 /* MLFilterView1Section.h */,
+				5E109C231E1CCDE50009D7A4 /* MLFilterView1Section.m */,
 			);
 			path = "筛选视图";
 			sourceTree = "<group>";
@@ -1596,8 +1596,8 @@
 				5EA2DF9A1C9FA31A00770353 /* TestJLAlertView.m in Sources */,
 				5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */,
 				5EA2DF891C97E47E00770353 /* TestRACCommand.m in Sources */,
-				5E7A16BD1DF901CC00CB9E97 /* MLFilterView.m in Sources */,
 				5E2A58DC1DE282AC00AAF7FA /* jbig.c in Sources */,
+				5E109C241E1CCDE50009D7A4 /* MLFilterView1Section.m in Sources */,
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
 				5E2A58A51DD98A0900AAF7FA /* TestForKeywindowVC.m in Sources */,
