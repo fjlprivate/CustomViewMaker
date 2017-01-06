@@ -24,8 +24,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.contentView.backgroundColor = [UIColor whiteColor];
-        self.contentView.layer.cornerRadius = 10.f;
+        self.contentView.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.1];
+        self.contentView.layer.cornerRadius = 5.f;
         [self loadSubviews];
     }
     return self;
@@ -39,26 +39,30 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    NameWeakSelf(wself);
     CGFloat inset = ScreenWidth * 3/320.f;
     
-    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(inset, inset, inset, inset));
-    }];
+    CGRect frame = self.frame;
     
-    [self.iconLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(wself.contentView.mas_centerX);
-        make.centerY.mas_equalTo(wself.contentView.mas_centerY).offset(- inset * 3);
-        make.width.height.mas_equalTo(wself.contentView.mas_width).multipliedBy(0.35);
-    }];
+    frame.origin.x = inset;
+    frame.origin.y = inset * 2;
+    frame.size.width -= inset * 2;
+    frame.size.height -= inset * 2;
+    self.contentView.frame = frame;
     
-    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(wself.iconLabel.mas_bottom);
-        make.height.mas_equalTo(wself.iconLabel.mas_height).multipliedBy(0.5);
-        make.left.right.mas_equalTo(0);
-    }];
+    CGRect inframe = frame;
+    inframe.size.width = frame.size.width * 0.3;
+    inframe.size.height = inframe.size.width;
+    inframe.origin.x = (frame.size.width - inframe.size.width) / 2;
+    inframe.origin.y = (frame.size.height - inframe.size.height) * (1 - 0.618);
+    self.iconLabel.frame = inframe;
+    self.iconLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:inframe.size.height scale:1]];
+
+    inframe.origin.x = 0;
+    inframe.origin.y += inframe.size.height + inset;
+    inframe.size.width = frame.size.width;
+    inframe.size.height = frame.size.height - inframe.origin.y - inset;
+    self.titleLabel.frame = inframe;
     
-    self.iconLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:self.frame.size.height scale:0.3]];
 }
 
 
@@ -68,7 +72,7 @@
     if (!_iconLabel) {
         _iconLabel = [UILabel new];
         _iconLabel.textAlignment = NSTextAlignmentCenter;
-        _iconLabel.textColor = [UIColor colorWithHex:0x27384b alpha:1];
+        _iconLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
     }
     return _iconLabel;
 }
@@ -77,8 +81,8 @@
     if (!_titleLabel ) {
         _titleLabel = [UILabel new];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.textColor = [UIColor colorWithHex:0x27384b alpha:1];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:13];
+        _titleLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:11];
     }
     return _titleLabel;
 }

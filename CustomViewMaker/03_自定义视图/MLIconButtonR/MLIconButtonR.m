@@ -25,6 +25,9 @@
     [super layoutSubviews];
     NameWeakSelf(wself);
     
+    
+    
+    
     NSString* title = [self titleForState:UIWindowLevelNormal];
     CGSize textSize = [title sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
     
@@ -40,7 +43,7 @@
     @weakify(self);
     [[self rac_signalForControlEvents:UIControlEventTouchDown] subscribeNext:^(id x) {
         @strongify(self);
-        self.rightIconLabel.alpha = 0.5;
+        self.rightIconLabel.alpha = 0.4;
     }];
     [[self rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
@@ -62,6 +65,7 @@
     }
     return _rightIconLabel;
 }
+
 
 
 @end

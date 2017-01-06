@@ -13,5 +13,4 @@
 /* 右图标 */
 @property (nonatomic, strong) UILabel* rightIconLabel;
 
-
 @end

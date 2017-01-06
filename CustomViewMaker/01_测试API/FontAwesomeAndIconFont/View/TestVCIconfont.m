@@ -10,7 +10,7 @@
 #import "MLIconButtonR.h"
 #import "MLFilterView1Section.h"
 #import "PublicHeader.h"
-#import "CustomFlowLayout.h"
+#import "TVCI_vLayout.h"
 #import "TVCI_vmDatasource.h"
 
 
@@ -62,11 +62,24 @@
         }
     }];
     
+    TVCI_vLayout* flowLayout = (TVCI_vLayout*)self.collectionView.collectionViewLayout;
+    RAC(flowLayout, numberOfAllItems) = [RACObserve(self.datasource, curFontIndex) map:^id(id value) {
+        @strongify(self);
+        NSString* type = [self.datasource.fontTypes objectAtIndex:self.datasource.curFontIndex];
+        if ([type isEqualToString:@"FontAwesome"]) {
+            return @(FAusb - FAGlass);
+        } else {
+            return @(0);
+        }
+    }];
+    
     [RACObserve(self.datasource, curFontIndex) subscribeNext:^(id x) {
         @strongify(self);
         [self.titleBtn setTitle:[self.datasource.fontTypes objectAtIndex:[x integerValue]] forState:UIControlStateNormal];
         [self.collectionView reloadData];
     }];
+    
+    
     
 }
 
@@ -81,9 +94,12 @@
 # pragma mask 4 getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[CustomFlowLayout new]];
+        TVCI_vLayout* layout = [TVCI_vLayout new];
+        layout.numberOfColumns = 4;
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.dataSource = self.datasource;
         [_collectionView registerClass:NSClassFromString(@"TVCI_vCell") forCellWithReuseIdentifier:@"TVCI_vCell"];
+        _collectionView.backgroundColor = [UIColor clearColor];
     }
     return _collectionView;
 }
@@ -103,6 +119,7 @@
         [_titleBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.4] forState:UIControlStateHighlighted];
         _titleBtn.rightIconLabel.text = [NSString fontAwesomeIconStringForEnum:FACaretDown];
         _titleBtn.rightIconLabel.font = [UIFont fontAwesomeFontOfSize:15];
+        _titleBtn.rightIconLabel.textColor = [UIColor whiteColor];
         [_titleBtn addTarget:self action:@selector(clickedShowFilter:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _titleBtn;
@@ -111,6 +128,7 @@
     if (!_filterView) {
         _filterView = [[MLFilterView1Section alloc] initWithSuperVC:self];
         _filterView.tintColor = [UIColor colorWithHex:0x27384b alpha:1];
+        _filterView.tintColor = [UIColor colorWithHex:0x00a1dc alpha:1];
     }
     return _filterView;
 }
