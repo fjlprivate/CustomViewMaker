@@ -24,8 +24,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.contentView.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.1];
-        self.contentView.layer.cornerRadius = 5.f;
+        self.contentView.backgroundColor = [UIColor colorWithHex:0xf4ea2a alpha:1];
+        self.contentView.layer.cornerRadius = frame.size.width * 0.1;
         [self loadSubviews];
     }
     return self;
@@ -57,9 +57,9 @@
     self.iconLabel.frame = inframe;
     self.iconLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:inframe.size.height scale:1]];
 
-    inframe.origin.x = 0;
+    inframe.origin.x = inset * 3;
     inframe.origin.y += inframe.size.height + inset;
-    inframe.size.width = frame.size.width;
+    inframe.size.width = frame.size.width - inset * 3 * 2;
     inframe.size.height = frame.size.height - inframe.origin.y - inset;
     self.titleLabel.frame = inframe;
     
@@ -72,7 +72,7 @@
     if (!_iconLabel) {
         _iconLabel = [UILabel new];
         _iconLabel.textAlignment = NSTextAlignmentCenter;
-        _iconLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
+        _iconLabel.textColor = [UIColor colorWithHex:0x27384b alpha:1];
     }
     return _iconLabel;
 }
@@ -81,8 +81,10 @@
     if (!_titleLabel ) {
         _titleLabel = [UILabel new];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:11];
+        _titleLabel.textColor = [UIColor colorWithHex:0x27384b alpha:1];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:9];
+        _titleLabel.numberOfLines = 0;
+        
     }
     return _titleLabel;
 }

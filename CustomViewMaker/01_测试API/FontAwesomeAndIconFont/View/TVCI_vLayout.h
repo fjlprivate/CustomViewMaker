@@ -10,17 +10,19 @@
 
 @interface TVCI_vLayout : UICollectionViewLayout
 
+/* 列数: items */
 @property (nonatomic, assign) NSInteger numberOfColumns;
 
+/* 格数: */
 @property (nonatomic, assign) NSInteger numberOfSections;
 
+/* 数组: 每格的items个数 */
 @property (nonatomic, copy) NSArray* numbersOfItemsPerSec;
 
+/* 数组: 每个头视图的高度 */
 @property (nonatomic, copy) NSArray* heightsOfHeaderViews;
 
+/* 单元格大小 */
 @property (nonatomic, assign) CGSize itemSize;
-
-
-@property (nonatomic, assign) NSInteger numberOfAllItems;
 
 @end

@@ -16,6 +16,7 @@
 #import <NSString+FontAwesome.h>
 #import <UIFont+FontAwesome.h>
 #import "NSString+Custom.h"
+#import "NSString+IconFont.h"
 
 #import <ReactiveCocoa.h>
 

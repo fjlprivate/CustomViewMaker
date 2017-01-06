@@ -52,30 +52,34 @@
         if ([x boolValue]) {
             [UIView animateWithDuration:0.2 animations:^{
                 @strongify(self);
-                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(0);
+                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(M_PI);
             }];
         } else {
             [UIView animateWithDuration:0.2 animations:^{
                 @strongify(self);
-                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(M_PI);
+                self.titleBtn.rightIconLabel.transform = CGAffineTransformMakeRotation(0);
             }];
         }
     }];
     
     TVCI_vLayout* flowLayout = (TVCI_vLayout*)self.collectionView.collectionViewLayout;
-    RAC(flowLayout, numberOfAllItems) = [RACObserve(self.datasource, curFontIndex) map:^id(id value) {
-        @strongify(self);
-        NSString* type = [self.datasource.fontTypes objectAtIndex:self.datasource.curFontIndex];
-        if ([type isEqualToString:@"FontAwesome"]) {
-            return @(FAusb - FAGlass);
-        } else {
-            return @(0);
-        }
-    }];
+    RAC(flowLayout, numberOfSections) = RACObserve(self.datasource, numberOfSections);
+    RAC(flowLayout, numbersOfItemsPerSec) = RACObserve(self.datasource, numbersOfItemsPerSec);
+    RAC(flowLayout, heightsOfHeaderViews) = RACObserve(self.datasource, heightsOfHeaderViews);
+
+//    RAC(flowLayout, numberOfAllItems) = [RACObserve(self.datasource, curFontIndex) map:^id(id value) {
+//        @strongify(self);
+//        NSString* type = [self.datasource.fontTypes objectAtIndex:self.datasource.curFontIndex];
+//        if ([type isEqualToString:@"FontAwesome"]) {
+//            return @(FAusb - FAGlass);
+//        } else {
+//            return @(0);
+//        }
+//    }];
     
-    [RACObserve(self.datasource, curFontIndex) subscribeNext:^(id x) {
+    [[RACObserve(self.datasource, curFontIndex) delay:0.1] subscribeNext:^(id x) {
         @strongify(self);
-        [self.titleBtn setTitle:[self.datasource.fontTypes objectAtIndex:[x integerValue]] forState:UIControlStateNormal];
+        [self.titleBtn setTitle:[self.datasource curFontType] forState:UIControlStateNormal];
         [self.collectionView reloadData];
     }];
     
@@ -95,10 +99,12 @@
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         TVCI_vLayout* layout = [TVCI_vLayout new];
-        layout.numberOfColumns = 4;
+        layout.numberOfColumns = 3;
+        layout.itemSize = CGSizeMake(ScreenWidth/layout.numberOfColumns, ScreenWidth/layout.numberOfColumns);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.dataSource = self.datasource;
         [_collectionView registerClass:NSClassFromString(@"TVCI_vCell") forCellWithReuseIdentifier:@"TVCI_vCell"];
+        [_collectionView registerClass:NSClassFromString(@"TVCI_vHeaderView") forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TVCI_vHeaderView"];
         _collectionView.backgroundColor = [UIColor clearColor];
     }
     return _collectionView;
