@@ -11,11 +11,6 @@
 
 
 
-@interface TVCI_vCell()
-
-
-@end
-
 
 
 @implementation TVCI_vCell
@@ -35,11 +30,13 @@
 - (void) loadSubviews {
     [self.contentView addSubview:self.iconLabel];
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.headLabel];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat inset = ScreenWidth * 3/320.f;
+    CGFloat heightHead = ScreenWidth * 14/320.f;
     
     CGRect frame = self.frame;
     
@@ -53,15 +50,20 @@
     inframe.size.width = frame.size.width * 0.3;
     inframe.size.height = inframe.size.width;
     inframe.origin.x = (frame.size.width - inframe.size.width) / 2;
-    inframe.origin.y = (frame.size.height - inframe.size.height) * (1 - 0.618);
+    inframe.origin.y = (frame.size.height - inframe.size.height) * (1 - 0.5);
     self.iconLabel.frame = inframe;
-    self.iconLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:inframe.size.height scale:1]];
 
     inframe.origin.x = inset * 3;
     inframe.origin.y += inframe.size.height + inset;
     inframe.size.width = frame.size.width - inset * 3 * 2;
     inframe.size.height = frame.size.height - inframe.origin.y - inset;
     self.titleLabel.frame = inframe;
+    
+    inframe.origin.x = inset * 3;
+    inframe.origin.y = inset * 3;
+    inframe.size.width = frame.size.width - inset * 3 * 2;
+    inframe.size.height = heightHead;
+    self.headLabel.frame = inframe;
     
 }
 
@@ -89,5 +91,13 @@
     return _titleLabel;
 }
 
+- (UILabel *)headLabel {
+    if (!_headLabel) {
+        _headLabel = [UILabel new];
+        _headLabel.textColor = [UIColor colorWithHex:0x27384b alpha:1];
+        _headLabel.font = [UIFont boldSystemFontOfSize:9];
+    }
+    return _headLabel;
+}
 
 @end

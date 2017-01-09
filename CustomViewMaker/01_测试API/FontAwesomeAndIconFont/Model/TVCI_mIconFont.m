@@ -17,6 +17,7 @@
     fontItem.name = name;
     fontItem.text = [NSString stringWithIconType:type];
     fontItem.font = [UIFont fontWithName:@"iconfont" size:fontSize];
+    fontItem.type = type;
     return fontItem;
 }
 
@@ -25,7 +26,11 @@
     fontItem.name = self.name;
     fontItem.text = self.text;
     fontItem.font = self.font;
+    fontItem.type = self.type;
     return fontItem;
 }
+
+
+
 
 @end

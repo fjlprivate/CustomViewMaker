@@ -27,17 +27,6 @@
 
 
 
-/* 格数:
-@property (nonatomic, assign) NSInteger numberOfSections;
-
-* 数组: 每格的items个数 *
-@property (nonatomic, copy) NSArray* numbersOfItemsPerSec;
-
-* 数组: 每个头视图的高度
-@property (nonatomic, copy) NSArray* heightsOfHeaderViews;
- */
-
-
 
 - (instancetype)init {
     self = [super init];
@@ -46,7 +35,17 @@
         [RACObserve(self, curFontIndex) subscribeNext:^(id x) {
             @strongify(self);
             if ([[self curFontType] isEqualToString:TVCI_FONTNAME_AWESOME]) {
-                self.numberOfSections = 0;
+                self.numberOfSections = self.dataList.listAwesome.count;
+                NSMutableArray* counts = [NSMutableArray array];
+                for (TVCI_mNodeItems* items in self.dataList.listAwesome) {
+                    [counts addObject:@(items.items.count)];
+                }
+                self.numbersOfItemsPerSec = [NSArray arrayWithArray:counts];
+                NSMutableArray* heights = [NSMutableArray arrayWithCapacity:self.numberOfSections];
+                for (int i = 0; i < self.numberOfSections; i++) {
+                    [heights addObject:@(TVCI_HEIGHT_HEADERVIEW)];
+                }
+                self.heightsOfHeaderViews = [NSArray arrayWithArray:heights];
             } else {
                 self.numberOfSections = self.dataList.listIconFont.count;
                 NSMutableArray* counts = [NSMutableArray array];
@@ -66,7 +65,13 @@
 }
 
 
-
+# pragma mask 2 UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    UICollectionView* collectionView = (UICollectionView*)scrollView;
+    
+    CGFloat curOffsetY = collectionView.contentOffset.y;
+    
+}
 
 
 # pragma mask 2 UICollectionViewDataSource
@@ -81,7 +86,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if ([[self curFontType] isEqualToString:TVCI_FONTNAME_AWESOME]) {
-        return 0;
+        return [self.dataList.listAwesome objectAtIndex:section].items.count;
     } else {
         return [self.dataList.listIconFont objectAtIndex:section].items.count;
     }
@@ -95,11 +100,13 @@
         cell.iconLabel.text = awesome.text;
         cell.titleLabel.text = awesome.name;
         cell.iconLabel.font = awesome.font;
+        cell.headLabel.text = [NSString stringWithFormat:@"%d", awesome.type];
     } else {
         TVCI_mIconFont* iconfont = (TVCI_mIconFont*)[[self.dataList.listIconFont objectAtIndex:indexPath.section].items objectAtIndex:indexPath.row];
         cell.iconLabel.text = iconfont.text;
         cell.titleLabel.text = iconfont.name;
         cell.iconLabel.font = iconfont.font;
+        cell.headLabel.text = [NSString stringWithFormat:@"%x", iconfont.type];
     }
     return cell;
 }
@@ -132,7 +139,7 @@
 
 - (NSArray *)fontTypes {
     if (!_fontTypes) {
-        _fontTypes = @[TVCI_FONTNAME_ICONFONT,TVCI_FONTNAME_AWESOME];
+        _fontTypes = @[TVCI_FONTNAME_AWESOME,TVCI_FONTNAME_ICONFONT];
     }
     return _fontTypes;
 }

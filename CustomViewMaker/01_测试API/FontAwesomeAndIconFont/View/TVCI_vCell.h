@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UILabel* iconLabel;
 @property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) UILabel* headLabel;
 
 @end

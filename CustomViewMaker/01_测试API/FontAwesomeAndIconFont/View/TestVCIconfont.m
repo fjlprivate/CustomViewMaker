@@ -67,15 +67,6 @@
     RAC(flowLayout, numbersOfItemsPerSec) = RACObserve(self.datasource, numbersOfItemsPerSec);
     RAC(flowLayout, heightsOfHeaderViews) = RACObserve(self.datasource, heightsOfHeaderViews);
 
-//    RAC(flowLayout, numberOfAllItems) = [RACObserve(self.datasource, curFontIndex) map:^id(id value) {
-//        @strongify(self);
-//        NSString* type = [self.datasource.fontTypes objectAtIndex:self.datasource.curFontIndex];
-//        if ([type isEqualToString:@"FontAwesome"]) {
-//            return @(FAusb - FAGlass);
-//        } else {
-//            return @(0);
-//        }
-//    }];
     
     [[RACObserve(self.datasource, curFontIndex) delay:0.1] subscribeNext:^(id x) {
         @strongify(self);
@@ -99,10 +90,11 @@
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         TVCI_vLayout* layout = [TVCI_vLayout new];
-        layout.numberOfColumns = 3;
+        layout.numberOfColumns = 4;
         layout.itemSize = CGSizeMake(ScreenWidth/layout.numberOfColumns, ScreenWidth/layout.numberOfColumns);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.dataSource = self.datasource;
+        _collectionView.delegate = self.datasource;
         [_collectionView registerClass:NSClassFromString(@"TVCI_vCell") forCellWithReuseIdentifier:@"TVCI_vCell"];
         [_collectionView registerClass:NSClassFromString(@"TVCI_vHeaderView") forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TVCI_vHeaderView"];
         _collectionView.backgroundColor = [UIColor clearColor];

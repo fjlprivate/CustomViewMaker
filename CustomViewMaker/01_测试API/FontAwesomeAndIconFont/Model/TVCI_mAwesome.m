@@ -18,6 +18,7 @@
     fontItem.name = name;
     fontItem.text = [NSString fontAwesomeIconStringForEnum:type];
     fontItem.font = [UIFont fontAwesomeFontOfSize:fontSize];
+    fontItem.type = type;
     return fontItem;
 }
 
@@ -26,6 +27,7 @@
     fontItem.name = self.name;
     fontItem.text = self.text;
     fontItem.font = self.font;
+    fontItem.type = self.type;
     return fontItem;
 }
 

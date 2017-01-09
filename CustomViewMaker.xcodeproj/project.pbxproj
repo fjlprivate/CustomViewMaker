@@ -610,6 +610,7 @@
 		5E2A588E1DD45B0C00AAF7FA /* 01_测试API */ = {
 			isa = PBXGroup;
 			children = (
+				5EA4BFEF1E2363D500707191 /* 测试微信支付跳转 */,
 				5EA4BFC51E1E380400707191 /* FontAwesomeAndIconFont */,
 				5E9BD8F81E10B4CB00566B09 /* 测试tableViewCell的选择状态 */,
 				5E2A58A21DD989F000AAF7FA /* TestForKeywindow */,
@@ -1096,6 +1097,13 @@
 				5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5EA4BFEF1E2363D500707191 /* 测试微信支付跳转 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "测试微信支付跳转";
 			sourceTree = "<group>";
 		};
 		5EB2215A1D73D139008591E5 /* StepSegmentView */ = {

@@ -37,7 +37,6 @@
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray* attris = [NSMutableArray array];
-    
     for (int section = 0; section < self.numberOfSections; section++) {
         [attris addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
         for (int row = 0; row < [self numberOfItemsAtSection:section]; row++) {
@@ -49,7 +48,6 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes* attri = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    
     CGFloat startOffsetY = 0;
     for (int i = 0; i < indexPath.section; i++) {
         startOffsetY += [self heightOfHeaderViewAtSection:i];
@@ -67,7 +65,6 @@
 
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
-    
     UICollectionViewLayoutAttributes* attri = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:elementKind withIndexPath:indexPath];
     attri.size = CGSizeMake(TVCI_CONTENT_WIDTH, [self heightOfHeaderViewAtSection:indexPath.section]);
     CGFloat curOffsetY = 0;

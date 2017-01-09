@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSString* text;
 @property (nonatomic, copy) UIFont* font;
 @property (nonatomic, copy) NSString* name;
+@property (nonatomic, assign) NSInteger type;
 
 
 @end

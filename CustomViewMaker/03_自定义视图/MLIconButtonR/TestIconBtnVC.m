@@ -56,6 +56,12 @@
     self.spreaded = !self.spreaded;
 }
 
+- (IBAction) clickedJump:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"weixin://wxpay/bizpayurl?pr=2wKdwqH"]];
+}
+
+
+
 - (MLIconButtonR *)iconBtn {
     if (!_iconBtn) {
         _iconBtn = [[MLIconButtonR alloc] init];
@@ -67,6 +73,7 @@
         [_iconBtn setTitleColor:[UIColor colorWithHex:0x27384b alpha:0.5] forState:UIControlStateHighlighted];
         _iconBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         _iconBtn.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
+        [_iconBtn addTarget:self action:@selector(clickedJump:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iconBtn;
 }
