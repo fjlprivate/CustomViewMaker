@@ -35,7 +35,6 @@
         @strongify(self);
         if (key && key.length > 0) {
             self.iconfontList = [self iconfontListFilteredWithKey:key];
-            NSLog(@"正在过滤[%@]: [%@]", key, self.iconfontList);
         } else {
             if (self.iconfontList != self.originIconfontsSeperatedArray) {
                 self.iconfontList = self.originIconfontsSeperatedArray;

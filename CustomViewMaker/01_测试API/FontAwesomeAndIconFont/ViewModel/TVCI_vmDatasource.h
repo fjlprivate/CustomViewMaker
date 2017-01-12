@@ -11,7 +11,7 @@
 #import "TVCI_mDataList.h"
 
 
-@interface TVCI_vmDatasource : NSObject <UICollectionViewDataSource, UIScrollViewDelegate>
+@interface TVCI_vmDatasource : NSObject <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 
 /* 格数: */

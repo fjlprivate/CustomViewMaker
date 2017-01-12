@@ -9,12 +9,12 @@
 #import "TestForIconFont.h"
 #import "UIColor+ColorWithHex.h"
 #import <UINavigationBar+Awesome.h>
-#import "FontAwesomeIconFontCell.h"
+#import "TVCI_vCell.h"
+#import "TVCI_vHeaderView.h"
 #import <NSString+FontAwesome.h>
 #import <UIFont+FontAwesome.h>
 #import "IconFont_dataSourceFilter.h"
 #import "MFontAwesomeNode.h"
-#import "IconFontHeaderView.h"
 #import "NSString+Custom.h"
 #import <ReactiveCocoa.h>
 
@@ -56,7 +56,6 @@
 
 - (void) addKVO {
     @weakify(self);
-    //RAC(self.datasource, filterKey) = RACObserve(self.searchController.searchBar, text);
     
     [RACObserve(self.datasource, keyTitleList) subscribeNext:^(id x) {
         @strongify(self);
@@ -83,7 +82,6 @@
     frame.size.height = 44;
     self.searchController.searchBar.frame = frame;
     
-    //[self.fontCollectionView addSubview:self.searchController.searchBar];
     [self.navigationItem setLeftBarButtonItem:self.cancelBarItem];
     [self.navigationItem setTitleView:self.searchController.searchBar];
 }
@@ -91,7 +89,6 @@
 
 # pragma mask UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    //NSLog(@"-- search text [%@]", searchController.searchBar.text);
     self.datasource.filterKey = searchController.searchBar.text;
 }
 
@@ -109,26 +106,26 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FontAwesomeIconFontCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fontCell" forIndexPath:indexPath];
+    TVCI_vCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TVCI_vCell" forIndexPath:indexPath];
     
     MFontAwesomeNode* fontNode = [[self.datasource.iconfontList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.iconLabel.text = [NSString fontAwesomeIconStringForEnum:fontNode.key];
+    cell.iconLabel.font = [UIFont fontAwesomeFontOfSize:16];
     cell.titleLabel.text = fontNode.name;
-    cell.indexLabel.text = [NSString stringWithFormat:@"%d", fontNode.key];
+    cell.headLabel.text = [NSString stringWithFormat:@"%d", fontNode.key];
     
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    IconFontHeaderView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"fontHeader" forIndexPath:indexPath];
+    TVCI_vHeaderView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TVCI_vHeaderView" forIndexPath:indexPath];
     NSArray* list = [self.datasource.iconfontList objectAtIndex:indexPath.section];
 
     NSString* title = [self.datasource.keyTitleList objectAtIndex:indexPath.section];
-    headerView.titleLabel.text = [title stringByAppendingFormat:@" (%d)", [list count]];
+    [headerView.titleBtn setTitle:[title stringByAppendingFormat:@" (%d)", [list count]] forState:UIControlStateNormal];
     
-    headerView.backgroundColor = [UIColor colorWithHex:0x99cccc alpha:1];
     return headerView;
 }
 
@@ -160,11 +157,11 @@
 - (UICollectionView *)fontCollectionView {
     if (!_fontCollectionView) {
         _fontCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
-        [_fontCollectionView registerClass:[FontAwesomeIconFontCell class] forCellWithReuseIdentifier:@"fontCell"];
-        [_fontCollectionView registerClass:[IconFontHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"fontHeader"];
+        [_fontCollectionView registerClass:[TVCI_vCell class] forCellWithReuseIdentifier:@"TVCI_vCell"];
+        [_fontCollectionView registerClass:[TVCI_vHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TVCI_vHeaderView"];
         _fontCollectionView.dataSource = self;
         _fontCollectionView.delegate = self;
-        _fontCollectionView.backgroundColor = [UIColor colorWithHex:0xeeeeee];
+        _fontCollectionView.backgroundColor = [UIColor colorWithHex:0x27384b];
     }
     return _fontCollectionView;
 }
@@ -191,12 +188,10 @@
 - (UIBarButtonItem *)cancelBarItem {
     if (!_cancelBarItem) {
         UIButton* cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        [cancelBtn setTitle:[NSString fontAwesomeIconStringForEnum:FATimesCircle] forState:UIControlStateNormal];
-        [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cancelBtn setTitle:[NSString fontAwesomeIconStringForEnum:FAChevronCircleLeft] forState:UIControlStateNormal];
+        [cancelBtn setTitleColor:[UIColor colorWithHex:0xfeea2a alpha:1] forState:UIControlStateNormal];
         cancelBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[@"ss" resizeFontAtHeight:25 scale:1]];
         [cancelBtn addTarget:self action:@selector(clickedCancelBtn:) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIView* nullView = [[UIView alloc] initWithFrame:CGRectZero];
         _cancelBarItem = [[UIBarButtonItem alloc] initWithCustomView:cancelBtn];
     }
     return _cancelBarItem;

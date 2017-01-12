@@ -69,10 +69,19 @@
     [self addKVO];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x00a1dc alpha:1]];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b alpha:1]];
+}
 
 - (void) loadSubviews {
     [self.view addSubview:self.tableView];
     [self.navigationItem setTitleView:self.titleBtn];
+    [self.navigationItem setLeftBarButtonItem:[self backVCBarItem]];
 }
 
 - (void) makeMasonries {
@@ -209,6 +218,19 @@
 //    self.datasFilterView 
 }
 
+- (IBAction) clickedBackVC:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIBarButtonItem*) backVCBarItem {
+    CGFloat heightBtn = 22;
+    UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, heightBtn, heightBtn)];
+    [btn setTitle:[NSString fontAwesomeIconStringForEnum:FAChevronCircleLeft] forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:heightBtn scale:1]];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(clickedBackVC:) forControlEvents:UIControlEventTouchUpInside];
+    return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
 
 
 # pragma mask 4 getter
@@ -221,6 +243,9 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.rowHeight = 60;
         _tableView.sectionHeaderHeight = 44;
+        UIView* headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight * 0.2)];
+        headView.backgroundColor = [UIColor colorWithHex:0x00a1dc alpha:1];
+        _tableView.tableHeaderView = headView;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;

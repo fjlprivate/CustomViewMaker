@@ -51,7 +51,6 @@
 		5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB44E1D9DFF4D0036C1FB /* TestForCAViewController.m */; };
 		5E3CB4521D9DFFB40036C1FB /* CoreAniLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */; };
 		5E3CB4561DA9D7AF0036C1FB /* TestForWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */; };
-		5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */; };
 		5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */; };
 		5E51A7F51D13A36200C6FB91 /* TestForIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */; };
 		5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A9CD1D1B960C00C6FB91 /* TestForCustomAlertView.m */; };
@@ -112,13 +111,13 @@
 		5EA4BFCB1E1E381D00707191 /* TestVCIconfont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFCA1E1E381D00707191 /* TestVCIconfont.m */; };
 		5EA4BFCE1E1E397E00707191 /* TVCI_vmDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */; };
 		5EA4BFD41E1E4A3300707191 /* TVCI_vCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */; };
-		5EA4BFD71E1F2D8F00707191 /* TVCI_vLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFD61E1F2D8F00707191 /* TVCI_vLayout.m */; };
 		5EA4BFDA1E1F496200707191 /* TVCI_vHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFD91E1F496200707191 /* TVCI_vHeaderView.m */; };
 		5EA4BFDD1E1F4C6D00707191 /* TVCI_mAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFDC1E1F4C6D00707191 /* TVCI_mAwesome.m */; };
 		5EA4BFE01E1F4D7500707191 /* TVCI_mIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFDF1E1F4D7500707191 /* TVCI_mIconFont.m */; };
 		5EA4BFE61E1F78BD00707191 /* TVCI_mDataList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFE51E1F78BD00707191 /* TVCI_mDataList.m */; };
 		5EA4BFEC1E1F7CF100707191 /* TVCI_mNodeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFEB1E1F7CF100707191 /* TVCI_mNodeItems.m */; };
 		5EA4BFEE1E231BAA00707191 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4BFED1E231BAA00707191 /* iconfont.ttf */; };
+		5EA4BFF21E26130100707191 /* TVCI_vFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */; };
@@ -126,7 +125,6 @@
 		5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4EE1DC84291006A61D1 /* NSString+IconFont.m */; };
 		5EC3DF341DBF01830014A4A1 /* IconFont_dataSourceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */; };
 		5EC3DF371DBF2C690014A4A1 /* MFontAwesomeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */; };
-		5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */; };
 		5EC3DF441DC04D830014A4A1 /* TestForSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF431DC04D830014A4A1 /* TestForSearchBarVC.m */; };
 		5EC3DF471DC04DC00014A4A1 /* TFSB_vmDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3DF461DC04DC00014A4A1 /* TFSB_vmDataSource.m */; };
 		5ECFD3371D91271800FBB63D /* TSSV_itemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD3361D91271800FBB63D /* TSSV_itemView.m */; };
@@ -250,8 +248,6 @@
 		5E3CB4511D9DFFB40036C1FB /* CoreAniLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAniLayer.m; sourceTree = "<group>"; };
 		5E3CB4541DA9D7AF0036C1FB /* TestForWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForWebViewController.h; sourceTree = "<group>"; };
 		5E3CB4551DA9D7AF0036C1FB /* TestForWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForWebViewController.m; sourceTree = "<group>"; };
-		5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeIconFontCell.h; sourceTree = "<group>"; };
-		5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesomeIconFontCell.m; sourceTree = "<group>"; };
 		5E3CB45A1DA9DD430036C1FB /* ModelFontAwesomeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFontAwesomeType.h; sourceTree = "<group>"; };
 		5E3CB45B1DA9DD430036C1FB /* ModelFontAwesomeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFontAwesomeType.m; sourceTree = "<group>"; };
 		5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForIconFont.h; sourceTree = "<group>"; };
@@ -377,8 +373,6 @@
 		5EA4BFCD1E1E397E00707191 /* TVCI_vmDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vmDatasource.m; sourceTree = "<group>"; };
 		5EA4BFD21E1E4A3300707191 /* TVCI_vCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vCell.h; sourceTree = "<group>"; };
 		5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vCell.m; sourceTree = "<group>"; };
-		5EA4BFD51E1F2D8F00707191 /* TVCI_vLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vLayout.h; sourceTree = "<group>"; };
-		5EA4BFD61E1F2D8F00707191 /* TVCI_vLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vLayout.m; sourceTree = "<group>"; };
 		5EA4BFD81E1F496200707191 /* TVCI_vHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vHeaderView.h; sourceTree = "<group>"; };
 		5EA4BFD91E1F496200707191 /* TVCI_vHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vHeaderView.m; sourceTree = "<group>"; };
 		5EA4BFDB1E1F4C6D00707191 /* TVCI_mAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_mAwesome.h; sourceTree = "<group>"; };
@@ -390,6 +384,8 @@
 		5EA4BFEA1E1F7CF100707191 /* TVCI_mNodeItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_mNodeItems.h; sourceTree = "<group>"; };
 		5EA4BFEB1E1F7CF100707191 /* TVCI_mNodeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_mNodeItems.m; sourceTree = "<group>"; };
 		5EA4BFED1E231BAA00707191 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = iconfont.ttf; path = "10_配置文件/iconfont.ttf"; sourceTree = "<group>"; };
+		5EA4BFF01E26130100707191 /* TVCI_vFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vFlowLayout.h; sourceTree = "<group>"; };
+		5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vFlowLayout.m; sourceTree = "<group>"; };
 		5EB2215B1D73D139008591E5 /* StepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
@@ -404,8 +400,6 @@
 		5EC3DF331DBF01830014A4A1 /* IconFont_dataSourceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFont_dataSourceFilter.m; sourceTree = "<group>"; };
 		5EC3DF351DBF2C690014A4A1 /* MFontAwesomeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFontAwesomeNode.h; sourceTree = "<group>"; };
 		5EC3DF361DBF2C690014A4A1 /* MFontAwesomeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFontAwesomeNode.m; sourceTree = "<group>"; };
-		5EC3DF3B1DBF4A110014A4A1 /* IconFontHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFontHeaderView.h; sourceTree = "<group>"; };
-		5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFontHeaderView.m; sourceTree = "<group>"; };
 		5EC3DF421DC04D830014A4A1 /* TestForSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForSearchBarVC.h; sourceTree = "<group>"; };
 		5EC3DF431DC04D830014A4A1 /* TestForSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForSearchBarVC.m; sourceTree = "<group>"; };
 		5EC3DF451DC04DC00014A4A1 /* TFSB_vmDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFSB_vmDataSource.h; sourceTree = "<group>"; };
@@ -1082,10 +1076,10 @@
 				5EA4BFCA1E1E381D00707191 /* TestVCIconfont.m */,
 				5EA4BFD21E1E4A3300707191 /* TVCI_vCell.h */,
 				5EA4BFD31E1E4A3300707191 /* TVCI_vCell.m */,
-				5EA4BFD51E1F2D8F00707191 /* TVCI_vLayout.h */,
-				5EA4BFD61E1F2D8F00707191 /* TVCI_vLayout.m */,
 				5EA4BFD81E1F496200707191 /* TVCI_vHeaderView.h */,
 				5EA4BFD91E1F496200707191 /* TVCI_vHeaderView.m */,
+				5EA4BFF01E26130100707191 /* TVCI_vFlowLayout.h */,
+				5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1155,10 +1149,6 @@
 			children = (
 				5E51A7F31D13A36200C6FB91 /* TestForIconFont.h */,
 				5E51A7F41D13A36200C6FB91 /* TestForIconFont.m */,
-				5E3CB4571DA9DBC90036C1FB /* FontAwesomeIconFontCell.h */,
-				5E3CB4581DA9DBC90036C1FB /* FontAwesomeIconFontCell.m */,
-				5EC3DF3B1DBF4A110014A4A1 /* IconFontHeaderView.h */,
-				5EC3DF3C1DBF4A110014A4A1 /* IconFontHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1665,7 +1655,6 @@
 				9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */,
 				5E1807F11DD1B2CE00C7C5FE /* LMVC_logoutButton.m in Sources */,
 				5E1807F91DD1B2CE00C7C5FE /* MTVC_screenView.m in Sources */,
-				5E3CB4591DA9DBC90036C1FB /* FontAwesomeIconFontCell.m in Sources */,
 				5E7A169B1DF00ACA00CB9E97 /* ZFJF_mainVCCell.m in Sources */,
 				5EA2DF4F1C9115F900770353 /* NSArray+MASAdditions.m in Sources */,
 				5E1808031DD2FD9400C7C5FE /* TestForMLActivitorVC.m in Sources */,
@@ -1688,6 +1677,7 @@
 				5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */,
 				5E3CB45C1DA9DD430036C1FB /* ModelFontAwesomeType.m in Sources */,
 				5E2A58A51DD98A0900AAF7FA /* TestForKeywindowVC.m in Sources */,
+				5EA4BFF21E26130100707191 /* TVCI_vFlowLayout.m in Sources */,
 				5E1807F81DD1B2CE00C7C5FE /* MTVC_keybordView.m in Sources */,
 				5E9BD8FB1E10B4ED00566B09 /* TestForCellSelectedVC.m in Sources */,
 				5E1807CE1DCC776300C7C5FE /* MLWifiView.m in Sources */,
@@ -1728,14 +1718,12 @@
 				5EA2DF491C9115F900770353 /* MASCompositeConstraint.m in Sources */,
 				5E1807F61DD1B2CE00C7C5FE /* SignInViewController.m in Sources */,
 				9E39A29C1CFDD6210035B89C /* JLSignInViewController.m in Sources */,
-				5EC3DF3D1DBF4A110014A4A1 /* IconFontHeaderView.m in Sources */,
 				9E1570371CAC0D0800244876 /* CustomFlowLayout.m in Sources */,
 				5E7A16A51DF1673700CB9E97 /* ZFJF_mMainVCCellItem.m in Sources */,
 				5EA2DF551C91188C00770353 /* CheckViewController.m in Sources */,
 				5EA4BFD41E1E4A3300707191 /* TVCI_vCell.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */,
-				5EA4BFD71E1F2D8F00707191 /* TVCI_vLayout.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

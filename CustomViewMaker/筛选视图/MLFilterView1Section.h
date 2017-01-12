@@ -19,6 +19,9 @@
 /* 被选索引号 */
 @property (nonatomic, assign) NSInteger selectedIndex;
 
+/* 背景色: cell */
+@property (nonatomic, copy) UIColor* backgroundColorOfCell;
+
 /* 是否展开 */
 @property (nonatomic, assign) BOOL isSpread;
 

@@ -22,7 +22,7 @@
         inframe.origin.x = (frame.size.width - inframe.size.width) * 0.5;
         self.titleBtn.frame = inframe;
         self.titleBtn.layer.cornerRadius = inframe.size.height * 0.5;
-        
+        self.backgroundColor = [UIColor colorWithHex:0x27384b alpha:1];
     }
     return self;
 }

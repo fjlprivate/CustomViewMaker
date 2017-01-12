@@ -19,6 +19,7 @@
 @interface TVCI_vmDatasource()
 
 @property (nonatomic, strong) TVCI_mDataList* dataList;
+@property (nonatomic, assign) CGFloat lastOffsetY;
 
 @end
 
@@ -65,13 +66,10 @@
 }
 
 
-# pragma mask 2 UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    UICollectionView* collectionView = (UICollectionView*)scrollView;
-    
-    CGFloat curOffsetY = collectionView.contentOffset.y;
-    
-}
+# pragma mask 2 UICollectionViewDelegateFlowLayout
+
+# pragma mask 2 UICollectionViewDelegate
+
 
 
 # pragma mask 2 UICollectionViewDataSource
@@ -122,6 +120,7 @@
         nodeItems = [self.dataList.listIconFont objectAtIndex:indexPath.section];
     }
     [headerView.titleBtn setTitle:nodeItems.title forState:UIControlStateNormal];
+    headerView.backgroundColor = [UIColor colorWithHex:0x27384b alpha:0.9];
     return headerView;
 }
 

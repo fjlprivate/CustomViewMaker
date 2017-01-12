@@ -135,7 +135,7 @@
         _stateLabel = [UILabel new];
         _stateLabel.textColor = [UIColor colorWithHex:0xffffff alpha:1];
         _stateLabel.backgroundColor = [UIColor colorWithHex:0xef454b alpha:0.9];
-        _stateLabel.font = [UIFont systemFontOfSize:7];
+        _stateLabel.font = [UIFont boldSystemFontOfSize:7];
         _stateLabel.textAlignment = NSTextAlignmentCenter;
         _stateLabel.layer.masksToBounds = YES;
     }

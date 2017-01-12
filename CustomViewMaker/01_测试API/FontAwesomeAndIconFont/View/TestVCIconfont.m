@@ -10,7 +10,7 @@
 #import "MLIconButtonR.h"
 #import "MLFilterView1Section.h"
 #import "PublicHeader.h"
-#import "TVCI_vLayout.h"
+#import "TVCI_vFlowLayout.h"
 #import "TVCI_vmDatasource.h"
 
 
@@ -37,6 +37,7 @@
 
 - (void) loadSubviews {
     [self.navigationItem setTitleView:self.titleBtn];
+    [self.navigationItem setLeftBarButtonItem:[self backVCBarItem]];
     [self.view addSubview:self.collectionView];
 }
 
@@ -62,12 +63,6 @@
         }
     }];
     
-    TVCI_vLayout* flowLayout = (TVCI_vLayout*)self.collectionView.collectionViewLayout;
-    RAC(flowLayout, numberOfSections) = RACObserve(self.datasource, numberOfSections);
-    RAC(flowLayout, numbersOfItemsPerSec) = RACObserve(self.datasource, numbersOfItemsPerSec);
-    RAC(flowLayout, heightsOfHeaderViews) = RACObserve(self.datasource, heightsOfHeaderViews);
-
-    
     [[RACObserve(self.datasource, curFontIndex) delay:0.1] subscribeNext:^(id x) {
         @strongify(self);
         [self.titleBtn setTitle:[self.datasource curFontType] forState:UIControlStateNormal];
@@ -85,14 +80,21 @@
     } onCancel:nil];
 }
 
+- (IBAction) clickedBackVC:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 # pragma mask 4 getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        TVCI_vLayout* layout = [TVCI_vLayout new];
+        TVCI_vFlowLayout* layout = [TVCI_vFlowLayout new];
+        layout.headerReferenceSize = CGSizeMake(0, 44);
         layout.numberOfColumns = 4;
-        layout.itemSize = CGSizeMake(ScreenWidth/layout.numberOfColumns, ScreenWidth/layout.numberOfColumns);
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        
         _collectionView.dataSource = self.datasource;
         _collectionView.delegate = self.datasource;
         [_collectionView registerClass:NSClassFromString(@"TVCI_vCell") forCellWithReuseIdentifier:@"TVCI_vCell"];
@@ -113,11 +115,11 @@
     if (!_titleBtn) {
         _titleBtn = [[MLIconButtonR alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
         _titleBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
-        [_titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_titleBtn setTitleColor:[UIColor colorWithWhite:1 alpha:0.4] forState:UIControlStateHighlighted];
+        [_titleBtn setTitleColor:[UIColor colorWithHex:0xf4ea2a alpha:1] forState:UIControlStateNormal];
+        [_titleBtn setTitleColor:[UIColor colorWithHex:0xf4ea2a alpha:0.4] forState:UIControlStateHighlighted];
         _titleBtn.rightIconLabel.text = [NSString fontAwesomeIconStringForEnum:FACaretDown];
         _titleBtn.rightIconLabel.font = [UIFont fontAwesomeFontOfSize:15];
-        _titleBtn.rightIconLabel.textColor = [UIColor whiteColor];
+        _titleBtn.rightIconLabel.textColor = [UIColor colorWithHex:0xf4ea2a alpha:1];
         [_titleBtn addTarget:self action:@selector(clickedShowFilter:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _titleBtn;
@@ -125,11 +127,22 @@
 - (MLFilterView1Section *)filterView {
     if (!_filterView) {
         _filterView = [[MLFilterView1Section alloc] initWithSuperVC:self];
-        _filterView.tintColor = [UIColor colorWithHex:0x27384b alpha:1];
-        _filterView.tintColor = [UIColor colorWithHex:0x00a1dc alpha:1];
+        _filterView.tintColor = [UIColor colorWithHex:0xf4ea2a alpha:1];
+        _filterView.normalColor = [UIColor colorWithHex:0xffffff alpha:0.8];
+        _filterView.backgroundColorOfCell = [UIColor colorWithHex:0x27384b alpha:1];
     }
     return _filterView;
 }
 
+- (UIBarButtonItem*) backVCBarItem {
+    CGFloat heightIcon = 22;
+    UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, heightIcon, heightIcon)];
+    [btn setTitle:[NSString fontAwesomeIconStringForEnum:FAChevronCircleLeft] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorWithHex:0xf4ea2a alpha:1] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorWithHex:0xf4ea2a alpha:0.4] forState:UIControlStateHighlighted];
+    btn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:heightIcon scale:1]];
+    [btn addTarget:self action:@selector(clickedBackVC:) forControlEvents:UIControlEventTouchUpInside];
+    return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
 
 @end

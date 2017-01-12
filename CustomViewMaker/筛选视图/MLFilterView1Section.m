@@ -183,6 +183,7 @@
     if (!cell) {
         cell = [[MLFV_vCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MLFV_vCell1"];
         cell.checkedView.textColor = self.tintColor;
+        cell.backgroundColor = self.backgroundColorOfCell;
     }
     
     cell.textLabel.text = [self.items objectAtIndex:indexPath.row];
@@ -215,7 +216,6 @@
         UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedOutSpace:)];
         tapGes.delegate = self;
         [self addGestureRecognizer:tapGes];
-//        [self loadSubviews];
     }
     return self;
 }
@@ -285,6 +285,14 @@
                                         blue:(CGFloat)0x66/0xff alpha:1];
     }
     return _normalColor;
+}
+- (UIColor *)backgroundColorOfCell {
+    if (!_backgroundColorOfCell) {
+        _backgroundColorOfCell = [UIColor colorWithRed:(CGFloat)0xff/0xff
+                                                 green:(CGFloat)0xff/0xff
+                                                  blue:(CGFloat)0xff/0xff alpha:1];
+    }
+    return _backgroundColorOfCell;
 }
 
 - (UITableView *)tableView {
