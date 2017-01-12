@@ -118,6 +118,8 @@
 		5EA4BFEC1E1F7CF100707191 /* TVCI_mNodeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFEB1E1F7CF100707191 /* TVCI_mNodeItems.m */; };
 		5EA4BFEE1E231BAA00707191 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4BFED1E231BAA00707191 /* iconfont.ttf */; };
 		5EA4BFF21E26130100707191 /* TVCI_vFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */; };
+		5EA4BFF51E271EBC00707191 /* TVCI_vCellDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFF41E271EBC00707191 /* TVCI_vCellDisplayView.m */; };
+		5EA4BFFD1E276BA400707191 /* UIBarButtonItem+ML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4BFFC1E276BA400707191 /* UIBarButtonItem+ML.m */; };
 		5EB2215D1D73D139008591E5 /* StepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215C1D73D139008591E5 /* StepSegmentView.m */; };
 		5EB221601D73D260008591E5 /* TestForStepSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2215F1D73D260008591E5 /* TestForStepSegmentView.m */; };
 		5EB9E4E61DC840B4006A61D1 /* TestForIconfontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4E51DC840B4006A61D1 /* TestForIconfontVC.m */; };
@@ -386,6 +388,10 @@
 		5EA4BFED1E231BAA00707191 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = iconfont.ttf; path = "10_配置文件/iconfont.ttf"; sourceTree = "<group>"; };
 		5EA4BFF01E26130100707191 /* TVCI_vFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vFlowLayout.h; sourceTree = "<group>"; };
 		5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vFlowLayout.m; sourceTree = "<group>"; };
+		5EA4BFF31E271EBC00707191 /* TVCI_vCellDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCI_vCellDisplayView.h; sourceTree = "<group>"; };
+		5EA4BFF41E271EBC00707191 /* TVCI_vCellDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCI_vCellDisplayView.m; sourceTree = "<group>"; };
+		5EA4BFFB1E276BA400707191 /* UIBarButtonItem+ML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ML.h"; sourceTree = "<group>"; };
+		5EA4BFFC1E276BA400707191 /* UIBarButtonItem+ML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ML.m"; sourceTree = "<group>"; };
 		5EB2215B1D73D139008591E5 /* StepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSegmentView.h; sourceTree = "<group>"; };
 		5EB2215C1D73D139008591E5 /* StepSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSegmentView.m; sourceTree = "<group>"; };
 		5EB2215E1D73D260008591E5 /* TestForStepSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForStepSegmentView.h; sourceTree = "<group>"; };
@@ -1080,6 +1086,8 @@
 				5EA4BFD91E1F496200707191 /* TVCI_vHeaderView.m */,
 				5EA4BFF01E26130100707191 /* TVCI_vFlowLayout.h */,
 				5EA4BFF11E26130100707191 /* TVCI_vFlowLayout.m */,
+				5EA4BFF31E271EBC00707191 /* TVCI_vCellDisplayView.h */,
+				5EA4BFF41E271EBC00707191 /* TVCI_vCellDisplayView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1098,6 +1106,15 @@
 			children = (
 			);
 			path = "测试微信支付跳转";
+			sourceTree = "<group>";
+		};
+		5EA4BFFA1E276B8B00707191 /* UIBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4BFFB1E276BA400707191 /* UIBarButtonItem+ML.h */,
+				5EA4BFFC1E276BA400707191 /* UIBarButtonItem+ML.m */,
+			);
+			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
 		5EB2215A1D73D139008591E5 /* StepSegmentView */ = {
@@ -1230,6 +1247,7 @@
 		9E156FB11CA2D3F300244876 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5EA4BFFA1E276B8B00707191 /* UIBarButtonItem */,
 				9E156FB21CA2D3F300244876 /* NSString */,
 				9E156FB51CA2D3F300244876 /* UIColor */,
 			);
@@ -1640,6 +1658,7 @@
 				5E51A9CE1D1B960C00C6FB91 /* TestForCustomAlertView.m in Sources */,
 				5E7A16C61DFA42F000CB9E97 /* ZFJF_vBtnItem.m in Sources */,
 				5EC3DF471DC04DC00014A4A1 /* TFSB_vmDataSource.m in Sources */,
+				5EA4BFF51E271EBC00707191 /* TVCI_vCellDisplayView.m in Sources */,
 				5E66B19D1CD2057B00728547 /* WifiView.m in Sources */,
 				5EA2DF001C91110D00770353 /* ViewController.m in Sources */,
 				5EA2DF4A1C9115F900770353 /* MASConstraint.m in Sources */,
@@ -1648,6 +1667,7 @@
 				5E2A58F51DE2EF7100AAF7FA /* ElecSignView.m in Sources */,
 				5EA2DF811C97DA5200770353 /* DirectionView.m in Sources */,
 				5EA2DF521C9115F900770353 /* ViewController+MASAdditions.m in Sources */,
+				5EA4BFFD1E276BA400707191 /* UIBarButtonItem+ML.m in Sources */,
 				5EB9E4EF1DC84291006A61D1 /* NSString+IconFont.m in Sources */,
 				5E2A58A11DD95AC100AAF7FA /* TFCVC_labelForChildVCTest.m in Sources */,
 				5EA2DF4C1C9115F900770353 /* MASLayoutConstraint.m in Sources */,

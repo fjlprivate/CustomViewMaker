@@ -66,9 +66,6 @@
 }
 
 
-# pragma mask 2 UICollectionViewDelegateFlowLayout
-
-# pragma mask 2 UICollectionViewDelegate
 
 
 

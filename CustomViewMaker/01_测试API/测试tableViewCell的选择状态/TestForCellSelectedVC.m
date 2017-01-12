@@ -50,6 +50,9 @@
 @property (nonatomic, strong) MLIconButtonR* titleBtn;
 @property (nonatomic, strong) NSArray* months;
 
+
+@property (nonatomic, strong) UIColor* tintColor;
+
 @end
 
 
@@ -71,7 +74,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x00a1dc alpha:1]];
+    [self.navigationController.navigationBar lt_setBackgroundColor:self.tintColor];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -81,7 +84,7 @@
 - (void) loadSubviews {
     [self.view addSubview:self.tableView];
     [self.navigationItem setTitleView:self.titleBtn];
-    [self.navigationItem setLeftBarButtonItem:[self backVCBarItem]];
+    [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem backItemWithVC:self color:[UIColor whiteColor]]];
 }
 
 - (void) makeMasonries {
@@ -155,6 +158,9 @@
 
     if (!headView) {
         headView = [[TLVC_vHeadView alloc] initWithReuseIdentifier:@"TLVC_vHeadView"];
+        headView.titleLabel.textColor = self.tintColor;
+        headView.stateLabel.backgroundColor = self.tintColor;
+        [headView.spreadBtn setTitleColor:self.tintColor forState:UIControlStateNormal];
     }
     
     @weakify(self);
@@ -215,22 +221,8 @@
     }
 }
 - (IBAction) clickedDatasFilter:(id)sender {
-//    self.datasFilterView 
 }
 
-- (IBAction) clickedBackVC:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (UIBarButtonItem*) backVCBarItem {
-    CGFloat heightBtn = 22;
-    UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, heightBtn, heightBtn)];
-    [btn setTitle:[NSString fontAwesomeIconStringForEnum:FAChevronCircleLeft] forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:heightBtn scale:1]];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(clickedBackVC:) forControlEvents:UIControlEventTouchUpInside];
-    return [[UIBarButtonItem alloc] initWithCustomView:btn];
-}
 
 
 # pragma mask 4 getter
@@ -244,7 +236,7 @@
         _tableView.rowHeight = 60;
         _tableView.sectionHeaderHeight = 44;
         UIView* headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight * 0.2)];
-        headView.backgroundColor = [UIColor colorWithHex:0x00a1dc alpha:1];
+        headView.backgroundColor = self.tintColor;
         _tableView.tableHeaderView = headView;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
@@ -273,7 +265,7 @@
         [item2 setObject:@"13:32:33" forKey:@"subContextLabel"];
         [item2 setObject:@"已撤销" forKey:@"stateLabel"];
         [item2 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item2 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item2 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec1 addObject:item2];
         NSMutableDictionary* item3 = [NSMutableDictionary dictionary];
         [item3 setObject:@"消费" forKey:@"titleLabel"];
@@ -282,7 +274,7 @@
         [item3 setObject:@"13:32:33" forKey:@"subContextLabel"];
         [item3 setObject:@"已撤销" forKey:@"stateLabel"];
         [item3 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item3 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item3 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec1 addObject:item3];
         NSMutableDictionary* item4 = [NSMutableDictionary dictionary];
         [item4 setObject:@"消费" forKey:@"titleLabel"];
@@ -291,7 +283,7 @@
         [item4 setObject:@"13:32:33" forKey:@"subContextLabel"];
         [item4 setObject:@"已撤销" forKey:@"stateLabel"];
         [item4 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item4 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item4 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec1 addObject:item4];
         NSMutableDictionary* item5 = [NSMutableDictionary dictionary];
         [item5 setObject:@"消费" forKey:@"titleLabel"];
@@ -300,7 +292,7 @@
         [item5 setObject:@"13:32:33" forKey:@"subContextLabel"];
         [item5 setObject:@"已撤销" forKey:@"stateLabel"];
         [item5 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item5 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item5 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec1 addObject:item5];
 
 
@@ -312,7 +304,7 @@
         [item21 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item21 setObject:@"已撤销" forKey:@"stateLabel"];
         [item21 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item21 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item21 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec2 addObject:item21];
         NSMutableDictionary* item22 = [NSMutableDictionary dictionary];
         [item22 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -321,7 +313,7 @@
         [item22 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item22 setObject:@"已撤销" forKey:@"stateLabel"];
         [item22 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item22 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item22 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec2 addObject:item22];
         NSMutableDictionary* item23 = [NSMutableDictionary dictionary];
         [item23 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -330,7 +322,7 @@
         [item23 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item23 setObject:@"已撤销" forKey:@"stateLabel"];
         [item23 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item23 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item23 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec2 addObject:item23];
         NSMutableDictionary* item24 = [NSMutableDictionary dictionary];
         [item24 setObject:@"微信支付" forKey:@"titleLabel"];
@@ -339,7 +331,7 @@
         [item24 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item24 setObject:@"已撤销" forKey:@"stateLabel"];
         [item24 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item24 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item24 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec2 addObject:item24];
 
         NSMutableArray* sec3 = [NSMutableArray array];
@@ -350,7 +342,7 @@
         [item31 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item31 setObject:@"已撤销" forKey:@"stateLabel"];
         [item31 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item31 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item31 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec3 addObject:item31];
         NSMutableDictionary* item32 = [NSMutableDictionary dictionary];
         [item32 setObject:@"支付宝支付" forKey:@"titleLabel"];
@@ -359,7 +351,7 @@
         [item32 setObject:@"08:32:55" forKey:@"subContextLabel"];
         [item32 setObject:@"已撤销" forKey:@"stateLabel"];
         [item32 setObject:@(YES) forKey:@"stateLabel.hidden"];
-        [item32 setObject:[UIColor colorWithHex:0x00a1dc alpha:1] forKey:@"contextLabel.color"];
+        [item32 setObject:self.tintColor forKey:@"contextLabel.color"];
         [sec3 addObject:item32];
         
         [sections addObject:sec1];
@@ -411,6 +403,13 @@
         _months = @[@"2016年10月", @"2016年11月", @"2016年12月", @"2017年01月"];
     }
     return _months;
+}
+
+- (UIColor *)tintColor {
+    if (!_tintColor) {
+        _tintColor = [UIColor colorWithHex:0x27384b alpha:1];
+    }
+    return _tintColor;
 }
 
 @end

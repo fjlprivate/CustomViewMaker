@@ -12,19 +12,42 @@
 #import "PublicHeader.h"
 #import "TVCI_vFlowLayout.h"
 #import "TVCI_vmDatasource.h"
+#import "TVCI_vCell.h"
 
 
 
-@interface TestVCIconfont ()
+@interface TestVCIconfont () <UICollectionViewDelegate>
 
 @property (nonatomic, strong) MLIconButtonR* titleBtn;
 @property (nonatomic, strong) MLFilterView1Section* filterView;
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) TVCI_vmDatasource* datasource;
 
+@property (nonatomic, strong) UIView* cellDisplayView;
+@property (nonatomic, assign) CGRect lastCellFame;
+@property (nonatomic, strong) TVCI_vCell* cellDisplay;
+
 @end
 
 @implementation TestVCIconfont
+
+
+
+# pragma mask 2 UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    TVCI_vCell* cell = (TVCI_vCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    CGRect frame = cell.frame;
+    frame.origin.y -= collectionView.contentOffset.y;
+    self.cellDisplay = [[TVCI_vCell alloc] initWithFrame:frame];
+    self.cellDisplay.iconLabel.text = cell.iconLabel.text;
+    self.cellDisplay.iconLabel.font = [[self.datasource curFontType] isEqualToString:TVCI_FONTNAME_AWESOME] ? [UIFont fontAwesomeFontOfSize:30] : [UIFont fontWithName:@"iconfont" size:30];
+    self.cellDisplay.titleLabel.text  = cell.titleLabel.text;
+    self.cellDisplay.headLabel.text = cell.headLabel.text;
+    [self showCellDisplayViewAnimation];
+}
+
+
+# pragma mask 3 生命周期 & 布局
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,8 +60,9 @@
 
 - (void) loadSubviews {
     [self.navigationItem setTitleView:self.titleBtn];
-    [self.navigationItem setLeftBarButtonItem:[self backVCBarItem]];
+    [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem backItemWithVC:self color:[UIColor colorWithHex:0xf4ea2a]]];
     [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.cellDisplayView];
 }
 
 - (void) makeMasonries {
@@ -84,6 +108,40 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction) clickedCellDisplayView:(id)sender {
+    [self hideCellDisplayViewAnimation];
+}
+
+- (void) showCellDisplayViewAnimation {
+    [self.cellDisplayView addSubview:self.cellDisplay];
+    self.lastCellFame = self.cellDisplay.frame;
+    CGFloat duration = 0.3;
+    CGFloat newWidth = self.cellDisplayView.frame.size.width * 0.618;
+    
+    NameWeakSelf(wself);
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.cellDisplayView.alpha = 1;
+        wself.cellDisplay.bounds = CGRectMake(0, 0, newWidth, newWidth);
+        wself.cellDisplay.center = CGPointMake(wself.cellDisplayView.frame.size.width * 0.5,
+                                               wself.cellDisplayView.frame.size.height * 0.5);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void) hideCellDisplayViewAnimation {
+    NameWeakSelf(wself);
+    CGFloat duration = 0.3;
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.cellDisplay.bounds = CGRectMake(0, 0, wself.lastCellFame.size.width, wself.lastCellFame.size.height);
+        wself.cellDisplay.center = CGPointMake(wself.lastCellFame.origin.x + wself.lastCellFame.size.width * 0.5,
+                                               wself.lastCellFame.origin.y + wself.lastCellFame.size.height * 0.5);
+        wself.cellDisplayView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [wself.cellDisplay removeFromSuperview];
+    }];
+}
+
+
 
 # pragma mask 4 getter
 - (UICollectionView *)collectionView {
@@ -96,7 +154,7 @@
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         
         _collectionView.dataSource = self.datasource;
-        _collectionView.delegate = self.datasource;
+        _collectionView.delegate = self;
         [_collectionView registerClass:NSClassFromString(@"TVCI_vCell") forCellWithReuseIdentifier:@"TVCI_vCell"];
         [_collectionView registerClass:NSClassFromString(@"TVCI_vHeaderView") forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TVCI_vHeaderView"];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -143,6 +201,16 @@
     btn.titleLabel.font = [UIFont fontAwesomeFontOfSize:[NSString resizeFontAtHeight:heightIcon scale:1]];
     [btn addTarget:self action:@selector(clickedBackVC:) forControlEvents:UIControlEventTouchUpInside];
     return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
+
+- (UIView *)cellDisplayView {
+    if (!_cellDisplayView) {
+        _cellDisplayView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+        _cellDisplayView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
+        _cellDisplayView.alpha = 0;
+        [_cellDisplayView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedCellDisplayView:)]];
+    }
+    return _cellDisplayView;
 }
 
 @end

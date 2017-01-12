@@ -256,7 +256,7 @@
 - (UIView *)bgView {
     if (!_bgView) {
         _bgView = [UIView new];
-        _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         _bgView.alpha = 0;
     }
     return _bgView;

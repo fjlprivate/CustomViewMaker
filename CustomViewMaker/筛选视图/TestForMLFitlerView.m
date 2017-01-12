@@ -37,7 +37,7 @@
     self.title = @"MLFilter筛选器";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItems = @[self.showBarItem, self.showBarItem3];
-    
+    [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem backItemWithVC:self color:[UIColor whiteColor]]];
 }
 
 # pragma mask 2 IBAction 

@@ -18,10 +18,12 @@
 #import "NSString+Custom.h"
 #import <ReactiveCocoa.h>
 
+#import "PublicHeader.h"
+
 
 @interface TestForIconFont()
 
-<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating>
+<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView* fontCollectionView;
 
@@ -32,6 +34,11 @@
 @property (nonatomic, strong) UISearchController* searchController;
 
 @property (nonatomic, strong) UIBarButtonItem* cancelBarItem;
+
+
+@property (nonatomic, strong) UIView* cellDisplayView;
+@property (nonatomic, assign) CGRect lastCellFame;
+@property (nonatomic, strong) TVCI_vCell* cellDisplay;
 
 
 @end
@@ -73,6 +80,7 @@
 
 - (void) loadSubviews {
     [self.view addSubview:self.fontCollectionView];
+    [self.view addSubview:self.cellDisplayView];
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -87,9 +95,59 @@
 }
 
 
+- (IBAction) clickedCellDisplayView:(id)sender {
+    [self hideCellDisplayViewAnimation];
+}
+
+- (void) showCellDisplayViewAnimation {
+    [self.cellDisplayView addSubview:self.cellDisplay];
+    self.lastCellFame = self.cellDisplay.frame;
+    CGFloat duration = 0.3;
+    CGFloat newWidth = self.cellDisplayView.frame.size.width * 0.618;
+    
+    NameWeakSelf(wself);
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.cellDisplayView.alpha = 1;
+        wself.cellDisplay.bounds = CGRectMake(0, 0, newWidth, newWidth);
+        wself.cellDisplay.center = CGPointMake(wself.cellDisplayView.frame.size.width * 0.5,
+                                               wself.cellDisplayView.frame.size.height * 0.5);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void) hideCellDisplayViewAnimation {
+    NameWeakSelf(wself);
+    CGFloat duration = 0.3;
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.cellDisplay.bounds = CGRectMake(0, 0, wself.lastCellFame.size.width, wself.lastCellFame.size.height);
+        wself.cellDisplay.center = CGPointMake(wself.lastCellFame.origin.x + wself.lastCellFame.size.width * 0.5,
+                                               wself.lastCellFame.origin.y + wself.lastCellFame.size.height * 0.5);
+        wself.cellDisplayView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [wself.cellDisplay removeFromSuperview];
+    }];
+}
+
+
+
 # pragma mask UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     self.datasource.filterKey = searchController.searchBar.text;
+}
+
+
+
+# pragma mask UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    TVCI_vCell* cell = (TVCI_vCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    CGRect frame = cell.frame;
+    frame.origin.y -= collectionView.contentOffset.y;
+    self.cellDisplay = [[TVCI_vCell alloc] initWithFrame:frame];
+    self.cellDisplay.iconLabel.text = cell.iconLabel.text;
+    self.cellDisplay.iconLabel.font = [UIFont fontAwesomeFontOfSize:40];
+    self.cellDisplay.titleLabel.text  = cell.titleLabel.text;
+    self.cellDisplay.headLabel.text = cell.headLabel.text;
+    [self showCellDisplayViewAnimation];
 }
 
 
@@ -196,6 +254,17 @@
     }
     return _cancelBarItem;
 }
+
+- (UIView *)cellDisplayView {
+    if (!_cellDisplayView) {
+        _cellDisplayView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+        _cellDisplayView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
+        _cellDisplayView.alpha = 0;
+        [_cellDisplayView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedCellDisplayView:)]];
+    }
+    return _cellDisplayView;
+}
+
 
 
 @end
