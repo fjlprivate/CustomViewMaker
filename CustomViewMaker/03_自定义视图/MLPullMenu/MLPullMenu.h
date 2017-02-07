@@ -59,16 +59,6 @@ typedef NS_ENUM(NSInteger, MLPullMenuDirection) {
 /* 文本色, 默认: 0xffffff */
 @property (nonatomic, copy) UIColor* textColor;
 
-
-
-
-
-/* 展开三角形宽度占边框的比例, 默认: 0.12 */
-@property (nonatomic, assign) CGFloat ratioPullTriWidth;
-
-/* 圆角占比: 相对本视图的宽度, 默认: 0.05 */
-@property (nonatomic, assign) CGFloat ratioCornerInWidth;
-
 /* 是否显示阴影, 默认: YES */
 @property (nonatomic, assign) BOOL enableShadow;
 

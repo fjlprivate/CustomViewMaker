@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) MLPullMenu* pullMenu;
 @property (nonatomic, strong) UIButton* downBtn;
+@property (nonatomic, strong) UIButton* upBtn;
 
 @end
 
@@ -23,10 +24,12 @@
     [super viewDidLoad];
     [self.navigationItem setRightBarButtonItem:[self rightMemuBar]];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview:self.downBtn];
     [self.view addSubview:self.pullMenu];
+    [self.view addSubview:self.downBtn];
+    [self.view addSubview:self.upBtn];
     
     CGFloat centerX = ScreenWidth * 0.5;
     CGFloat centerY = ScreenHeight * 0.5;
@@ -35,8 +38,12 @@
                                     centerY + btnW * 0.5,
                                     btnW, btnW);
     
+    self.upBtn.frame = CGRectMake(centerX - btnW * 0.5,
+                                  centerY - btnW * 1.5,
+                                  btnW, btnW);
+
     
-    
+
 }
 
 
@@ -71,7 +78,26 @@
     }
 }
 
+- (IBAction) clickedUpBtn:(UIButton*)sender {
+    CGPoint startPoint = sender.center;
+    startPoint.y -= sender.bounds.size.height * 0.51;
+    if (self.pullMenu.isPulled) {
+        [self.pullMenu hide];
+    } else {
+        [self.pullMenu showWithItems:@[@"kkkkkkkkkkkkk",@"2sdfasdf",@"2sdfasdf"]
+                        onStartPoint:startPoint
+                        andDirection:MLPullMenuDirectionUp
+                           onClicked:^(NSInteger index) {
+                               
+                           }];
+    }
+}
 
+- (IBAction) clickedLeftBtn:(UIButton*)sender {
+}
+
+- (IBAction) clickedRightBtn:(UIButton*)sender {
+}
 
 
 
@@ -85,6 +111,12 @@
     [btn setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateHighlighted];
     return [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
+- (MLPullMenu *)pullMenu {
+    if (!_pullMenu) {
+        _pullMenu = [[MLPullMenu alloc] init];
+    }
+    return _pullMenu;
+}
 
 - (UIButton *)downBtn {
     if (!_downBtn) {
@@ -97,11 +129,17 @@
     }
     return _downBtn;
 }
-- (MLPullMenu *)pullMenu {
-    if (!_pullMenu) {
-        _pullMenu = [[MLPullMenu alloc] init];
+
+- (UIButton *)upBtn {
+    if (!_upBtn) {
+        _upBtn = [UIButton new];
+        [_upBtn addTarget:self action:@selector(clickedUpBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_upBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretUp] forState:UIControlStateNormal];
+        _upBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:20];
+        [_upBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:1] forState:UIControlStateNormal];
+        [_upBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:0.5] forState:UIControlStateHighlighted];
     }
-    return _pullMenu;
+    return _upBtn;
 }
 
 @end

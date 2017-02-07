@@ -318,7 +318,7 @@
         self.menuView.bgLayer.shadowOpacity = 0;
     }
     
-    //self.menuView.tableView.scrollEnabled = self.items.count > 5 ? YES : NO;
+    self.menuView.tableView.scrollEnabled = self.items.count > 5 ? YES : NO;
     
     self.menuView.tableView.rowHeight = self.rowHeight;
     
@@ -364,41 +364,37 @@
             break;
         case MLPullMenuDirectionUp:
         {
+            frame.origin.y = self.startPoint.y - frame.size.height;
             if (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5) < 0) {
                 self.menuView.ratioPullTriLocation = 0;
+                frame.origin.x = 0 + insetGap;
             }
             else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > ScreenWidth) {
                 self.menuView.ratioPullTriLocation = 1;
+                frame.origin.x = ScreenWidth - selfWidth - insetGap;
+            }
+            else if (self.startPoint.x < selfWidth * 0.5) {
+                self.menuView.ratioPullTriLocation = (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
+                frame.origin.x = 0 + insetGap;
+            }
+            else if (ScreenWidth - self.startPoint.x < selfWidth * 0.5) {
+                CGFloat offsetX = ScreenWidth - selfWidth;
+                self.menuView.ratioPullTriLocation = (self.startPoint.x - offsetX - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
+                frame.origin.x = ScreenWidth - selfWidth - insetGap;
             }
             else {
-                
+                self.menuView.ratioPullTriLocation = 0.5;
+                frame.origin.x = self.startPoint.x - selfWidth * 0.5;
             }
+
         }
             break;
         case MLPullMenuDirectionLeft:
         {
-            if (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5) < 0) {
-                self.menuView.ratioPullTriLocation = 0;
-            }
-            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > ScreenWidth) {
-                self.menuView.ratioPullTriLocation = 1;
-            }
-            else {
-                
-            }
         }
             break;
         case MLPullMenuDirectionRight:
         {
-            if (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5) < 0) {
-                self.menuView.ratioPullTriLocation = 0;
-            }
-            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > ScreenWidth) {
-                self.menuView.ratioPullTriLocation = 1;
-            }
-            else {
-                
-            }
         }
             break;
 
@@ -408,7 +404,6 @@
     
     self.menuView.frame = frame;
     [self.menuView.tableView reloadData];
-    
 }
 
 /* 执行显示动画 */
@@ -477,8 +472,6 @@
     self.tintColor = [UIColor colorWithHex:0x27384b alpha:1];
     self.selectedColor = [UIColor colorWithHex:0x666666 alpha:1];
     self.textColor = [UIColor colorWithHex:0xffffff alpha:1];
-    self.ratioPullTriWidth = 0.12;
-    self.ratioCornerInWidth = 0.05;
     self.enableShadow = YES;
     self.hidden = YES;
 }
