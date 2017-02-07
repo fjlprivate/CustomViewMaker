@@ -117,6 +117,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"TestForPullMenu"];
         [_btnTitles addObject:@"FontIconAndAwesome"];
         [_btnTitles addObject:@"MLIconButtonR"];
         [_btnTitles addObject:@"测试cell被选"];
@@ -189,6 +190,7 @@
         [_dicVCNameAndTitles setObject:@"TestForCellSelectedVC"         forKey:@"测试cell被选"];
         [_dicVCNameAndTitles setObject:@"TestIconBtnVC"                 forKey:@"MLIconButtonR"];
         [_dicVCNameAndTitles setObject:@"TestVCIconfont"                forKey:@"FontIconAndAwesome"];
+        [_dicVCNameAndTitles setObject:@"TestForPullMenu"               forKey:@"TestForPullMenu"];
     }
     return _dicVCNameAndTitles;
 }

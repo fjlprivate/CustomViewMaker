@@ -17,12 +17,15 @@
 
 + (NSDictionary*) iconfontDictionaryList {
     return @{
-             /* V1.1 */
+             //    IFTypeNoData                = 0xe91a,       /* 无数据 */
+             /* V1.0.2 */
+             @(IFTypeNoData)            :@"\ue91a",
+             /* V1.0.1 */
              @(IFTypeKeyboardHidden)    :@"\ue6fb",
              @(IFTypeDownTri)           :@"\ue646",
              @(IFTypeBackspace)         :@"\ue666",
 
-             /* V1.0 */
+             /* V1.0.0 */
              @(IFTypeExchange)          :@"\ue749",
              @(IFTypeRightLine)         :@"\ue667",
              @(IFTypeRightTri)          :@"\ue9c6",

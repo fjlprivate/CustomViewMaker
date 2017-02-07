@@ -515,9 +515,10 @@ forHTTPHeaderField:(NSString *)field
                                         error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(request);
-
+    NSLog(@"--------------------0we");
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
 
+    NSLog(@"-------HTTPRequestHeaders[%@]", self.HTTPRequestHeaders);
     [self.HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(id field, id value, BOOL * __unused stop) {
         if (![request valueForHTTPHeaderField:field]) {
             [mutableRequest setValue:value forHTTPHeaderField:field];
@@ -544,6 +545,8 @@ forHTTPHeaderField:(NSString *)field
                     break;
             }
         }
+        NSLog(@"--------------------1we query:[%@]", query);
+
     }
 
     if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {

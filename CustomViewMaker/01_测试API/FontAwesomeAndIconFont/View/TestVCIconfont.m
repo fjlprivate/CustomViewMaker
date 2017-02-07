@@ -40,9 +40,11 @@
     frame.origin.y -= collectionView.contentOffset.y;
     self.cellDisplay = [[TVCI_vCell alloc] initWithFrame:frame];
     self.cellDisplay.iconLabel.text = cell.iconLabel.text;
-    self.cellDisplay.iconLabel.font = [[self.datasource curFontType] isEqualToString:TVCI_FONTNAME_AWESOME] ? [UIFont fontAwesomeFontOfSize:30] : [UIFont fontWithName:@"iconfont" size:30];
+    self.cellDisplay.iconLabel.font = [[self.datasource curFontType] isEqualToString:TVCI_FONTNAME_AWESOME] ? [UIFont fontAwesomeFontOfSize:50] : [UIFont fontWithName:@"iconfont" size:50];
     self.cellDisplay.titleLabel.text  = cell.titleLabel.text;
     self.cellDisplay.headLabel.text = cell.headLabel.text;
+    self.cellDisplay.iconLabel.textColor = [UIColor colorWithHex:0xe0e0e0 alpha:1];
+    self.cellDisplay.contentView.backgroundColor = [UIColor whiteColor];
     [self showCellDisplayViewAnimation];
 }
 

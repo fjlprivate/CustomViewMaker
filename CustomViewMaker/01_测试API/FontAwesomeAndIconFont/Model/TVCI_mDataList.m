@@ -20,6 +20,7 @@
 - (NSArray<TVCI_mNodeItems *> *)listIconFont {
     if (!_listIconFont) {
         NSMutableArray* iconItems = [NSMutableArray array];
+        [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeNoData" type:IFTypeNoData fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeKeyboardHidden" type:IFTypeKeyboardHidden fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeDownTri" type:IFTypeDownTri fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeBackspace" type:IFTypeBackspace fontSize:TVCI_FONTSIZE]];

@@ -10,12 +10,15 @@
 
 
 typedef NS_ENUM(NSInteger, IFType) {
-    /* V1.1 */
+    /* V1.0.2 */
+    IFTypeNoData                = 0xe91a,       /* 无数据 */
+    
+    /* V1.0.1 */
     IFTypeKeyboardHidden        = 0xe6fb,       /* 隐藏键盘 */
     IFTypeDownTri               = 0xe646,       /* 向下:三角形 */
     IFTypeBackspace             = 0xe666,       /* 退格 */
 
-    /* V1.0 */
+    /* V1.0.0 */
     IFTypeExchange              = 0xe749,       /* 切换 */
     IFTypeRightLine             = 0xe667,       /* 右: 箭头 */
     IFTypeRightTri              = 0xe9c6,       /* 右: 三角 */
