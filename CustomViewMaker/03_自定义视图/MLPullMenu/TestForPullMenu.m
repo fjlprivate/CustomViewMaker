@@ -29,11 +29,16 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview:self.pullMenu];
-    [self.view addSubview:self.downBtn];
-    [self.view addSubview:self.upBtn];
-    [self.view addSubview:self.leftBtn];
-    [self.view addSubview:self.rightBtn];
+    UIView* bview = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+    bview.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:bview];
+    
+    
+    [bview addSubview:self.pullMenu];
+    [bview addSubview:self.downBtn];
+    [bview addSubview:self.upBtn];
+    [bview addSubview:self.leftBtn];
+    [bview addSubview:self.rightBtn];
 
     
     CGFloat centerX = ScreenWidth * 0.5;
@@ -55,25 +60,23 @@
 
 
 # pragma mask : testing ...
-    self.rightBtn.frame = CGRectMake(30,
-                                    ScreenHeight - btnW,
+    self.rightBtn.frame = CGRectMake(0,
+                                    64,
                                     btnW, btnW);
-    self.leftBtn.frame = CGRectMake(200,
-                                     0,
+    self.leftBtn.frame = CGRectMake(ScreenWidth - btnW,
+                                     64,
                                      btnW, btnW);
 
+    self.downBtn.frame = CGRectMake(10,
+                                    centerY + btnW * 0.5,
+                                    btnW, btnW);
+    
+    self.upBtn.frame = CGRectMake(10,
+                                  centerY - btnW * 1.5,
+                                  btnW, btnW);
+
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x0099cc alpha:0.3]];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b alpha:1]];
-}
 
 
 
@@ -86,7 +89,7 @@
                         onStartPoint:startPoint
                         andDirection:MLPullMenuDirectionDown
                            onClicked:^(NSInteger index) {
-                               
+                               [self.pullMenu hide];
                            }];
     }
 
@@ -96,6 +99,7 @@
 - (IBAction) clickedDownBtn:(UIButton*)sender {
     CGPoint startPoint = sender.center;
     startPoint.y += sender.bounds.size.height * 0.51;
+    self.pullMenu.edges = UIEdgeInsetsZero;
     if (self.pullMenu.isPulled) {
         [self.pullMenu hide];
     } else {
@@ -103,7 +107,7 @@
                         onStartPoint:startPoint
                         andDirection:MLPullMenuDirectionDown
                            onClicked:^(NSInteger index) {
-                               
+                               [self.pullMenu hide];
                            }];
     }
 }
@@ -111,6 +115,8 @@
 - (IBAction) clickedUpBtn:(UIButton*)sender {
     CGPoint startPoint = sender.center;
     startPoint.y -= sender.bounds.size.height * 0.51;
+    self.pullMenu.tintColor = [UIColor colorWithHex:0x00a1dc alpha:1];
+    self.pullMenu.enableShadow = NO;
     if (self.pullMenu.isPulled) {
         [self.pullMenu hide];
     } else {
@@ -118,7 +124,7 @@
                         onStartPoint:startPoint
                         andDirection:MLPullMenuDirectionUp
                            onClicked:^(NSInteger index) {
-                               
+                               [self.pullMenu hide];
                            }];
     }
 }
@@ -126,14 +132,16 @@
 - (IBAction) clickedLeftBtn:(UIButton*)sender {
     CGPoint startPoint = sender.center;
     startPoint.x -= sender.bounds.size.height * 0.51;
+    self.pullMenu.edges = UIEdgeInsetsMake(64, 40, 40, 40);
     if (self.pullMenu.isPulled) {
         [self.pullMenu hide];
     } else {
+        NameWeakSelf(wself);
         [self.pullMenu showWithItems:@[@"扫地缴费",@"是丹佛给偶加豆腐",@"圣诞节快放假"]
                         onStartPoint:startPoint
                         andDirection:MLPullMenuDirectionLeft
                            onClicked:^(NSInteger index) {
-                               
+                               [wself.pullMenu hide];
                            }];
     }
 
@@ -146,11 +154,13 @@
     if (self.pullMenu.isPulled) {
         [self.pullMenu hide];
     } else {
-        [self.pullMenu showWithItems:@[@"世纪东方",@"额我",@"问了句了收到",@"问了句了收到"]
+        NameWeakSelf(wself);
+        [self.pullMenu showWithItems:@[@"世纪东方",@"额我",@"问了句了收到",@"问了句了收到",@"问了句了收到",@"问了句了收到"]
                         onStartPoint:startPoint
                         andDirection:MLPullMenuDirectionRight
                            onClicked:^(NSInteger index) {
-                               
+                               [wself.pullMenu hide];
+                               [self.navigationController popViewControllerAnimated:YES];
                            }];
     }
 

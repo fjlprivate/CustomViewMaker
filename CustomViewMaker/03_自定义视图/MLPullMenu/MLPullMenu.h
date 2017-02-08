@@ -39,21 +39,19 @@ typedef NS_ENUM(NSInteger, MLPullMenuDirection) {
 /* [隐藏下拉菜单界面] */
 - (void) hide;
 
-
+/* 边界;比如navigationBar的64 */
+@property (nonatomic, assign) UIEdgeInsets edges;
 
 /* 是否展开 */
 @property (nonatomic, assign) BOOL isPulled;
 
 /* 行高, 默认: 35 */
 @property (nonatomic, assign) CGFloat rowHeight;
-/* 行宽, 根据items的最长值计算 */
-@property (nonatomic, assign) CGFloat rowWidth;
-
 
 /* 主题色, 默认: 0x27384b */
 @property (nonatomic, copy) UIColor* tintColor;
 
-/* 点击色, 默认: 0x666666 */
+/* 点击色, 默认: 0x000000, alpha:0.2 */
 @property (nonatomic, copy) UIColor* selectedColor;
 
 /* 文本色, 默认: 0xffffff */
