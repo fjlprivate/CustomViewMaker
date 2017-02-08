@@ -15,6 +15,8 @@
 @property (nonatomic, strong) MLPullMenu* pullMenu;
 @property (nonatomic, strong) UIButton* downBtn;
 @property (nonatomic, strong) UIButton* upBtn;
+@property (nonatomic, strong) UIButton* leftBtn;
+@property (nonatomic, strong) UIButton* rightBtn;
 
 @end
 
@@ -30,6 +32,9 @@
     [self.view addSubview:self.pullMenu];
     [self.view addSubview:self.downBtn];
     [self.view addSubview:self.upBtn];
+    [self.view addSubview:self.leftBtn];
+    [self.view addSubview:self.rightBtn];
+
     
     CGFloat centerX = ScreenWidth * 0.5;
     CGFloat centerY = ScreenHeight * 0.5;
@@ -41,10 +46,35 @@
     self.upBtn.frame = CGRectMake(centerX - btnW * 0.5,
                                   centerY - btnW * 1.5,
                                   btnW, btnW);
+    self.leftBtn.frame = CGRectMake(centerX - btnW * 1.5,
+                                  centerY - btnW * 0.5,
+                                  btnW, btnW);
+    self.rightBtn.frame = CGRectMake(centerX + btnW * 0.5,
+                                  centerY - btnW * 0.5,
+                                  btnW, btnW);
 
-    
+
+# pragma mask : testing ...
+    self.rightBtn.frame = CGRectMake(30,
+                                    ScreenHeight - btnW,
+                                    btnW, btnW);
+    self.leftBtn.frame = CGRectMake(200,
+                                     0,
+                                     btnW, btnW);
 
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x0099cc alpha:0.3]];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor colorWithHex:0x27384b alpha:1]];
+}
+
 
 
 - (IBAction) clickedMenuBtn :(id)sender {
@@ -94,9 +124,37 @@
 }
 
 - (IBAction) clickedLeftBtn:(UIButton*)sender {
+    CGPoint startPoint = sender.center;
+    startPoint.x -= sender.bounds.size.height * 0.51;
+    if (self.pullMenu.isPulled) {
+        [self.pullMenu hide];
+    } else {
+        [self.pullMenu showWithItems:@[@"扫地缴费",@"是丹佛给偶加豆腐",@"圣诞节快放假"]
+                        onStartPoint:startPoint
+                        andDirection:MLPullMenuDirectionLeft
+                           onClicked:^(NSInteger index) {
+                               
+                           }];
+    }
+
+
 }
 
 - (IBAction) clickedRightBtn:(UIButton*)sender {
+    CGPoint startPoint = sender.center;
+    startPoint.x += sender.bounds.size.height * 0.51;
+    if (self.pullMenu.isPulled) {
+        [self.pullMenu hide];
+    } else {
+        [self.pullMenu showWithItems:@[@"世纪东方",@"额我",@"问了句了收到",@"问了句了收到"]
+                        onStartPoint:startPoint
+                        andDirection:MLPullMenuDirectionRight
+                           onClicked:^(NSInteger index) {
+                               
+                           }];
+    }
+
+
 }
 
 
@@ -140,6 +198,28 @@
         [_upBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:0.5] forState:UIControlStateHighlighted];
     }
     return _upBtn;
+}
+- (UIButton *)leftBtn {
+    if (!_leftBtn) {
+        _leftBtn = [UIButton new];
+        [_leftBtn addTarget:self action:@selector(clickedLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_leftBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretLeft] forState:UIControlStateNormal];
+        _leftBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:20];
+        [_leftBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:1] forState:UIControlStateNormal];
+        [_leftBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:0.5] forState:UIControlStateHighlighted];
+    }
+    return _leftBtn;
+}
+- (UIButton *)rightBtn {
+    if (!_rightBtn) {
+        _rightBtn = [UIButton new];
+        [_rightBtn addTarget:self action:@selector(clickedRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_rightBtn setTitle:[NSString fontAwesomeIconStringForEnum:FACaretRight] forState:UIControlStateNormal];
+        _rightBtn.titleLabel.font = [UIFont fontAwesomeFontOfSize:20];
+        [_rightBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:1] forState:UIControlStateNormal];
+        [_rightBtn setTitleColor:[UIColor colorWithHex:0x0099cc alpha:0.5] forState:UIControlStateHighlighted];
+    }
+    return _rightBtn;
 }
 
 @end

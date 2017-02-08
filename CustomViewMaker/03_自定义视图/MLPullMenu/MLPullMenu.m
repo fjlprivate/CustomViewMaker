@@ -13,6 +13,8 @@
 # define MLPMenuTriWidth        10.f
 # define MLPMenuCorner          4.f
 
+#define MLPSuperVWidth          self.superview.frame.size.width
+#define MLPSuperVHeight         self.superview.frame.size.height
 
 
 # pragma mask ----------- MLPMenuView -----------
@@ -171,8 +173,8 @@
             tPointEnd2 = CGPointMake(hStart, midY - triWidth * 0.5 - cornerRadius);
             tPointCtrlEnd = CGPointMake(hStart, midY - triWidth * 0.5);
             
-            tPointMid1 = CGPointMake(cornerRadius * sqrt(3.f) * 0.5, midY - cornerRadius * 0.5);
-            tPointMid2 = CGPointMake(cornerRadius * sqrt(3.f) * 0.5, midY + cornerRadius * 0.5);
+            tPointMid1 = CGPointMake(cornerRadius * sqrt(3.f) * 0.5, midY + cornerRadius * 0.5);
+            tPointMid2 = CGPointMake(cornerRadius * sqrt(3.f) * 0.5, midY - cornerRadius * 0.5);
             tPointCtrlMid = CGPointMake(0, midY);
 
         }
@@ -305,6 +307,7 @@
 /* 初始化视图状态 */
 - (void) initialBeforeAnimation {
     self.menuView.ratioPullTriLocation = self.ratioPullTriLocation;
+    self.menuView.pullDirection = self.pullDirection;
     
     self.menuView.bgLayer.fillColor = self.tintColor.CGColor;
     
@@ -343,18 +346,18 @@
                 self.menuView.ratioPullTriLocation = 0;
                 frame.origin.x = 0 + insetGap;
             }
-            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > ScreenWidth) {
+            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > MLPSuperVWidth) {
                 self.menuView.ratioPullTriLocation = 1;
-                frame.origin.x = ScreenWidth - selfWidth - insetGap;
+                frame.origin.x = MLPSuperVWidth - selfWidth - insetGap;
             }
             else if (self.startPoint.x < selfWidth * 0.5) {
-                self.menuView.ratioPullTriLocation = (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
+                self.menuView.ratioPullTriLocation = (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5 + insetGap))/(selfWidth - cornerRadius * 4 - triWidth);
                 frame.origin.x = 0 + insetGap;
             }
-            else if (ScreenWidth - self.startPoint.x < selfWidth * 0.5) {
-                CGFloat offsetX = ScreenWidth - selfWidth;
+            else if (MLPSuperVWidth - self.startPoint.x < selfWidth * 0.5) {
+                CGFloat offsetX = MLPSuperVWidth - selfWidth - insetGap;
                 self.menuView.ratioPullTriLocation = (self.startPoint.x - offsetX - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
-                frame.origin.x = ScreenWidth - selfWidth - insetGap;
+                frame.origin.x = MLPSuperVWidth - selfWidth - insetGap;
             }
             else {
                 self.menuView.ratioPullTriLocation = 0.5;
@@ -369,32 +372,75 @@
                 self.menuView.ratioPullTriLocation = 0;
                 frame.origin.x = 0 + insetGap;
             }
-            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > ScreenWidth) {
+            else if (self.startPoint.x + (cornerRadius * 2 + triWidth * 0.5) > MLPSuperVWidth) {
                 self.menuView.ratioPullTriLocation = 1;
-                frame.origin.x = ScreenWidth - selfWidth - insetGap;
+                frame.origin.x = MLPSuperVWidth - selfWidth - insetGap;
             }
             else if (self.startPoint.x < selfWidth * 0.5) {
-                self.menuView.ratioPullTriLocation = (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
+                self.menuView.ratioPullTriLocation = (self.startPoint.x - (cornerRadius * 2 + triWidth * 0.5 + insetGap))/(selfWidth - cornerRadius * 4 - triWidth);
                 frame.origin.x = 0 + insetGap;
             }
-            else if (ScreenWidth - self.startPoint.x < selfWidth * 0.5) {
-                CGFloat offsetX = ScreenWidth - selfWidth;
+            else if (MLPSuperVWidth - self.startPoint.x < selfWidth * 0.5) {
+                CGFloat offsetX = MLPSuperVWidth - selfWidth - insetGap;
                 self.menuView.ratioPullTriLocation = (self.startPoint.x - offsetX - (cornerRadius * 2 + triWidth * 0.5))/(selfWidth - cornerRadius * 4 - triWidth);
-                frame.origin.x = ScreenWidth - selfWidth - insetGap;
+                frame.origin.x = MLPSuperVWidth - selfWidth - insetGap;
             }
             else {
                 self.menuView.ratioPullTriLocation = 0.5;
                 frame.origin.x = self.startPoint.x - selfWidth * 0.5;
             }
-
         }
             break;
         case MLPullMenuDirectionLeft:
         {
+            frame.origin.x = self.startPoint.x - frame.size.width;
+            if (self.startPoint.y - (cornerRadius * 2 + triWidth * 0.5) < 0) {
+                self.menuView.ratioPullTriLocation = 0;
+                frame.origin.y = 0 + insetGap;
+            }
+            else if (self.startPoint.y + (cornerRadius * 2 + triWidth * 0.5) > MLPSuperVHeight) {
+                self.menuView.ratioPullTriLocation = 1;
+                frame.origin.y = MLPSuperVHeight - selfHeight - insetGap;
+            }
+            else if (self.startPoint.y < selfHeight * 0.5) {
+                self.menuView.ratioPullTriLocation = (self.startPoint.y - (cornerRadius * 2 + triWidth * 0.5 + insetGap))/(selfHeight - cornerRadius * 4 - triWidth);
+                frame.origin.y = 0 + insetGap;
+            }
+            else if (MLPSuperVHeight - self.startPoint.y < selfHeight * 0.5) {
+                CGFloat offsetY = MLPSuperVHeight - selfHeight - insetGap;
+                self.menuView.ratioPullTriLocation = (self.startPoint.y - offsetY - (cornerRadius * 2 + triWidth * 0.5))/(selfHeight - cornerRadius * 4 - triWidth);
+                frame.origin.y = MLPSuperVHeight - selfHeight - insetGap;
+            }
+            else {
+                self.menuView.ratioPullTriLocation = 0.5;
+                frame.origin.y = self.startPoint.y - selfHeight * 0.5;
+            }
         }
             break;
         case MLPullMenuDirectionRight:
         {
+            frame.origin.x = self.startPoint.x;
+            if (self.startPoint.y - (cornerRadius * 2 + triWidth * 0.5) < 0) {
+                self.menuView.ratioPullTriLocation = 0;
+                frame.origin.y = 0 + insetGap;
+            }
+            else if (self.startPoint.y + (cornerRadius * 2 + triWidth * 0.5) > MLPSuperVHeight) {
+                self.menuView.ratioPullTriLocation = 1;
+                frame.origin.y = MLPSuperVHeight - selfHeight - insetGap;
+            }
+            else if (self.startPoint.y < selfHeight * 0.5) {
+                self.menuView.ratioPullTriLocation = (self.startPoint.y - (cornerRadius * 2 + triWidth * 0.5 + insetGap))/(selfHeight - cornerRadius * 4 - triWidth);
+                frame.origin.y = 0 + insetGap;
+            }
+            else if (MLPSuperVHeight - self.startPoint.y < selfHeight * 0.5) {
+                CGFloat offsetY = MLPSuperVHeight - selfHeight - insetGap;
+                self.menuView.ratioPullTriLocation = (self.startPoint.y - offsetY - (cornerRadius * 2 + triWidth * 0.5))/(selfHeight - cornerRadius * 4 - triWidth);
+                frame.origin.y = MLPSuperVHeight - selfHeight - insetGap;
+            }
+            else {
+                self.menuView.ratioPullTriLocation = 0.5;
+                frame.origin.y = self.startPoint.y - selfHeight * 0.5;
+            }
         }
             break;
 
