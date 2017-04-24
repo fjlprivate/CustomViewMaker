@@ -48,10 +48,8 @@
 # pragma mask 3 IBAction
 
 - (IBAction) showAlert:(id)sender {
-    [self.alertView show];
 }
 - (IBAction) closeAlert:(id)sender {
-    [self.alertView close];
 }
 
 
@@ -79,17 +77,5 @@
     return _closeButton;
 }
 
-- (CustomIOSAlertView *)alertView {
-    if (!_alertView) {
-        _alertView = [[CustomIOSAlertView alloc] init];
-        _alertView.parentView = self.view;
-        _alertView.buttonTitles = @[@"title1",@"title2",@"title3",@"title4"];
-        _alertView.useMotionEffects = YES;
-        _alertView.onButtonTouchUpInside = ^ (CustomIOSAlertView *alertView, int buttonIndex) {
-            [alertView close];
-        };
-    }
-    return _alertView;
-}
 
 @end

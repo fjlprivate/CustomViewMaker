@@ -117,6 +117,7 @@
 - (NSMutableArray *)btnTitles {
     if (!_btnTitles) {
         _btnTitles = [NSMutableArray array];
+        [_btnTitles addObject:@"TestForHexColor"];
         [_btnTitles addObject:@"TestForPullMenu"];
         [_btnTitles addObject:@"FontIconAndAwesome"];
         [_btnTitles addObject:@"MLIconButtonR"];
@@ -191,6 +192,7 @@
         [_dicVCNameAndTitles setObject:@"TestIconBtnVC"                 forKey:@"MLIconButtonR"];
         [_dicVCNameAndTitles setObject:@"TestVCIconfont"                forKey:@"FontIconAndAwesome"];
         [_dicVCNameAndTitles setObject:@"TestForPullMenu"               forKey:@"TestForPullMenu"];
+        [_dicVCNameAndTitles setObject:@"TestForHexColor"               forKey:@"TestForHexColor"];
     }
     return _dicVCNameAndTitles;
 }

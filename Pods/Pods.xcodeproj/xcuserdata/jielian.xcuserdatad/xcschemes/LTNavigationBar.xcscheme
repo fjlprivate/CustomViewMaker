@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8140F0F0D58231836F18B0BB'
+               BlueprintIdentifier = '7C52BAC7F6704C3F201EA09F'
                BlueprintName = 'LTNavigationBar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libLTNavigationBar.a'>

@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CustomIOSAlertView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FontAwesome.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-CustomViewMakerTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RDVTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RESideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,7 +62,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>335AEFA2FF745C75BA39A6EB7B8A91DB</key>
+		<key>407A8C0C4E055A4A483439BC5EE84D54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,22 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A31B2A22F4A35E8608C20BDD5824AE6</key>
+		<key>442CD7F9EE648D0FA6BABC3AE496C827</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>4F12BBFCA7BEB12EE3268EA5AA1FC3D7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5BB3B56EE6C65643D87B9D2AAD71C2DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6A3E7C3A4E39D33477AFD6798025CE5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -93,6 +88,21 @@
 			<true/>
 		</dict>
 		<key>8E16F23C3941DDC72C45FC1B5C8EE8CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9E4C3BA9810CFF1DCF5EC9ACF1F3110C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4ADB8F347DCBABA2CB72F5213A7DFB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C76F06BE04EFE82AF2A66C7DFA0617AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

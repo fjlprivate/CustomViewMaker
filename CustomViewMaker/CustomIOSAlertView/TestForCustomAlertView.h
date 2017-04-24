@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CustomIOSAlertView.h>
 
 
 @interface TestForCustomAlertView : UIViewController
@@ -15,6 +14,5 @@
 @property (nonatomic, strong) UIButton* showButton;
 @property (nonatomic, strong) UIButton* closeButton;
 
-@property (nonatomic, strong) CustomIOSAlertView* alertView;
 
 @end

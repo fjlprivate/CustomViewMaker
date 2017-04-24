@@ -20,6 +20,9 @@
 - (NSArray<TVCI_mNodeItems *> *)listIconFont {
     if (!_listIconFont) {
         NSMutableArray* iconItems = [NSMutableArray array];
+        [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeAlipay" type:IFTypeAlipay fontSize:TVCI_FONTSIZE]];
+        [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeWechatPay" type:IFTypeWechatPay fontSize:TVCI_FONTSIZE]];
+        [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeWechat" type:IFTypeWechat fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeNoData" type:IFTypeNoData fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeKeyboardHidden" type:IFTypeKeyboardHidden fontSize:TVCI_FONTSIZE]];
         [iconItems addObject:[TVCI_mIconFont fontWithName:@"IFTypeDownTri" type:IFTypeDownTri fontSize:TVCI_FONTSIZE]];

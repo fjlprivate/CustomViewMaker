@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '48C92457B0CA007CE4CF0C18'
+               BlueprintIdentifier = '3643F877CCE29F70354CA3D7'
                BlueprintName = 'KYAnimatedPageControl'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libKYAnimatedPageControl.a'>

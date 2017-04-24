@@ -139,6 +139,7 @@
 		5EDC469A1CA2520500B2F872 /* TestMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC46991CA2520500B2F872 /* TestMBProgressHUD.m */; };
 		5EFFD2351E48581C0092BA1E /* MLPullMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFD2341E48581C0092BA1E /* MLPullMenu.m */; };
 		5EFFD2381E4858320092BA1E /* TestForPullMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFD2371E4858320092BA1E /* TestForPullMenu.m */; };
+		5EFFD28C1E5BE1710092BA1E /* TestForHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFD28B1E5BE1710092BA1E /* TestForHexColor.m */; };
 		9E156FB81CA2D3F300244876 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB41CA2D3F300244876 /* NSString+Custom.m */; };
 		9E156FB91CA2D3F300244876 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E156FB71CA2D3F300244876 /* UIColor+ColorWithHex.m */; };
 		9E1570341CAC0CEE00244876 /* TestCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1570331CAC0CEE00244876 /* TestCollectionView.m */; };
@@ -432,6 +433,9 @@
 		5EFFD2341E48581C0092BA1E /* MLPullMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPullMenu.m; sourceTree = "<group>"; };
 		5EFFD2361E4858320092BA1E /* TestForPullMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForPullMenu.h; sourceTree = "<group>"; };
 		5EFFD2371E4858320092BA1E /* TestForPullMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForPullMenu.m; sourceTree = "<group>"; };
+		5EFFD28A1E5BE1710092BA1E /* TestForHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestForHexColor.h; sourceTree = "<group>"; };
+		5EFFD28B1E5BE1710092BA1E /* TestForHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestForHexColor.m; sourceTree = "<group>"; };
+		5EFFD2A91E5D79EB0092BA1E /* MLPubImport.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPubImport.pch; sourceTree = "<group>"; };
 		69A7357F4B4C84D8E38114DF /* Pods-CustomViewMakerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.release.xcconfig"; sourceTree = "<group>"; };
 		98B33814A8F0DAD8CBA5DEA2 /* Pods-CustomViewMakerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomViewMakerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5B3256FA58A334BFA60C57 /* libPods-CustomViewMakerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomViewMakerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -616,6 +620,7 @@
 		5E2A588E1DD45B0C00AAF7FA /* 01_测试API */ = {
 			isa = PBXGroup;
 			children = (
+				5EFFD2891E5BE1330092BA1E /* TestForHexColor */,
 				5EA4BFEF1E2363D500707191 /* 测试微信支付跳转 */,
 				5EA4BFC51E1E380400707191 /* FontAwesomeAndIconFont */,
 				5E9BD8F81E10B4CB00566B09 /* 测试tableViewCell的选择状态 */,
@@ -856,11 +861,12 @@
 		5EA2DEF71C91110D00770353 /* CustomViewMaker */ = {
 			isa = PBXGroup;
 			children = (
+				5EFFD2A81E5D79EB0092BA1E /* MLPch */,
 				5EA3A0711E16586200ABAAEE /* 03_自定义视图 */,
-				5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */,
-				5E7A16BA1DF9019700CB9E97 /* 筛选视图 */,
 				5E2A58D01DE282AC00AAF7FA /* 02_测试jbig */,
 				5E2A588E1DD45B0C00AAF7FA /* 01_测试API */,
+				5E7A16951DF009DE00CB9E97 /* 中付金服新主界面 */,
+				5E7A16BA1DF9019700CB9E97 /* 筛选视图 */,
 				5E1807D21DD1B2CD00C7C5FE /* JLPay界面设计 */,
 				5EB9E4E31DC8409A006A61D1 /* AwesomeFont */,
 				5E1C92B21DC191B400C65379 /* 幻灯效果UILabel */,
@@ -1262,6 +1268,23 @@
 			path = MLPullMenu;
 			sourceTree = "<group>";
 		};
+		5EFFD2891E5BE1330092BA1E /* TestForHexColor */ = {
+			isa = PBXGroup;
+			children = (
+				5EFFD28A1E5BE1710092BA1E /* TestForHexColor.h */,
+				5EFFD28B1E5BE1710092BA1E /* TestForHexColor.m */,
+			);
+			path = TestForHexColor;
+			sourceTree = "<group>";
+		};
+		5EFFD2A81E5D79EB0092BA1E /* MLPch */ = {
+			isa = PBXGroup;
+			children = (
+				5EFFD2A91E5D79EB0092BA1E /* MLPubImport.pch */,
+			);
+			path = MLPch;
+			sourceTree = "<group>";
+		};
 		9E156FB11CA2D3F300244876 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1391,6 +1414,7 @@
 				5EA2DF0C1C91110D00770353 /* Resources */,
 				F8A933CD0447E302A2C941A6 /* 📦 Embed Pods Frameworks */,
 				50FB7F9EF8D156381A0F526F /* 📦 Copy Pods Resources */,
+				73C69B39646A1CE292C5075D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1584,6 +1608,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMaker/Pods-CustomViewMaker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73C69B39646A1CE292C5075D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomViewMakerTests/Pods-CustomViewMakerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		89CFE5ACB4E6A4389246EE08 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1763,6 +1802,7 @@
 				5EA4BFD41E1E4A3300707191 /* TVCI_vCell.m in Sources */,
 				5E3CB44F1D9DFF4D0036C1FB /* TestForCAViewController.m in Sources */,
 				5E7A16B61DF7A9DB00CB9E97 /* TCV_vmDataSource.m in Sources */,
+				5EFFD28C1E5BE1710092BA1E /* TestForHexColor.m in Sources */,
 				5EFFD2381E4858320092BA1E /* TestForPullMenu.m in Sources */,
 				5EA2DF501C9115F900770353 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);

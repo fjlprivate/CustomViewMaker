@@ -19,7 +19,7 @@
 #import "NSString+IconFont.h"
 #import "UIBarButtonItem+ML.h"
 #import <UINavigationBar+Awesome.h>
-
+#import <RDVTabBarController.h>
 #import <ReactiveCocoa.h>
 
 

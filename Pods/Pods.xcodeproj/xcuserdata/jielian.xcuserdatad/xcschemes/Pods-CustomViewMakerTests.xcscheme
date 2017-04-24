@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7E9EDF6E7E1F3232B0DBCC37'
-               BlueprintName = 'CustomIOSAlertView'
+               BlueprintIdentifier = '21B9E5758E920D1E5EB80804'
+               BlueprintName = 'Pods-CustomViewMakerTests'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libCustomIOSAlertView.a'>
+               BuildableName = 'libPods-CustomViewMakerTests.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
